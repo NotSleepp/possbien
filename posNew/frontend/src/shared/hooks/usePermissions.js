@@ -3,7 +3,7 @@
  * Custom hook for checking user permissions in components
  */
 
-import { useAuthStore } from '../store/useAuthStore';
+import { useAuthStore } from '../../store/useAuthStore';
 import {
   hasRole,
   hasAnyRole,
@@ -13,7 +13,7 @@ import {
   canAccessModule,
   canPerformAction,
   getUserRoleName,
-} from '../utils/permissions';
+} from '../../utils/permissions';
 
 /**
  * Hook that provides permission checking functions

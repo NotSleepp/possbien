@@ -17,14 +17,14 @@ export {
 } from './permissions';
 
 // Export permission hook
-export { usePermissions } from '../hooks/usePermissions';
+export { usePermissions } from '../shared/hooks/usePermissions';
 
 // Export permission components
-export { default as RoleBasedRender } from '../components/common/RoleBasedRender';
+export { default as RoleBasedRender } from '../shared/components/common/RoleBasedRender';
 export {
   withRoleProtection,
   withConditionalRender,
-} from '../components/common/withRoleProtection';
+} from '../shared/components/common/withRoleProtection';
 
 // Export constants
 export { USER_ROLES, ROLE_NAMES } from './constants';

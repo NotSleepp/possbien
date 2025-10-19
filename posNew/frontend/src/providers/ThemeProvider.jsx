@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from 'react';
-import { useTheme } from '../hooks/useTheme';
+import { useTheme } from '../shared/hooks/useTheme';
 
 /**
  * Theme Context for providing theme state throughout the application

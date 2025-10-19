@@ -1,4 +1,4 @@
-import { useThemeContext } from './ThemeProvider';
+import { useThemeContext } from '../../../providers/ThemeProvider';
 
 /**
  * ThemeToggle Component

@@ -11,7 +11,7 @@ import {
   ResponsiveContainer,
   Legend 
 } from 'recharts';
-import { useCSSVars } from '../../../hooks/useCSSVars';
+import { useCSSVars } from '../../hooks/useCSSVars';
 
 /**
  * SalesChart Component

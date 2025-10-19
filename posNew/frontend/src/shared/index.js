@@ -18,8 +18,8 @@ export * from './components/common';
 // Dashboard Components
 export * from './components/dashboard';
 
-// Hooks (placeholder for future shared hooks)
-// export * from './hooks';
+// Hooks
+export * from './hooks';
 
 // Utils (placeholder for future shared utilities)
 // export * from './utils';

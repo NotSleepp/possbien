@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useThemeContext } from '../components/ThemeProvider';
+import { useThemeContext } from '../../providers/ThemeProvider';
 
 /**
  * useCSSVars

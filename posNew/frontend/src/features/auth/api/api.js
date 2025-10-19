@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useAuthStore } from '../../../store/useAuthStore';
-import { ERROR_TYPES } from '../../../utils/constants';
+import { ERROR_TYPES } from '../../../shared/constants';
 
 export const api = axios.create({
   baseURL: 'http://localhost:3000/api',

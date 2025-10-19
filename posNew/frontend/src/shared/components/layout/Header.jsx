@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../../store/useAuthStore';
 import { useUIStore } from '../../../store/useUIStore';
 import Modal from '../ui/Modal';
-import ThemeToggle from '../../../components/ThemeToggle';
+import ThemeToggle from '../ui/ThemeToggle';
 
 const Header = ({ title }) => {
   const { user, logout } = useAuthStore();

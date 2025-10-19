@@ -11,9 +11,8 @@ import {
   FiDollarSign,
   FiArrowRight
 } from 'react-icons/fi';
-import Card from '../components/ui/Card';
-import MetricCard from '../components/ui/MetricCard';
-import { USER_ROLES } from '../utils/constants';
+import { Card, MetricCard } from '../shared/components/ui';
+import { USER_ROLES } from '../shared/constants';
 
 const HomePage = () => {
   const { user } = useAuthStore();
@@ -85,43 +84,43 @@ const HomePage = () => {
   // Color classes for quick action cards
   const colorClasses = {
     blue: {
-      bg: 'bg-blue-50',
-      icon: 'text-blue-600',
-      hover: 'hover:bg-blue-100',
+      bg: 'bg-info/10',
+      icon: 'text-info',
+      hover: 'hover:bg-info/20',
     },
     purple: {
-      bg: 'bg-purple-50',
-      icon: 'text-purple-600',
-      hover: 'hover:bg-purple-100',
+      bg: 'bg-accent/10',
+      icon: 'text-accent',
+      hover: 'hover:bg-accent/20',
     },
     green: {
-      bg: 'bg-green-50',
-      icon: 'text-green-600',
-      hover: 'hover:bg-green-100',
+      bg: 'bg-success/10',
+      icon: 'text-success',
+      hover: 'hover:bg-success/20',
     },
     orange: {
-      bg: 'bg-orange-50',
-      icon: 'text-orange-600',
-      hover: 'hover:bg-orange-100',
+      bg: 'bg-warning/10',
+      icon: 'text-warning',
+      hover: 'hover:bg-warning/20',
     },
   };
 
   return (
     <div className="space-y-8">
       {/* Welcome Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-primary to-primary/90 rounded-lg shadow-lg p-8 text-primary-content">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold mb-2">
               {getGreeting()}, {user?.nombre || user?.username}!
             </h1>
-            <p className="text-blue-100 text-lg">
+            <p className="text-primary-content/80 text-lg">
               Bienvenido a tu sistema POS. Aquí tienes un resumen de tu negocio.
             </p>
           </div>
           <div className="mt-4 md:mt-0">
-            <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
-              <p className="text-sm text-blue-100">Rol</p>
+            <div className="bg-primary-content/20 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
+              <p className="text-sm text-primary-content/80">Rol</p>
               <p className="text-lg font-semibold">
                 {user?.id_rol === USER_ROLES.SUPER_ADMIN ? 'Super Admin' : 
                  user?.id_rol === USER_ROLES.ADMIN ? 'Administrador' : 'Empleado'}
@@ -133,7 +132,7 @@ const HomePage = () => {
 
       {/* Summary Statistics */}
       <div>
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">Resumen del Día</h2>
+        <h2 className="text-2xl font-bold text-base-content mb-4">Resumen del Día</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <MetricCard
             title="Ventas de Hoy"
@@ -175,7 +174,7 @@ const HomePage = () => {
 
       {/* Quick Actions */}
       <div>
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">Accesos Rápidos</h2>
+        <h2 className="text-2xl font-bold text-base-content mb-4">Accesos Rápidos</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {visibleActions.map((action) => {
             const colors = colorClasses[action.color];
@@ -183,7 +182,7 @@ const HomePage = () => {
               <button
                 key={action.id}
                 onClick={() => navigate(action.path)}
-                className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-left transition-all duration-200 hover:shadow-lg hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="bg-base-100 rounded-lg shadow-sm border border-base-300 p-6 text-left transition-all duration-200 hover:shadow-lg hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className={`p-3 ${colors.bg} rounded-lg ${colors.hover} transition-colors duration-200`}>
@@ -191,12 +190,12 @@ const HomePage = () => {
                       {action.icon}
                     </div>
                   </div>
-                  <FiArrowRight className="text-gray-400 w-5 h-5" />
+                  <FiArrowRight className="text-base-content/40 w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-base-content mb-2">
                   {action.title}
                 </h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-base-content/70">
                   {action.description}
                 </p>
               </button>
@@ -214,20 +213,20 @@ const HomePage = () => {
         >
           <ul className="space-y-3">
             <li className="flex items-start gap-3">
-              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-              <p className="text-sm text-gray-700">
+              <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+              <p className="text-sm text-base-content/70">
                 Revisa el inventario regularmente para evitar productos agotados
               </p>
             </li>
             <li className="flex items-start gap-3">
-              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-              <p className="text-sm text-gray-700">
+              <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+              <p className="text-sm text-base-content/70">
                 Mantén actualizados los precios de tus productos
               </p>
             </li>
             <li className="flex items-start gap-3">
-              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-              <p className="text-sm text-gray-700">
+              <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+              <p className="text-sm text-base-content/70">
                 Consulta el dashboard para ver tendencias de ventas
               </p>
             </li>
@@ -240,21 +239,21 @@ const HomePage = () => {
           variant="outlined"
         >
           <div className="space-y-4">
-            <div className="flex justify-between items-center py-2 border-b border-gray-100">
-              <span className="text-sm text-gray-600">Empresa</span>
-              <span className="text-sm font-medium text-gray-900">
+            <div className="flex justify-between items-center py-2 border-b border-base-300">
+              <span className="text-sm text-base-content/60">Empresa</span>
+              <span className="text-sm font-medium text-base-content">
                 {user?.id_empresa ? `Empresa #${user.id_empresa}` : 'N/A'}
               </span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b border-gray-100">
-              <span className="text-sm text-gray-600">Sucursal</span>
-              <span className="text-sm font-medium text-gray-900">
+            <div className="flex justify-between items-center py-2 border-b border-base-300">
+              <span className="text-sm text-base-content/60">Sucursal</span>
+              <span className="text-sm font-medium text-base-content">
                 {user?.id_sucursal ? `Sucursal #${user.id_sucursal}` : 'N/A'}
               </span>
             </div>
             <div className="flex justify-between items-center py-2">
-              <span className="text-sm text-gray-600">Usuario</span>
-              <span className="text-sm font-medium text-gray-900">
+              <span className="text-sm text-base-content/60">Usuario</span>
+              <span className="text-sm font-medium text-base-content">
                 {user?.username}
               </span>
             </div>

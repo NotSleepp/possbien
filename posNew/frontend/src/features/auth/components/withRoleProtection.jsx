@@ -1,5 +1,5 @@
 import { useAuthStore } from '../../../store/useAuthStore';
-import AccessDenied from '../../../components/common/AccessDenied';
+import { AccessDenied } from '../../../shared/components/common';
 import { hasPermission } from '../../../utils/permissions';
 
 /**

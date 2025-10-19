@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/useAuthStore';
 import { useToastStore } from '../store/useToastStore';
 import { api } from '../features/auth/api/api.js';
-import LoadingSpinner from '../components/ui/LoadingSpinner';
+import { LoadingSpinner } from '../shared/components/ui';
 
 const OAuthCallback = () => {
   const location = useLocation();

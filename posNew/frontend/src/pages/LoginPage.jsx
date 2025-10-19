@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../store/useAuthStore';
 import { useToastStore } from '../store/useToastStore';
 import { api } from '../features/auth/api/api.js';
-import Card from '../components/ui/Card';
+import { Card } from '../shared/components/ui';
 import GoogleLoginButton from '../features/auth/components/GoogleLoginButton';
 import LoginForm from '../features/auth/components/LoginForm';
 
@@ -59,13 +59,13 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen w-full bg-gradient-to-br from-blue-50 via-white to-gray-50 px-4 py-8">
+    <div className="flex items-center justify-center min-h-screen w-full bg-gradient-to-br from-primary/5 via-base-100 to-base-200 px-4 py-8">
       <div className="w-full max-w-md space-y-6">
         {/* Header */}
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl mb-4 shadow-lg">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-2xl mb-4 shadow-lg">
             <svg
-              className="w-10 h-10 text-white"
+              className="w-10 h-10 text-primary-content"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -79,21 +79,21 @@ const LoginPage = () => {
               />
             </svg>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-base-content mb-2">
             Sistema POS
           </h1>
-          <p className="text-gray-600">
+          <p className="text-base-content/70">
             Inicia sesión para acceder al sistema
           </p>
         </div>
 
         {/* Google Login Section - Admin */}
         <Card variant="elevated" className="overflow-hidden">
-          <div className="px-6 py-5 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-blue-100">
+          <div className="px-6 py-5 bg-gradient-to-r from-primary/5 to-primary/10 border-b border-primary/20">
             <div className="flex items-center gap-3">
-              <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+              <div className="flex-shrink-0 w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                 <svg
-                  className="w-6 h-6 text-white"
+                  className="w-6 h-6 text-primary-content"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -108,10 +108,10 @@ const LoginPage = () => {
                 </svg>
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">
+                <h2 className="text-lg font-semibold text-base-content">
                   Acceso Administrador
                 </h2>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-base-content/70">
                   Autenticación con cuenta de Google
                 </p>
               </div>
@@ -125,10 +125,10 @@ const LoginPage = () => {
         {/* Divider */}
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-300"></div>
+            <div className="w-full border-t border-base-300"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-4 bg-gradient-to-br from-blue-50 via-white to-gray-50 text-gray-500 font-medium">
+            <span className="px-4 bg-gradient-to-br from-primary/5 via-base-100 to-base-200 text-base-content/60 font-medium">
               o continúa con
             </span>
           </div>
@@ -136,11 +136,11 @@ const LoginPage = () => {
 
         {/* Credentials Login Section - Employees */}
         <Card variant="elevated" className="overflow-hidden">
-          <div className="px-6 py-5 bg-gradient-to-r from-gray-50 to-slate-50 border-b border-gray-200">
+          <div className="px-6 py-5 bg-gradient-to-r from-base-200/50 to-base-300/30 border-b border-base-300">
             <div className="flex items-center gap-3">
-              <div className="flex-shrink-0 w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center">
+              <div className="flex-shrink-0 w-10 h-10 bg-secondary rounded-lg flex items-center justify-center">
                 <svg
-                  className="w-6 h-6 text-white"
+                  className="w-6 h-6 text-secondary-content"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -155,10 +155,10 @@ const LoginPage = () => {
                 </svg>
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">
+                <h2 className="text-lg font-semibold text-base-content">
                   Acceso Empleados
                 </h2>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-base-content/70">
                   Ingresa con tus credenciales
                 </p>
               </div>
@@ -174,7 +174,7 @@ const LoginPage = () => {
         </Card>
 
         {/* Footer */}
-        <p className="text-center text-xs text-gray-500">
+        <p className="text-center text-xs text-base-content/50">
           ¿Problemas para iniciar sesión? Contacta con el administrador del sistema
         </p>
       </div>

@@ -6,9 +6,8 @@ import {
   FiShoppingCart,
   FiTrendingUp 
 } from 'react-icons/fi';
-import MetricCard from '../components/ui/MetricCard';
-import SalesChart from '../components/dashboard/SalesChart';
-import RecentActivity from '../components/dashboard/RecentActivity';
+import { MetricCard } from '../shared/components/ui';
+import { SalesChart, RecentActivity } from '../shared/components/dashboard';
 
 const DashboardPage = () => {
   const [isLoading, setIsLoading] = useState(true);

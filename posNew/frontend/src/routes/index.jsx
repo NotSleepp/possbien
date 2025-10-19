@@ -8,8 +8,8 @@ import SettingsPage from '../pages/SettingsPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import ErrorPage from '../pages/ErrorPage';
 import ProtectedRoute from '../features/auth/components/ProtectedRoute';
-import MainLayout from '../components/layout/MainLayout';
-import { USER_ROLES } from '../utils/constants';
+import { MainLayout } from '../shared/components/layout';
+import { USER_ROLES } from '../shared/constants';
 
 export const router = createBrowserRouter([
   {

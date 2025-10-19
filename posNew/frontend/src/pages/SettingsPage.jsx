@@ -1,6 +1,6 @@
 import { useAuthStore } from '../store/useAuthStore';
-import Card from '../components/ui/Card';
-import { ROLE_NAMES } from '../utils/constants';
+import { Card } from '../shared/components/ui';
+import { ROLE_NAMES } from '../shared/constants';
 
 /**
  * SettingsPage Component

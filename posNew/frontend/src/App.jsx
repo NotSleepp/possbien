@@ -1,13 +1,16 @@
 import { RouterProvider } from 'react-router-dom';
 import { router } from './routes';
-import ErrorBoundary from './components/common/ErrorBoundary';
-import ToastContainer from './components/ui/ToastContainer';
+import { ToastContainer } from './shared/components/ui';
+import { ErrorBoundary } from './shared/components/common';
+import { ThemeProvider } from './components/ThemeProvider';
 
 function App() {
   return (
     <ErrorBoundary>
-      <RouterProvider router={router} />
-      <ToastContainer />
+      <ThemeProvider>
+        <RouterProvider router={router} />
+        <ToastContainer />
+      </ThemeProvider>
     </ErrorBoundary>
   );
 }

@@ -1,14 +1,8 @@
 import { useState, useMemo } from 'react';
 import { FiPlus, FiAlertCircle } from 'react-icons/fi';
 import { useProducts } from '../features/products/hooks/useProducts';
-import ProductTable from '../components/products/ProductTable';
-import ProductCard from '../components/products/ProductCard';
-import ProductFilters from '../components/products/ProductFilters';
-import Pagination from '../components/products/Pagination';
-import EmptyState from '../components/products/EmptyState';
-import Button from '../components/ui/Button';
-import LoadingSpinner from '../components/ui/LoadingSpinner';
-import Modal from '../components/ui/Modal';
+import { ProductTable, ProductCard, ProductFilters, Pagination, EmptyState } from '../features/products';
+import { Button, LoadingSpinner, Modal } from '../shared/components/ui';
 
 const ITEMS_PER_PAGE = 10;
 

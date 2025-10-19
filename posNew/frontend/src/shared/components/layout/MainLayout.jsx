@@ -59,7 +59,7 @@ const MainLayout = () => {
 
         {/* Page content */}
         <main className="flex-1 overflow-y-auto overflow-x-hidden">
-          <div className="container mx-auto px-4 py-6 md:px-6 md:py-8">
+          <div className="w-full h-full px-4 py-6 md:px-6 md:py-8">
             <PageTransition key={location.pathname}>
               <Outlet />
             </PageTransition>

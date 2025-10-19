@@ -44,13 +44,7 @@ export function autenticar(req, res, next) {
     next();
   } catch (error) {
     console.error('Authentication error:', error);
-    if (error.name === 'JsonWebTokenError') {
-      return enviarError(res, 'Token inválido', 401, 'AUTHENTICATION_ERROR');
-    }
-    if (error.name === 'TokenExpiredError') {
-      return enviarError(res, 'Token expirado', 401, 'AUTHENTICATION_ERROR');
-    }
-    return enviarError(res, 'Error de autenticación', 401, 'AUTHENTICATION_ERROR');
+    return enviarError(res, 'Token inválido o expirado', 401, 'AUTHENTICATION_ERROR');
   }
 }
 
@@ -94,10 +88,19 @@ export function autorizarEmpresa(req, res, next) {
 
 /**
  * Middleware para verificar roles específicos
- * @param {string[]} rolesPermitidos - Array de roles que pueden acceder
+ * @param {string[]|number[]} rolesPermitidos - Array de roles que pueden acceder (nombres o IDs)
  * @returns {function} Middleware de Express
  */
 export function autorizarRoles(rolesPermitidos) {
+  // Mapeo canónico para nombres de roles usados en rutas
+  const ROLE_NAME_TO_CANON = {
+    SUPERADMIN: 1,
+    ADMIN: 2,
+    GERENTE: 3,
+    CAJERO: 4,
+    EMPLEADO: 5,
+  };
+
   return (req, res, next) => {
     try {
       if (!req.user) {
@@ -110,8 +113,20 @@ export function autorizarRoles(rolesPermitidos) {
         return enviarError(res, 'Usuario sin rol asignado', 403, 'AUTHORIZATION_ERROR');
       }
       
+      // Normalizar rolesPermitidos: aceptar nombres (string) o IDs (number)
+      const normalized = (rolesPermitidos || [])
+        .map((r) => {
+          if (typeof r === 'string') {
+            const key = r.toUpperCase();
+            return ROLE_NAME_TO_CANON[key] ?? null;
+          }
+          if (typeof r === 'number') return r;
+          return null;
+        })
+        .filter((v) => v !== null);
+
       // Verificar si el rol del usuario está en los roles permitidos
-      if (!rolesPermitidos.includes(rolId)) {
+      if (!normalized.includes(rolId)) {
         return enviarError(res, 'No tienes permisos para realizar esta acción', 403, 'AUTHORIZATION_ERROR');
       }
       

@@ -4,6 +4,16 @@ import clienteBaseDeDatos from '../../config/baseDeDatos.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 
+// Helper: map backend role name to canonical frontend role ID
+function mapRolCanonico(nombre) {
+  const n = (nombre || '').toLowerCase();
+  if (n === 'superadmin' || n === 'super administrador') return 1;
+  if (n === 'administrador' || n === 'admin') return 2;
+  if (n === 'gerente' || n === 'manager') return 3;
+  if (n === 'cajero' || n === 'cashier') return 4;
+  return 5;
+}
+
 // Función para crear usuario con flujo atómico de registro inicial
 async function crearUsuario(datos) {
   const datosValidados = esquemaCrearUsuario.parse(datos);
@@ -108,7 +118,10 @@ async function obtenerUsuarioPorId(id) {
   if (!usuario) {
     throw new Error('Usuario no encontrado');
   }
-  return usuario;
+  // Enriquecer con nombre de rol y normalizar id_rol a canónico para frontend
+  const rol = await clienteBaseDeDatos('roles').where('id', usuario.id_rol).first();
+  const idRolCanonico = mapRolCanonico(rol?.nombre);
+  return { ...usuario, id_rol: idRolCanonico, rol_nombre: rol?.nombre };
 }
 
 async function actualizarUsuario(id, datos) {
@@ -130,7 +143,11 @@ async function login(datos) {
     throw new Error('Usuario no encontrado o inactivo');
   }
 
-  if (usuario.id_rol === 1) { // Asumir 1 es superadmin
+  // Determinar rol real por nombre y canónico
+  const rol = await clienteBaseDeDatos('roles').where('id', usuario.id_rol).first();
+  const rolCanonico = mapRolCanonico(rol?.nombre);
+
+  if (rolCanonico === 1) { // SUPER_ADMIN
     throw new Error('Superadmins deben usar login con Google');
   }
 
@@ -139,19 +156,20 @@ async function login(datos) {
     throw new Error('Credenciales inválidas');
   }
 
+  const jwtSecret = process.env.JWT_SECRET || 'default_jwt_secret';
   const token = jwt.sign(
     {
       id: usuario.id,
       email: usuario.email,
       empresaId: usuario.id_empresa,
-      rolId: usuario.id_rol,
+      rolId: rolCanonico,
       sucursalId: usuario.id_sucursal // Asumir que se asigna en asignaciones
     },
-    process.env.JWT_SECRET,
+    jwtSecret,
     { expiresIn: '24h' }
   );
 
-  return { token, usuario: { id: usuario.id, username: usuario.username, rol: usuario.id_rol } };
+  return { token, usuario: { id: usuario.id, username: usuario.username, rol: rolCanonico } };
 }
 
 // Función para crear usuario regular por admin
@@ -303,6 +321,25 @@ async function createSuperAdminUser(profile, trx) {
         nombre: 'General',
         activo: true
       });
+    }
+
+    // Asignar permisos completos a Superadmin sobre todos los módulos
+    const modulos = await trx('modulos').where({ activo: true });
+    for (const modulo of modulos) {
+      const yaExiste = await trx('permisos')
+        .where({ id_rol: rolId, id_modulo: modulo.id, id_empresa: empresa.id })
+        .first();
+      if (!yaExiste) {
+        await trx('permisos').insert({
+          id_empresa: empresa.id,
+          id_rol: rolId,
+          id_modulo: modulo.id,
+          puede_ver: true,
+          puede_crear: true,
+          puede_editar: true,
+          puede_eliminar: true,
+        });
+      }
     }
 
     console.log('Creación de superadmin completada');

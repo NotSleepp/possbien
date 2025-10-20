@@ -10,6 +10,8 @@ import ErrorPage from '../pages/ErrorPage';
 import ProtectedRoute from '../features/auth/components/ProtectedRoute';
 import { MainLayout } from '../shared/components/layout';
 import { USER_ROLES } from '../shared/constants';
+import PrintersPage from '../pages/PrintersPage';
+import PaymentMethodsPage from '../pages/PaymentMethodsPage';
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +50,14 @@ export const router = createBrowserRouter([
           {
             path: '/settings',
             element: <SettingsPage />,
+          },
+          {
+            path: '/settings/printers',
+            element: <PrintersPage />,
+          },
+          {
+            path: '/settings/payment-methods',
+            element: <PaymentMethodsPage />,
           },
           // Add more admin-only routes here as needed
           // {

@@ -2,6 +2,17 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { api } from '../features/auth/api/api';
 
+// Decode JWT payload safely to extract rolId (canonical role)
+const decodeJwt = (token) => {
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload;
+  } catch (e) {
+    console.warn('[AuthStore] Failed to decode JWT', e);
+    return null;
+  }
+};
+
 export const useAuthStore = create(
   persist(
     (set, get) => ({
@@ -15,13 +26,16 @@ export const useAuthStore = create(
       setToken: (token) => set({ token, isAuthenticated: !!token }),
 
       // Login action
-      login: (userData, token) => 
-        set({ 
-          user: userData, 
+      login: (userData, token) => {
+        const payload = token ? decodeJwt(token) : null;
+        const userWithRole = payload?.rolId ? { ...userData, rolId: payload.rolId } : userData;
+        return set({ 
+          user: userWithRole, 
           token, 
           isAuthenticated: true,
           error: null 
-        }),
+        });
+      },
 
       // Logout action
       logout: () => {
@@ -66,12 +80,14 @@ export const useAuthStore = create(
         try {
           set({ isLoading: true, error: null });
           const response = await api.get('/auth/me');
+          const payload = token ? decodeJwt(token) : null;
+          const userWithRole = payload?.rolId ? { ...response.data, rolId: payload.rolId } : response.data;
           set({ 
-            user: response.data, 
+            user: userWithRole, 
             isAuthenticated: true,
             isLoading: false 
           });
-          return response.data;
+          return userWithRole;
         } catch (error) {
           const errorMessage = error.response?.data?.message || 'Failed to fetch user data';
           set({ 

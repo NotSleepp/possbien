@@ -26,6 +26,8 @@ const MainLayout = () => {
       '/reports': 'Reportes',
       '/users': 'Usuarios',
       '/settings': 'Configuración',
+      '/settings/printers': 'Impresoras',
+      '/settings/payment-methods': 'Métodos de Pago',
     };
     return titles[location.pathname] || 'POS System';
   };

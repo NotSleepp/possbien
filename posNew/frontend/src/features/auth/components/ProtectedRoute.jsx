@@ -44,7 +44,11 @@ const ProtectedRoute = ({ allowedRoles = null }) => {
   }
 
   // Check role-based access control if allowedRoles is specified
-  if (allowedRoles && !allowedRoles.includes(user.id_rol)) {
+  const currentRole = user?.rolId ?? user?.id_rol;
+  if (allowedRoles) {
+    console.log('[ProtectedRoute] allowedRoles:', allowedRoles, 'currentRole:', currentRole, 'user:', user);
+  }
+  if (allowedRoles && !allowedRoles.includes(currentRole)) {
     return <AccessDenied />;
   }
 

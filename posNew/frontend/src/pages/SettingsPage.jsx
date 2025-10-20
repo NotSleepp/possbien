@@ -38,7 +38,7 @@ const SettingsPage = () => {
             </div>
             <div>
               <span className="text-sm font-medium text-gray-500">Rol:</span>
-              <p className="text-gray-900">{ROLE_NAMES[user?.id_rol]}</p>
+              <p className="text-gray-900">{ROLE_NAMES[user?.rolId ?? user?.id_rol]}</p>
             </div>
           </div>
         </Card>

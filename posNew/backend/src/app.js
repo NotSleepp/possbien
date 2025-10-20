@@ -71,6 +71,9 @@ import movimientosCajaRouter from './api/movimientos_caja/rutas.movimientos_caja
 import systemLogsRouter from './api/system_logs/rutas.system_logs.js';
 import auditTrailsRouter from './api/audit_trails/rutas.audit_trails.js';
 import almacenesRouter from './api/almacenes/router.almacenes.js';
+import impresorasRouter from './api/impresoras/rutas.impresoras.js';
+import metodosPagoRouter from './api/metodos_pago/rutas.metodos_pago.js';
+
 app.use('/api/usuarios', usuariosRouter);
 app.use('/api/empresas', empresasRouter);
 app.use('/api/roles', rolesRouter);
@@ -90,5 +93,7 @@ app.use('/api/movimientos_caja', movimientosCajaRouter);
 app.use('/api/system_logs', systemLogsRouter);
 app.use('/api/audit_trails', auditTrailsRouter);
 app.use('/api/almacenes', almacenesRouter);
+app.use('/api/impresoras', impresorasRouter);
+app.use('/api/metodos_pago', metodosPagoRouter);
 
 export default app;

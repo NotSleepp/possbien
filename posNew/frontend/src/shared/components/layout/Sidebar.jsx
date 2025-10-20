@@ -9,7 +9,9 @@ import {
   FiUsers, 
   FiSettings, 
   FiLogOut,
-  FiX
+  FiX,
+  FiPrinter,
+  FiCreditCard
 } from 'react-icons/fi';
 import { useAuthStore } from '../../../store/useAuthStore';
 import { useToastStore } from '../../../store/useToastStore';
@@ -73,10 +75,26 @@ const Sidebar = ({ onClose }) => {
       icon: FiSettings,
       roles: [1, 2], // Super Admin, Admin only
     },
+    {
+      path: '/settings/printers',
+      label: 'Impresoras',
+      icon: FiPrinter,
+      roles: [1, 2],
+    },
+    {
+      path: '/settings/payment-methods',
+      label: 'Métodos de Pago',
+      icon: FiCreditCard,
+      roles: [1, 2],
+    },
   ];
 
   // Filter menu items based on user role using utility function
   const visibleMenuItems = filterMenuByPermissions(menuItems, user);
+
+  // Diagnostic logs to understand sidebar visibility
+  console.log('[Sidebar] user:', user, 'id_rol=', user?.id_rol, 'rolId=', user?.rolId);
+  console.log('[Sidebar] visibleMenuItems:', visibleMenuItems.map(i => ({ path: i.path, roles: i.roles })));
 
   return (
     <>

@@ -5,31 +5,36 @@
 
 import { USER_ROLES } from './constants';
 
+// Prefer canonical role from JWT (rolId) and fallback to DB id_rol
+const getCanonicalRoleId = (user) => (user?.rolId ?? user?.id_rol ?? null);
+
 /**
  * Check if a user has a specific role
- * @param {Object} user - User object with id_rol property
+ * @param {Object} user - User object with rolId or id_rol property
  * @param {number} roleId - Role ID to check
  * @returns {boolean} - True if user has the role
  */
 export const hasRole = (user, roleId) => {
-  if (!user || !user.id_rol) return false;
-  return user.id_rol === roleId;
+  const role = getCanonicalRoleId(user);
+  if (!role) return false;
+  return role === roleId;
 };
 
 /**
  * Check if a user has any of the specified roles
- * @param {Object} user - User object with id_rol property
+ * @param {Object} user - User object with rolId or id_rol property
  * @param {number[]} roleIds - Array of role IDs to check
  * @returns {boolean} - True if user has any of the roles
  */
 export const hasAnyRole = (user, roleIds) => {
-  if (!user || !user.id_rol || !Array.isArray(roleIds)) return false;
-  return roleIds.includes(user.id_rol);
+  const role = getCanonicalRoleId(user);
+  if (!role || !Array.isArray(roleIds)) return false;
+  return roleIds.includes(role);
 };
 
 /**
  * Check if a user is an admin (Super Admin or Admin)
- * @param {Object} user - User object with id_rol property
+ * @param {Object} user - User object
  * @returns {boolean} - True if user is admin
  */
 export const isAdmin = (user) => {
@@ -38,7 +43,7 @@ export const isAdmin = (user) => {
 
 /**
  * Check if a user is a super admin
- * @param {Object} user - User object with id_rol property
+ * @param {Object} user - User object
  * @returns {boolean} - True if user is super admin
  */
 export const isSuperAdmin = (user) => {
@@ -47,7 +52,7 @@ export const isSuperAdmin = (user) => {
 
 /**
  * Check if a user is a manager or higher
- * @param {Object} user - User object with id_rol property
+ * @param {Object} user - User object
  * @returns {boolean} - True if user is manager, admin, or super admin
  */
 export const isManagerOrHigher = (user) => {
@@ -60,12 +65,13 @@ export const isManagerOrHigher = (user) => {
 
 /**
  * Check if a user can access a specific module/feature
- * @param {Object} user - User object with id_rol property
+ * @param {Object} user - User object
  * @param {string} module - Module name
  * @returns {boolean} - True if user can access the module
  */
 export const canAccessModule = (user, module) => {
-  if (!user || !user.id_rol) return false;
+  const role = getCanonicalRoleId(user);
+  if (!role) return false;
 
   // Define module permissions
   const modulePermissions = {
@@ -108,18 +114,19 @@ export const canAccessModule = (user, module) => {
   const allowedRoles = modulePermissions[module];
   if (!allowedRoles) return false;
 
-  return allowedRoles.includes(user.id_rol);
+  return allowedRoles.includes(role);
 };
 
 /**
  * Check if a user can perform a specific action
- * @param {Object} user - User object with id_rol property
+ * @param {Object} user - User object
  * @param {string} action - Action name (create, read, update, delete)
  * @param {string} resource - Resource name
  * @returns {boolean} - True if user can perform the action
  */
 export const canPerformAction = (user, action, resource) => {
-  if (!user || !user.id_rol) return false;
+  const role = getCanonicalRoleId(user);
+  if (!role) return false;
 
   // Define action permissions
   const actionPermissions = {
@@ -166,16 +173,17 @@ export const canPerformAction = (user, action, resource) => {
   const allowedRoles = resourcePermissions[action];
   if (!allowedRoles) return false;
 
-  return allowedRoles.includes(user.id_rol);
+  return allowedRoles.includes(role);
 };
 
 /**
  * Get user role name
- * @param {Object} user - User object with id_rol property
+ * @param {Object} user - User object
  * @returns {string} - Role name
  */
 export const getUserRoleName = (user) => {
-  if (!user || !user.id_rol) return 'Desconocido';
+  const role = getCanonicalRoleId(user);
+  if (!role) return 'Desconocido';
 
   const roleNames = {
     [USER_ROLES.SUPER_ADMIN]: 'Super Administrador',
@@ -185,21 +193,22 @@ export const getUserRoleName = (user) => {
     [USER_ROLES.EMPLOYEE]: 'Empleado',
   };
 
-  return roleNames[user.id_rol] || 'Desconocido';
+  return roleNames[role] || 'Desconocido';
 };
 
 /**
  * Filter menu items based on user permissions
  * @param {Array} menuItems - Array of menu items with roles property
- * @param {Object} user - User object with id_rol property
+ * @param {Object} user - User object
  * @returns {Array} - Filtered menu items
  */
 export const filterMenuByPermissions = (menuItems, user) => {
-  if (!user || !user.id_rol || !Array.isArray(menuItems)) return [];
+  const role = getCanonicalRoleId(user);
+  if (!role || !Array.isArray(menuItems)) return [];
 
   return menuItems.filter((item) => {
     if (!item.roles || !Array.isArray(item.roles)) return true;
-    return item.roles.includes(user.id_rol);
+    return item.roles.includes(role);
   });
 };
 

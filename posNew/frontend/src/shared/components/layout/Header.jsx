@@ -73,7 +73,7 @@ const Header = ({ title }) => {
                       : user?.username}
                   </p>
                   <p className="text-xs text-neutral-content">
-                    {getRoleName(user?.id_rol)}
+                    {getRoleName(user?.rolId ?? user?.id_rol)}
                   </p>
                 </div>
               </button>
@@ -100,7 +100,7 @@ const Header = ({ title }) => {
                         {user?.email || user?.username}
                       </p>
                       <p className="text-xs text-neutral-content/70 mt-1">
-                        {getRoleName(user?.id_rol)}
+                        {getRoleName(user?.rolId ?? user?.id_rol)}
                       </p>
                     </div>
 

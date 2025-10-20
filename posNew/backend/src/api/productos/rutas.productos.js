@@ -1,13 +1,14 @@
 import express from 'express';
 import * as controlador from './controlador.productos.js';
+import { seguridadMultiTenant, soloAutenticar } from '../../middlewares/auth.middleware.js';
 
 const router = express.Router();
 
 // Rutas para productos
-router.post('/', controlador.crearProducto);
-router.get('/por-empresa/:idEmpresa', controlador.obtenerTodosProductos);
-router.get('/:id', controlador.obtenerProductoPorId);
-router.put('/:id', controlador.actualizarProducto);
-router.delete('/:id', controlador.eliminarProducto);
+router.post('/', seguridadMultiTenant, controlador.crearProducto);
+router.get('/por-empresa/:idEmpresa', soloAutenticar, controlador.obtenerTodosProductos);
+router.get('/:id', soloAutenticar, controlador.obtenerProductoPorId);
+router.put('/:id', seguridadMultiTenant, controlador.actualizarProducto);
+router.delete('/:id', soloAutenticar, controlador.eliminarProducto);
 
 export default router;

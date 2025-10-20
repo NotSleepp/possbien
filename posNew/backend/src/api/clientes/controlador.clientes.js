@@ -2,7 +2,7 @@ import * as servicio from './servicio.clientes.js';
 
 async function crearCliente(req, res, next) {
   try {
-    const cliente = await servicio.crearCliente(req.body, req.usuario);
+    const cliente = await servicio.crearCliente(req.body, req.user);
     res.status(201).json({ mensaje: 'Cliente creado exitosamente', datos: cliente });
   } catch (error) {
     next(error);
@@ -12,7 +12,7 @@ async function crearCliente(req, res, next) {
 async function obtenerTodosClientes(req, res, next) {
   try {
     const { idEmpresa } = req.params;
-    const clientes = await servicio.obtenerTodosClientes(Number(idEmpresa), req.usuario);
+    const clientes = await servicio.obtenerTodosClientes(Number(idEmpresa), req.user);
     res.json(clientes);
   } catch (error) {
     next(error);
@@ -32,7 +32,7 @@ async function obtenerClientePorId(req, res, next) {
 async function actualizarCliente(req, res, next) {
   try {
     const { id } = req.params;
-    const cliente = await servicio.actualizarCliente(Number(id), req.body, req.usuario);
+    const cliente = await servicio.actualizarCliente(Number(id), req.body, req.user);
     res.json({ mensaje: 'Cliente actualizado exitosamente', datos: cliente });
   } catch (error) {
     next(error);
@@ -42,7 +42,7 @@ async function actualizarCliente(req, res, next) {
 async function eliminarCliente(req, res, next) {
   try {
     const { id } = req.params;
-    await servicio.eliminarCliente(Number(id));
+    await servicio.eliminarCliente(Number(id), req.user);
     res.json({ mensaje: 'Cliente eliminado exitosamente' });
   } catch (error) {
     next(error);

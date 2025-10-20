@@ -157,15 +157,28 @@ async function actualizarProducto(id, datos, usuario = null) {
  * @returns {Promise<object>} El producto marcado como eliminado.
  * @throws {Error} Si el producto no existe.
  */
-async function eliminarProducto(id) {
-  await obtenerProductoPorId(id);
+export const eliminarProducto = async (id, usuario = null) => {
+  if (!usuario || !usuario.empresaId) {
+    throw new Error('Acceso no autorizado o empresa no definida');
+  }
+
+  const producto = await repositorio.obtenerProductoPorId(id);
+  if (!producto) {
+    throw new Error('Producto no encontrado');
+  }
+
+  // Validar que el producto pertenece a la misma empresa del usuario
+  const result = validarAccesoEmpresa(usuario, producto.id_empresa);
+  if (!result.esValido) {
+    throw new Error(result.mensaje || 'Acceso no autorizado');
+  }
+
   return await repositorio.eliminarProducto(id);
-}
+};
 
 export {
   crearProducto,
   obtenerTodosProductos,
   obtenerProductoPorId,
   actualizarProducto,
-  eliminarProducto,
 };

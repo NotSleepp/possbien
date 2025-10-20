@@ -127,15 +127,27 @@ async function actualizarCliente(id, datos, usuario = null) {
  * @returns {Promise<object>} El cliente marcado como eliminado.
  * @throws {Error} Si el cliente no existe.
  */
-async function eliminarCliente(id) {
-  await obtenerClientePorId(id);
+export const eliminarCliente = async (id, usuario = null) => {
+  if (!usuario || !usuario.empresaId) {
+    throw new Error('Acceso no autorizado o empresa no definida');
+  }
+
+  const cliente = await repositorio.obtenerClientePorId(id);
+  if (!cliente) {
+    throw new Error('Cliente no encontrado');
+  }
+
+  const result = validarAccesoEmpresa(usuario, cliente.id_empresa);
+  if (!result.esValido) {
+    throw new Error(result.mensaje || 'Acceso no autorizado');
+  }
+
   return await repositorio.eliminarCliente(id);
-}
+};
 
 export {
   crearCliente,
   obtenerTodosClientes,
   obtenerClientePorId,
   actualizarCliente,
-  eliminarCliente,
 };

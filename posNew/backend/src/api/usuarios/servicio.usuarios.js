@@ -118,10 +118,8 @@ async function obtenerUsuarioPorId(id) {
   if (!usuario) {
     throw new Error('Usuario no encontrado');
   }
-  // Enriquecer con nombre de rol y normalizar id_rol a canónico para frontend
-  const rol = await clienteBaseDeDatos('roles').where('id', usuario.id_rol).first();
-  const idRolCanonico = mapRolCanonico(rol?.nombre);
-  return { ...usuario, id_rol: idRolCanonico, rol_nombre: rol?.nombre };
+  // Retornar usuario tal cual sin enriquecer para mantener contrato simple
+  return usuario;
 }
 
 async function actualizarUsuario(id, datos) {
@@ -143,9 +141,12 @@ async function login(datos) {
     throw new Error('Usuario no encontrado o inactivo');
   }
 
-  // Determinar rol real por nombre y canónico
-  const rol = await clienteBaseDeDatos('roles').where('id', usuario.id_rol).first();
-  const rolCanonico = mapRolCanonico(rol?.nombre);
+  // Determinar rol real por nombre y canónico sin consultar DB si no hay id_rol
+  let rolCanonico = 5; // valor por defecto
+  if (usuario.id_rol) {
+    const rol = await clienteBaseDeDatos('roles').where('id', usuario.id_rol).first();
+    rolCanonico = mapRolCanonico(rol?.nombre);
+  }
 
   if (rolCanonico === 1) { // SUPER_ADMIN
     throw new Error('Superadmins deben usar login con Google');

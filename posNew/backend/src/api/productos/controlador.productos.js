@@ -2,7 +2,7 @@ import * as servicio from './servicio.productos.js';
 
 async function crearProducto(req, res, next) {
   try {
-    const producto = await servicio.crearProducto(req.body, req.usuario);
+    const producto = await servicio.crearProducto(req.body, req.user);
     res.status(201).json({ mensaje: 'Producto creado exitosamente', datos: producto });
   } catch (error) {
     next(error);
@@ -12,7 +12,7 @@ async function crearProducto(req, res, next) {
 async function obtenerTodosProductos(req, res, next) {
   try {
     const { idEmpresa } = req.params;
-    const productos = await servicio.obtenerTodosProductos(Number(idEmpresa), req.usuario);
+    const productos = await servicio.obtenerTodosProductos(Number(idEmpresa), req.user);
     res.json(productos);
   } catch (error) {
     next(error);
@@ -32,7 +32,7 @@ async function obtenerProductoPorId(req, res, next) {
 async function actualizarProducto(req, res, next) {
   try {
     const { id } = req.params;
-    const producto = await servicio.actualizarProducto(Number(id), req.body, req.usuario);
+    const producto = await servicio.actualizarProducto(Number(id), req.body, req.user);
     res.json({ mensaje: 'Producto actualizado exitosamente', datos: producto });
   } catch (error) {
     next(error);
@@ -42,7 +42,7 @@ async function actualizarProducto(req, res, next) {
 async function eliminarProducto(req, res, next) {
   try {
     const { id } = req.params;
-    await servicio.eliminarProducto(Number(id));
+    await servicio.eliminarProducto(Number(id), req.user);
     res.json({ mensaje: 'Producto eliminado exitosamente' });
   } catch (error) {
     next(error);

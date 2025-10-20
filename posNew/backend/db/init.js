@@ -17,6 +17,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createHash, randomBytes } from 'crypto';
 import dotenv from 'dotenv';
+import bcrypt from 'bcryptjs';
 
 // Configurar __dirname para ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -385,13 +386,10 @@ function generarContraseñaSegura(longitud = 12) {
 }
 
 /**
- * Generar hash de contraseña (formato bcrypt simulado)
+ * Generar hash de contraseña (formato bcrypt real)
  */
 function generarHashContraseña(contraseña) {
-  // Generar un hash bcrypt simulado más realista
-  const salt = randomBytes(16).toString('hex').substring(0, 22);
-  const hash = createHash('sha256').update(contraseña + salt).digest('hex').substring(0, 31);
-  return `$2b$10$${salt}${hash}`;
+  return bcrypt.hashSync(contraseña, 10);
 }
 
 /**
@@ -617,11 +615,13 @@ async function resetearBaseDatos(db) {
   // Conectar a la nueva base de datos
   await db.conectar();
   
-  // Ejecutar schema, mejoras, índices y seeds
+  // Ejecutar schema, mejoras e índices
   await db.ejecutarArchivoSQL(PATHS.schema, 'Schema (creación de tablas)');
   await db.ejecutarArchivoSQL(PATHS.mejoras, 'Mejoras (tablas adicionales)');
   await db.ejecutarArchivoSQL(PATHS.indices, 'Índices de rendimiento');
-  await db.ejecutarArchivoSQL(PATHS.seeds, 'Seeds (datos iniciales)');
+  
+  // Insertar seeds con contraseñas dinámicas usando bcryptjs
+  await insertarDatos(db);
   
   console.log('✅ Base de datos reseteada exitosamente');
 }

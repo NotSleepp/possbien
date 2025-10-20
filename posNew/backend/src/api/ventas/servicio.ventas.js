@@ -140,8 +140,16 @@ async function actualizarVenta(id, datos, usuario = null) {
  * @returns {Promise<object>} La venta marcada como eliminada.
  * @throws {Error} Si la venta no existe.
  */
-async function eliminarVenta(id) {
-  await obtenerVentaPorId(id);
+async function eliminarVenta(id, usuario = null) {
+  const venta = await obtenerVentaPorId(id);
+
+  if (usuario) {
+    const result = await validarAccesoSucursal(usuario, venta.id_sucursal);
+    if (!result.esValido) {
+      throw new Error(result.mensaje || 'Acceso no autorizado a la sucursal');
+    }
+  }
+
   return await repositorio.eliminarVenta(id);
 }
 

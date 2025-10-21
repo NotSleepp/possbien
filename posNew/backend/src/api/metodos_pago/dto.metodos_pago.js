@@ -6,8 +6,8 @@ export const esquemaCrearMetodoPago = z.object({
   nombre: z.string().min(1),
   descripcion: z.string().optional(),
   imagen: z.string().optional(),
-  requiereReferencia: z.boolean().optional(),
-  activo: z.boolean().optional()
+  requiereReferencia: z.boolean().optional().default(false),
+  activo: z.boolean().optional().default(true)
 });
 
 export const esquemaActualizarMetodoPago = z.object({

@@ -10,7 +10,7 @@ export const esquemaCrearImpresora = z.object({
   puerto: z.string().optional(),
   pcName: z.string().optional(),
   ipLocal: z.string().optional(),
-  state: z.boolean().optional(),
+  state: z.boolean().optional().default(true),
   configuracion: z.any().optional()
 });
 

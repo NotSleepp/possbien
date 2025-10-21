@@ -14,7 +14,9 @@ export async function crearImpresora(datos) {
     pc_name: d.pcName || null,
     ip_local: d.ipLocal || null,
     state: d.state ?? true,
-    configuracion: d.configuracion ? JSON.stringify(d.configuracion) : null
+    configuracion: d.configuracion != null
+      ? (typeof d.configuracion === 'string' ? d.configuracion : JSON.stringify(d.configuracion))
+      : null,
   };
   return repositorio.crearImpresora(m);
 }
@@ -28,7 +30,20 @@ export async function obtenerImpresoraPorId(id) {
 }
 export async function actualizarImpresora(id, datos) {
   const d = esquemaActualizarImpresora.parse({ id, ...datos });
-  return repositorio.actualizarImpresora(id, d);
+  const m = {};
+  if (d.name !== undefined) m.name = d.name;
+  if (d.nombre !== undefined) m.nombre = d.nombre;
+  if (d.tipo !== undefined) m.tipo = d.tipo;
+  if (d.puerto !== undefined) m.puerto = d.puerto;
+  if (d.pcName !== undefined) m.pc_name = d.pcName;
+  if (d.ipLocal !== undefined) m.ip_local = d.ipLocal;
+  if (d.state !== undefined) m.state = d.state;
+  if ('configuracion' in d) {
+    m.configuracion = d.configuracion != null
+      ? (typeof d.configuracion === 'string' ? d.configuracion : JSON.stringify(d.configuracion))
+      : null;
+  }
+  return repositorio.actualizarImpresora(id, m);
 }
 export async function eliminarImpresora(id) {
   return repositorio.eliminarImpresora(id);

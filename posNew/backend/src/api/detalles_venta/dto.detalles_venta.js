@@ -4,8 +4,8 @@ const esquemaCrearDetalleVenta = z.object({
   idVenta: z.number().int(),
   idProducto: z.number().int(),
   cantidad: z.number().min(1),
-  precioUnitario: z.number().min(0),
-  subtotal: z.number().min(0),
+  precioVenta: z.number().min(0),
+  descuento: z.number().min(0).optional(),
 });
 
 const esquemaActualizarDetalleVenta = z.object({
@@ -13,8 +13,8 @@ const esquemaActualizarDetalleVenta = z.object({
   idVenta: z.number().int().optional(),
   idProducto: z.number().int().optional(),
   cantidad: z.number().min(1).optional(),
-  precioUnitario: z.number().min(0).optional(),
-  subtotal: z.number().min(0).optional(),
+  precioVenta: z.number().min(0).optional(),
+  descuento: z.number().min(0).optional(),
 });
 
 export { esquemaCrearDetalleVenta, esquemaActualizarDetalleVenta };

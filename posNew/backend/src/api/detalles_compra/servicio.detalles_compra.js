@@ -6,9 +6,9 @@ async function crearDetalleCompra(datos) {
   const mappedData = {
     id_compra: datosValidados.idCompra,
     id_producto: datosValidados.idProducto,
-    cantidad: datosValidados.cantidad,
+    cantidad_pedida: datosValidados.cantidad,
     precio_unitario: datosValidados.precioUnitario,
-    subtotal: datosValidados.subtotal,
+    descuento: datosValidados.descuento ?? 0,
   };
   return await repositorio.crearDetalleCompra(mappedData);
 }
@@ -27,7 +27,14 @@ async function obtenerDetalleCompraPorId(id) {
 
 async function actualizarDetalleCompra(id, datos) {
   const datosValidados = esquemaActualizarDetalleCompra.parse({ id, ...datos });
-  return await repositorio.actualizarDetalleCompra(id, datosValidados);
+  const mappedData = {
+    id_compra: datosValidados.idCompra,
+    id_producto: datosValidados.idProducto,
+    cantidad_pedida: datosValidados.cantidad,
+    precio_unitario: datosValidados.precioUnitario,
+    descuento: datosValidados.descuento,
+  };
+  return await repositorio.actualizarDetalleCompra(id, mappedData);
 }
 
 async function eliminarDetalleCompra(id) {

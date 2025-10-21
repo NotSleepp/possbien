@@ -98,6 +98,8 @@ const PaymentMethodsPage = () => {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
+  const canSubmit = (f) => !!(f.codigo && f.codigo.trim() && f.nombre && f.nombre.trim());
+
   return (
     <div className="p-6 max-w-7xl mx-auto">
       <div className="mb-6 flex items-center justify-between">
@@ -107,6 +109,86 @@ const PaymentMethodsPage = () => {
         </div>
         <Button variant="primary" onClick={handleOpenCreate}>Nuevo Método</Button>
       </div>
+
+      {/* Crear Modal */}
+      <Modal
+        isOpen={isCreateOpen}
+        onClose={() => setIsCreateOpen(false)}
+        title="Nuevo Método de Pago"
+        onConfirm={() => {
+          if (!canSubmit(form)) {
+            showError('Complete código y nombre');
+            return;
+          }
+          createMut.mutate(form);
+        }}
+        confirmText={createMut.isLoading ? 'Creando...' : 'Crear'}
+      >
+        <div className="space-y-4">
+          <Input label="Código" value={form.codigo} onChange={(v) => handleFormChange('codigo', v)} required />
+          <Input label="Nombre" value={form.nombre} onChange={(v) => handleFormChange('nombre', v)} required />
+          <Input label="Descripción" value={form.descripcion} onChange={(v) => handleFormChange('descripcion', v)} />
+          <Input label="URL Imagen" value={form.imagen} onChange={(v) => handleFormChange('imagen', v)} />
+          <div className="flex items-center gap-3">
+            <input
+              type="checkbox"
+              id="requiereReferencia"
+              checked={form.requiereReferencia}
+              onChange={(e) => handleFormChange('requiereReferencia', e.target.checked)}
+            />
+            <label htmlFor="requiereReferencia">Requiere referencia</label>
+          </div>
+          <div className="flex items-center gap-3">
+            <input
+              type="checkbox"
+              id="activo"
+              checked={form.activo}
+              onChange={(e) => handleFormChange('activo', e.target.checked)}
+            />
+            <label htmlFor="activo">Activo</label>
+          </div>
+        </div>
+      </Modal>
+
+      {/* Editar Modal */}
+      <Modal
+        isOpen={isEditOpen}
+        onClose={() => setIsEditOpen(false)}
+        title="Editar Método de Pago"
+        onConfirm={() => {
+          if (!canSubmit(form)) {
+            showError('Complete código y nombre');
+            return;
+          }
+          updateMut.mutate({ id: selectedItem?.id, payload: form });
+        }}
+        confirmText={updateMut.isLoading ? 'Actualizando...' : 'Guardar'}
+      >
+        <div className="space-y-4">
+          <Input label="Código" value={form.codigo} onChange={(v) => handleFormChange('codigo', v)} required />
+          <Input label="Nombre" value={form.nombre} onChange={(v) => handleFormChange('nombre', v)} required />
+          <Input label="Descripción" value={form.descripcion} onChange={(v) => handleFormChange('descripcion', v)} />
+          <Input label="URL Imagen" value={form.imagen} onChange={(v) => handleFormChange('imagen', v)} />
+          <div className="flex items-center gap-3">
+            <input
+              type="checkbox"
+              id="requiereReferencia_edit"
+              checked={form.requiereReferencia}
+              onChange={(e) => handleFormChange('requiereReferencia', e.target.checked)}
+            />
+            <label htmlFor="requiereReferencia_edit">Requiere referencia</label>
+          </div>
+          <div className="flex items-center gap-3">
+            <input
+              type="checkbox"
+              id="activo_edit"
+              checked={form.activo}
+              onChange={(e) => handleFormChange('activo', e.target.checked)}
+            />
+            <label htmlFor="activo_edit">Activo</label>
+          </div>
+        </div>
+      </Modal>
 
       <Card title="Listado de Métodos de Pago">
         {isLoading ? (
@@ -143,56 +225,6 @@ const PaymentMethodsPage = () => {
           </div>
         )}
       </Card>
-
-      {/* Crear Modal */}
-      <Modal
-        isOpen={isCreateOpen}
-        onClose={() => setIsCreateOpen(false)}
-        title="Nuevo Método de Pago"
-        onConfirm={() => createMut.mutate(form)}
-        confirmText={createMut.isLoading ? 'Creando...' : 'Crear'}
-      >
-        <div className="space-y-4">
-          <Input label="Código" value={form.codigo} onChange={(v) => handleFormChange('codigo', v)} required />
-          <Input label="Nombre" value={form.nombre} onChange={(v) => handleFormChange('nombre', v)} required />
-          <Input label="Descripción" value={form.descripcion} onChange={(v) => handleFormChange('descripcion', v)} />
-          <Input label="URL Imagen" value={form.imagen} onChange={(v) => handleFormChange('imagen', v)} />
-          <div className="flex items-center gap-3">
-            <input
-              type="checkbox"
-              id="requiereReferencia"
-              checked={form.requiereReferencia}
-              onChange={(e) => handleFormChange('requiereReferencia', e.target.checked)}
-            />
-            <label htmlFor="requiereReferencia">Requiere referencia</label>
-          </div>
-        </div>
-      </Modal>
-
-      {/* Editar Modal */}
-      <Modal
-        isOpen={isEditOpen}
-        onClose={() => setIsEditOpen(false)}
-        title="Editar Método de Pago"
-        onConfirm={() => updateMut.mutate({ id: selectedItem?.id, payload: form })}
-        confirmText={updateMut.isLoading ? 'Actualizando...' : 'Guardar'}
-      >
-        <div className="space-y-4">
-          <Input label="Código" value={form.codigo} onChange={(v) => handleFormChange('codigo', v)} required />
-          <Input label="Nombre" value={form.nombre} onChange={(v) => handleFormChange('nombre', v)} required />
-          <Input label="Descripción" value={form.descripcion} onChange={(v) => handleFormChange('descripcion', v)} />
-          <Input label="URL Imagen" value={form.imagen} onChange={(v) => handleFormChange('imagen', v)} />
-          <div className="flex items-center gap-3">
-            <input
-              type="checkbox"
-              id="requiereReferenciaEdit"
-              checked={form.requiereReferencia}
-              onChange={(e) => handleFormChange('requiereReferencia', e.target.checked)}
-            />
-            <label htmlFor="requiereReferenciaEdit">Requiere referencia</label>
-          </div>
-        </div>
-      </Modal>
 
       {/* Eliminar Modal */}
       <Modal

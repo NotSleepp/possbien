@@ -8,6 +8,9 @@ import rutasAsignacionesCaja from './asignaciones_caja/rutas.asignaciones_caja.j
 import rutasCajas from './cajas/rutas.cajas.js';
 import rutasAuditTrails from './audit_trails/rutas.audit_trails.js';
 import rutasCategorias from './categorias/rutas.categorias.js';
+import rutasStocks from './stocks/rutas.stocks.js';
+import rutasSerializacionesComprobante from './serializaciones_comprobante/rutas.serializaciones_comprobante.js';
+import rutasTiposComprobante from './tipos_comprobante/rutas.tipos_comprobante.js';
 
 const router = express.Router();
 
@@ -20,5 +23,8 @@ router.use('/asignaciones-caja', rutasAsignacionesCaja);
 router.use('/cajas', rutasCajas);
 router.use('/audit-trails', rutasAuditTrails);
 router.use('/categorias', rutasCategorias);
+router.use('/stocks', rutasStocks);
+router.use('/serializaciones-comprobante', rutasSerializacionesComprobante);
+router.use('/tipos-comprobante', rutasTiposComprobante);
 
 export default router;

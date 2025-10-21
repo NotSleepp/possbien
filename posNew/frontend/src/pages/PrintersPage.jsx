@@ -4,6 +4,8 @@ import { Card, Button, Input, LoadingSpinner, Modal } from '../shared/components
 import { useAuthStore } from '../store/useAuthStore';
 import { useToastStore } from '../store/useToastStore';
 import { listPrintersByEmpresa, createPrinter, updatePrinter, deletePrinter } from '../features/settings/api/printers.api';
+import { listBranchesByEmpresa } from '../features/settings/api/branches.api';
+import { listCajasBySucursal, createCaja } from '../features/settings/api/cajas.api';
 
 const defaultForm = (user) => ({
   idEmpresa: user?.id_empresa || null,
@@ -29,6 +31,9 @@ const PrintersPage = () => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [form, setForm] = useState(() => defaultForm(user));
   const [selectedPrinter, setSelectedPrinter] = useState(null);
+  // Submodal para crear caja
+  const [isCajaModalOpen, setIsCajaModalOpen] = useState(false);
+  const [cajaForm, setCajaForm] = useState({ codigo: '', nombre: '', saldoInicial: 0 });
 
   const idEmpresa = user?.id_empresa;
 
@@ -41,6 +46,18 @@ const PrintersPage = () => {
     enabled: !!idEmpresa,
   });
 
+  const { data: branches = [] } = useQuery({
+    queryKey: ['branches', idEmpresa],
+    queryFn: async () => listBranchesByEmpresa(idEmpresa),
+    enabled: !!idEmpresa,
+  });
+
+  const { data: cajas = [] } = useQuery({
+    queryKey: ['cajas', form.idSucursal],
+    queryFn: async () => listCajasBySucursal(form.idSucursal),
+    enabled: !!form.idSucursal,
+  });
+
   const createMut = useMutation({
     mutationFn: async (payload) => createPrinter(payload),
     onSuccess: () => {
@@ -51,6 +68,24 @@ const PrintersPage = () => {
     },
     onError: (err) => {
       showError(err?.userMessage || 'Error al crear impresora');
+    },
+  });
+
+  // Crear caja desde modal
+  const createCajaMut = useMutation({
+    mutationFn: async (payload) => createCaja(payload),
+    onSuccess: (newCaja) => {
+      success('Caja creada correctamente');
+      setIsCajaModalOpen(false);
+      // Refrescar lista de cajas de la sucursal seleccionada
+      queryClient.invalidateQueries({ queryKey: ['cajas', form.idSucursal] });
+      // Preseleccionar la nueva caja en el formulario de impresoras
+      setForm((prev) => ({ ...prev, idCaja: newCaja?.id ?? prev.idCaja }));
+      // Reset form de caja
+      setCajaForm({ codigo: '', nombre: '', saldoInicial: 0 });
+    },
+    onError: (err) => {
+      showError(err?.userMessage || 'Error al crear caja');
     },
   });
 
@@ -173,6 +208,51 @@ const PrintersPage = () => {
         confirmText={createMut.isLoading ? 'Creando...' : 'Crear'}
       >
         <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Sucursal</label>
+            <select
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              value={form.idSucursal || ''}
+              onChange={(e) => setForm((prev) => ({ ...prev, idSucursal: Number(e.target.value) || null, idCaja: null }))}
+              required
+            >
+              <option value="" disabled>Seleccione una sucursal</option>
+              {branches.map((s) => (
+                <option key={s.id} value={s.id}>{s.nombre || s.codigo || `Sucursal ${s.id}`}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <label className="block text-sm font-medium text-gray-700">Caja</label>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => {
+                  if (!form.idSucursal) {
+                    showError('Seleccione una sucursal antes de crear caja');
+                    return;
+                  }
+                  setCajaForm({ codigo: '', nombre: '', saldoInicial: 0 });
+                  setIsCajaModalOpen(true);
+                }}
+                disabled={!form.idSucursal}
+              >
+                Nueva Caja
+              </Button>
+            </div>
+            <select
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              value={form.idCaja ?? ''}
+              onChange={(e) => setForm((prev) => ({ ...prev, idCaja: Number(e.target.value) || null }))}
+              disabled={!form.idSucursal}
+            >
+              <option value="">Sin caja</option>
+              {cajas.map((c) => (
+                <option key={c.id} value={c.id}>{c.nombre || c.codigo || `Caja ${c.id}`}</option>
+              ))}
+            </select>
+          </div>
           <Input label="Nombre" value={form.name} onChange={(v) => handleFormChange('name', v)} required />
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Tipo</label>
@@ -192,6 +272,36 @@ const PrintersPage = () => {
         </div>
       </Modal>
 
+      {/* Submodal Crear Caja */}
+      <Modal
+        isOpen={isCajaModalOpen}
+        onClose={() => setIsCajaModalOpen(false)}
+        title="Nueva Caja"
+        onConfirm={() => {
+          if (!form.idSucursal) {
+            showError('Seleccione una sucursal');
+            return;
+          }
+          if (!cajaForm.codigo?.trim() || !cajaForm.nombre?.trim()) {
+            showError('Complete código y nombre de la caja');
+            return;
+          }
+          createCajaMut.mutate({
+            idSucursal: form.idSucursal,
+            codigo: cajaForm.codigo.trim(),
+            nombre: cajaForm.nombre.trim(),
+            saldoInicial: Number(cajaForm.saldoInicial) || 0,
+          });
+        }}
+        confirmText={createCajaMut.isLoading ? 'Creando...' : 'Crear'}
+      >
+        <div className="space-y-4">
+          <Input label="Código" value={cajaForm.codigo} onChange={(v) => setCajaForm((p) => ({ ...p, codigo: v }))} required />
+          <Input label="Nombre" value={cajaForm.nombre} onChange={(v) => setCajaForm((p) => ({ ...p, nombre: v }))} required />
+          <Input label="Saldo inicial" type="number" value={cajaForm.saldoInicial} onChange={(v) => setCajaForm((p) => ({ ...p, saldoInicial: v }))} />
+        </div>
+      </Modal>
+
       {/* Editar Modal */}
       <Modal
         isOpen={isEditOpen}
@@ -201,6 +311,51 @@ const PrintersPage = () => {
         confirmText={updateMut.isLoading ? 'Actualizando...' : 'Guardar'}
       >
         <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Sucursal</label>
+            <select
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              value={form.idSucursal || ''}
+              onChange={(e) => setForm((prev) => ({ ...prev, idSucursal: Number(e.target.value) || null, idCaja: null }))}
+              required
+            >
+              <option value="" disabled>Seleccione una sucursal</option>
+              {branches.map((s) => (
+                <option key={s.id} value={s.id}>{s.nombre || s.codigo || `Sucursal ${s.id}`}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <label className="block text-sm font-medium text-gray-700">Caja</label>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => {
+                  if (!form.idSucursal) {
+                    showError('Seleccione una sucursal antes de crear caja');
+                    return;
+                  }
+                  setCajaForm({ codigo: '', nombre: '', saldoInicial: 0 });
+                  setIsCajaModalOpen(true);
+                }}
+                disabled={!form.idSucursal}
+              >
+                Nueva Caja
+              </Button>
+            </div>
+            <select
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              value={form.idCaja ?? ''}
+              onChange={(e) => setForm((prev) => ({ ...prev, idCaja: Number(e.target.value) || null }))}
+              disabled={!form.idSucursal}
+            >
+              <option value="">Sin caja</option>
+              {cajas.map((c) => (
+                <option key={c.id} value={c.id}>{c.nombre || c.codigo || `Caja ${c.id}`}</option>
+              ))}
+            </select>
+          </div>
           <Input label="Nombre" value={form.name} onChange={(v) => handleFormChange('name', v)} required />
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Tipo</label>

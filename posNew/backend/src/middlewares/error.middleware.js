@@ -91,7 +91,7 @@ function logearError(error, req, errorId, categoria) {
 function manejadorErrores(err, req, res, next) {
   const errorId = generarErrorId();
   const categoria = categorizarError(err);
-  const status = err.status || err.statusCode || 500;
+  let status = err.status || err.statusCode || 500;
   
   // Log estructurado del error
   logearError(err, req, errorId, categoria);
@@ -99,31 +99,44 @@ function manejadorErrores(err, req, res, next) {
   // Preparar respuesta según el tipo de error
   let mensaje = 'Error interno del servidor';
   let codigo = 'INTERNAL_SERVER_ERROR';
-  
-  switch (categoria) {
-    case CATEGORIAS_ERROR.VALIDACION:
-      mensaje = 'Datos de entrada inválidos';
-      codigo = 'VALIDATION_ERROR';
-      break;
-    case CATEGORIAS_ERROR.AUTENTICACION:
-      mensaje = 'Error de autenticación';
-      codigo = 'AUTHENTICATION_ERROR';
-      break;
-    case CATEGORIAS_ERROR.AUTORIZACION:
-      mensaje = 'No tienes permisos para realizar esta acción';
-      codigo = 'AUTHORIZATION_ERROR';
-      break;
-    case CATEGORIAS_ERROR.NEGOCIO:
-      mensaje = err.message; // Los errores de negocio pueden mostrar el mensaje original
-      codigo = 'BUSINESS_ERROR';
-      break;
-    case CATEGORIAS_ERROR.BASE_DATOS:
-      mensaje = 'Error en la base de datos';
-      codigo = 'DATABASE_ERROR';
-      break;
-    default:
-      mensaje = status < 500 ? err.message : 'Error interno del servidor';
-      codigo = 'INTERNAL_SERVER_ERROR';
+
+  // Detectar errores de duplicado de base de datos y responder 409
+  const esConflictoBD = (
+    err?.code === 'ER_DUP_ENTRY' ||
+    err?.code === 'SQLITE_CONSTRAINT' ||
+    err?.code === '23505' ||
+    /UNIQUE|duplicate/i.test(err?.message || '')
+  );
+  if (esConflictoBD) {
+    status = 409;
+    mensaje = 'Ya existe un registro con esos datos';
+    codigo = 'CONFLICT';
+  } else {
+    switch (categoria) {
+      case CATEGORIAS_ERROR.VALIDACION:
+        mensaje = 'Datos de entrada inválidos';
+        codigo = 'VALIDATION_ERROR';
+        break;
+      case CATEGORIAS_ERROR.AUTENTICACION:
+        mensaje = 'Error de autenticación';
+        codigo = 'AUTHENTICATION_ERROR';
+        break;
+      case CATEGORIAS_ERROR.AUTORIZACION:
+        mensaje = 'No tienes permisos para realizar esta acción';
+        codigo = 'AUTHORIZATION_ERROR';
+        break;
+      case CATEGORIAS_ERROR.NEGOCIO:
+        mensaje = err.message; // Los errores de negocio pueden mostrar el mensaje original
+        codigo = 'BUSINESS_ERROR';
+        break;
+      case CATEGORIAS_ERROR.BASE_DATOS:
+        mensaje = 'Error en la base de datos';
+        codigo = 'DATABASE_ERROR';
+        break;
+      default:
+        mensaje = status < 500 ? err.message : 'Error interno del servidor';
+        codigo = 'INTERNAL_SERVER_ERROR';
+    }
   }
   
   const respuesta = {
@@ -141,7 +154,8 @@ function manejadorErrores(err, req, res, next) {
   if (process.env.NODE_ENV === 'development') {
     respuesta.error.detalles = {
       stack: err.stack,
-      originalMessage: err.message
+      originalMessage: err.message,
+      code: err.code
     };
   }
   

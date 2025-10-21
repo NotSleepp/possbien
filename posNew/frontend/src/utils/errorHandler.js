@@ -72,17 +72,28 @@ export function getValidationErrors(error) {
 
   const errors = {};
   
-  // Handle different validation error formats
+  // Formatos soportados: { errors: [{ field, message }] }, { errors: { field: message } }
   if (error.data?.errors && Array.isArray(error.data.errors)) {
-    // Format: { errors: [{ field: 'email', message: 'Invalid email' }] }
     error.data.errors.forEach((err) => {
       if (err.field && err.message) {
         errors[err.field] = err.message;
       }
     });
   } else if (error.data?.errors && typeof error.data.errors === 'object') {
-    // Format: { errors: { email: 'Invalid email', password: 'Too short' } }
     Object.assign(errors, error.data.errors);
+  }
+
+  // Formato backend: { error: { codigo: 'VALIDATION_ERROR', ... }, detalles: { errores: [{ campo, mensaje }] } }
+  const detalles = error.data?.error ? error.data : error.data; // compatible
+  const erroresBackend = error.data?.detalles?.errores || detalles?.detalles?.errores;
+  if (Array.isArray(erroresBackend)) {
+    erroresBackend.forEach((err) => {
+      const field = err.campo || err.field;
+      const message = err.mensaje || err.message;
+      if (field && message) {
+        errors[field] = message;
+      }
+    });
   }
 
   return errors;

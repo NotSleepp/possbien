@@ -69,11 +69,20 @@ function transformError(error) {
 
   const { status, data } = error.response;
 
+  const serverMessage = (
+    data?.error?.mensaje ||
+    data?.mensaje ||
+    data?.message ||
+    data?.error ||
+    error.message ||
+    'Ha ocurrido un error'
+  );
+
   // Create base error object
   const transformedError = {
-    type: getErrorType(status),
-    message: data?.message || data?.error || error.message || 'Ha ocurrido un error',
-    userMessage: getUserFriendlyMessage(status, data),
+    type: getErrorType(status, data),
+    message: serverMessage,
+    userMessage: getUserFriendlyMessage(status, data) || serverMessage,
     status,
     data,
     originalError: error,
@@ -83,13 +92,16 @@ function transformError(error) {
 }
 
 /**
- * Get error type based on HTTP status code
+ * Get error type based on HTTP status code and backend code
  * @param {number} status - HTTP status code
+ * @param {Object} data - Response data
  * @returns {string} Error type
  */
-function getErrorType(status) {
+function getErrorType(status, data) {
+  const code = data?.error?.codigo;
   if (status === 401) return ERROR_TYPES.AUTHENTICATION_ERROR;
   if (status === 403) return ERROR_TYPES.AUTHORIZATION_ERROR;
+  if (code === 'VALIDATION_ERROR') return ERROR_TYPES.VALIDATION_ERROR;
   if (status >= 400 && status < 500) return ERROR_TYPES.VALIDATION_ERROR;
   if (status >= 500) return ERROR_TYPES.SERVER_ERROR;
   return ERROR_TYPES.UNKNOWN_ERROR;
@@ -102,9 +114,10 @@ function getErrorType(status) {
  * @returns {string} User-friendly message
  */
 function getUserFriendlyMessage(status, data) {
-  // Use server message if it's user-friendly
-  if (data?.message && typeof data.message === 'string') {
-    return data.message;
+  // Prefer backend error message if provided
+  const backendMessage = data?.error?.mensaje || data?.mensaje;
+  if (backendMessage && typeof backendMessage === 'string') {
+    return backendMessage;
   }
 
   // Default messages based on status code

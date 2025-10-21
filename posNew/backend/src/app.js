@@ -6,6 +6,10 @@ import session from 'express-session';
 import { obtenerUsuarioPorId } from './api/usuarios/servicio.usuarios.js';
 import { autenticar } from './middlewares/auth.middleware.js';
 
+// Importar el sistema de logging ANTES que cualquier otra cosa
+import './utils/logger.js';
+import { requestLogger, errorLogger, performanceLogger, authLogger } from './middlewares/logging.middleware.js';
+
 dotenv.config();
 
 const app = express();
@@ -14,12 +18,20 @@ const corsOptions = {
   origin: 'http://localhost:5173',
   credentials: true
 };
+
+// Middlewares de logging (ANTES de otros middlewares)
+app.use(requestLogger);
+app.use(performanceLogger);
+
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(session({ secret: process.env.SESSION_SECRET || 'default_secret', resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Middleware de logging de autenticación (después de passport)
+app.use(authLogger);
 
 // Rutas de auth
 app.get('/api/auth/google', (req, res, next) => {
@@ -95,5 +107,8 @@ app.use('/api/audit_trails', auditTrailsRouter);
 app.use('/api/almacenes', almacenesRouter);
 app.use('/api/impresoras', impresorasRouter);
 app.use('/api/metodos_pago', metodosPagoRouter);
+
+// Middleware de manejo de errores (DEBE ir al final)
+app.use(errorLogger);
 
 export default app;

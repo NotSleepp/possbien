@@ -16,6 +16,10 @@ export const esquemaCrearImpresora = z.object({
 
 export const esquemaActualizarImpresora = z.object({
   id: z.number().int(),
+  // Permitir actualizar sucursal y caja
+  idSucursal: z.number().int().optional(),
+  // idCaja puede ser número o null, por lo que aceptamos optional y lo trataremos en servicio
+  idCaja: z.number().int().optional(),
   name: z.string().min(1).optional(),
   nombre: z.string().optional(),
   tipo: z.enum(['termica','matricial','laser']).optional(),

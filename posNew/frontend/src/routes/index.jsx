@@ -12,6 +12,15 @@ import { MainLayout } from '../shared/components/layout';
 import { USER_ROLES } from '../shared/constants';
 import PrintersPage from '../pages/PrintersPage';
 import PaymentMethodsPage from '../pages/PaymentMethodsPage';
+import CompanySettingsPage from '../pages/CompanySettingsPage';
+import CategoriesPage from '../pages/CategoriesPage';
+import CustomersPage from '../pages/CustomersPage';
+import ProvidersPage from '../pages/ProvidersPage';
+import BranchesCajasPage from '../pages/BranchesCajasPage';
+import UsersSettingsPage from '../pages/UsersSettingsPage';
+import WarehousesPage from '../pages/WarehousesPage';
+import TicketConfigPage from '../pages/TicketConfigPage';
+import SerializationPage from '../pages/SerializationPage';
 
 export const router = createBrowserRouter([
   {
@@ -59,11 +68,42 @@ export const router = createBrowserRouter([
             path: '/settings/payment-methods',
             element: <PaymentMethodsPage />,
           },
-          // Add more admin-only routes here as needed
-          // {
-          //   path: '/users',
-          //   element: <UsersPage />,
-          // },
+          {
+            path: '/settings/company',
+            element: <CompanySettingsPage />,
+          },
+          {
+            path: '/settings/categories',
+            element: <CategoriesPage />,
+          },
+          {
+            path: '/settings/customers',
+            element: <CustomersPage />,
+          },
+          {
+            path: '/settings/providers',
+            element: <ProvidersPage />,
+          },
+          {
+            path: '/settings/branches-cajas',
+            element: <BranchesCajasPage />,
+          },
+          {
+            path: '/settings/users',
+            element: <UsersSettingsPage />,
+          },
+          {
+            path: '/settings/warehouses',
+            element: <WarehousesPage />,
+          },
+          {
+            path: '/settings/ticket',
+            element: <TicketConfigPage />,
+          },
+          {
+            path: '/settings/serialization',
+            element: <SerializationPage />,
+          },
         ],
       },
     ],

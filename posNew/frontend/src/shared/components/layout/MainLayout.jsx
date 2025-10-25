@@ -28,6 +28,15 @@ const MainLayout = () => {
       '/settings': 'Configuración',
       '/settings/printers': 'Impresoras',
       '/settings/payment-methods': 'Métodos de Pago',
+      '/settings/company': 'Empresa',
+      '/settings/categories': 'Categorías de productos',
+      '/settings/customers': 'Clientes',
+      '/settings/providers': 'Proveedores',
+      '/settings/branches-cajas': 'Sucursales y cajas',
+      '/settings/users': 'Usuarios',
+      '/settings/warehouses': 'Almacenes',
+      '/settings/ticket': 'Configuración de ticket',
+      '/settings/serialization': 'Serialización de comprobantes',
     };
     return titles[location.pathname] || 'POS System';
   };

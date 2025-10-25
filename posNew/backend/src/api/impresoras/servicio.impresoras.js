@@ -31,6 +31,10 @@ export async function obtenerImpresoraPorId(id) {
 export async function actualizarImpresora(id, datos) {
   const d = esquemaActualizarImpresora.parse({ id, ...datos });
   const m = {};
+  // Actualización de relaciones
+  if (d.idSucursal !== undefined) m.id_sucursal = d.idSucursal || null;
+  if ('idCaja' in d) m.id_caja = d.idCaja ?? null;
+  // Campos de configuración
   if (d.name !== undefined) m.name = d.name;
   if (d.nombre !== undefined) m.nombre = d.nombre;
   if (d.tipo !== undefined) m.tipo = d.tipo;

@@ -70,14 +70,16 @@ export function autorizarEmpresa(req, res, next) {
     // Agregar filtro de empresa a los parámetros de consulta
     req.filtroEmpresa = { empresaId };
     
-    // Si hay parámetros en el body, agregar empresaId automáticamente
+    // Si hay parámetros en el body, agregar empresaId e idEmpresa automáticamente
     if (req.body && typeof req.body === 'object') {
       req.body.empresaId = empresaId;
+      req.body.idEmpresa = empresaId;
     }
     
-    // Si hay parámetros de consulta, agregar empresaId
+    // Si hay parámetros de consulta, agregar empresaId e idEmpresa
     if (req.query && typeof req.query === 'object') {
       req.query.empresaId = empresaId;
+      req.query.idEmpresa = empresaId;
     }
     
     next();

@@ -1,5 +1,6 @@
 import { esquemaCrearCategoria, esquemaActualizarCategoria } from './dto.categorias.js';
 import * as repositorio from './repositorio.categorias.js';
+import { validarAccesoEmpresa } from '../../utils/validacionesNegocio.js';
 
 /**
  * Crea una nueva categoría en la base de datos después de validar los datos.
@@ -10,8 +11,16 @@ import * as repositorio from './repositorio.categorias.js';
  * @returns {Promise<object>} El objeto de la categoría recién creada.
  * @throws {Error} Si los datos no pasan la validación de Zod.
  */
-async function crearCategoria(datos) {
+async function crearCategoria(datos, usuario = null) {
   const datosValidados = esquemaCrearCategoria.parse(datos);
+
+  if (usuario) {
+    const result = validarAccesoEmpresa(usuario, datosValidados.idEmpresa);
+    if (!result.esValido) {
+      throw new Error(result.mensaje || 'Acceso no autorizado');
+    }
+  }
+
   const mappedData = {
     id_empresa: datosValidados.idEmpresa,
     codigo: datosValidados.codigo,
@@ -26,7 +35,13 @@ async function crearCategoria(datos) {
  * @param {number} idEmpresa - ID de la empresa.
  * @returns {Promise<Array>} Lista de categorías de la empresa.
  */
-async function obtenerTodasCategorias(idEmpresa) {
+async function obtenerTodasCategorias(idEmpresa, usuario = null) {
+  if (usuario) {
+    const result = validarAccesoEmpresa(usuario, idEmpresa);
+    if (!result.esValido) {
+      throw new Error(result.mensaje || 'Acceso no autorizado');
+    }
+  }
   return await repositorio.obtenerTodasCategorias(idEmpresa);
 }
 
@@ -51,8 +66,19 @@ async function obtenerCategoriaPorId(id) {
  * @returns {Promise<object>} La categoría actualizada.
  * @throws {Error} Si los datos no pasan la validación de Zod.
  */
-async function actualizarCategoria(id, datos) {
+async function actualizarCategoria(id, datos, usuario = null) {
   const datosValidados = esquemaActualizarCategoria.parse({ id, ...datos });
+
+  // Obtener categoría actual para validaciones
+  const categoriaActual = await obtenerCategoriaPorId(id);
+
+  if (usuario) {
+    const result = validarAccesoEmpresa(usuario, categoriaActual.id_empresa);
+    if (!result.esValido) {
+      throw new Error(result.mensaje || 'Acceso no autorizado');
+    }
+  }
+
   return await repositorio.actualizarCategoria(id, datosValidados);
 }
 
@@ -62,8 +88,16 @@ async function actualizarCategoria(id, datos) {
  * @returns {Promise<object>} La categoría marcada como eliminada.
  * @throws {Error} Si la categoría no existe.
  */
-async function eliminarCategoria(id) {
-  await obtenerCategoriaPorId(id);
+async function eliminarCategoria(id, usuario = null) {
+  const categoria = await obtenerCategoriaPorId(id);
+
+  if (usuario) {
+    const result = validarAccesoEmpresa(usuario, categoria.id_empresa);
+    if (!result.esValido) {
+      throw new Error(result.mensaje || 'Acceso no autorizado');
+    }
+  }
+
   return await repositorio.eliminarCategoria(id);
 }
 

@@ -32,7 +32,8 @@ async function crearCaja(datos) {
 }
 
 async function actualizarCaja(id, datos) {
-  const datosValidados = esquemaActualizarCaja.parse(datos);
+  // Incluir el id en el parseo para cumplir el esquema de actualización
+  const datosValidados = esquemaActualizarCaja.parse({ id, ...datos });
 
   // Construir el payload de actualización mapeando a columnas de BD
   const datosParaActualizar = {};

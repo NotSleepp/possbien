@@ -29,7 +29,18 @@ async function obtenerSucursalPorId(id) {
 
 async function actualizarSucursal(id, datos) {
   const datosValidados = esquemaActualizarSucursal.parse({ id, ...datos });
-  return await repositorio.actualizarSucursal(id, datosValidados);
+
+  // Mapear solo campos presentes y convertir a snake_case para columnas de BD
+  const datosParaActualizar = {};
+  if (datosValidados.codigo !== undefined) datosParaActualizar.codigo = datosValidados.codigo;
+  if (datosValidados.nombre !== undefined) datosParaActualizar.nombre = datosValidados.nombre;
+  if (datosValidados.direccion !== undefined) datosParaActualizar.direccion = datosValidados.direccion;
+  if (datosValidados.direccionFiscal !== undefined) datosParaActualizar.direccion_fiscal = datosValidados.direccionFiscal;
+  if (datosValidados.telefono !== undefined) datosParaActualizar.telefono = datosValidados.telefono;
+  if (datosValidados.email !== undefined) datosParaActualizar.email = datosValidados.email;
+  if (datosValidados.idEmpresa !== undefined) datosParaActualizar.id_empresa = datosValidados.idEmpresa;
+
+  return await repositorio.actualizarSucursal(id, datosParaActualizar);
 }
 
 async function eliminarSucursal(id) {

@@ -110,99 +110,104 @@ const DashboardPage = () => {
   return (
     <div className="space-y-6">
       {/* Metrics Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <MetricCard
           title="Ventas Totales"
-          value={metricsData?.totalSales.value || '$0'}
-          icon={<FiDollarSign />}
+          value={`$${metrics.totalSales.toLocaleString()}`}
+          icon={FiDollarSign}
+          trend={{ value: 12.5, isUp: true }}
           color="blue"
-          subtitle="Este mes"
-          trend={metricsData?.totalSales.trend}
-          isLoading={isLoading}
+          isLoading={loading}
         />
         <MetricCard
           title="Productos"
-          value={metricsData?.totalProducts.value || '0'}
-          icon={<FiPackage />}
+          value={metrics.totalProducts.toString()}
+          icon={FiPackage}
+          trend={{ value: 8.2, isUp: true }}
           color="green"
-          subtitle="En inventario"
-          trend={metricsData?.totalProducts.trend}
-          isLoading={isLoading}
+          isLoading={loading}
         />
         <MetricCard
           title="Usuarios Activos"
-          value={metricsData?.activeUsers.value || '0'}
-          icon={<FiUsers />}
+          value={metrics.activeUsers.toString()}
+          icon={FiUsers}
+          trend={{ value: 3.1, isUp: false }}
           color="purple"
-          subtitle="Hoy"
-          trend={metricsData?.activeUsers.trend}
-          isLoading={isLoading}
+          isLoading={loading}
         />
         <MetricCard
-          title="Órdenes"
-          value={metricsData?.totalOrders.value || '0'}
-          icon={<FiShoppingCart />}
+          title="Pedidos"
+          value={metrics.totalOrders.toString()}
+          icon={FiShoppingCart}
+          trend={{ value: 15.3, isUp: true }}
           color="orange"
-          subtitle="Esta semana"
-          trend={metricsData?.totalOrders.trend}
-          isLoading={isLoading}
+          isLoading={loading}
         />
       </div>
 
       {/* Sales Chart */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
-          <SalesChart 
-            data={salesChartData} 
-            type="area"
-            isLoading={isLoading}
-          />
+          <div className="dashboard-card">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-semibold text-base-content">Ventas del Mes</h2>
+              <div className="flex gap-2">
+                <button className="px-3 py-1 text-sm bg-primary text-primary-content rounded-md">
+                  Mes
+                </button>
+                <button className="px-3 py-1 text-sm text-base-content/60 hover:text-base-content">
+                  Año
+                </button>
+              </div>
+            </div>
+            <SalesChart data={salesChartData} isLoading={isLoading} />
+          </div>
         </div>
         
         {/* Quick Stats Card */}
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <div className="flex items-center gap-2 mb-4">
-            <FiTrendingUp className="text-green-600 text-xl" />
-            <h3 className="text-lg font-semibold text-gray-800">Resumen Rápido</h3>
+        <div className="dashboard-card">
+          <div className="flex items-center gap-3 mb-6">
+            <FiTrendingUp className="text-2xl text-primary" />
+            <h3 className="text-lg font-semibold text-base-content">Estadísticas Rápidas</h3>
           </div>
           
-          {isLoading ? (
-            <div className="space-y-4 animate-pulse">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i}>
-                  <div className="h-3 bg-gray-200 rounded w-24 mb-2"></div>
-                  <div className="h-6 bg-gray-200 rounded w-32"></div>
+          {loading ? (
+            <div className="space-y-4">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="animate-pulse">
+                  <div className="h-4 bg-base-300 rounded w-3/4 mb-2"></div>
+                  <div className="h-6 bg-base-300 rounded w-1/2"></div>
                 </div>
               ))}
             </div>
           ) : (
             <div className="space-y-4">
               <div>
-                <p className="text-sm text-gray-500">Promedio de Venta</p>
-                <p className="text-2xl font-bold text-gray-800">$353</p>
+                <p className="text-sm text-base-content/60">Venta Promedio</p>
+                <p className="text-2xl font-bold text-base-content">${quickStats.averageSale}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-500">Tasa de Conversión</p>
-                <p className="text-2xl font-bold text-gray-800">68%</p>
+                <p className="text-sm text-base-content/60">Tasa de Conversión</p>
+                <p className="text-2xl font-bold text-base-content">{quickStats.conversionRate}%</p>
               </div>
               <div>
-                <p className="text-sm text-gray-500">Productos Más Vendidos</p>
-                <p className="text-2xl font-bold text-gray-800">24</p>
+                <p className="text-sm text-base-content/60">Productos Más Vendidos</p>
+                <p className="text-2xl font-bold text-base-content">{quickStats.topProducts}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-500">Clientes Nuevos</p>
-                <p className="text-2xl font-bold text-gray-800">12</p>
+                <p className="text-sm text-base-content/60">Nuevos Clientes</p>
+                <p className="text-2xl font-bold text-base-content">{quickStats.newCustomers}</p>
               </div>
             </div>
           )}
         </div>
       </div>
 
-      {/* Recent Activity Table */}
-      <RecentActivity 
-        activities={recentActivities}
-        isLoading={isLoading}
-      />
+      {/* Recent Activity */}
+      <div className="dashboard-card">
+        <h3 className="text-lg font-semibold text-base-content mb-6">Actividad Reciente</h3>
+        <RecentActivity data={recentActivities} isLoading={isLoading} />
+      </div>
     </div>
   );
 };

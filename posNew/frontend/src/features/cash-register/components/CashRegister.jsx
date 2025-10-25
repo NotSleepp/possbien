@@ -119,9 +119,9 @@ const CashRegister = () => {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {[...Array(6)].map((_, i) => (
                   <div key={i} className="animate-pulse">
-                    <div className="bg-gray-200 h-32 rounded-lg mb-2"></div>
-                    <div className="bg-gray-200 h-4 rounded mb-1"></div>
-                    <div className="bg-gray-200 h-4 rounded w-2/3"></div>
+                    <div className="skeleton h-32 rounded-lg mb-2"></div>
+                    <div className="skeleton h-4 rounded mb-1"></div>
+                    <div className="skeleton h-4 rounded w-2/3"></div>
                   </div>
                 ))}
               </div>
@@ -133,16 +133,16 @@ const CashRegister = () => {
                     className="border rounded-lg p-3 hover:shadow-md cursor-pointer transition-shadow"
                     onClick={() => addToCart(product)}
                   >
-                    <div className="bg-gray-100 h-24 rounded-lg mb-2 flex items-center justify-center">
-                      <svg className="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="bg-base-200 h-24 rounded-lg mb-2 flex items-center justify-center">
+                      <svg className="h-8 w-8 text-base-content/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                       </svg>
                     </div>
                     <h3 className="font-medium text-sm mb-1 truncate">{product.nombre}</h3>
-                    <p className="text-green-600 font-semibold text-sm">
+                    <p className="text-success font-semibold text-sm">
                       {formatCurrency(product.precio_venta)}
                     </p>
-                    <p className="text-gray-500 text-xs">Stock: {product.stock_actual}</p>
+                    <p className="text-base-content/50 text-xs">Stock: {product.stock_actual}</p>
                   </div>
                 ))}
               </div>
@@ -160,8 +160,8 @@ const CashRegister = () => {
           
           <div className="flex-1 overflow-y-auto p-4">
             {cart.length === 0 ? (
-              <div className="text-center text-gray-500 mt-8">
-                <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="text-center text-base-content/50 mt-8">
+                <svg className="mx-auto h-12 w-12 text-base-content/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5 6m0 0h9m-9 0V9a2 2 0 012-2h2a2 2 0 012 2v10.01M17 21v-2a2 2 0 00-2-2H9a2 2 0 00-2 2v2" />
                 </svg>
                 <p className="mt-2">El carrito está vacío</p>
@@ -173,7 +173,7 @@ const CashRegister = () => {
                   <div key={item.id} className="flex items-center justify-between p-3 border rounded-lg">
                     <div className="flex-1">
                       <h4 className="font-medium text-sm">{item.nombre}</h4>
-                      <p className="text-green-600 text-sm">{formatCurrency(item.precio_venta)}</p>
+                      <p className="text-success text-sm">{formatCurrency(item.precio_venta)}</p>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Button

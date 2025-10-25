@@ -18,7 +18,7 @@ const ErrorPage = () => {
         message: 'Lo sentimos, la página que buscas no existe.',
         icon: (
           <svg
-            className="h-12 w-12 text-blue-600"
+            className="h-12 w-12 text-primary"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -31,7 +31,7 @@ const ErrorPage = () => {
             />
           </svg>
         ),
-        bgColor: 'bg-blue-100',
+        bgColor: 'bg-primary/20',
       };
     }
 
@@ -41,7 +41,7 @@ const ErrorPage = () => {
         message: 'No tienes permisos para acceder a esta página.',
         icon: (
           <svg
-            className="h-12 w-12 text-red-600"
+            className="h-12 w-12 text-error"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -54,7 +54,7 @@ const ErrorPage = () => {
             />
           </svg>
         ),
-        bgColor: 'bg-red-100',
+        bgColor: 'bg-error/20',
       };
     }
 
@@ -63,7 +63,7 @@ const ErrorPage = () => {
       message: 'Ha ocurrido un error inesperado. Por favor, intenta de nuevo.',
       icon: (
         <svg
-          className="h-12 w-12 text-orange-600"
+          className="h-12 w-12 text-warning"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -76,7 +76,7 @@ const ErrorPage = () => {
           />
         </svg>
       ),
-      bgColor: 'bg-orange-100',
+      bgColor: 'bg-warning/20',
     };
   };
 
@@ -87,7 +87,7 @@ const ErrorPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
       <div className="max-w-2xl w-full">
         {/* Icon */}
         <div className="mb-6 text-center">
@@ -98,21 +98,21 @@ const ErrorPage = () => {
 
         {/* Content */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">
+          <h1 className="text-3xl font-bold text-base-content mb-3">
             {errorInfo.title}
           </h1>
-          <p className="text-lg text-gray-600 mb-4">
+          <p className="text-lg text-base-content/70 mb-4">
             {errorInfo.message}
           </p>
         </div>
 
         {/* Error details (only in development) */}
         {import.meta.env.DEV && error && (
-          <div className="mb-6 bg-gray-100 border border-gray-300 rounded-lg p-4">
-            <h2 className="text-sm font-semibold text-gray-800 mb-2">
+          <div className="mb-6 bg-base-100 border border-base-300 rounded-lg p-4">
+            <h2 className="text-sm font-semibold text-base-content mb-2">
               Detalles del Error (solo en desarrollo):
             </h2>
-            <pre className="text-xs text-gray-700 overflow-auto max-h-40 whitespace-pre-wrap">
+            <pre className="text-xs text-base-content/70 overflow-auto max-h-40 whitespace-pre-wrap">
               {error.statusText || error.message || 'Error desconocido'}
             </pre>
           </div>
@@ -141,8 +141,8 @@ const ErrorPage = () => {
         </div>
 
         {/* Additional help */}
-        <div className="mt-8 pt-8 border-t border-gray-200 text-center">
-          <p className="text-sm text-gray-500">
+        <div className="mt-8 pt-8 border-t border-base-300 text-center">
+          <p className="text-sm text-base-content/50">
             Si el problema persiste, por favor contacta al soporte técnico.
           </p>
         </div>

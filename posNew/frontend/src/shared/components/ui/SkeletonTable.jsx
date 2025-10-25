@@ -19,9 +19,9 @@ const SkeletonTable = ({
   const totalColumns = hasActions ? columns + 1 : columns;
 
   return (
-    <div className={`bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden ${className}`}>
+    <div className={`bg-base-100 rounded-lg shadow-sm border border-base-300 overflow-hidden ${className}`}>
       {/* Table Header */}
-      <div className="bg-gray-50 border-b border-gray-200 px-6 py-3">
+      <div className="bg-base-200 border-b border-base-300 px-6 py-3">
         <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(${totalColumns}, 1fr)` }}>
           {Array.from({ length: totalColumns }).map((_, index) => (
             <Skeleton key={`header-${index}`} variant="text" width="80px" height="12px" />
@@ -30,7 +30,7 @@ const SkeletonTable = ({
       </div>
 
       {/* Table Body */}
-      <div className="divide-y divide-gray-200">
+      <div className="divide-y divide-base-300">
         {Array.from({ length: rows }).map((_, rowIndex) => (
           <div key={`row-${rowIndex}`} className="px-6 py-4">
             <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(${totalColumns}, 1fr)` }}>

@@ -252,9 +252,9 @@ const BranchesCajasPage = () => {
           <div className="text-red-600">{branchesError?.message || 'Error al cargar sucursales'}</div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-white">
-              <thead>
-                <tr className="bg-gray-100 text-left">
+            <table className="min-w-full bg-base-100">
+            <thead>
+              <tr className="bg-base-200 text-left">
                   <th className="px-4 py-3">Código</th>
                   <th className="px-4 py-3">Nombre</th>
                   <th className="px-4 py-3">Dirección</th>
@@ -298,7 +298,7 @@ const BranchesCajasPage = () => {
           <div className="flex items-center gap-4">
             <h2 className="text-xl font-semibold">Cajas</h2>
             <select
-              className="px-3 py-2 border border-gray-300 rounded-md"
+              className="px-3 py-2 border border-base-300 rounded-md"
               value={selectedBranchId || ''}
               onChange={(e) => {
                 const id = Number(e.target.value) || null;
@@ -316,16 +316,16 @@ const BranchesCajasPage = () => {
           <Button onClick={handleOpenCreateCaja} disabled={!selectedBranchId}>Nueva Caja</Button>
         </div>
         {!selectedBranchId ? (
-          <div className="text-gray-600">Selecciona una sucursal para ver sus cajas</div>
+          <div className="text-base-content/60">Selecciona una sucursal para ver sus cajas</div>
         ) : isCajasLoading ? (
           <div className="py-8 flex justify-center"><LoadingSpinner /></div>
         ) : isCajasError ? (
           <div className="text-red-600">{cajasError?.message || 'Error al cargar cajas'}</div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-white">
+            <table className="min-w-full bg-base-100">
               <thead>
-                <tr className="bg-gray-100 text-left">
+                <tr className="bg-base-200 text-left">
                   <th className="px-4 py-3">Código</th>
                   <th className="px-4 py-3">Nombre</th>
                   <th className="px-4 py-3">Saldo inicial</th>

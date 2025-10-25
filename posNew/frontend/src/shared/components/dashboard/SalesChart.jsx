@@ -26,8 +26,16 @@ const SalesChart = ({ data = [], type = 'area', isLoading = false }) => {
   // Read theme-based colors
   const { getVar } = useCSSVars();
   const primary = getVar('--color-primary', '#3b82f6');
+  const secondary = getVar('--color-secondary', '#f59e0b');
+  const accent = getVar('--color-accent', '#8b5cf6');
+  const success = getVar('--color-success', '#10b981');
+  const warning = getVar('--color-warning', '#f59e0b');
+  const error = getVar('--color-error', '#ef4444');
   const border = getVar('--color-base-300', '#e5e7eb');
   const content = getVar('--color-base-content', '#6b7280');
+  
+  // Vibrant colors for multiple data series
+  const colors = [primary, success, warning, accent, error, secondary];
   if (isLoading) {
     return (
       <div className="bg-base-100 p-6 rounded-lg shadow-sm border border-base-300">
@@ -78,8 +86,16 @@ const SalesChart = ({ data = [], type = 'area', isLoading = false }) => {
           <AreaChart data={data}>
             <defs>
               <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor={success} stopOpacity={0.3}/>
+                <stop offset="95%" stopColor={success} stopOpacity={0}/>
+              </linearGradient>
+              <linearGradient id="colorIngresos" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor={primary} stopOpacity={0.3}/>
                 <stop offset="95%" stopColor={primary} stopOpacity={0}/>
+              </linearGradient>
+              <linearGradient id="colorGastos" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor={error} stopOpacity={0.3}/>
+                <stop offset="95%" stopColor={error} stopOpacity={0}/>
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke={border} />
@@ -102,10 +118,30 @@ const SalesChart = ({ data = [], type = 'area', isLoading = false }) => {
               type="monotone" 
               dataKey="ventas" 
               name="Ventas"
-              stroke={primary} 
-              strokeWidth={2}
+              stroke={success} 
+              strokeWidth={3}
               fill="url(#colorSales)"
             />
+            {data.length > 0 && data[0].ingresos && (
+              <Area 
+                type="monotone" 
+                dataKey="ingresos" 
+                name="Ingresos"
+                stroke={primary} 
+                strokeWidth={3}
+                fill="url(#colorIngresos)"
+              />
+            )}
+            {data.length > 0 && data[0].gastos && (
+              <Area 
+                type="monotone" 
+                dataKey="gastos" 
+                name="Gastos"
+                stroke={error} 
+                strokeWidth={3}
+                fill="url(#colorGastos)"
+              />
+            )}
           </AreaChart>
         ) : (
           <LineChart data={data}>
@@ -129,11 +165,33 @@ const SalesChart = ({ data = [], type = 'area', isLoading = false }) => {
               type="monotone" 
               dataKey="ventas" 
               name="Ventas"
-              stroke={primary} 
-              strokeWidth={2}
-              dot={{ fill: primary, r: 4 }}
-              activeDot={{ r: 6 }}
+              stroke={success} 
+              strokeWidth={3}
+              dot={{ fill: success, r: 5 }}
+              activeDot={{ r: 8, fill: success }}
             />
+            {data.length > 0 && data[0].ingresos && (
+              <Line 
+                type="monotone" 
+                dataKey="ingresos" 
+                name="Ingresos"
+                stroke={primary} 
+                strokeWidth={3}
+                dot={{ fill: primary, r: 5 }}
+                activeDot={{ r: 8, fill: primary }}
+              />
+            )}
+            {data.length > 0 && data[0].gastos && (
+              <Line 
+                type="monotone" 
+                dataKey="gastos" 
+                name="Gastos"
+                stroke={error} 
+                strokeWidth={3}
+                dot={{ fill: error, r: 5 }}
+                activeDot={{ r: 8, fill: error }}
+              />
+            )}
           </LineChart>
         )}
       </ResponsiveContainer>

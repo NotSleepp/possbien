@@ -121,22 +121,22 @@ const OAuthCallback = () => {
   }, [location, navigate, setToken, login]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center bg-base-200">
       <div className="max-w-md w-full px-6">
         {isProcessing && !error && (
-          <div className="bg-white rounded-lg shadow-md p-8 text-center">
+          <div className="bg-base-100 rounded-lg shadow-md p-8 text-center">
             <LoadingSpinner size="lg" text="Procesando autenticación..." />
-            <p className="mt-4 text-sm text-gray-600">
+            <p className="mt-4 text-sm text-base-content/70">
               Por favor espera mientras completamos tu inicio de sesión
             </p>
           </div>
         )}
 
         {error && (
-          <div className="bg-white rounded-lg shadow-md p-8 text-center">
-            <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
+          <div className="bg-base-100 rounded-lg shadow-md p-8 text-center">
+            <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-error/20 mb-4">
               <svg
-                className="h-6 w-6 text-red-600"
+                className="h-6 w-6 text-error"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -149,13 +149,13 @@ const OAuthCallback = () => {
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-base-content mb-2">
               Error de Autenticación
             </h3>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-base-content/70 mb-4">
               {error}
             </p>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-base-content/50">
               Redirigiendo a la página de inicio de sesión...
             </p>
           </div>

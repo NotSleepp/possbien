@@ -116,12 +116,12 @@ const ProductsPage = () => {
   // Error state
   if (isError) {
     return (
-      <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+      <div className="bg-error/10 border border-error/20 rounded-lg p-6">
         <div className="flex items-center gap-3 mb-2">
-          <FiAlertCircle className="w-5 h-5 text-red-600" />
-          <h3 className="text-lg font-semibold text-red-900">Error al cargar productos</h3>
+          <FiAlertCircle className="w-5 h-5 text-error" />
+          <h3 className="text-lg font-semibold text-error">Error al cargar productos</h3>
         </div>
-        <p className="text-red-700 mb-4">
+        <p className="text-error/80 mb-4">
           {error?.userMessage || 'No se pudieron cargar los productos. Por favor, intenta nuevamente.'}
         </p>
         <Button variant="danger" onClick={() => window.location.reload()}>
@@ -140,8 +140,8 @@ const ProductsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-1">Productos</h1>
-          <p className="text-gray-600">
+          <h1 className="text-2xl font-bold text-base-content mb-1">Productos</h1>
+          <p className="text-base-content/60">
             Gestiona el inventario de productos del sistema
           </p>
         </div>
@@ -163,7 +163,7 @@ const ProductsPage = () => {
       )}
 
       {/* Content */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200">
+      <div className="bg-base-100 rounded-lg shadow-sm border border-base-300">
         {!hasProducts ? (
           // Empty state - no products at all
           <div className="p-6">
@@ -226,16 +226,16 @@ const ProductsPage = () => {
         title="Confirmar eliminación"
       >
         <div className="mb-6">
-          <p className="text-gray-700 mb-2">
+          <p className="text-base-content/80 mb-2">
             ¿Estás seguro de que deseas eliminar el producto?
           </p>
           {productToDelete && (
-            <div className="bg-gray-50 rounded-lg p-4 mt-4">
-              <p className="font-semibold text-gray-900">{productToDelete.nombre}</p>
-              <p className="text-sm text-gray-600">Código: {productToDelete.codigo}</p>
+            <div className="bg-base-200 rounded-lg p-4 mt-4">
+              <p className="font-semibold text-base-content">{productToDelete.nombre}</p>
+              <p className="text-sm text-base-content/60">Código: {productToDelete.codigo}</p>
             </div>
           )}
-          <p className="text-sm text-red-600 mt-4">
+          <p className="text-sm text-error mt-4">
             Esta acción no se puede deshacer.
           </p>
         </div>

@@ -157,7 +157,7 @@ const WarehousesPage = () => {
           <div className="flex items-center gap-4">
             <h2 className="text-xl font-semibold">Listado de Almacenes</h2>
             <select
-              className="px-3 py-2 border border-gray-300 rounded-md"
+              className="px-3 py-2 border border-base-300 rounded-md"
               value={selectedBranchId || ''}
               onChange={(e) => {
                 const id = Number(e.target.value) || null;
@@ -182,9 +182,9 @@ const WarehousesPage = () => {
           <div className="text-error">{warehousesError?.message || 'Error al cargar almacenes'}</div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-white">
+            <table className="min-w-full bg-base-100">
               <thead>
-                <tr className="bg-gray-100 text-left">
+                <tr className="bg-base-200 text-left">
                   <th className="px-4 py-3">Código</th>
                   <th className="px-4 py-3">Nombre</th>
                   <th className="px-4 py-3">Sucursal</th>
@@ -243,7 +243,7 @@ const WarehousesPage = () => {
           <div>
             <label className="block text-sm font-medium text-base-content mb-1.5">Sucursal</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+              className="w-full px-3 py-2 border border-base-300 rounded-md"
               value={form.idSucursal || ''}
               onChange={(e) => setForm({ ...form, idSucursal: Number(e.target.value) || null })}
             >

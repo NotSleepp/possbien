@@ -157,8 +157,8 @@ const PrintersPage = () => {
     <div className="p-6 max-w-7xl mx-auto">
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Impresoras</h1>
-          <p className="text-gray-600 mt-2">Gestiona las impresoras de la empresa</p>
+          <h1 className="text-3xl font-bold text-base-content">Impresoras</h1>
+        <p className="text-base-content/60 mt-2">Gestiona las impresoras de la empresa</p>
         </div>
         <Button variant="primary" onClick={handleOpenCreate}>Nueva Impresora</Button>
       </div>
@@ -209,9 +209,9 @@ const PrintersPage = () => {
       >
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Sucursal</label>
-            <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            <label className="block text-sm font-medium text-base-content mb-2">Sucursal</label>
+              <select
+                className="w-full px-3 py-2 border border-base-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               value={form.idSucursal || ''}
               onChange={(e) => setForm((prev) => ({ ...prev, idSucursal: Number(e.target.value) || null, idCaja: null }))}
               required
@@ -224,7 +224,7 @@ const PrintersPage = () => {
           </div>
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="block text-sm font-medium text-gray-700">Caja</label>
+              <label className="block text-sm font-medium text-base-content">Caja</label>
               <Button
                 variant="secondary"
                 size="sm"
@@ -242,7 +242,7 @@ const PrintersPage = () => {
               </Button>
             </div>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-3 py-2 border border-base-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               value={form.idCaja ?? ''}
               onChange={(e) => setForm((prev) => ({ ...prev, idCaja: Number(e.target.value) || null }))}
               disabled={!form.idSucursal}
@@ -255,9 +255,9 @@ const PrintersPage = () => {
           </div>
           <Input label="Nombre" value={form.name} onChange={(v) => handleFormChange('name', v)} required />
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Tipo</label>
-            <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            <label className="block text-sm font-medium text-base-content mb-2">Tipo</label>
+              <select
+                className="w-full px-3 py-2 border border-base-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               value={form.tipo}
               onChange={(e) => handleFormChange('tipo', e.target.value)}
             >
@@ -312,9 +312,9 @@ const PrintersPage = () => {
       >
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Sucursal</label>
+            <label className="block text-sm font-medium text-base-content mb-2">Sucursal</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-3 py-2 border border-base-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               value={form.idSucursal || ''}
               onChange={(e) => setForm((prev) => ({ ...prev, idSucursal: Number(e.target.value) || null, idCaja: null }))}
               required
@@ -327,7 +327,7 @@ const PrintersPage = () => {
           </div>
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="block text-sm font-medium text-gray-700">Caja</label>
+              <label className="block text-sm font-medium text-base-content">Caja</label>
               <Button
                 variant="secondary"
                 size="sm"
@@ -345,7 +345,7 @@ const PrintersPage = () => {
               </Button>
             </div>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-3 py-2 border border-base-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               value={form.idCaja ?? ''}
               onChange={(e) => setForm((prev) => ({ ...prev, idCaja: Number(e.target.value) || null }))}
               disabled={!form.idSucursal}
@@ -358,9 +358,9 @@ const PrintersPage = () => {
           </div>
           <Input label="Nombre" value={form.name} onChange={(v) => handleFormChange('name', v)} required />
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Tipo</label>
+            <label className="block text-sm font-medium text-base-content mb-2">Tipo</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-3 py-2 border border-base-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               value={form.tipo}
               onChange={(e) => handleFormChange('tipo', e.target.value)}
             >

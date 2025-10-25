@@ -27,34 +27,39 @@ const MetricCard = ({
 }) => {
   const colorClasses = {
     blue: {
-      bg: 'bg-primary/10',
+      bg: 'bg-primary/20',
       icon: 'text-primary',
-      value: 'text-primary',
-      trend: 'bg-primary/20 text-primary'
+      value: 'text-base-content',
+      trend: 'bg-primary/30 text-primary',
+      border: 'metric-card-blue'
     },
     green: {
-      bg: 'bg-success/10',
-      icon: 'text-success',
-      value: 'text-success',
-      trend: 'bg-success/20 text-success'
+      bg: 'bg-secondary/20',
+      icon: 'text-secondary',
+      value: 'text-base-content',
+      trend: 'bg-secondary/30 text-secondary',
+      border: 'metric-card-green'
     },
     purple: {
-      bg: 'bg-accent/10',
-      icon: 'text-accent',
-      value: 'text-accent',
-      trend: 'bg-accent/20 text-accent'
+      bg: 'bg-info/20',
+      icon: 'text-info',
+      value: 'text-base-content',
+      trend: 'bg-info/30 text-info',
+      border: 'metric-card-purple'
     },
     orange: {
-      bg: 'bg-warning/10',
-      icon: 'text-warning',
-      value: 'text-warning',
-      trend: 'bg-warning/20 text-warning'
+      bg: 'bg-accent/20',
+      icon: 'text-accent',
+      value: 'text-base-content',
+      trend: 'bg-accent/30 text-accent',
+      border: 'metric-card-orange'
     },
     red: {
-      bg: 'bg-error/10',
+      bg: 'bg-error/20',
       icon: 'text-error',
-      value: 'text-error',
-      trend: 'bg-error/20 text-error'
+      value: 'text-base-content',
+      trend: 'bg-error/30 text-error',
+      border: 'metric-card-red'
     }
   };
 
@@ -62,7 +67,7 @@ const MetricCard = ({
 
   if (isLoading) {
     return (
-      <div className="bg-base-100 p-6 rounded-lg shadow-sm border border-base-300 animate-pulse">
+      <div className={`dashboard-card ${colors.border} animate-pulse`}>
         <div className="flex items-start justify-between mb-4">
           <div className="h-4 bg-base-300 rounded w-24"></div>
           <div className={`w-12 h-12 ${colors.bg} rounded-lg`}></div>
@@ -74,19 +79,19 @@ const MetricCard = ({
   }
 
   return (
-    <div className="bg-base-100 p-6 rounded-lg shadow-sm border border-base-300 hover:shadow-md transition-shadow duration-200">
+    <div className={`dashboard-card ${colors.border}`}>
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="text-sm font-medium text-base-content/70">{title}</h3>
+          <h3 className="text-sm font-medium text-base-content/70 uppercase tracking-wide">{title}</h3>
         </div>
-        <div className={`p-3 ${colors.bg} rounded-lg`}>
+        <div className={`p-3 ${colors.bg} rounded-xl`}>
           <div className={`text-2xl ${colors.icon}`}>
             {icon}
           </div>
         </div>
       </div>
       
-      <div className="mb-2">
+      <div className="mb-3">
         <p className={`text-3xl font-bold ${colors.value}`}>
           {value}
         </p>
@@ -98,7 +103,7 @@ const MetricCard = ({
         )}
         
         {trend && (
-          <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${colors.trend}`}>
+          <div className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium ${colors.trend}`}>
             {trend.isPositive ? (
               <FiTrendingUp className="w-3 h-3" />
             ) : (

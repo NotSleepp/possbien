@@ -95,8 +95,8 @@ const CategoriesPage = () => {
     <div className="p-6 max-w-7xl mx-auto">
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Categorías</h1>
-          <p className="text-gray-600 mt-2">Administra las categorías de tus productos</p>
+          <h1 className="text-3xl font-bold text-base-content">Categorías</h1>
+        <p className="text-base-content/60 mt-2">Administra las categorías de tus productos</p>
         </div>
         <Button variant="primary" onClick={handleOpenCreate}>Nueva Categoría</Button>
       </div>

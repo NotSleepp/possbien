@@ -9,18 +9,18 @@ const NotFoundPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
       <div className="max-w-md w-full text-center">
         {/* 404 Number */}
         <div className="mb-6">
-          <h1 className="text-9xl font-bold text-blue-600">404</h1>
+          <h1 className="text-9xl font-bold text-primary">404</h1>
         </div>
 
         {/* Icon */}
         <div className="mb-6">
-          <div className="mx-auto h-24 w-24 rounded-full bg-blue-100 flex items-center justify-center">
+          <div className="mx-auto h-24 w-24 rounded-full bg-primary/20 flex items-center justify-center">
             <svg
-              className="h-12 w-12 text-blue-600"
+              className="h-12 w-12 text-primary"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -37,10 +37,10 @@ const NotFoundPage = () => {
         </div>
 
         {/* Content */}
-        <h2 className="text-3xl font-bold text-gray-900 mb-3">
+        <h2 className="text-3xl font-bold text-base-content mb-3">
           Página No Encontrada
         </h2>
-        <p className="text-lg text-gray-600 mb-8">
+        <p className="text-lg text-base-content/70 mb-8">
           Lo sentimos, la página que buscas no existe o ha sido movida.
         </p>
 
@@ -61,8 +61,8 @@ const NotFoundPage = () => {
         </div>
 
         {/* Additional help */}
-        <div className="mt-8 pt-8 border-t border-gray-200">
-          <p className="text-sm text-gray-500">
+        <div className="mt-8 pt-8 border-t border-base-300">
+          <p className="text-sm text-base-content/50">
             Si crees que esto es un error, por favor contacta al soporte técnico.
           </p>
         </div>

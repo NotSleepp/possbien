@@ -16,7 +16,7 @@ const Skeleton = ({
   className = '',
   lines = 1,
 }) => {
-  const baseClasses = 'animate-pulse bg-gray-200 rounded';
+  const baseClasses = 'animate-pulse skeleton rounded';
 
   const variantClasses = {
     text: 'h-4 w-full',

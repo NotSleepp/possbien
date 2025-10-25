@@ -98,12 +98,12 @@ const Sidebar = ({ onClose }) => {
 
   return (
     <>
-      <div className="flex h-full w-full md:w-64 flex-col bg-base-200 text-base-content overflow-y-auto">
+      <div className="sidebar flex h-full w-full md:w-64 flex-col text-neutral-content overflow-y-auto">
         {/* Mobile close button */}
         <div className="md:hidden flex justify-end p-4">
           <button
             onClick={onClose}
-            className="text-base-content hover:text-base-content/70 transition-colors"
+            className="text-neutral-content hover:text-neutral-content/70 transition-colors"
             aria-label="Cerrar menú"
           >
             <FiX size={24} />
@@ -112,7 +112,7 @@ const Sidebar = ({ onClose }) => {
 
         {/* Logo/Brand */}
         <div className="flex items-center justify-center py-6 px-4 border-b border-base-300">
-          <h1 className="text-2xl font-bold text-base-content">POS System</h1>
+          <h1 className="text-2xl font-bold text-neutral-content">POS System</h1>
         </div>
 
         {/* Navigation Menu */}
@@ -125,10 +125,10 @@ const Sidebar = ({ onClose }) => {
                 to={item.path}
                 onClick={() => onClose && onClose()}
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+                  `sidebar-item flex items-center gap-3 px-4 py-3 transition-all duration-200 ${
                     isActive
-                      ? 'bg-primary text-primary-content shadow-lg ring-1 ring-primary font-medium !text-white'
-                      : 'text-base-content/70 hover:bg-primary/10 hover:text-base-content'
+                      ? 'active'
+                      : ''
                   }`
                 }
               >
@@ -149,17 +149,17 @@ const Sidebar = ({ onClose }) => {
                   {user.nombre ? user.nombre.charAt(0).toUpperCase() : user.username.charAt(0).toUpperCase()}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-base-content truncate">
+                  <p className="text-sm font-medium text-neutral-content truncate">
                     {user.nombre && user.apellido 
                       ? `${user.nombre} ${user.apellido}` 
                       : user.username}
                   </p>
-                  <p className="text-xs text-base-content/60 truncate">
+                  <p className="text-xs text-neutral-content/60 truncate">
                     {user.email || user.username}
                   </p>
                 </div>
               </div>
-              <div className="text-xs text-base-content/60">
+              <div className="text-xs text-neutral-content/60">
                 {getUserRoleName(user)}
               </div>
             </div>
@@ -168,7 +168,7 @@ const Sidebar = ({ onClose }) => {
           {/* Logout Button */}
           <button
             onClick={() => setShowLogoutModal(true)}
-            className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-base-content/70 hover:bg-error hover:text-error-content transition-all duration-200"
+            className="sidebar-item flex items-center gap-3 w-full px-4 py-3 hover:bg-error hover:text-error-content transition-all duration-200"
           >
             <FiLogOut size={20} />
             <span className="font-medium">Cerrar Sesión</span>

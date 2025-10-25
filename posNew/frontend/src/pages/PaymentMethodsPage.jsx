@@ -104,8 +104,8 @@ const PaymentMethodsPage = () => {
     <div className="p-6 max-w-7xl mx-auto">
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Métodos de Pago</h1>
-          <p className="text-gray-600 mt-2">Administra los métodos de pago disponibles</p>
+          <h1 className="text-3xl font-bold text-base-content">Métodos de Pago</h1>
+        <p className="text-base-content/60 mt-2">Administra los métodos de pago disponibles</p>
         </div>
         <Button variant="primary" onClick={handleOpenCreate}>Nuevo Método</Button>
       </div>

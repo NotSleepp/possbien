@@ -52,9 +52,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange, totalItems, itemsPe
   if (totalPages <= 1) return null;
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-4 border-t border-gray-200">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-4 border-t border-base-300">
       {/* Items info */}
-      <div className="text-sm text-gray-600">
+      <div className="text-sm text-base-content/60">
         Mostrando <span className="font-medium">{startItem}</span> a{' '}
         <span className="font-medium">{endItem}</span> de{' '}
         <span className="font-medium">{totalItems}</span> productos
@@ -74,7 +74,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, totalItems, itemsPe
         {getPageNumbers().map((page, index) => {
           if (page === '...') {
             return (
-              <span key={`ellipsis-${index}`} className="px-2 text-gray-500">
+              <span key={`ellipsis-${index}`} className="px-2 text-base-content/50">
                 ...
               </span>
             );

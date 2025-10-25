@@ -27,7 +27,7 @@ const GoogleLoginButton = ({ isLoading = false, onClick, className = '' }) => {
         size="lg"
         isLoading={isLoading}
         onClick={handleClick}
-        className="w-full bg-white border-2 border-gray-300 hover:bg-gray-50 hover:border-gray-400 text-gray-700 shadow-sm"
+        className="w-full bg-base-100 border-2 border-base-300 hover:bg-base-200 hover:border-base-400 text-base-content shadow-sm"
         icon={
           !isLoading && (
             <svg className="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +54,7 @@ const GoogleLoginButton = ({ isLoading = false, onClick, className = '' }) => {
         Continuar con Google
       </Button>
       
-      <p className="mt-2 text-xs text-center text-gray-600">
+      <p className="mt-2 text-xs text-center text-base-content/60">
         Solo para administradores y superusuarios
       </p>
     </div>

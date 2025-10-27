@@ -1,54 +1,386 @@
 [vite] connecting...
 client:827 [vite] connected.
-ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: Array(2) currentRole: 1 user: Object
-hook.js:377 [ProtectedRoute] allowedRoles: Array(2) currentRole: 1 user: Object
-Sidebar.jsx:96 [Sidebar] user: Object id_rol= 9 rolId= 1
-Sidebar.jsx:97 [Sidebar] visibleMenuItems: Array(9)
-hook.js:377 [Sidebar] user: Object id_rol= 9 rolId= 1
-hook.js:377 [Sidebar] visibleMenuItems: Array(9)
-ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: Array(2) currentRole: 1 user: Object
-hook.js:377 [ProtectedRoute] allowedRoles: Array(2) currentRole: 1 user: Object
-Sidebar.jsx:96 [Sidebar] user: Object id_rol= 9 rolId= 1
-Sidebar.jsx:97 [Sidebar] visibleMenuItems: Array(9)
-hook.js:377 [Sidebar] user: Object id_rol= 9 rolId= 1
-hook.js:377 [Sidebar] visibleMenuItems: Array(9)
-ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: Array(2) currentRole: 1 user: Object
-hook.js:377 [ProtectedRoute] allowedRoles: Array(2) currentRole: 1 user: Object
-Sidebar.jsx:96 [Sidebar] user: Object id_rol= 9 rolId= 1
-Sidebar.jsx:97 [Sidebar] visibleMenuItems: Array(9)
-hook.js:377 [Sidebar] user: Object id_rol= 9 rolId= 1
-hook.js:377 [Sidebar] visibleMenuItems: Array(9)
-ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: Array(2) currentRole: 1 user: Object
-hook.js:377 [ProtectedRoute] allowedRoles: Array(2) currentRole: 1 user: Object
-Sidebar.jsx:96 [Sidebar] user: Object id_rol= 9 rolId= 1
-Sidebar.jsx:97 [Sidebar] visibleMenuItems: Array(9)
-hook.js:377 [Sidebar] user: Object id_rol= 9 rolId= 1
-hook.js:377 [Sidebar] visibleMenuItems: Array(9)
-Sidebar.jsx:96 [Sidebar] user: Object id_rol= 9 rolId= 1
-Sidebar.jsx:97 [Sidebar] visibleMenuItems: Array(9)
-hook.js:377 [Sidebar] user: Object id_rol= 9 rolId= 1
-hook.js:377 [Sidebar] visibleMenuItems: Array(9)
-ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: Array(2) currentRole: 1 user: Object
-hook.js:377 [ProtectedRoute] allowedRoles: Array(2) currentRole: 1 user: Object
-Sidebar.jsx:96 [Sidebar] user: Object id_rol= 9 rolId= 1
-Sidebar.jsx:97 [Sidebar] visibleMenuItems: Array(9)
-hook.js:377 [Sidebar] user: Object id_rol= 9 rolId= 1
-hook.js:377 [Sidebar] visibleMenuItems: Array(9)
-:3000/api/metodos_pago/14:1  Failed to load resource: the server responded with a status of 400 (Bad Request)Understand this error
-Sidebar.jsx:96 [Sidebar] user: Object id_rol= 9 rolId= 1
-Sidebar.jsx:97 [Sidebar] visibleMenuItems: Array(9)
-hook.js:377 [Sidebar] user: Object id_rol= 9 rolId= 1
-hook.js:377 [Sidebar] visibleMenuItems: Array(9)
-:3000/api/metodos_pago/14:1  Failed to load resource: the server responded with a status of 400 (Bad Request)Understand this error
-Sidebar.jsx:96 [Sidebar] user: Object id_rol= 9 rolId= 1
-Sidebar.jsx:97 [Sidebar] visibleMenuItems: Array(9)
-hook.js:377 [Sidebar] user: Object id_rol= 9 rolId= 1
-hook.js:377 [Sidebar] visibleMenuItems: Array(9)
-Sidebar.jsx:96 [Sidebar] user: Object id_rol= 9 rolId= 1
-Sidebar.jsx:97 [Sidebar] visibleMenuItems: Array(9)
-hook.js:377 [Sidebar] user: Object id_rol= 9 rolId= 1
-hook.js:377 [Sidebar] visibleMenuItems: Array(9)
-Sidebar.jsx:96 [Sidebar] user: {id: 8, id_empresa: 6, id_rol: 9, username: 'danivercel1@gmail.com', password: '$2a$10$zO3GGL..DEPgVGut.yWBaed/j1Jn7J6vkT9w8fRv/9DfWs1nnJm16', …} id_rol= 9 rolId= 1
+ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: (2) [1, 2] currentRole: 1 user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …}
+ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: (2) [1, 2] currentRole: 1 user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …}
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-Sidebar.jsx:96 [Sidebar] user: {id: 8, id_empresa: 6, id_rol: 9, username: 'danivercel1@gmail.com', password: '$2a$10$zO3GGL..DEPgVGut.yWBaed/j1Jn7J6vkT9w8fRv/9DfWs1nnJm16', …} id_rol= 9 rolId= 1
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
+api.js:16 [api.js] Method: GET
+api.js:17 [api.js] URL: /sucursales/por-empresa/1
+api.js:18 [api.js] Full URL: http://localhost:3000/api/sucursales/por-empresa/1
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: undefined
+api.js:21 [api.js] Data type: undefined
+api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
+api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
+api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
+api.js:16 [api.js] Method: GET
+api.js:17 [api.js] URL: /tipos-comprobante/por-empresa/1
+api.js:18 [api.js] Full URL: http://localhost:3000/api/tipos-comprobante/por-empresa/1
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: undefined
+api.js:21 [api.js] Data type: undefined
+api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
+api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
+ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: (2) [1, 2] currentRole: 1 user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …}
+ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: (2) [1, 2] currentRole: 1 user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …}
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: (2) [1, 2] currentRole: 1 user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …}
+ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: (2) [1, 2] currentRole: 1 user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …}
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: (2) [1, 2] currentRole: 1 user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …}
+ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: (2) [1, 2] currentRole: 1 user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …}
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
+api.js:47 [api.js] Status: 200
+api.js:48 [api.js] Data: [{…}]
+api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
+api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
+api.js:47 [api.js] Status: 200
+api.js:48 [api.js] Data: (2) [{…}, {…}]
+api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
+SerializationPage.jsx:114 [SerializationPage] handleBranchChange branchId: 1
+SerializationPage.jsx:118 [SerializationPage] defaultForm after branch change: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: null, serie: '', numeroInicial: 1, …}
+api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
+api.js:16 [api.js] Method: GET
+api.js:17 [api.js] URL: /serializacion-comprobantes/por-sucursal/1
+api.js:18 [api.js] Full URL: http://localhost:3000/api/serializacion-comprobantes/por-sucursal/1
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: undefined
+api.js:21 [api.js] Data type: undefined
+api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
+api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
+api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
+api.js:47 [api.js] Status: 200
+api.js:48 [api.js] Data: [{…}]
+api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
+SerializationPage.jsx:122 [SerializationPage] handleOpenCreate selectedBranchId: 1
+SerializationPage.jsx:131 [SerializationPage] form initialized for create: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: null, serie: '', numeroInicial: 1, …}
+ConfigurationForm.jsx:71 [ConfigurationForm] select change idTipoComprobante 2
+SerializationPage.jsx:164 [SerializationPage] handleChange field: idTipoComprobante value: 2
+ConfigurationForm.jsx:125 [ConfigurationForm] input change serie 2
+SerializationPage.jsx:164 [SerializationPage] handleChange field: serie value: 2
+ConfigurationForm.jsx:125 [ConfigurationForm] input change serie 22
+SerializationPage.jsx:164 [SerializationPage] handleChange field: serie value: 22
+ConfigurationForm.jsx:125 [ConfigurationForm] input change serie 222
+SerializationPage.jsx:164 [SerializationPage] handleChange field: serie value: 222
+ConfigurationForm.jsx:125 [ConfigurationForm] input change numeroInicial 12
+SerializationPage.jsx:164 [SerializationPage] handleChange field: numeroInicial value: 12
+ConfigurationForm.jsx:125 [ConfigurationForm] input change numeroInicial 122
+SerializationPage.jsx:164 [SerializationPage] handleChange field: numeroInicial value: 122
+ConfigurationForm.jsx:125 [ConfigurationForm] input change numeroActual 12
+SerializationPage.jsx:164 [SerializationPage] handleChange field: numeroActual value: 12
+ConfigurationForm.jsx:125 [ConfigurationForm] input change numeroActual 122
+SerializationPage.jsx:164 [SerializationPage] handleChange field: numeroActual value: 122
+ConfigurationForm.jsx:103 [ConfigurationForm] checkbox change porDefault true
+SerializationPage.jsx:164 [SerializationPage] handleChange field: porDefault value: true
+ConfigurationForm.jsx:21 [ConfigurationForm] onSubmit values: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: '2', serie: '222', numeroInicial: '122', …}
+SerializationPage.jsx:172 [SerializationPage] handleSubmitCreate form before validate: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: '2', serie: '222', numeroInicial: '122', …}
+serialization.schema.js:86 [serialization.schema] validateSerialization input: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: '2', serie: '222', numeroInicial: '122', …}
+serialization.schema.js:89 [serialization.schema] validateSerialization success, output: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '222', numeroInicial: 122, …}
+SerializationPage.jsx:180 [SerializationPage] create payload (validated): {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '222', numeroInicial: 122, …}
+api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
+api.js:16 [api.js] Method: POST
+api.js:17 [api.js] URL: /serializacion-comprobantes
+api.js:18 [api.js] Full URL: http://localhost:3000/api/serializacion-comprobantes
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: {id_empresa: 1, id_sucursal: 1, id_tipo_comprobante: 2, serie: '222', numero_inicial: 122, …}
+api.js:21 [api.js] Data type: object
+api.js:23 [api.js] Data stringified: {"id_empresa":1,"id_sucursal":1,"id_tipo_comprobante":2,"serie":"222","numero_inicial":122,"numero_actual":122,"numero_final":null,"cantidad_numeros":1000,"por_default":true,"activo":true}
+api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
+api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
+api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
+api.js:47 [api.js] Status: 201
+api.js:48 [api.js] Data: {mensaje: 'Serialización creada', datos: {…}}
+api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
+SerializationPage.jsx:68 [SerializationPage] createMut onSuccess
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
+api.js:16 [api.js] Method: GET
+api.js:17 [api.js] URL: /serializacion-comprobantes/por-sucursal/1
+api.js:18 [api.js] Full URL: http://localhost:3000/api/serializacion-comprobantes/por-sucursal/1
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: undefined
+api.js:21 [api.js] Data type: undefined
+api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
+api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
+api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
+api.js:47 [api.js] Status: 200
+api.js:48 [api.js] Data: (2) [{…}, {…}]
+api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
+SerializationPage.jsx:135 [SerializationPage] handleOpenEdit item: {id: 1, idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '33', …}
+SerializationPage.jsx:151 [SerializationPage] mappedForm for edit: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '33', numeroInicial: 13, …}
+ConfigurationForm.jsx:21 [ConfigurationForm] onSubmit values: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '33', numeroInicial: 13, …}
+SerializationPage.jsx:186 [SerializationPage] handleSubmitEdit form before validate: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '33', numeroInicial: 13, …}
+serialization.schema.js:171 [serialization.schema] validateSerializationUpdate input: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '33', numeroInicial: 13, …}
+serialization.schema.js:185 [serialization.schema] validateSerializationUpdate errors: {} raw error: ZodError: [
+  {
+    "expected": "boolean",
+    "code": "invalid_type",
+    "path": [
+      "porDefault"
+    ],
+    "message": "Invalid input: expected boolean, received number"
+  }
+]
+    at validateSerializationUpdate (serialization.schema.js:173:49)
+    at handleSubmitEdit (SerializationPage.jsx:188:18)
+    at handleSubmit (ConfigurationForm.jsx:22:5)
+    at executeDispatch (react-dom_client.js?v=c7ad2ce8:11736:11)
+    at runWithFiberInDEV (react-dom_client.js?v=c7ad2ce8:1485:72)
+    at processDispatchQueue (react-dom_client.js?v=c7ad2ce8:11772:37)
+    at react-dom_client.js?v=c7ad2ce8:12182:11
+    at batchedUpdates$1 (react-dom_client.js?v=c7ad2ce8:2628:42)
+    at dispatchEventForPluginEventSystem (react-dom_client.js?v=c7ad2ce8:11877:9)
+    at dispatchEvent (react-dom_client.js?v=c7ad2ce8:14792:13)
+overrideMethod @ hook.js:608
+validateSerializationUpdate @ serialization.schema.js:185
+handleSubmitEdit @ SerializationPage.jsx:188
+handleSubmit @ ConfigurationForm.jsx:22
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<form>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+ConfigurationForm @ ConfigurationForm.jsx:140
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ConfigurationForm>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+SerializationPage @ SerializationPage.jsx:448
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<SerializationPage>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+(anonymous) @ index.jsx:125Understand this error
+SerializationPage.jsx:190 [SerializationPage] edit soft validation errors: {}
+overrideMethod @ hook.js:608
+handleSubmitEdit @ SerializationPage.jsx:190
+handleSubmit @ ConfigurationForm.jsx:22
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<form>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+ConfigurationForm @ ConfigurationForm.jsx:140
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ConfigurationForm>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+SerializationPage @ SerializationPage.jsx:448
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<SerializationPage>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+(anonymous) @ index.jsx:125Understand this warning
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+SerializationPage.jsx:135 [SerializationPage] handleOpenEdit item: {id: 2, idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '222', …}
+SerializationPage.jsx:151 [SerializationPage] mappedForm for edit: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '222', numeroInicial: 122, …}
+ConfigurationForm.jsx:21 [ConfigurationForm] onSubmit values: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '222', numeroInicial: 122, …}
+SerializationPage.jsx:186 [SerializationPage] handleSubmitEdit form before validate: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '222', numeroInicial: 122, …}
+serialization.schema.js:171 [serialization.schema] validateSerializationUpdate input: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '222', numeroInicial: 122, …}
+serialization.schema.js:185 [serialization.schema] validateSerializationUpdate errors: {} raw error: ZodError: [
+  {
+    "expected": "boolean",
+    "code": "invalid_type",
+    "path": [
+      "porDefault"
+    ],
+    "message": "Invalid input: expected boolean, received number"
+  }
+]
+    at validateSerializationUpdate (serialization.schema.js:173:49)
+    at handleSubmitEdit (SerializationPage.jsx:188:18)
+    at handleSubmit (ConfigurationForm.jsx:22:5)
+    at executeDispatch (react-dom_client.js?v=c7ad2ce8:11736:11)
+    at runWithFiberInDEV (react-dom_client.js?v=c7ad2ce8:1485:72)
+    at processDispatchQueue (react-dom_client.js?v=c7ad2ce8:11772:37)
+    at react-dom_client.js?v=c7ad2ce8:12182:11
+    at batchedUpdates$1 (react-dom_client.js?v=c7ad2ce8:2628:42)
+    at dispatchEventForPluginEventSystem (react-dom_client.js?v=c7ad2ce8:11877:9)
+    at dispatchEvent (react-dom_client.js?v=c7ad2ce8:14792:13)
+overrideMethod @ hook.js:608
+validateSerializationUpdate @ serialization.schema.js:185
+handleSubmitEdit @ SerializationPage.jsx:188
+handleSubmit @ ConfigurationForm.jsx:22
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<form>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+ConfigurationForm @ ConfigurationForm.jsx:140
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ConfigurationForm>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+SerializationPage @ SerializationPage.jsx:448
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<SerializationPage>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+(anonymous) @ index.jsx:125Understand this error
+SerializationPage.jsx:190 [SerializationPage] edit soft validation errors: {}
+overrideMethod @ hook.js:608
+handleSubmitEdit @ SerializationPage.jsx:190
+handleSubmit @ ConfigurationForm.jsx:22
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<form>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+ConfigurationForm @ ConfigurationForm.jsx:140
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ConfigurationForm>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+SerializationPage @ SerializationPage.jsx:448
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<SerializationPage>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+(anonymous) @ index.jsx:125Understand this warning
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]

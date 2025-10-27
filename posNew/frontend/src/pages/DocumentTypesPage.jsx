@@ -93,7 +93,7 @@ const DocumentTypesPage = () => {
   const handleOpenEdit = (item) => {
     setSelectedItem(item);
     setForm({
-      idEmpresa: item.id_empresa,
+      idEmpresa: item.idEmpresa || user?.id_empresa || null,
       codigo: item.codigo || '',
       nombre: item.nombre || '',
       descripcion: item.descripcion || '',

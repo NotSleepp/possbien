@@ -18,6 +18,7 @@ const ConfigurationForm = ({
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('[ConfigurationForm] onSubmit values:', values);
     onSubmit();
   };
 
@@ -36,7 +37,10 @@ const ConfigurationForm = ({
             <textarea
               name={field.name}
               value={value}
-              onChange={(e) => onChange(field.name, e.target.value)}
+              onChange={(e) => {
+                console.log('[ConfigurationForm] textarea change', field.name, e.target.value);
+                onChange(field.name, e.target.value);
+              }}
               placeholder={field.placeholder}
               disabled={field.disabled || isSubmitting}
               rows={field.rows || 3}
@@ -63,7 +67,10 @@ const ConfigurationForm = ({
             <select
               name={field.name}
               value={value}
-              onChange={(e) => onChange(field.name, e.target.value)}
+              onChange={(e) => {
+                console.log('[ConfigurationForm] select change', field.name, e.target.value);
+                onChange(field.name, e.target.value);
+              }}
               disabled={field.disabled || isSubmitting}
               className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-colors ${
                 error
@@ -92,7 +99,10 @@ const ConfigurationForm = ({
               type="checkbox"
               name={field.name}
               checked={!!value}
-              onChange={(e) => onChange(field.name, e.target.checked)}
+              onChange={(e) => {
+                console.log('[ConfigurationForm] checkbox change', field.name, e.target.checked);
+                onChange(field.name, e.target.checked);
+              }}
               disabled={field.disabled || isSubmitting}
               className="w-4 h-4 text-primary border-base-300 rounded focus:ring-primary"
             />
@@ -111,7 +121,10 @@ const ConfigurationForm = ({
             key={field.name}
             label={field.label}
             value={value}
-            onChange={(v) => onChange(field.name, v)}
+            onChange={(v) => {
+              console.log('[ConfigurationForm] input change', field.name, v);
+              onChange(field.name, v);
+            }}
             type={field.type || 'text'}
             placeholder={field.placeholder}
             required={field.required}

@@ -88,6 +88,8 @@ import auditTrailsRouter from './api/audit_trails/rutas.audit_trails.js';
 import almacenesRouter from './api/almacenes/router.almacenes.js';
 import impresorasRouter from './api/impresoras/rutas.impresoras.js';
 import metodosPagoRouter from './api/metodos_pago/rutas.metodos_pago.js';
+import tiposComprobanteRouter from './api/tipos_comprobante/rutas.tipos_comprobante.js';
+import serializacionesComprobanteRouter from './api/serializaciones_comprobante/rutas.serializaciones_comprobante.js';
 
 app.use('/api/usuarios', usuariosRouter);
 app.use('/api/empresas', empresasRouter);
@@ -110,6 +112,8 @@ app.use('/api/audit_trails', auditTrailsRouter);
 app.use('/api/almacenes', almacenesRouter);
 app.use('/api/impresoras', impresorasRouter);
 app.use('/api/metodos_pago', metodosPagoRouter);
+app.use('/api/tipos-comprobante', tiposComprobanteRouter);
+app.use('/api/serializacion-comprobantes', serializacionesComprobanteRouter);
 
 // Middleware de manejo de errores (DEBE ir al final)
 app.use(errorLogger);

@@ -12,7 +12,7 @@ import {
   updateSerialization,
   deleteSerialization,
 } from '../features/settings/api/serialization.api';
-import { validateSerialization } from '../features/settings/schemas/serialization.schema';
+import { validateSerialization, validateSerializationUpdate } from '../features/settings/schemas/serialization.schema';
 
 const defaultForm = (user, selectedBranchId) => ({
   idEmpresa: user?.id_empresa || null,
@@ -65,76 +65,103 @@ const SerializationPage = () => {
   const createMut = useMutation({
     mutationFn: createSerialization,
     onSuccess: () => {
+      console.log('[SerializationPage] createMut onSuccess');
       success('Serialización creada correctamente');
       setIsCreateOpen(false);
       setForm(defaultForm(user, selectedBranchId));
       setErrors({});
       queryClient.invalidateQueries({ queryKey: ['serializations', selectedBranchId] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al crear serialización'),
+    onError: (err) => {
+      console.error('[SerializationPage] createMut onError:', err);
+      showError(err?.userMessage || 'Error al crear serialización');
+    },
   });
 
   const updateMut = useMutation({
     mutationFn: ({ id, payload }) => updateSerialization(id, payload),
     onSuccess: () => {
+      console.log('[SerializationPage] updateMut onSuccess');
       success('Serialización actualizada correctamente');
       setIsEditOpen(false);
       setSelectedItem(null);
       setErrors({});
       queryClient.invalidateQueries({ queryKey: ['serializations', selectedBranchId] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al actualizar serialización'),
+    onError: (err) => {
+      console.error('[SerializationPage] updateMut onError:', err);
+      showError(err?.userMessage || 'Error al actualizar serialización');
+    },
   });
 
   const deleteMut = useMutation({
     mutationFn: deleteSerialization,
     onSuccess: () => {
+      console.log('[SerializationPage] deleteMut onSuccess');
       success('Serialización eliminada correctamente');
       setIsDeleteOpen(false);
       setSelectedItem(null);
       queryClient.invalidateQueries({ queryKey: ['serializations', selectedBranchId] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al eliminar serialización'),
+    onError: (err) => {
+      console.error('[SerializationPage] deleteMut onError:', err);
+      showError(err?.userMessage || 'Error al eliminar serialización');
+    },
   });
 
   // Handlers
   const handleBranchChange = (branchId) => {
+    console.log('[SerializationPage] handleBranchChange branchId:', branchId);
     setSelectedBranchId(branchId);
-    setForm(defaultForm(user, branchId));
+    const df = defaultForm(user, branchId);
+    setForm(df);
+    console.log('[SerializationPage] defaultForm after branch change:', df);
   };
 
   const handleOpenCreate = () => {
+    console.log('[SerializationPage] handleOpenCreate selectedBranchId:', selectedBranchId);
     if (!selectedBranchId) {
       showError('Selecciona una sucursal primero');
       return;
     }
-    setForm(defaultForm(user, selectedBranchId));
+    const df = defaultForm(user, selectedBranchId);
+    setForm(df);
     setErrors({});
     setIsCreateOpen(true);
+    console.log('[SerializationPage] form initialized for create:', df);
   };
 
   const handleOpenEdit = (item) => {
+    console.log('[SerializationPage] handleOpenEdit item:', item);
     setSelectedItem(item);
-    setForm({
-      idEmpresa: item.id_empresa,
-      idSucursal: item.id_sucursal,
-      idTipoComprobante: item.id_tipo_comprobante,
+    const mappedNumeroFinal = item.numeroFinal != null
+      ? Number(item.numeroFinal)
+      : (item.numero_final != null ? Number(item.numero_final) : null);
+
+    const mappedForm = {
+      idEmpresa: item.idEmpresa ?? item.id_empresa ?? user?.id_empresa ?? null,
+      idSucursal: item.idSucursal ?? item.id_sucursal ?? selectedBranchId ?? null,
+      idTipoComprobante: item.idTipoComprobante ?? item.id_tipo_comprobante ?? null,
       serie: item.serie || '',
-      numeroInicial: Number(item.numero_inicial) || 1,
-      numeroActual: Number(item.numero_actual) || 1,
-      numeroFinal: item.numero_final ? Number(item.numero_final) : null,
-      porDefault: item.por_default || false,
-    });
+      numeroInicial: Number(item.numeroInicial ?? item.numero_inicial ?? 1),
+      numeroActual: Number(item.numeroActual ?? item.numero_actual ?? 1),
+      numeroFinal: mappedNumeroFinal === 0 ? null : mappedNumeroFinal,
+      porDefault: (item.porDefault === true || item.porDefault === 1 || item.por_default === 1 || item.por_default === true) ? true : false,
+    };
+    console.log('[SerializationPage] mappedForm for edit:', mappedForm);
+    setForm(mappedForm);
     setErrors({});
     setIsEditOpen(true);
   };
 
   const handleOpenDelete = (item) => {
+    console.log('[SerializationPage] handleOpenDelete item:', item);
     setSelectedItem(item);
     setIsDeleteOpen(true);
   };
 
   const handleChange = (field, value) => {
+    console.log('[SerializationPage] handleChange field:', field, 'value:', value);
     setForm((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
@@ -142,25 +169,67 @@ const SerializationPage = () => {
   };
 
   const handleSubmitCreate = () => {
+    console.log('[SerializationPage] handleSubmitCreate form before validate:', form);
     const validation = validateSerialization(form);
     if (!validation.success) {
+      console.warn('[SerializationPage] create validation errors:', validation.errors);
       setErrors(validation.errors);
       showError('Por favor corrige los errores en el formulario');
       return;
     }
+    console.log('[SerializationPage] create payload (validated):', validation.data);
     setErrors({});
-    createMut.mutate(form);
+    createMut.mutate(validation.data);
   };
 
   const handleSubmitEdit = () => {
-    const validation = validateSerialization(form);
-    if (!validation.success) {
-      setErrors(validation.errors);
+    console.log('[SerializationPage] handleSubmitEdit form before validate:', form);
+    // 1) Validación suave: coercer tipos y verificar campos individuales
+    const soft = validateSerializationUpdate(form);
+    if (!soft.success) {
+      console.warn('[SerializationPage] edit soft validation errors:', soft.errors);
+      setErrors(soft.errors);
       showError('Por favor corrige los errores en el formulario');
       return;
     }
+
+    // 2) Detectar si cambió la numeración respecto al valor original
+    const originalNI = Number(selectedItem?.numeroInicial ?? selectedItem?.numero_inicial ?? 1);
+    const originalNA = Number(selectedItem?.numeroActual ?? selectedItem?.numero_actual ?? 1);
+    const originalNF = selectedItem?.numeroFinal != null
+      ? Number(selectedItem?.numeroFinal)
+      : (selectedItem?.numero_final != null ? Number(selectedItem?.numero_final) : null);
+
+    const candNI = Number(soft.data.numeroInicial);
+    const candNA = Number(soft.data.numeroActual);
+    const candNF = soft.data.numeroFinal === '' ? null : soft.data.numeroFinal;
+
+    console.log('[SerializationPage] original numbers:', { originalNI, originalNA, originalNF });
+    console.log('[SerializationPage] candidate numbers:', { candNI, candNA, candNF });
+    const numbersChanged = (
+      candNI !== originalNI ||
+      candNA !== originalNA ||
+      ((candNF ?? null) !== (originalNF ?? null))
+    );
+    console.log('[SerializationPage] numbersChanged:', numbersChanged);
+
+    // 3) Si cambió la numeración, aplicar validación estricta con reglas cruzadas
+    let payload = soft.data;
+    if (numbersChanged) {
+      const strict = validateSerialization(soft.data);
+      if (!strict.success) {
+        console.warn('[SerializationPage] edit strict validation errors:', strict.errors);
+        setErrors(strict.errors);
+        showError('Por favor corrige los errores en el formulario');
+        return;
+      }
+      console.log('[SerializationPage] edit payload (strict validated):', strict.data);
+      payload = strict.data;
+    }
+
     setErrors({});
-    updateMut.mutate({ id: selectedItem?.id, payload: form });
+    console.log('[SerializationPage] update mutate payload:', payload, 'id:', selectedItem?.id);
+    updateMut.mutate({ id: selectedItem?.id, payload });
   };
 
   // Obtener nombre de tipo de comprobante
@@ -171,9 +240,12 @@ const SerializationPage = () => {
 
   // Calcular progreso de numeración
   const getProgress = (item) => {
-    if (!item.numero_final) return null;
-    const total = item.numero_final - item.numero_inicial + 1;
-    const used = item.numero_actual - item.numero_inicial;
+    const numeroFinal = item.numeroFinal ?? item.numero_final;
+    const numeroInicial = item.numeroInicial ?? item.numero_inicial;
+    const numeroActual = item.numeroActual ?? item.numero_actual;
+    if (!numeroFinal) return null;
+    const total = numeroFinal - numeroInicial + 1;
+    const used = numeroActual - numeroInicial;
     const percentage = (used / total) * 100;
     return { percentage: Math.min(percentage, 100), used, total };
   };
@@ -181,13 +253,13 @@ const SerializationPage = () => {
   // Configuración de columnas
   const columns = [
     {
-      key: 'id_tipo_comprobante',
+      key: 'idTipoComprobante',
       label: 'Tipo de Comprobante',
       render: (value) => getDocumentTypeName(value),
     },
     { key: 'serie', label: 'Serie' },
     {
-      key: 'numero_actual',
+      key: 'numeroActual',
       label: 'Número Actual',
       render: (value, item) => {
         const progress = getProgress(item);
@@ -204,15 +276,15 @@ const SerializationPage = () => {
       },
     },
     {
-      key: 'numero_inicial',
+      key: 'numeroInicial',
       label: 'Rango',
       render: (value, item) => {
-        const final = item.numero_final || '∞';
+        const final = (item.numeroFinal ?? item.numero_final) || '∞';
         return `${value} - ${final}`;
       },
     },
     {
-      key: 'por_default',
+      key: 'porDefault',
       label: 'Predeterminada',
       render: (value) => (
         <span className={`px-2 py-1 rounded text-xs ${value ? 'bg-primary/20 text-primary' : 'bg-base-300 text-base-content/60'}`}>

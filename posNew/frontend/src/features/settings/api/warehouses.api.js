@@ -1,7 +1,11 @@
 import { api } from '../../../shared/api/api';
 
-export const listWarehousesByEmpresa = async (idEmpresa) => {
-  const { data } = await api.get(`/almacenes/por-empresa/${idEmpresa}`);
+/**
+ * API calls para gestión de almacenes
+ */
+
+export const listWarehousesByBranch = async (idSucursal) => {
+  const { data } = await api.get(`/almacenes/por-sucursal/${idSucursal}`);
   return data;
 };
 
@@ -12,7 +16,7 @@ export const getWarehouse = async (id) => {
 
 export const createWarehouse = async (payload) => {
   const { data } = await api.post('/almacenes', payload);
-  return data?.datos ?? data; // backend may return { mensaje, datos }
+  return data?.datos ?? data;
 };
 
 export const updateWarehouse = async (id, payload) => {

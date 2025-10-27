@@ -6,12 +6,12 @@ import { useAuthStore } from '../store/useAuthStore';
 import { useToastStore } from '../store/useToastStore';
 import { listBranchesByEmpresa } from '../features/settings/api/branches.api';
 import {
-  listWarehousesByBranch,
-  createWarehouse,
-  updateWarehouse,
-  deleteWarehouse,
-} from '../features/settings/api/warehouses.api';
-import { validateWarehouse } from '../features/settings/schemas/warehouse.schema';
+  listCajasBySucursal,
+  createCaja,
+  updateCaja,
+  deleteCaja,
+} from '../features/settings/api/cajas.api';
+import { validateCashRegister } from '../features/settings/schemas/cashRegister.schema';
 
 const defaultForm = (user, selectedBranchId) => ({
   idEmpresa: user?.id_empresa || null,
@@ -19,10 +19,11 @@ const defaultForm = (user, selectedBranchId) => ({
   codigo: '',
   nombre: '',
   descripcion: '',
-  default: false,
+  montoInicial: 0,
+  print: true,
 });
 
-const WarehousesPage = () => {
+const CashRegistersPage = () => {
   const { user } = useAuthStore();
   const queryClient = useQueryClient();
   const { success, error: showError } = useToastStore();
@@ -44,47 +45,47 @@ const WarehousesPage = () => {
     enabled: !!idEmpresa,
   });
 
-  // Query para listar almacenes
+  // Query para listar cajas
   const { data: items = [], isLoading } = useQuery({
-    queryKey: ['warehouses', selectedBranchId],
-    queryFn: () => listWarehousesByBranch(selectedBranchId),
+    queryKey: ['cajas', selectedBranchId],
+    queryFn: () => listCajasBySucursal(selectedBranchId),
     enabled: !!selectedBranchId,
   });
 
   // Mutaciones
   const createMut = useMutation({
-    mutationFn: createWarehouse,
+    mutationFn: createCaja,
     onSuccess: () => {
-      success('Almacén creado correctamente');
+      success('Caja registradora creada correctamente');
       setIsCreateOpen(false);
       setForm(defaultForm(user, selectedBranchId));
       setErrors({});
-      queryClient.invalidateQueries({ queryKey: ['warehouses', selectedBranchId] });
+      queryClient.invalidateQueries({ queryKey: ['cajas', selectedBranchId] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al crear almacén'),
+    onError: (err) => showError(err?.userMessage || 'Error al crear caja'),
   });
 
   const updateMut = useMutation({
-    mutationFn: ({ id, payload }) => updateWarehouse(id, payload),
+    mutationFn: ({ id, payload }) => updateCaja(id, payload),
     onSuccess: () => {
-      success('Almacén actualizado correctamente');
+      success('Caja registradora actualizada correctamente');
       setIsEditOpen(false);
       setSelectedItem(null);
       setErrors({});
-      queryClient.invalidateQueries({ queryKey: ['warehouses', selectedBranchId] });
+      queryClient.invalidateQueries({ queryKey: ['cajas', selectedBranchId] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al actualizar almacén'),
+    onError: (err) => showError(err?.userMessage || 'Error al actualizar caja'),
   });
 
   const deleteMut = useMutation({
-    mutationFn: deleteWarehouse,
+    mutationFn: deleteCaja,
     onSuccess: () => {
-      success('Almacén eliminado correctamente');
+      success('Caja registradora eliminada correctamente');
       setIsDeleteOpen(false);
       setSelectedItem(null);
-      queryClient.invalidateQueries({ queryKey: ['warehouses', selectedBranchId] });
+      queryClient.invalidateQueries({ queryKey: ['cajas', selectedBranchId] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al eliminar almacén'),
+    onError: (err) => showError(err?.userMessage || 'Error al eliminar caja'),
   });
 
   // Handlers
@@ -111,7 +112,8 @@ const WarehousesPage = () => {
       codigo: item.codigo || '',
       nombre: item.nombre || '',
       descripcion: item.descripcion || '',
-      default: item.default || false,
+      montoInicial: Number(item.monto_inicial) || 0,
+      print: item.print !== undefined ? item.print : true,
     });
     setErrors({});
     setIsEditOpen(true);
@@ -130,7 +132,7 @@ const WarehousesPage = () => {
   };
 
   const handleSubmitCreate = () => {
-    const validation = validateWarehouse(form);
+    const validation = validateCashRegister(form);
     if (!validation.success) {
       setErrors(validation.errors);
       showError('Por favor corrige los errores en el formulario');
@@ -141,7 +143,7 @@ const WarehousesPage = () => {
   };
 
   const handleSubmitEdit = () => {
-    const validation = validateWarehouse(form);
+    const validation = validateCashRegister(form);
     if (!validation.success) {
       setErrors(validation.errors);
       showError('Por favor corrige los errores en el formulario');
@@ -157,10 +159,15 @@ const WarehousesPage = () => {
     { key: 'nombre', label: 'Nombre' },
     { key: 'descripcion', label: 'Descripción' },
     {
-      key: 'default',
-      label: 'Predeterminado',
+      key: 'monto_inicial',
+      label: 'Monto Inicial',
+      render: (value) => `S/ ${Number(value || 0).toFixed(2)}`,
+    },
+    {
+      key: 'print',
+      label: 'Imprime',
       render: (value) => (
-        <span className={`px-2 py-1 rounded text-xs ${value ? 'bg-primary/20 text-primary' : 'bg-base-300 text-base-content/60'}`}>
+        <span className={`px-2 py-1 rounded text-xs ${value ? 'bg-success/20 text-success' : 'bg-base-300 text-base-content/60'}`}>
           {value ? 'Sí' : 'No'}
         </span>
       ),
@@ -182,44 +189,51 @@ const WarehousesPage = () => {
       name: 'codigo',
       label: 'Código',
       type: 'text',
-      placeholder: 'ALM001',
+      placeholder: 'CAJ001',
       required: true,
-      hint: 'Código único del almacén (solo mayúsculas y números)',
+      hint: 'Código único de la caja (solo mayúsculas y números)',
     },
     {
       name: 'nombre',
       label: 'Nombre',
       type: 'text',
-      placeholder: 'Almacén Principal',
+      placeholder: 'Caja Principal',
       required: true,
     },
     {
       name: 'descripcion',
       label: 'Descripción',
       type: 'textarea',
-      placeholder: 'Descripción del almacén (opcional)',
+      placeholder: 'Descripción de la caja (opcional)',
       rows: 2,
     },
     {
-      name: 'default',
-      label: 'Establecer como almacén predeterminado',
+      name: 'montoInicial',
+      label: 'Monto Inicial',
+      type: 'number',
+      placeholder: '0.00',
+      hint: 'Monto con el que inicia la caja cada día',
+    },
+    {
+      name: 'print',
+      label: 'Habilitar impresión de tickets',
       type: 'checkbox',
-      hint: 'Solo puede haber un almacén predeterminado por sucursal',
+      hint: 'Permite imprimir tickets desde esta caja',
     },
   ];
 
   return (
     <ConfigurationLayout
-      title="Almacenes"
-      description="Gestiona los almacenes de tus sucursales"
+      title="Cajas Registradoras"
+      description="Gestiona las cajas registradoras de tus sucursales"
       actions={
         <Button variant="primary" onClick={handleOpenCreate} disabled={!selectedBranchId}>
-          Nuevo Almacén
+          Nueva Caja
         </Button>
       }
       breadcrumbs={[
         { label: 'Configuración', href: '/settings' },
-        { label: 'Almacenes' },
+        { label: 'Cajas' },
       ]}
     >
       {/* Selector de Sucursal */}
@@ -245,7 +259,7 @@ const WarehousesPage = () => {
       <Modal
         isOpen={isCreateOpen}
         onClose={() => setIsCreateOpen(false)}
-        title="Nuevo Almacén"
+        title="Nueva Caja Registradora"
         onConfirm={handleSubmitCreate}
         confirmText={createMut.isLoading ? 'Creando...' : 'Crear'}
       >
@@ -264,7 +278,7 @@ const WarehousesPage = () => {
       <Modal
         isOpen={isEditOpen}
         onClose={() => setIsEditOpen(false)}
-        title="Editar Almacén"
+        title="Editar Caja Registradora"
         onConfirm={handleSubmitEdit}
         confirmText={updateMut.isLoading ? 'Guardando...' : 'Guardar'}
       >
@@ -289,9 +303,9 @@ const WarehousesPage = () => {
         cancelText="Cancelar"
         variant="danger"
       >
-        <p>¿Seguro que deseas eliminar el almacén "{selectedItem?.nombre}"?</p>
+        <p>¿Seguro que deseas eliminar la caja "{selectedItem?.nombre}"?</p>
         <p className="text-sm text-base-content/60 mt-2">
-          Esta acción no se puede deshacer. Asegúrate de que no haya productos con stock en este almacén.
+          Esta acción no se puede deshacer. Asegúrate de que no haya sesiones activas en esta caja.
         </p>
       </Modal>
 
@@ -308,11 +322,11 @@ const WarehousesPage = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
             />
           </svg>
           <p className="text-base-content/60 text-lg">
-            Selecciona una sucursal para ver sus almacenes
+            Selecciona una sucursal para ver sus cajas registradoras
           </p>
         </div>
       ) : (
@@ -322,11 +336,11 @@ const WarehousesPage = () => {
           isLoading={isLoading}
           onEdit={handleOpenEdit}
           onDelete={handleOpenDelete}
-          emptyMessage="No hay almacenes registrados en esta sucursal. Crea tu primer almacén para comenzar."
+          emptyMessage="No hay cajas registradas en esta sucursal. Crea tu primera caja para comenzar."
         />
       )}
     </ConfigurationLayout>
   );
 };
 
-export default WarehousesPage;
+export default CashRegistersPage;

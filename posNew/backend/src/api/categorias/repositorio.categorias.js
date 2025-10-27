@@ -23,10 +23,26 @@ async function eliminarCategoria(id) {
   return await clienteBaseDeDatos('categorias').where({ id }).first();
 }
 
+async function obtenerCategoriaPorCodigoYEmpresa(codigo, idEmpresa) {
+  return await clienteBaseDeDatos('categorias')
+    .where({ codigo, id_empresa: idEmpresa, eliminado: false })
+    .first();
+}
+
+async function contarProductosPorCategoria(idCategoria) {
+  const result = await clienteBaseDeDatos('productos')
+    .where({ id_categoria: idCategoria, eliminado: false })
+    .count('* as count')
+    .first();
+  return result?.count || 0;
+}
+
 export {
     crearCategoria,
     obtenerTodasCategorias,
     obtenerCategoriaPorId,
     actualizarCategoria,
-    eliminarCategoria
+    eliminarCategoria,
+    obtenerCategoriaPorCodigoYEmpresa,
+    contarProductosPorCategoria
 };

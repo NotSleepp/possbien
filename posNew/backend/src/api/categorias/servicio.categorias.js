@@ -1,6 +1,7 @@
 import { esquemaCrearCategoria, esquemaActualizarCategoria } from './dto.categorias.js';
 import * as repositorio from './repositorio.categorias.js';
 import { validarAccesoEmpresa } from '../../utils/validacionesNegocio.js';
+import { UniqueConstraintError, DependencyError } from '../../shared/utils/errorHandler.js';
 
 /**
  * Crea una nueva categoría en la base de datos después de validar los datos.
@@ -19,6 +20,12 @@ async function crearCategoria(datos, usuario = null) {
     if (!result.esValido) {
       throw new Error(result.mensaje || 'Acceso no autorizado');
     }
+  }
+
+  // Validar unicidad de código por empresa
+  const existente = await repositorio.obtenerCategoriaPorCodigoYEmpresa(datosValidados.codigo, datosValidados.idEmpresa);
+  if (existente) {
+    throw new UniqueConstraintError('código', datosValidados.codigo);
   }
 
   const mappedData = {
@@ -79,6 +86,14 @@ async function actualizarCategoria(id, datos, usuario = null) {
     }
   }
 
+  // Si se está actualizando el código, validar unicidad
+  if (datosValidados.codigo && datosValidados.codigo !== categoriaActual.codigo) {
+    const existente = await repositorio.obtenerCategoriaPorCodigoYEmpresa(datosValidados.codigo, categoriaActual.id_empresa);
+    if (existente && existente.id !== id) {
+      throw new UniqueConstraintError('código', datosValidados.codigo);
+    }
+  }
+
   return await repositorio.actualizarCategoria(id, datosValidados);
 }
 
@@ -98,13 +113,22 @@ async function eliminarCategoria(id, usuario = null) {
     }
   }
 
+  // Verificar si hay productos asociados
+  const productosCount = await repositorio.contarProductosPorCategoria(id);
+  if (productosCount > 0) {
+    throw new DependencyError(
+      'la categoría',
+      { productos: productosCount }
+    );
+  }
+
   return await repositorio.eliminarCategoria(id);
 }
 
 export {
-    crearCategoria,
-    obtenerTodasCategorias,
-    obtenerCategoriaPorId,
-    actualizarCategoria,
-    eliminarCategoria
+  crearCategoria,
+  obtenerTodasCategorias,
+  obtenerCategoriaPorId,
+  actualizarCategoria,
+  eliminarCategoria
 };

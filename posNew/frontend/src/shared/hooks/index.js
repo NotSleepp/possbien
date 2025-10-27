@@ -2,3 +2,4 @@
 export { useTheme } from './useTheme';
 export { useCSSVars } from './useCSSVars';
 export { usePermissions } from './usePermissions';
+export { useFormErrors } from './useFormErrors';

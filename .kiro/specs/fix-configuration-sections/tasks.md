@@ -422,7 +422,8 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Tests de conteo de usuarios
   - _Requerimientos: 6_
 
-- [ ] 8. Implementar gestión completa de Permisos
+- [x] 8. Implementar gestión completa de Permisos
+
   - Crear schema Zod de permisos en frontend
   - Crear DTO de permisos en backend
   - Crear endpoints de permisos
@@ -467,7 +468,9 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
     - Maneja constraint único (id_rol, id_modulo)
   - _Requerimientos: 6_
 
-- [ ] 8.5 Crear componente PermissionsMatrix
+- [x] 8.5 Crear componente PermissionsMatrix
+
+
   - Crear archivo `posNew/frontend/src/features/settings/components/PermissionsMatrix.jsx`
   - Mostrar tabla con módulos en filas y permisos en columnas
   - Agregar checkboxes para cada permiso
@@ -476,7 +479,9 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Cargar permisos existentes al montar
   - _Requerimientos: 6_
 
-- [ ] 8.6 Integrar PermissionsMatrix en página de roles
+- [x] 8.6 Integrar PermissionsMatrix en página de roles
+
+
   - Editar `posNew/frontend/src/pages/RolesPage.jsx`
   - Agregar botón "Editar Permisos" en cada fila de roles
   - Abrir modal con PermissionsMatrix al hacer clic
@@ -484,7 +489,9 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Mostrar mensaje de éxito/error
   - _Requerimientos: 6_
 
-- [ ] 8.7 Escribir tests para permisos
+
+- [x] 8.7 Escribir tests para permisos
+
   - Tests de schema de permisos
   - Tests de actualización masiva
   - Tests de componente PermissionsMatrix
@@ -553,7 +560,8 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Tests de ColorPicker
   - _Requerimientos: 7_
 
-- [ ] 10. Mejorar manejo de errores en frontend
+- [x] 10. Mejorar manejo de errores en frontend
+
   - Crear utilidad de manejo de errores
   - Integrar en todas las API calls
   - Mostrar errores específicos por campo
@@ -586,7 +594,9 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - _Requerimientos: 8_
 
 
-- [ ] 10.4 Integrar manejo de errores en API calls de métodos de pago
+
+- [x] 10.4 Integrar manejo de errores en API calls de métodos de pago
+
   - Editar `posNew/frontend/src/features/settings/api/paymentMethods.api.js`
   - Aplicar mismo patrón de manejo de errores
   - _Requerimientos: 8_
@@ -622,7 +632,9 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Aplicar mismo patrón de manejo de errores
   - _Requerimientos: 8_
 
-- [ ] 11. Actualizar todas las páginas para usar ValidatedInput y manejo de errores
+
+- [x] 11. Actualizar todas las páginas para usar ValidatedInput y manejo de errores
+
   - Actualizar PrintersPage
   - Actualizar PaymentMethodsPage
   - Actualizar DocumentTypesPage
@@ -632,7 +644,9 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Actualizar CategoriesPage
   - _Requerimientos: 11, 12_
 
-- [ ] 11.1 Actualizar PrintersPage
+
+- [x] 11.1 Actualizar PrintersPage
+
   - Editar `posNew/frontend/src/pages/PrintersPage.jsx`
   - Reemplazar inputs por ValidatedInput
   - Usar hook useFormErrors
@@ -640,32 +654,40 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Agregar estados de carga (skeleton, spinner en botón)
   - _Requerimientos: 11, 12_
 
-- [ ] 11.2 Actualizar PaymentMethodsPage
+- [x] 11.2 Actualizar PaymentMethodsPage
+
   - Editar `posNew/frontend/src/pages/PaymentMethodsPage.jsx`
   - Aplicar mismo patrón de ValidatedInput y errores
   - Agregar estados de carga
   - _Requerimientos: 11, 12_
 
-- [ ] 11.3 Actualizar DocumentTypesPage
+- [x] 11.3 Actualizar DocumentTypesPage
+
   - Editar `posNew/frontend/src/pages/DocumentTypesPage.jsx`
   - Aplicar mismo patrón de ValidatedInput y errores
   - Agregar estados de carga
   - _Requerimientos: 11, 12_
 
-- [ ] 11.4 Actualizar SerializationPage
+
+- [x] 11.4 Actualizar SerializationPage
+
+
   - Editar `posNew/frontend/src/pages/SerializationPage.jsx`
   - Aplicar mismo patrón de ValidatedInput y errores
   - Agregar badge de advertencia cuando número actual se acerca al final
   - Agregar estados de carga
   - _Requerimientos: 11, 12_
 
-- [ ] 11.5 Actualizar UsersSettingsPage
+- [x] 11.5 Actualizar UsersSettingsPage
+
   - Editar `posNew/frontend/src/pages/UsersSettingsPage.jsx`
   - Aplicar mismo patrón de ValidatedInput y errores
   - Diferenciar formulario de creación (password required) y edición (password optional)
   - Agregar indicador de fortaleza de contraseña
   - Agregar estados de carga
   - _Requerimientos: 11, 12_
+
+
 
 - [ ] 11.6 Actualizar RolesPage
   - Editar `posNew/frontend/src/pages/RolesPage.jsx`
@@ -675,6 +697,8 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Agregar estados de carga
   - _Requerimientos: 11, 12_
 
+
+
 - [ ] 11.7 Actualizar CategoriesPage
   - Editar `posNew/frontend/src/pages/CategoriesPage.jsx`
   - Aplicar mismo patrón de ValidatedInput y errores
@@ -683,13 +707,17 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Agregar estados de carga
   - _Requerimientos: 11, 12_
 
-- [ ] 12. Agregar validaciones de negocio faltantes
+- [x] 12. Agregar validaciones de negocio faltantes
+
+
   - Implementar todas las validaciones de unicidad
   - Implementar todas las validaciones de dependencias
   - Agregar mensajes descriptivos
   - _Requerimientos: 8, 9, 10_
 
-- [ ] 12.1 Verificar y completar validaciones de unicidad
+
+- [x] 12.1 Verificar y completar validaciones de unicidad
+
   - Revisar que todos los servicios validen unicidad según constraints de DB
   - Impresoras: no aplica (no hay unique constraint adicional)
   - Métodos de pago: codigo por empresa ✓ (ya implementado en tarea 3.4)
@@ -700,7 +728,8 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Categorías: codigo por empresa (verificar implementación)
   - _Requerimientos: 9_
 
-- [ ] 12.2 Verificar y completar validaciones de dependencias
+- [x] 12.2 Verificar y completar validaciones de dependencias
+
   - Revisar que todos los servicios validen dependencias antes de eliminar
   - Impresoras: no aplica (no tiene dependencias críticas)
   - Métodos de pago: verificar si está en formas_pago_venta
@@ -711,12 +740,17 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Categorías: verificar si tiene productos ✓ (ya implementado en tarea 9.4)
   - _Requerimientos: 10_
 
-- [ ] 12.3 Implementar validación de dependencias para métodos de pago
+
+- [x] 12.3 Implementar validación de dependencias para métodos de pago
+
   - Editar `posNew/backend/src/api/metodos_pago/servicio.metodos_pago.js`
   - Verificar si el método está en tabla formas_pago_venta antes de eliminar
   - Contar número de transacciones que usan el método
+
+
   - Lanzar `DependencyError` si hay dependencias
   - _Requerimientos: 10_
+
 
 - [ ] 12.4 Implementar validación de dependencias para usuarios
   - Editar `posNew/backend/src/api/usuarios/servicio.usuarios.js`
@@ -726,23 +760,31 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Alternativamente, permitir eliminación lógica (activo = false)
   - _Requerimientos: 10_
 
-- [ ] 13. Agregar sanitización de datos
+- [x] 13. Agregar sanitización de datos
+
+
   - Crear funciones de sanitización
   - Aplicar en todos los servicios antes de guardar
   - Prevenir inyección de código
   - _Requerimientos: 8_
 
-- [ ] 13.1 Crear utilidades de sanitización
+- [x] 13.1 Crear utilidades de sanitización
+
   - Crear archivo `posNew/backend/src/shared/utils/sanitize.js`
   - Implementar función `sanitizeString` que elimina caracteres peligrosos
   - Implementar función `sanitizeObject` que sanitiza recursivamente
   - _Requerimientos: 8_
 
-- [ ] 13.2 Integrar sanitización en servicios
+
+
+- [x] 13.2 Integrar sanitización en servicios
+
   - Editar todos los servicios de configuración
   - Aplicar `sanitizeObject` a datos antes de pasar al repositorio
   - Mantener tipos de datos correctos (no sanitizar números, booleans)
   - _Requerimientos: 8_
+
+
 
 - [ ] 14. Documentar cambios y crear guía de uso
   - Documentar nuevos patrones de código
@@ -751,7 +793,10 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Crear ejemplos de uso
   - _Requerimientos: Todos_
 
-- [ ] 14.1 Crear documento de patrones de código
+- [x] 14.1 Crear documento de patrones de código
+
+
+
   - Crear archivo `posNew/docs/CODING_PATTERNS.md`
   - Documentar patrón de transformación de datos
   - Documentar patrón de validación en múltiples capas
@@ -759,17 +804,23 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Incluir ejemplos de código
   - _Requerimientos: Todos_
 
+
+
+
 - [ ] 14.2 Crear guía de validación
   - Crear archivo `posNew/docs/VALIDATION_GUIDE.md`
   - Explicar cómo crear schemas Zod
+
   - Explicar cómo agregar validaciones personalizadas
   - Explicar cómo manejar errores de validación
   - Incluir checklist de validaciones comunes
   - _Requerimientos: 8, 9, 11_
 
+
 - [ ] 14.3 Actualizar README con cambios
   - Editar `posNew/README.md`
   - Agregar sección sobre validación y manejo de errores
+
   - Agregar enlaces a documentación nueva
   - Agregar ejemplos de uso común
   - _Requerimientos: Todos_
@@ -781,6 +832,8 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Verificar transformación de datos
   - _Requerimientos: Todos_
 
+
+
 - [ ] 15.1 Probar flujo completo de impresoras
   - Crear impresora con todos los campos
   - Crear impresora con campos mínimos
@@ -788,7 +841,9 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Intentar crear con datos inválidos (verificar errores)
   - Eliminar impresora
   - Verificar que datos se guardan correctamente en DB
+
   - _Requerimientos: 1_
+
 
 - [ ] 15.2 Probar flujo completo de métodos de pago
   - Crear método de pago
@@ -796,6 +851,7 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Actualizar método de pago
   - Intentar eliminar método en uso (verificar error de dependencia)
   - Eliminar método sin uso
+
   - _Requerimientos: 2_
 
 - [ ] 15.3 Probar flujo completo de tipos de comprobantes
@@ -806,7 +862,9 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Eliminar tipo sin uso
   - _Requerimientos: 3_
 
-- [ ] 15.4 Probar flujo completo de serialización
+
+- [x] 15.4 Probar flujo completo de serialización
+
   - Crear serialización
   - Intentar crear con serie duplicada para misma sucursal y tipo
   - Crear serie predeterminada
@@ -814,6 +872,8 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Intentar crear con número actual > número final (verificar error)
   - Verificar advertencia cuando se acerca al final
   - _Requerimientos: 4_
+
+
 
 - [ ] 15.5 Probar flujo completo de usuarios
   - Crear usuario con contraseña
@@ -825,6 +885,8 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Intentar eliminar usuario con dependencias
   - _Requerimientos: 5_
 
+
+
 - [ ] 15.6 Probar flujo completo de roles y permisos
   - Crear rol
   - Intentar crear con nombre duplicado
@@ -833,6 +895,7 @@ Este plan está organizado en tareas incrementales que construyen sobre las ante
   - Intentar eliminar rol con usuarios asignados
   - Eliminar rol sin usuarios
   - _Requerimientos: 6_
+
 
 - [ ] 15.7 Probar flujo completo de categorías
   - Crear categoría con color e ícono

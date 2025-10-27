@@ -1,6 +1,6 @@
 import { esquemaCrearMetodoPago, esquemaActualizarMetodoPago } from './dto.metodos_pago.js';
 import * as repositorio from './repositorio.metodos_pago.js';
-import { UniqueConstraintError } from '../../shared/utils/errorHandler.js';
+import { UniqueConstraintError, DependencyError } from '../../shared/utils/errorHandler.js';
 
 export async function crearMetodoPago(datos) {
   const d = esquemaCrearMetodoPago.parse(datos);
@@ -65,5 +65,14 @@ export async function actualizarMetodoPago(id, datos) {
 }
 
 export async function eliminarMetodoPago(id) {
+  // Verificar si el método está en uso en transacciones
+  const transaccionesCount = await repositorio.contarTransaccionesPorMetodoPago(id);
+  if (transaccionesCount > 0) {
+    throw new DependencyError(
+      'el método de pago',
+      { transacciones: transaccionesCount }
+    );
+  }
+  
   return repositorio.eliminarMetodoPago(id);
 }

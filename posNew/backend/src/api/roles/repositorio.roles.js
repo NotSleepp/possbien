@@ -23,4 +23,26 @@ async function eliminarRol(id) {
   return await clienteBaseDeDatos('roles').where({ id }).first();
 }
 
-export { obtenerTodosRoles, obtenerRolPorId, crearRol, actualizarRol, eliminarRol };
+async function obtenerRolPorNombreYEmpresa(nombre, idEmpresa) {
+  return await clienteBaseDeDatos('roles')
+    .where({ nombre, id_empresa: idEmpresa, eliminado: false })
+    .first();
+}
+
+async function contarUsuariosPorRol(idRol) {
+  const result = await clienteBaseDeDatos('usuarios')
+    .where({ id_rol: idRol, eliminado: false })
+    .count('* as count')
+    .first();
+  return result?.count || 0;
+}
+
+export { 
+  obtenerTodosRoles, 
+  obtenerRolPorId, 
+  crearRol, 
+  actualizarRol, 
+  eliminarRol,
+  obtenerRolPorNombreYEmpresa,
+  contarUsuariosPorRol
+};

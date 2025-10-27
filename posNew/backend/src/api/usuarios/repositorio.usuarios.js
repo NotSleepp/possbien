@@ -39,4 +39,29 @@ async function obtenerUsuarioPorUsername(username) {
     .first();
 }
 
-export { obtenerTodosUsuarios, obtenerUsuarioPorId, crearUsuario, actualizarUsuario, eliminarUsuario, obtenerUsuarioPorUsername };
+async function contarSesionesActivasPorUsuario(idUsuario) {
+  const result = await clienteBaseDeDatos('sesiones')
+    .where({ id_usuario: idUsuario, activo: true })
+    .count('* as count')
+    .first();
+  return result?.count || 0;
+}
+
+async function contarVentasPorUsuario(idUsuario) {
+  const result = await clienteBaseDeDatos('ventas')
+    .where({ id_usuario: idUsuario, eliminado: false })
+    .count('* as count')
+    .first();
+  return result?.count || 0;
+}
+
+export { 
+  obtenerTodosUsuarios, 
+  obtenerUsuarioPorId, 
+  crearUsuario, 
+  actualizarUsuario, 
+  eliminarUsuario, 
+  obtenerUsuarioPorUsername,
+  contarSesionesActivasPorUsuario,
+  contarVentasPorUsuario
+};

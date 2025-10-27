@@ -27,3 +27,11 @@ export async function actualizarMetodoPago(id, datos) {
 export async function eliminarMetodoPago(id) {
   await db('metodos_pago').where({ id }).update({ eliminado: true, fecha_eliminacion: db.fn.now() });
 }
+
+export async function contarTransaccionesPorMetodoPago(idMetodoPago) {
+  const result = await db('formas_pago_venta')
+    .where({ id_metodo_pago: idMetodoPago })
+    .count('* as count')
+    .first();
+  return result?.count || 0;
+}

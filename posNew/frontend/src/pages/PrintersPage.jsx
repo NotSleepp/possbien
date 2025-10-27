@@ -63,11 +63,30 @@ const PrintersPage = () => {
     queryFn: () => listPrintersByEmpresa(idEmpresa),
     enabled: !!idEmpresa,
   });
+  
+  console.log('[PrintersPage] Items loaded:', items.length);
+  if (items.length > 0) {
+    console.log('[PrintersPage] First item structure:', items[0]);
+    console.log('[PrintersPage] First item keys:', Object.keys(items[0]));
+  }
 
   // Filtrar impresoras por sucursal seleccionada
   const filteredItems = selectedBranchId
-    ? items.filter((item) => item.id_sucursal === selectedBranchId)
+    ? items.filter((item) => {
+        // Soportar ambos formatos: camelCase y snake_case
+        const itemSucursalId = item.idSucursal || item.id_sucursal;
+        // Convertir ambos a número para comparación
+        const itemSucursalIdNum = Number(itemSucursalId);
+        const selectedBranchIdNum = Number(selectedBranchId);
+        console.log('[PrintersPage] Filtering - item:', item.name, 
+          'itemSucursalId:', itemSucursalId, '(type:', typeof itemSucursalId, ')',
+          'selectedBranchId:', selectedBranchId, '(type:', typeof selectedBranchId, ')',
+          'match:', itemSucursalIdNum === selectedBranchIdNum);
+        return itemSucursalIdNum === selectedBranchIdNum;
+      })
     : items;
+  
+  console.log('[PrintersPage] Total items:', items.length, 'Filtered items:', filteredItems.length, 'Selected branch:', selectedBranchId);
 
   // Mutaciones
   const createMut = useMutation({
@@ -159,16 +178,23 @@ const PrintersPage = () => {
 
   const handleOpenEdit = (item) => {
     setSelectedItem(item);
+    
+    // Asegurar que selectedBranchId esté configurado para cargar las cajas
+    if (item.idSucursal || item.id_sucursal) {
+      const sucursalId = item.idSucursal || item.id_sucursal;
+      setSelectedBranchId(sucursalId);
+    }
+    
     setForm({
-      idEmpresa: item.id_empresa,
-      idSucursal: item.id_sucursal,
-      idCaja: item.id_caja || null,
+      idEmpresa: item.idEmpresa || item.id_empresa || user?.id_empresa,
+      idSucursal: item.idSucursal || item.id_sucursal,
+      idCaja: item.idCaja || item.id_caja || null,
       name: item.name || '',
       tipo: item.tipo || 'termica',
       puerto: item.puerto || '',
-      pcName: item.pc_name || '',
-      ipLocal: item.ip_local || '',
-      state: item.state !== undefined ? item.state : true,
+      pcName: item.pcName || item.pc_name || '',
+      ipLocal: item.ipLocal || item.ip_local || '',
+      state: typeof item.state === 'boolean' ? item.state : (item.state === 1 || item.state === '1' || item.state === true),
       configuracion: typeof item.configuracion === 'object' 
         ? JSON.stringify(item.configuracion, null, 2) 
         : item.configuracion || '',
@@ -236,9 +262,11 @@ const PrintersPage = () => {
       showError('Por favor corrige los errores en el formulario');
       return;
     }
-    console.log('[PrintersPage] Validation SUCCESS! Sending to backend...');
+    console.log('[PrintersPage] Validation SUCCESS! Using validated data...');
+    console.log('[PrintersPage] Validated data:', validation.data);
     setErrors({});
-    createMut.mutate(form);
+    // Usar los datos validados y transformados por Zod
+    createMut.mutate(validation.data);
   };
 
   const handleSubmitEdit = () => {
@@ -266,9 +294,11 @@ const PrintersPage = () => {
       showError('Por favor corrige los errores en el formulario');
       return;
     }
-    console.log('[PrintersPage] Validation SUCCESS! Sending to backend...');
+    console.log('[PrintersPage] Validation SUCCESS! Using validated data...');
+    console.log('[PrintersPage] Validated data:', validation.data);
     setErrors({});
-    updateMut.mutate({ id: selectedItem?.id, payload: form });
+    // Usar los datos validados y transformados por Zod
+    updateMut.mutate({ id: selectedItem?.id, payload: validation.data });
   };
 
   // Obtener nombre de sucursal
@@ -297,19 +327,19 @@ const PrintersPage = () => {
       ),
     },
     {
-      key: 'id_sucursal',
+      key: 'idSucursal',
       label: 'Sucursal',
-      render: (value) => getBranchName(value),
+      render: (value, item) => getBranchName(value || item.id_sucursal),
     },
     {
-      key: 'id_caja',
+      key: 'idCaja',
       label: 'Caja',
-      render: (value) => getCajaName(value),
+      render: (value, item) => getCajaName(value || item.id_caja),
     },
     {
-      key: 'ip_local',
+      key: 'ipLocal',
       label: 'IP',
-      render: (value) => value || '-',
+      render: (value, item) => value || item.ip_local || '-',
     },
     {
       key: 'state',

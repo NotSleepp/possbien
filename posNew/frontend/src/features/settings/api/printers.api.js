@@ -5,9 +5,16 @@ export const listPrintersByEmpresa = async (idEmpresa) => {
   console.log('[printers.api] listPrintersByEmpresa - idEmpresa:', idEmpresa);
   try {
     const { data } = await api.get(`/impresoras/por-empresa/${idEmpresa}`);
-    console.log('[printers.api] listPrintersByEmpresa - SUCCESS, data:', data);
+    console.log('[printers.api] listPrintersByEmpresa - SUCCESS, raw data from backend:', data);
+    if (data.length > 0) {
+      console.log('[printers.api] listPrintersByEmpresa - First item (snake_case):', data[0]);
+    }
     // Transformar respuesta de snake_case a camelCase
     const transformedData = Array.isArray(data) ? data.map(toCamelCase) : toCamelCase(data);
+    console.log('[printers.api] listPrintersByEmpresa - Transformed data (camelCase):', transformedData);
+    if (transformedData.length > 0) {
+      console.log('[printers.api] listPrintersByEmpresa - First item transformed:', transformedData[0]);
+    }
     return transformedData;
   } catch (error) {
     console.error('[printers.api] listPrintersByEmpresa - ERROR:', error);

@@ -129,6 +129,24 @@ async function actualizarUsuario(id, datos) {
 
 async function eliminarUsuario(id) {
   await obtenerUsuarioPorId(id); // Verifica existencia
+  
+  // Verificar si el usuario tiene sesiones activas
+  const sesionesCount = await repositorio.contarSesionesActivasPorUsuario(id);
+  
+  // Verificar si el usuario tiene ventas registradas
+  const ventasCount = await repositorio.contarVentasPorUsuario(id);
+  
+  // Si tiene dependencias, lanzar error con detalles
+  if (sesionesCount > 0 || ventasCount > 0) {
+    const { DependencyError } = await import('../../shared/utils/errorHandler.js');
+    const dependencies = {};
+    if (sesionesCount > 0) dependencies.sesiones = sesionesCount;
+    if (ventasCount > 0) dependencies.ventas = ventasCount;
+    
+    throw new DependencyError('el usuario', dependencies);
+  }
+  
+  // Si no tiene dependencias, realizar eliminación lógica
   return await repositorio.eliminarUsuario(id);
 }
 

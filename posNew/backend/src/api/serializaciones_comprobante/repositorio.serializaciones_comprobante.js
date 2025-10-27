@@ -72,6 +72,37 @@ async function eliminarSerializacion(id) {
   return await obtenerSerializacionPorId(id);
 }
 
+async function obtenerSerializacionPorSerieSucursalTipo(serie, idSucursal, idTipoComprobante) {
+  return await clienteBaseDeDatos(TABLA)
+    .where({
+      serie,
+      id_sucursal: idSucursal,
+      id_tipo_comprobante: idTipoComprobante,
+      eliminado: false
+    })
+    .first();
+}
+
+async function desactivarSeriesPorDefecto(idSucursal, idTipoComprobante, exceptoId = null) {
+  const query = clienteBaseDeDatos(TABLA)
+    .where({
+      id_sucursal: idSucursal,
+      id_tipo_comprobante: idTipoComprobante,
+      por_default: true,
+      eliminado: false
+    })
+    .update({
+      por_default: false,
+      fecha_actualizacion: clienteBaseDeDatos.fn.now()
+    });
+  
+  if (exceptoId) {
+    query.whereNot({ id: exceptoId });
+  }
+  
+  await query;
+}
+
 export {
   obtenerTodasSerializaciones,
   obtenerSerializacionPorId,
@@ -80,4 +111,6 @@ export {
   crearSerializacion,
   actualizarSerializacion,
   eliminarSerializacion,
+  obtenerSerializacionPorSerieSucursalTipo,
+  desactivarSeriesPorDefecto,
 };

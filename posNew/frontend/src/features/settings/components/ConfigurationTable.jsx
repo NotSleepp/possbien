@@ -11,6 +11,7 @@ const ConfigurationTable = ({
   isLoading,
   onEdit,
   onDelete,
+  customActions,
   emptyMessage = 'No hay registros para mostrar',
   actions = true,
 }) => {
@@ -80,6 +81,7 @@ const ConfigurationTable = ({
               ))}
               {actions && (
                 <td className="px-4 py-3 text-right space-x-2">
+                  {customActions && customActions(item)}
                   {onEdit && (
                     <Button
                       variant="secondary"
@@ -122,6 +124,7 @@ ConfigurationTable.propTypes = {
   isLoading: PropTypes.bool,
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
+  customActions: PropTypes.func,
   emptyMessage: PropTypes.string,
   actions: PropTypes.bool,
 };

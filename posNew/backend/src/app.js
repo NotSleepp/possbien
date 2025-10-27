@@ -10,6 +10,9 @@ import { autenticar } from './middlewares/auth.middleware.js';
 import './utils/logger.js';
 import { requestLogger, errorLogger, performanceLogger, authLogger } from './middlewares/logging.middleware.js';
 
+// Importar middleware de manejo de errores personalizado
+import { errorMiddleware } from './shared/utils/errorHandler.js';
+
 dotenv.config();
 
 const app = express();
@@ -110,5 +113,8 @@ app.use('/api/metodos_pago', metodosPagoRouter);
 
 // Middleware de manejo de errores (DEBE ir al final)
 app.use(errorLogger);
+
+// Middleware de errores personalizado (ÚLTIMO en la cadena)
+app.use(errorMiddleware);
 
 export default app;

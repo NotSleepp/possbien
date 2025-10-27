@@ -1,31 +1,37 @@
 import { z } from 'zod';
 
+/**
+ * Esquema para crear impresora
+ * Usa nombres snake_case para coincidir con la base de datos
+ */
 export const esquemaCrearImpresora = z.object({
-  idEmpresa: z.number().int(),
-  idSucursal: z.number().int(),
-  idCaja: z.number().int().optional(),
-  name: z.string().min(1),
-  nombre: z.string().optional(),
-  tipo: z.enum(['termica','matricial','laser']).default('termica'),
-  puerto: z.string().optional(),
-  pcName: z.string().optional(),
-  ipLocal: z.string().optional(),
-  state: z.boolean().optional().default(true),
-  configuracion: z.any().optional()
+  id_empresa: z.number().int().positive(),
+  id_sucursal: z.number().int().positive(),
+  id_caja: z.number().int().positive().nullable().optional(),
+  name: z.string().min(1, 'El nombre es requerido').max(255),
+  tipo: z.enum(['termica', 'matricial', 'laser']).default('termica'),
+  puerto: z.string().max(50).optional(),
+  pc_name: z.string().max(255).optional(),
+  ip_local: z.string().max(45).optional(),
+  state: z.boolean().default(true),
+  configuracion: z.record(z.any()).nullable().optional(),
+  activo: z.boolean().default(true).optional()
 });
 
+/**
+ * Esquema para actualizar impresora
+ * Todos los campos son opcionales excepto el ID
+ */
 export const esquemaActualizarImpresora = z.object({
-  id: z.number().int(),
-  // Permitir actualizar sucursal y caja
-  idSucursal: z.number().int().optional(),
-  // idCaja puede ser número o null, por lo que aceptamos optional y lo trataremos en servicio
-  idCaja: z.number().int().optional(),
-  name: z.string().min(1).optional(),
-  nombre: z.string().optional(),
-  tipo: z.enum(['termica','matricial','laser']).optional(),
-  puerto: z.string().optional(),
-  pcName: z.string().optional(),
-  ipLocal: z.string().optional(),
+  id: z.number().int().positive(),
+  id_sucursal: z.number().int().positive().optional(),
+  id_caja: z.number().int().positive().nullable().optional(),
+  name: z.string().min(1).max(255).optional(),
+  tipo: z.enum(['termica', 'matricial', 'laser']).optional(),
+  puerto: z.string().max(50).optional(),
+  pc_name: z.string().max(255).optional(),
+  ip_local: z.string().max(45).optional(),
   state: z.boolean().optional(),
-  configuracion: z.any().optional()
+  configuracion: z.record(z.any()).nullable().optional(),
+  activo: z.boolean().optional()
 });

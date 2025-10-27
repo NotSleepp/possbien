@@ -7,17 +7,16 @@ export const branchSchema = z.object({
   idEmpresa: z.number().int().positive('ID de empresa requerido'),
   
   codigo: z.string()
-    .min(1, 'El código es requerido')
     .max(10, 'El código no puede superar 10 caracteres')
-    .regex(/^[A-Z0-9]+$/, 'El código solo debe contener letras mayúsculas y números'),
+    .optional(),
   
   nombre: z.string()
-    .min(3, 'El nombre debe tener al menos 3 caracteres')
-    .max(100, 'El nombre no puede superar 100 caracteres'),
+    .max(100, 'El nombre no puede superar 100 caracteres')
+    .optional(),
   
   direccion: z.string()
-    .min(5, 'La dirección debe tener al menos 5 caracteres')
-    .max(500, 'La dirección no puede superar 500 caracteres'),
+    .max(500, 'La dirección no puede superar 500 caracteres')
+    .optional(),
   
   direccion_fiscal: z.string()
     .max(500, 'La dirección fiscal no puede superar 500 caracteres')
@@ -26,7 +25,6 @@ export const branchSchema = z.object({
   
   telefono: z.string()
     .max(20, 'El teléfono no puede superar 20 caracteres')
-    .regex(/^[0-9+\-\s()]*$/, 'El teléfono solo debe contener números y símbolos válidos')
     .optional()
     .or(z.literal('')),
   
@@ -43,9 +41,13 @@ export const validateBranch = (data) => {
     return { success: true, errors: {} };
   } catch (error) {
     const errors = {};
-    error.errors.forEach((err) => {
-      errors[err.path[0]] = err.message;
-    });
+    if (error.errors && Array.isArray(error.errors)) {
+      error.errors.forEach((err) => {
+        if (err.path && err.path[0]) {
+          errors[err.path[0]] = err.message;
+        }
+      });
+    }
     return { success: false, errors };
   }
 };

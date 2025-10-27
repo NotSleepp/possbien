@@ -104,15 +104,19 @@ const WarehousesPage = () => {
   };
 
   const handleOpenEdit = (item) => {
+    console.log('[WarehousesPage] Opening edit for item:', item);
     setSelectedItem(item);
-    setForm({
+    const formData = {
       idEmpresa: item.id_empresa,
       idSucursal: item.id_sucursal,
       codigo: item.codigo || '',
       nombre: item.nombre || '',
       descripcion: item.descripcion || '',
-      default: item.default || false,
-    });
+      default: Boolean(item.default), // Convertir a booleano
+    };
+    console.log('[WarehousesPage] Form data for edit:', formData);
+    console.log('[WarehousesPage] default field - original:', item.default, 'type:', typeof item.default, 'converted:', formData.default);
+    setForm(formData);
     setErrors({});
     setIsEditOpen(true);
   };
@@ -123,7 +127,12 @@ const WarehousesPage = () => {
   };
 
   const handleChange = (field, value) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
+    console.log(`[WarehousesPage] Field changed: ${field} =`, value, `(type: ${typeof value})`);
+    setForm((prev) => {
+      const newForm = { ...prev, [field]: value };
+      console.log('[WarehousesPage] New form state:', newForm);
+      return newForm;
+    });
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
@@ -141,12 +150,27 @@ const WarehousesPage = () => {
   };
 
   const handleSubmitEdit = () => {
+    console.log('[WarehousesPage] ========== SUBMIT EDIT STARTED ==========');
+    console.log('[WarehousesPage] Form data being submitted:', form);
+    console.log('[WarehousesPage] Form field types:', {
+      idEmpresa: typeof form.idEmpresa,
+      idSucursal: typeof form.idSucursal,
+      codigo: typeof form.codigo,
+      nombre: typeof form.nombre,
+      descripcion: typeof form.descripcion,
+      default: typeof form.default,
+    });
+    console.log('[WarehousesPage] Starting validation...');
     const validation = validateWarehouse(form);
+    console.log('[WarehousesPage] Validation result:', validation);
     if (!validation.success) {
+      console.error('[WarehousesPage] Validation FAILED!');
+      console.error('[WarehousesPage] Errors:', validation.errors);
       setErrors(validation.errors);
       showError('Por favor corrige los errores en el formulario');
       return;
     }
+    console.log('[WarehousesPage] Validation SUCCESS! Sending to backend...');
     setErrors({});
     updateMut.mutate({ id: selectedItem?.id, payload: form });
   };

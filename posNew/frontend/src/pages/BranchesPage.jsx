@@ -17,7 +17,7 @@ const defaultForm = (user) => ({
   codigo: '',
   nombre: '',
   direccion: '',
-  direccion_fiscal: '',
+  direccionFiscal: '',
   telefono: '',
   email: '',
 });
@@ -93,7 +93,7 @@ const BranchesPage = () => {
       codigo: item.codigo || '',
       nombre: item.nombre || '',
       direccion: item.direccion || '',
-      direccion_fiscal: item.direccion_fiscal || '',
+      direccionFiscal: item.direccion_fiscal || '',
       telefono: item.telefono || '',
       email: item.email || '',
     });
@@ -180,7 +180,7 @@ const BranchesPage = () => {
       rows: 2,
     },
     {
-      name: 'direccion_fiscal',
+      name: 'direccionFiscal',
       label: 'Dirección Fiscal',
       type: 'textarea',
       placeholder: 'Dirección fiscal (opcional)',

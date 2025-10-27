@@ -5,52 +5,51 @@ import { z } from 'zod';
  */
 export const companySchema = z.object({
   nombre: z.string()
-    .min(3, 'El nombre debe tener al menos 3 caracteres')
-    .max(255, 'El nombre no puede superar 255 caracteres'),
+    .max(255, 'El nombre debe tener máximo 255 caracteres')
+    .optional(),
   
   id_fiscal: z.string()
-    .min(8, 'El ID fiscal debe tener al menos 8 caracteres')
-    .max(20, 'El ID fiscal no puede superar 20 caracteres')
-    .regex(/^[0-9]+$/, 'El ID fiscal solo debe contener números'),
+    .max(50, 'El ID fiscal debe tener máximo 50 caracteres')
+    .optional()
+    .or(z.literal('')),
   
   direccion_fiscal: z.string()
-    .min(10, 'La dirección fiscal debe tener al menos 10 caracteres')
-    .max(500, 'La dirección fiscal no puede superar 500 caracteres'),
+    .max(500, 'La dirección fiscal debe tener máximo 500 caracteres')
+    .optional()
+    .or(z.literal('')),
   
   correo: z.string()
     .email('Debe ser un correo electrónico válido')
-    .max(100, 'El correo no puede superar 100 caracteres')
+    .max(100, 'El correo debe tener máximo 100 caracteres')
     .optional()
     .or(z.literal('')),
   
   telefono: z.string()
-    .max(20, 'El teléfono no puede superar 20 caracteres')
+    .max(20, 'El teléfono debe tener máximo 20 caracteres')
     .optional()
     .or(z.literal('')),
   
   simbolo_moneda: z.string()
-    .max(10, 'El símbolo de moneda no puede superar 10 caracteres')
+    .max(10, 'El símbolo de moneda debe tener máximo 10 caracteres')
     .optional(),
   
   currency: z.string()
-    .length(3, 'El código de moneda debe tener 3 caracteres')
+    .max(10, 'El código de moneda debe tener máximo 10 caracteres')
     .optional(),
   
   nombre_moneda: z.string()
-    .max(50, 'El nombre de moneda no puede superar 50 caracteres')
+    .max(50, 'El nombre de moneda debe tener máximo 50 caracteres')
     .optional(),
   
   impuesto: z.string()
-    .max(50, 'El nombre del impuesto no puede superar 50 caracteres')
+    .max(50, 'El nombre del impuesto debe tener máximo 50 caracteres')
     .optional(),
   
   valor_impuesto: z.number()
-    .min(0, 'El valor del impuesto no puede ser negativo')
-    .max(100, 'El valor del impuesto no puede superar 100%')
     .optional(),
   
   pie_pagina_ticket: z.string()
-    .max(500, 'El pie de página no puede superar 500 caracteres')
+    .max(500, 'El pie de página debe tener máximo 500 caracteres')
     .optional()
     .or(z.literal('')),
   
@@ -64,10 +63,17 @@ export const validateCompany = (data) => {
     companySchema.parse(data);
     return { success: true, errors: {} };
   } catch (error) {
+    console.log('Validation error in company schema:', error);
+    console.log('Data being validated:', data);
     const errors = {};
-    error.errors.forEach((err) => {
-      errors[err.path[0]] = err.message;
-    });
+    if (error.errors && Array.isArray(error.errors)) {
+      error.errors.forEach((err) => {
+        if (err.path && err.path[0]) {
+          errors[err.path[0]] = err.message;
+        }
+      });
+    }
+    console.log('Parsed errors:', errors);
     return { success: false, errors };
   }
 };

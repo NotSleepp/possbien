@@ -12,25 +12,58 @@ export const api = axios.create({
 // Request interceptor: automatically attach JWT token
 api.interceptors.request.use(
   (config) => {
+    console.log('[api.js] ========== REQUEST INTERCEPTOR ==========');
+    console.log('[api.js] Method:', config.method?.toUpperCase());
+    console.log('[api.js] URL:', config.url);
+    console.log('[api.js] Full URL:', config.baseURL + config.url);
+    console.log('[api.js] Headers:', config.headers);
+    console.log('[api.js] Data:', config.data);
+    console.log('[api.js] Data type:', typeof config.data);
+    if (config.data) {
+      console.log('[api.js] Data stringified:', JSON.stringify(config.data));
+    }
+    
     const token = useAuthStore.getState().token;
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
+      console.log('[api.js] Token attached:', token.substring(0, 20) + '...');
+    } else {
+      console.log('[api.js] No token found');
     }
+    
+    console.log('[api.js] ========== END REQUEST INTERCEPTOR ==========');
     return config;
   },
   (error) => {
+    console.error('[api.js] Request interceptor error:', error);
     return Promise.reject(transformError(error));
   }
 );
 
 // Response interceptor: handle errors and authentication
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    console.log('[api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========');
+    console.log('[api.js] Status:', response.status);
+    console.log('[api.js] Data:', response.data);
+    console.log('[api.js] ========== END RESPONSE INTERCEPTOR ==========');
+    return response;
+  },
   (error) => {
+    console.error('[api.js] ========== RESPONSE INTERCEPTOR ERROR ==========');
+    console.error('[api.js] Error:', error);
+    console.error('[api.js] Error message:', error.message);
+    console.error('[api.js] Response status:', error.response?.status);
+    console.error('[api.js] Response data:', error.response?.data);
+    console.error('[api.js] Response headers:', error.response?.headers);
+    console.error('[api.js] Request config:', error.config);
+    
     const transformedError = transformError(error);
+    console.error('[api.js] Transformed error:', transformedError);
 
     // Handle 401 Unauthorized - token expired or invalid
     if (error.response?.status === 401) {
+      console.log('[api.js] Handling 401 - logging out user');
       const authStore = useAuthStore.getState();
       authStore.logout();
       
@@ -42,10 +75,12 @@ api.interceptors.response.use(
 
     // Handle 403 Forbidden - insufficient permissions
     if (error.response?.status === 403) {
+      console.log('[api.js] Handling 403 - forbidden');
       transformedError.message = 'No tienes permisos para realizar esta acción';
       transformedError.userMessage = 'Acceso denegado. Contacta con tu administrador si necesitas acceso.';
     }
 
+    console.error('[api.js] ========== END RESPONSE INTERCEPTOR ERROR ==========');
     return Promise.reject(transformedError);
   }
 );

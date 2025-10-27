@@ -8,6 +8,12 @@ async function obtenerTodosTiposComprobante() {
     .where({ eliminado: false });
 }
 
+async function obtenerTiposComprobantePorEmpresa(idEmpresa) {
+  return await clienteBaseDeDatos(TABLA)
+    .select('*')
+    .where({ id_empresa: idEmpresa, eliminado: false });
+}
+
 async function obtenerTipoComprobantePorId(id) {
   return await clienteBaseDeDatos(TABLA)
     .where({ id })
@@ -52,10 +58,27 @@ async function eliminarTipoComprobante(id) {
   return await obtenerTipoComprobantePorId(id);
 }
 
+async function obtenerTipoComprobantePorCodigoYEmpresa(codigo, idEmpresa) {
+  return await clienteBaseDeDatos(TABLA)
+    .where({ codigo, id_empresa: idEmpresa, eliminado: false })
+    .first();
+}
+
+async function contarVentasPorTipoComprobante(idTipoComprobante) {
+  const result = await clienteBaseDeDatos('ventas')
+    .where({ id_tipo_comprobante: idTipoComprobante, eliminado: false })
+    .count('* as count')
+    .first();
+  return result ? parseInt(result.count, 10) : 0;
+}
+
 export {
   obtenerTodosTiposComprobante,
+  obtenerTiposComprobantePorEmpresa,
   obtenerTipoComprobantePorId,
   crearTipoComprobante,
   actualizarTipoComprobante,
   eliminarTipoComprobante,
+  obtenerTipoComprobantePorCodigoYEmpresa,
+  contarVentasPorTipoComprobante,
 };

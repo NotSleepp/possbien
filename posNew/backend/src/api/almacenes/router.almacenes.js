@@ -23,6 +23,16 @@ router.get('/por-empresa/:idEmpresa', async (req, res) => {
   }
 });
 
+router.get('/por-sucursal/:idSucursal', async (req, res) => {
+  try {
+    const idSucursal = parseInt(req.params.idSucursal);
+    const almacenes = await servicio.obtenerAlmacenesPorSucursal(idSucursal);
+    res.json(almacenes);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 router.get('/:id', async (req, res) => {
   try {
     const id = parseInt(req.params.id);

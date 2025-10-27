@@ -21,6 +21,10 @@ const obtenerAlmacenesPorEmpresa = async (idEmpresa) => {
   return repositorio.obtenerAlmacenesPorEmpresa(idEmpresa);
 };
 
+const obtenerAlmacenesPorSucursal = async (idSucursal) => {
+  return repositorio.obtenerAlmacenesPorSucursal(idSucursal);
+};
+
 const obtenerAlmacenPorId = async (id) => {
   return repositorio.obtenerAlmacenPorId(id);
 };
@@ -43,6 +47,7 @@ const eliminarAlmacen = async (id) => {
 export {
   crearAlmacen,
   obtenerAlmacenesPorEmpresa,
+  obtenerAlmacenesPorSucursal,
   obtenerAlmacenPorId,
   actualizarAlmacen,
   eliminarAlmacen,

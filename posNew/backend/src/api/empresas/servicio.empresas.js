@@ -28,7 +28,13 @@ async function obtenerEmpresaPorId(id) {
 
 async function actualizarEmpresa(id, datos) {
   const datosValidados = esquemaActualizarEmpresa.parse({ id, ...datos });
-  return await repositorio.actualizarEmpresa(id, datosValidados);
+  // Remover el id de los datos a actualizar
+  const { id: _, ...datosActualizar } = datosValidados;
+  // Remover campos undefined o null
+  const datosLimpios = Object.fromEntries(
+    Object.entries(datosActualizar).filter(([_, v]) => v !== undefined && v !== null)
+  );
+  return await repositorio.actualizarEmpresa(id, datosLimpios);
 }
 
 async function eliminarEmpresa(id) {

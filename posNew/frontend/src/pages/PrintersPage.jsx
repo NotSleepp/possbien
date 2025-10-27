@@ -1,24 +1,31 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Card, Button, Input, LoadingSpinner, Modal } from '../shared/components/ui';
+import { Button, Modal } from '../shared/components/ui';
+import { ConfigurationLayout, ConfigurationTable, ConfigurationForm } from '../features/settings/components';
 import { useAuthStore } from '../store/useAuthStore';
 import { useToastStore } from '../store/useToastStore';
-import { listPrintersByEmpresa, createPrinter, updatePrinter, deletePrinter } from '../features/settings/api/printers.api';
 import { listBranchesByEmpresa } from '../features/settings/api/branches.api';
-import { listCajasBySucursal, createCaja } from '../features/settings/api/cajas.api';
+import { listCajasBySucursal } from '../features/settings/api/cajas.api';
+import {
+  listPrintersByEmpresa,
+  createPrinter,
+  updatePrinter,
+  deletePrinter,
+  testPrinter,
+} from '../features/settings/api/printers.api';
+import { validatePrinter } from '../features/settings/schemas/printer.schema';
 
-const defaultForm = (user) => ({
+const defaultForm = (user, selectedBranchId) => ({
   idEmpresa: user?.id_empresa || null,
-  idSucursal: user?.id_sucursal || null,
-  idCaja: user?.id_caja || null,
+  idSucursal: selectedBranchId || null,
+  idCaja: null,
   name: '',
-  nombre: '',
   tipo: 'termica',
   puerto: '',
   pcName: '',
   ipLocal: '',
   state: true,
-  configuracion: {},
+  configuracion: '',
 });
 
 const PrintersPage = () => {
@@ -26,368 +33,477 @@ const PrintersPage = () => {
   const queryClient = useQueryClient();
   const { success, error: showError } = useToastStore();
 
+  const [selectedBranchId, setSelectedBranchId] = useState(null);
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-  const [form, setForm] = useState(() => defaultForm(user));
-  const [selectedPrinter, setSelectedPrinter] = useState(null);
-  // Submodal para crear caja
-  const [isCajaModalOpen, setIsCajaModalOpen] = useState(false);
-  const [cajaForm, setCajaForm] = useState({ codigo: '', nombre: '', saldoInicial: 0 });
+  const [form, setForm] = useState(() => defaultForm(user, null));
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [errors, setErrors] = useState({});
 
   const idEmpresa = user?.id_empresa;
 
-  const { data: printers = [], isLoading, isError } = useQuery({
-    queryKey: ['printers', idEmpresa],
-    queryFn: async () => {
-      const data = await listPrintersByEmpresa(idEmpresa);
-      return data;
-    },
-    enabled: !!idEmpresa,
-  });
-
+  // Query para listar sucursales
   const { data: branches = [] } = useQuery({
     queryKey: ['branches', idEmpresa],
-    queryFn: async () => listBranchesByEmpresa(idEmpresa),
+    queryFn: () => listBranchesByEmpresa(idEmpresa),
     enabled: !!idEmpresa,
   });
 
+  // Query para listar cajas de la sucursal seleccionada
   const { data: cajas = [] } = useQuery({
-    queryKey: ['cajas', form.idSucursal],
-    queryFn: async () => listCajasBySucursal(form.idSucursal),
-    enabled: !!form.idSucursal,
+    queryKey: ['cajas', selectedBranchId],
+    queryFn: () => listCajasBySucursal(selectedBranchId),
+    enabled: !!selectedBranchId,
   });
 
+  // Query para listar impresoras
+  const { data: items = [], isLoading } = useQuery({
+    queryKey: ['printers', idEmpresa],
+    queryFn: () => listPrintersByEmpresa(idEmpresa),
+    enabled: !!idEmpresa,
+  });
+
+  // Filtrar impresoras por sucursal seleccionada
+  const filteredItems = selectedBranchId
+    ? items.filter((item) => item.id_sucursal === selectedBranchId)
+    : items;
+
+  // Mutaciones
   const createMut = useMutation({
-    mutationFn: async (payload) => createPrinter(payload),
-    onSuccess: () => {
+    mutationFn: (payload) => {
+      console.log('[PrintersPage] CREATE Mutation started with payload:', payload);
+      return createPrinter(payload);
+    },
+    onSuccess: (data) => {
+      console.log('[PrintersPage] CREATE Mutation SUCCESS! Response:', data);
       success('Impresora creada correctamente');
       setIsCreateOpen(false);
-      setForm(defaultForm(user));
+      setForm(defaultForm(user, selectedBranchId));
+      setErrors({});
       queryClient.invalidateQueries({ queryKey: ['printers', idEmpresa] });
     },
     onError: (err) => {
+      console.error('[PrintersPage] CREATE Mutation ERROR:', err);
+      console.error('[PrintersPage] Error details:', {
+        message: err?.message,
+        userMessage: err?.userMessage,
+        response: err?.response,
+        status: err?.response?.status,
+        data: err?.response?.data,
+      });
       showError(err?.userMessage || 'Error al crear impresora');
     },
   });
 
-  // Crear caja desde modal
-  const createCajaMut = useMutation({
-    mutationFn: async (payload) => createCaja(payload),
-    onSuccess: (newCaja) => {
-      success('Caja creada correctamente');
-      setIsCajaModalOpen(false);
-      // Refrescar lista de cajas de la sucursal seleccionada
-      queryClient.invalidateQueries({ queryKey: ['cajas', form.idSucursal] });
-      // Preseleccionar la nueva caja en el formulario de impresoras
-      setForm((prev) => ({ ...prev, idCaja: newCaja?.id ?? prev.idCaja }));
-      // Reset form de caja
-      setCajaForm({ codigo: '', nombre: '', saldoInicial: 0 });
-    },
-    onError: (err) => {
-      showError(err?.userMessage || 'Error al crear caja');
-    },
-  });
-
   const updateMut = useMutation({
-    mutationFn: async ({ id, payload }) => updatePrinter(id, payload),
-    onSuccess: () => {
+    mutationFn: ({ id, payload }) => {
+      console.log('[PrintersPage] UPDATE Mutation started - ID:', id, 'Payload:', payload);
+      return updatePrinter(id, payload);
+    },
+    onSuccess: (data) => {
+      console.log('[PrintersPage] UPDATE Mutation SUCCESS! Response:', data);
       success('Impresora actualizada correctamente');
       setIsEditOpen(false);
-      setSelectedPrinter(null);
+      setSelectedItem(null);
+      setErrors({});
       queryClient.invalidateQueries({ queryKey: ['printers', idEmpresa] });
     },
     onError: (err) => {
+      console.error('[PrintersPage] UPDATE Mutation ERROR:', err);
+      console.error('[PrintersPage] Error details:', {
+        message: err?.message,
+        userMessage: err?.userMessage,
+        response: err?.response,
+        status: err?.response?.status,
+        data: err?.response?.data,
+      });
       showError(err?.userMessage || 'Error al actualizar impresora');
     },
   });
 
   const deleteMut = useMutation({
-    mutationFn: async (id) => deletePrinter(id),
+    mutationFn: deletePrinter,
     onSuccess: () => {
       success('Impresora eliminada correctamente');
       setIsDeleteOpen(false);
-      setSelectedPrinter(null);
+      setSelectedItem(null);
       queryClient.invalidateQueries({ queryKey: ['printers', idEmpresa] });
     },
-    onError: (err) => {
-      showError(err?.userMessage || 'Error al eliminar impresora');
-    },
+    onError: (err) => showError(err?.userMessage || 'Error al eliminar impresora'),
   });
 
+  const testMut = useMutation({
+    mutationFn: testPrinter,
+    onSuccess: () => {
+      success('Prueba de impresión enviada correctamente');
+    },
+    onError: (err) => showError(err?.userMessage || 'Error al probar impresora'),
+  });
+
+  // Handlers
+  const handleBranchChange = (branchId) => {
+    setSelectedBranchId(branchId);
+    setForm(defaultForm(user, branchId));
+  };
+
   const handleOpenCreate = () => {
-    setForm(defaultForm(user));
+    if (!selectedBranchId) {
+      showError('Selecciona una sucursal primero');
+      return;
+    }
+    setForm(defaultForm(user, selectedBranchId));
+    setErrors({});
     setIsCreateOpen(true);
   };
 
-  const handleOpenEdit = (printer) => {
-    setSelectedPrinter(printer);
+  const handleOpenEdit = (item) => {
+    setSelectedItem(item);
     setForm({
-      idEmpresa: printer.id_empresa,
-      idSucursal: printer.id_sucursal,
-      idCaja: printer.id_caja,
-      name: printer.name || '',
-      nombre: printer.nombre || '',
-      tipo: printer.tipo || 'termica',
-      puerto: printer.puerto || '',
-      pcName: printer.pc_name || '',
-      ipLocal: printer.ip_local || '',
-      state: printer.state ?? true,
-      configuracion: printer.configuracion || {},
+      idEmpresa: item.id_empresa,
+      idSucursal: item.id_sucursal,
+      idCaja: item.id_caja || null,
+      name: item.name || '',
+      tipo: item.tipo || 'termica',
+      puerto: item.puerto || '',
+      pcName: item.pc_name || '',
+      ipLocal: item.ip_local || '',
+      state: item.state !== undefined ? item.state : true,
+      configuracion: typeof item.configuracion === 'object' 
+        ? JSON.stringify(item.configuracion, null, 2) 
+        : item.configuracion || '',
     });
+    setErrors({});
     setIsEditOpen(true);
   };
 
-  const handleOpenDelete = (printer) => {
-    setSelectedPrinter(printer);
+  const handleOpenDelete = (item) => {
+    setSelectedItem(item);
     setIsDeleteOpen(true);
   };
 
-  const handleFormChange = (field, value) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
+  const handleTestPrinter = (item) => {
+    testMut.mutate(item.id);
   };
 
-  const tipos = useMemo(() => ([
-    { value: 'termica', label: 'Térmica' },
-    { value: 'matricial', label: 'Matricial' },
-    { value: 'laser', label: 'Láser' },
-  ]), []);
+  const handleChange = (field, value) => {
+    console.log(`[PrintersPage] Field changed: ${field} =`, value, `(type: ${typeof value})`);
+    
+    // Convertir a número si el campo es idCaja
+    let processedValue = value;
+    if (field === 'idCaja') {
+      // Si es string vacío o "null", convertir a null, sino a número
+      if (value === '' || value === 'null' || value === null) {
+        processedValue = null;
+      } else {
+        processedValue = Number(value);
+      }
+      console.log(`[PrintersPage] Converted idCaja from "${value}" to`, processedValue, `(type: ${typeof processedValue})`);
+    }
+    
+    setForm((prev) => {
+      const newForm = { ...prev, [field]: processedValue };
+      console.log('[PrintersPage] New form state:', newForm);
+      return newForm;
+    });
+    if (errors[field]) {
+      setErrors((prev) => ({ ...prev, [field]: undefined }));
+    }
+  };
+
+  const handleSubmitCreate = () => {
+    console.log('[PrintersPage] ========== SUBMIT CREATE STARTED ==========');
+    console.log('[PrintersPage] Form data being submitted:', form);
+    console.log('[PrintersPage] Form field types:', {
+      idEmpresa: typeof form.idEmpresa,
+      idSucursal: typeof form.idSucursal,
+      idCaja: typeof form.idCaja,
+      name: typeof form.name,
+      tipo: typeof form.tipo,
+      puerto: typeof form.puerto,
+      pcName: typeof form.pcName,
+      ipLocal: typeof form.ipLocal,
+      state: typeof form.state,
+      configuracion: typeof form.configuracion,
+    });
+    console.log('[PrintersPage] Starting validation...');
+    const validation = validatePrinter(form);
+    console.log('[PrintersPage] Validation result:', validation);
+    if (!validation.success) {
+      console.error('[PrintersPage] Validation FAILED!');
+      console.error('[PrintersPage] Errors:', validation.errors);
+      setErrors(validation.errors);
+      showError('Por favor corrige los errores en el formulario');
+      return;
+    }
+    console.log('[PrintersPage] Validation SUCCESS! Sending to backend...');
+    setErrors({});
+    createMut.mutate(form);
+  };
+
+  const handleSubmitEdit = () => {
+    console.log('[PrintersPage] ========== SUBMIT EDIT STARTED ==========');
+    console.log('[PrintersPage] Form data being submitted:', form);
+    console.log('[PrintersPage] Form field types:', {
+      idEmpresa: typeof form.idEmpresa,
+      idSucursal: typeof form.idSucursal,
+      idCaja: typeof form.idCaja,
+      name: typeof form.name,
+      tipo: typeof form.tipo,
+      puerto: typeof form.puerto,
+      pcName: typeof form.pcName,
+      ipLocal: typeof form.ipLocal,
+      state: typeof form.state,
+      configuracion: typeof form.configuracion,
+    });
+    console.log('[PrintersPage] Starting validation...');
+    const validation = validatePrinter(form);
+    console.log('[PrintersPage] Validation result:', validation);
+    if (!validation.success) {
+      console.error('[PrintersPage] Validation FAILED!');
+      console.error('[PrintersPage] Errors:', validation.errors);
+      setErrors(validation.errors);
+      showError('Por favor corrige los errores en el formulario');
+      return;
+    }
+    console.log('[PrintersPage] Validation SUCCESS! Sending to backend...');
+    setErrors({});
+    updateMut.mutate({ id: selectedItem?.id, payload: form });
+  };
+
+  // Obtener nombre de sucursal
+  const getBranchName = (idSucursal) => {
+    const branch = branches.find((b) => b.id === idSucursal);
+    return branch ? branch.nombre : 'N/A';
+  };
+
+  // Obtener nombre de caja
+  const getCajaName = (idCaja) => {
+    if (!idCaja) return 'Sin asignar';
+    const caja = cajas.find((c) => c.id === idCaja);
+    return caja ? caja.nombre : 'N/A';
+  };
+
+  // Configuración de columnas
+  const columns = [
+    { key: 'name', label: 'Nombre' },
+    {
+      key: 'tipo',
+      label: 'Tipo',
+      render: (value) => (
+        <span className="px-2 py-1 rounded text-xs bg-base-300 text-base-content capitalize">
+          {value}
+        </span>
+      ),
+    },
+    {
+      key: 'id_sucursal',
+      label: 'Sucursal',
+      render: (value) => getBranchName(value),
+    },
+    {
+      key: 'id_caja',
+      label: 'Caja',
+      render: (value) => getCajaName(value),
+    },
+    {
+      key: 'ip_local',
+      label: 'IP',
+      render: (value) => value || '-',
+    },
+    {
+      key: 'state',
+      label: 'Estado',
+      render: (value) => (
+        <span className={`px-2 py-1 rounded text-xs ${value ? 'bg-success/20 text-success' : 'bg-error/20 text-error'}`}>
+          {value ? 'Activa' : 'Inactiva'}
+        </span>
+      ),
+    },
+  ];
+
+  // Configuración de campos del formulario
+  const formFields = [
+    {
+      name: 'name',
+      label: 'Nombre',
+      type: 'text',
+      placeholder: 'Impresora Principal',
+      required: true,
+    },
+    {
+      name: 'tipo',
+      label: 'Tipo de Impresora',
+      type: 'select',
+      required: true,
+      options: [
+        { value: 'termica', label: 'Térmica' },
+        { value: 'matricial', label: 'Matricial' },
+        { value: 'laser', label: 'Láser' },
+      ],
+    },
+    {
+      name: 'idCaja',
+      label: 'Caja Registradora (Opcional)',
+      type: 'select',
+      options: [
+        { value: null, label: 'Sin asignar' },
+        ...cajas.map((caja) => ({
+          value: caja.id,
+          label: `${caja.nombre} (${caja.codigo})`,
+        })),
+      ],
+      hint: 'Asigna esta impresora a una caja específica',
+    },
+    {
+      name: 'pcName',
+      label: 'Nombre del PC',
+      type: 'text',
+      placeholder: 'PC-CAJA-01',
+      hint: 'Nombre del equipo donde está conectada la impresora',
+    },
+    {
+      name: 'ipLocal',
+      label: 'Dirección IP',
+      type: 'text',
+      placeholder: '192.168.1.100',
+      hint: 'IP local de la impresora (si es de red)',
+    },
+    {
+      name: 'puerto',
+      label: 'Puerto',
+      type: 'text',
+      placeholder: 'COM1 o 9100',
+      hint: 'Puerto de conexión (COM1, USB, o puerto de red)',
+    },
+    {
+      name: 'configuracion',
+      label: 'Configuración JSON (Opcional)',
+      type: 'textarea',
+      placeholder: '{"ancho": 80, "velocidad": 9600}',
+      rows: 4,
+      hint: 'Configuración adicional en formato JSON',
+    },
+    {
+      name: 'state',
+      label: 'Impresora activa',
+      type: 'checkbox',
+      hint: 'Habilita o deshabilita esta impresora',
+    },
+  ];
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-base-content">Impresoras</h1>
-        <p className="text-base-content/60 mt-2">Gestiona las impresoras de la empresa</p>
-        </div>
-        <Button variant="primary" onClick={handleOpenCreate}>Nueva Impresora</Button>
+    <ConfigurationLayout
+      title="Impresoras"
+      description="Gestiona las impresoras de tu sistema POS"
+      actions={
+        <Button variant="primary" onClick={handleOpenCreate} disabled={!selectedBranchId}>
+          Nueva Impresora
+        </Button>
+      }
+      breadcrumbs={[
+        { label: 'Configuración', href: '/settings' },
+        { label: 'Impresoras' },
+      ]}
+    >
+      {/* Selector de Sucursal */}
+      <div className="mb-6 bg-base-100 p-4 rounded-lg shadow">
+        <label className="block text-sm font-medium text-base-content mb-2">
+          Filtrar por Sucursal
+        </label>
+        <select
+          value={selectedBranchId || ''}
+          onChange={(e) => handleBranchChange(Number(e.target.value) || null)}
+          className="w-full md:w-96 px-3 py-2 border border-base-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+        >
+          <option value="">Todas las sucursales</option>
+          {branches.map((branch) => (
+            <option key={branch.id} value={branch.id}>
+              {branch.nombre} ({branch.codigo})
+            </option>
+          ))}
+        </select>
       </div>
 
-      <Card title="Listado de Impresoras">
-        {isLoading ? (
-          <div className="flex justify-center py-10"><LoadingSpinner /></div>
-        ) : isError ? (
-          <p className="text-error">No se pudo cargar el listado.</p>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-base-300">
-              <thead>
-                <tr>
-                  <th className="px-4 py-3 text-left text-sm font-semibold">Nombre</th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold">Tipo</th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold">IP Local</th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold">Estado</th>
-                  <th className="px-4 py-3 text-right text-sm font-semibold">Acciones</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-base-300">
-                {printers.map((p) => (
-                  <tr key={p.id}>
-                    <td className="px-4 py-3">{p.name || p.nombre}</td>
-                    <td className="px-4 py-3 capitalize">{p.tipo}</td>
-                    <td className="px-4 py-3">{p.ip_local || '-'}</td>
-                    <td className="px-4 py-3">{p.state ? 'Activa' : 'Inactiva'}</td>
-                    <td className="px-4 py-3 text-right space-x-2">
-                      <Button variant="secondary" size="sm" onClick={() => handleOpenEdit(p)}>Editar</Button>
-                      <Button variant="danger" size="sm" onClick={() => handleOpenDelete(p)}>Eliminar</Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </Card>
-
-      {/* Crear Modal */}
+      {/* Modal Crear */}
       <Modal
         isOpen={isCreateOpen}
         onClose={() => setIsCreateOpen(false)}
         title="Nueva Impresora"
-        onConfirm={() => createMut.mutate(form)}
+        onConfirm={handleSubmitCreate}
         confirmText={createMut.isLoading ? 'Creando...' : 'Crear'}
       >
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-base-content mb-2">Sucursal</label>
-              <select
-                className="w-full px-3 py-2 border border-base-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-              value={form.idSucursal || ''}
-              onChange={(e) => setForm((prev) => ({ ...prev, idSucursal: Number(e.target.value) || null, idCaja: null }))}
-              required
-            >
-              <option value="" disabled>Seleccione una sucursal</option>
-              {branches.map((s) => (
-                <option key={s.id} value={s.id}>{s.nombre || s.codigo || `Sucursal ${s.id}`}</option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <label className="block text-sm font-medium text-base-content">Caja</label>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={() => {
-                  if (!form.idSucursal) {
-                    showError('Seleccione una sucursal antes de crear caja');
-                    return;
-                  }
-                  setCajaForm({ codigo: '', nombre: '', saldoInicial: 0 });
-                  setIsCajaModalOpen(true);
-                }}
-                disabled={!form.idSucursal}
-              >
-                Nueva Caja
-              </Button>
-            </div>
-            <select
-              className="w-full px-3 py-2 border border-base-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-              value={form.idCaja ?? ''}
-              onChange={(e) => setForm((prev) => ({ ...prev, idCaja: Number(e.target.value) || null }))}
-              disabled={!form.idSucursal}
-            >
-              <option value="">Sin caja</option>
-              {cajas.map((c) => (
-                <option key={c.id} value={c.id}>{c.nombre || c.codigo || `Caja ${c.id}`}</option>
-              ))}
-            </select>
-          </div>
-          <Input label="Nombre" value={form.name} onChange={(v) => handleFormChange('name', v)} required />
-          <div>
-            <label className="block text-sm font-medium text-base-content mb-2">Tipo</label>
-              <select
-                className="w-full px-3 py-2 border border-base-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-              value={form.tipo}
-              onChange={(e) => handleFormChange('tipo', e.target.value)}
-            >
-              {tipos.map((t) => (
-                <option key={t.value} value={t.value}>{t.label}</option>
-              ))}
-            </select>
-          </div>
-          <Input label="Puerto" value={form.puerto} onChange={(v) => handleFormChange('puerto', v)} />
-          <Input label="Nombre PC" value={form.pcName} onChange={(v) => handleFormChange('pcName', v)} />
-          <Input label="IP Local" value={form.ipLocal} onChange={(v) => handleFormChange('ipLocal', v)} />
-        </div>
+        <ConfigurationForm
+          fields={formFields}
+          values={form}
+          onChange={handleChange}
+          onSubmit={handleSubmitCreate}
+          isSubmitting={createMut.isLoading}
+          errors={errors}
+          onCancel={() => setIsCreateOpen(false)}
+        />
       </Modal>
 
-      {/* Submodal Crear Caja */}
-      <Modal
-        isOpen={isCajaModalOpen}
-        onClose={() => setIsCajaModalOpen(false)}
-        title="Nueva Caja"
-        onConfirm={() => {
-          if (!form.idSucursal) {
-            showError('Seleccione una sucursal');
-            return;
-          }
-          if (!cajaForm.codigo?.trim() || !cajaForm.nombre?.trim()) {
-            showError('Complete código y nombre de la caja');
-            return;
-          }
-          createCajaMut.mutate({
-            idSucursal: form.idSucursal,
-            codigo: cajaForm.codigo.trim(),
-            nombre: cajaForm.nombre.trim(),
-            saldoInicial: Number(cajaForm.saldoInicial) || 0,
-          });
-        }}
-        confirmText={createCajaMut.isLoading ? 'Creando...' : 'Crear'}
-      >
-        <div className="space-y-4">
-          <Input label="Código" value={cajaForm.codigo} onChange={(v) => setCajaForm((p) => ({ ...p, codigo: v }))} required />
-          <Input label="Nombre" value={cajaForm.nombre} onChange={(v) => setCajaForm((p) => ({ ...p, nombre: v }))} required />
-          <Input label="Saldo inicial" type="number" value={cajaForm.saldoInicial} onChange={(v) => setCajaForm((p) => ({ ...p, saldoInicial: v }))} />
-        </div>
-      </Modal>
-
-      {/* Editar Modal */}
+      {/* Modal Editar */}
       <Modal
         isOpen={isEditOpen}
         onClose={() => setIsEditOpen(false)}
         title="Editar Impresora"
-        onConfirm={() => updateMut.mutate({ id: selectedPrinter?.id, payload: form })}
-        confirmText={updateMut.isLoading ? 'Actualizando...' : 'Guardar'}
+        onConfirm={handleSubmitEdit}
+        confirmText={updateMut.isLoading ? 'Guardando...' : 'Guardar'}
       >
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-base-content mb-2">Sucursal</label>
-            <select
-              className="w-full px-3 py-2 border border-base-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-              value={form.idSucursal || ''}
-              onChange={(e) => setForm((prev) => ({ ...prev, idSucursal: Number(e.target.value) || null, idCaja: null }))}
-              required
-            >
-              <option value="" disabled>Seleccione una sucursal</option>
-              {branches.map((s) => (
-                <option key={s.id} value={s.id}>{s.nombre || s.codigo || `Sucursal ${s.id}`}</option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <label className="block text-sm font-medium text-base-content">Caja</label>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={() => {
-                  if (!form.idSucursal) {
-                    showError('Seleccione una sucursal antes de crear caja');
-                    return;
-                  }
-                  setCajaForm({ codigo: '', nombre: '', saldoInicial: 0 });
-                  setIsCajaModalOpen(true);
-                }}
-                disabled={!form.idSucursal}
-              >
-                Nueva Caja
-              </Button>
-            </div>
-            <select
-              className="w-full px-3 py-2 border border-base-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-              value={form.idCaja ?? ''}
-              onChange={(e) => setForm((prev) => ({ ...prev, idCaja: Number(e.target.value) || null }))}
-              disabled={!form.idSucursal}
-            >
-              <option value="">Sin caja</option>
-              {cajas.map((c) => (
-                <option key={c.id} value={c.id}>{c.nombre || c.codigo || `Caja ${c.id}`}</option>
-              ))}
-            </select>
-          </div>
-          <Input label="Nombre" value={form.name} onChange={(v) => handleFormChange('name', v)} required />
-          <div>
-            <label className="block text-sm font-medium text-base-content mb-2">Tipo</label>
-            <select
-              className="w-full px-3 py-2 border border-base-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-              value={form.tipo}
-              onChange={(e) => handleFormChange('tipo', e.target.value)}
-            >
-              {tipos.map((t) => (
-                <option key={t.value} value={t.value}>{t.label}</option>
-              ))}
-            </select>
-          </div>
-          <Input label="Puerto" value={form.puerto} onChange={(v) => handleFormChange('puerto', v)} />
-          <Input label="Nombre PC" value={form.pcName} onChange={(v) => handleFormChange('pcName', v)} />
-          <Input label="IP Local" value={form.ipLocal} onChange={(v) => handleFormChange('ipLocal', v)} />
-        </div>
+        <ConfigurationForm
+          fields={formFields}
+          values={form}
+          onChange={handleChange}
+          onSubmit={handleSubmitEdit}
+          isSubmitting={updateMut.isLoading}
+          errors={errors}
+          onCancel={() => setIsEditOpen(false)}
+        />
       </Modal>
 
-      {/* Eliminar Modal */}
+      {/* Modal Eliminar */}
       <Modal
         isOpen={isDeleteOpen}
         onClose={() => setIsDeleteOpen(false)}
         title="Confirmar eliminación"
-        onConfirm={() => deleteMut.mutate(selectedPrinter?.id)}
+        onConfirm={() => deleteMut.mutate(selectedItem?.id)}
         confirmText={deleteMut.isLoading ? 'Eliminando...' : 'Eliminar'}
         cancelText="Cancelar"
         variant="danger"
       >
-        <p>¿Seguro que deseas eliminar la impresora "{selectedPrinter?.name || selectedPrinter?.nombre}"?</p>
+        <p>¿Seguro que deseas eliminar la impresora "{selectedItem?.name}"?</p>
+        <p className="text-sm text-base-content/60 mt-2">
+          Esta acción no se puede deshacer.
+        </p>
       </Modal>
-    </div>
+
+      {/* Tabla */}
+      <ConfigurationTable
+        columns={columns}
+        data={filteredItems}
+        isLoading={isLoading}
+        customActions={(item) => (
+          <Button
+            variant="info"
+            size="sm"
+            onClick={() => handleTestPrinter(item)}
+            disabled={testMut.isLoading}
+            aria-label={`Probar impresora ${item.name}`}
+          >
+            {testMut.isLoading ? 'Probando...' : 'Probar'}
+          </Button>
+        )}
+        onEdit={handleOpenEdit}
+        onDelete={handleOpenDelete}
+        emptyMessage={
+          selectedBranchId
+            ? 'No hay impresoras registradas en esta sucursal. Crea tu primera impresora para comenzar.'
+            : 'No hay impresoras registradas. Selecciona una sucursal y crea tu primera impresora.'
+        }
+      />
+    </ConfigurationLayout>
   );
 };
 

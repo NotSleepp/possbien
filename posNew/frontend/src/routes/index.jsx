@@ -16,8 +16,12 @@ import CompanySettingsPage from '../pages/CompanySettingsPage';
 import CategoriesPage from '../pages/CategoriesPage';
 import CustomersPage from '../pages/CustomersPage';
 import ProvidersPage from '../pages/ProvidersPage';
+import BranchesPage from '../pages/BranchesPage';
+import CashRegistersPage from '../pages/CashRegistersPage';
 import BranchesCajasPage from '../pages/BranchesCajasPage';
 import UsersSettingsPage from '../pages/UsersSettingsPage';
+import RolesPage from '../pages/RolesPage';
+import DocumentTypesPage from '../pages/DocumentTypesPage';
 import WarehousesPage from '../pages/WarehousesPage';
 import TicketConfigPage from '../pages/TicketConfigPage';
 import SerializationPage from '../pages/SerializationPage';
@@ -85,12 +89,28 @@ export const router = createBrowserRouter([
             element: <ProvidersPage />,
           },
           {
+            path: '/settings/branches',
+            element: <BranchesPage />,
+          },
+          {
+            path: '/settings/cash-registers',
+            element: <CashRegistersPage />,
+          },
+          {
             path: '/settings/branches-cajas',
             element: <BranchesCajasPage />,
           },
           {
             path: '/settings/users',
             element: <UsersSettingsPage />,
+          },
+          {
+            path: '/settings/roles',
+            element: <RolesPage />,
+          },
+          {
+            path: '/settings/document-types',
+            element: <DocumentTypesPage />,
           },
           {
             path: '/settings/warehouses',

@@ -13,6 +13,12 @@ export async function obtenerMetodoPagoPorId(id) {
   return db('metodos_pago').where({ id }).first();
 }
 
+export async function obtenerMetodoPagoPorCodigoYEmpresa(codigo, idEmpresa) {
+  return db('metodos_pago')
+    .where({ codigo, id_empresa: idEmpresa, eliminado: false })
+    .first();
+}
+
 export async function actualizarMetodoPago(id, datos) {
   await db('metodos_pago').where({ id }).update({ ...datos, fecha_actualizacion: db.fn.now() });
   return db('metodos_pago').where({ id }).first();

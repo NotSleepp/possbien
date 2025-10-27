@@ -11,6 +11,7 @@ import {
   updateCaja,
   deleteCaja,
 } from '../features/settings/api/cajas.api';
+import { getEmpresa } from '../features/settings/api/empresas.api';
 import { validateCashRegister } from '../features/settings/schemas/cashRegister.schema';
 
 const defaultForm = (user, selectedBranchId) => ({
@@ -19,7 +20,7 @@ const defaultForm = (user, selectedBranchId) => ({
   codigo: '',
   nombre: '',
   descripcion: '',
-  montoInicial: 0,
+  saldoInicial: 0,
   print: true,
 });
 
@@ -38,6 +39,13 @@ const CashRegistersPage = () => {
 
   const idEmpresa = user?.id_empresa;
 
+  // Query para obtener información de la empresa
+  const { data: empresa } = useQuery({
+    queryKey: ['empresa', idEmpresa],
+    queryFn: () => getEmpresa(idEmpresa),
+    enabled: !!idEmpresa,
+  });
+
   // Query para listar sucursales
   const { data: branches = [] } = useQuery({
     queryKey: ['branches', idEmpresa],
@@ -54,27 +62,55 @@ const CashRegistersPage = () => {
 
   // Mutaciones
   const createMut = useMutation({
-    mutationFn: createCaja,
-    onSuccess: () => {
+    mutationFn: (payload) => {
+      console.log('[CashRegistersPage] CREATE Mutation started with payload:', payload);
+      return createCaja(payload);
+    },
+    onSuccess: (data) => {
+      console.log('[CashRegistersPage] CREATE Mutation SUCCESS! Response:', data);
       success('Caja registradora creada correctamente');
       setIsCreateOpen(false);
       setForm(defaultForm(user, selectedBranchId));
       setErrors({});
       queryClient.invalidateQueries({ queryKey: ['cajas', selectedBranchId] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al crear caja'),
+    onError: (err) => {
+      console.error('[CashRegistersPage] CREATE Mutation ERROR:', err);
+      console.error('[CashRegistersPage] Error details:', {
+        message: err?.message,
+        userMessage: err?.userMessage,
+        response: err?.response,
+        status: err?.response?.status,
+        data: err?.response?.data,
+      });
+      showError(err?.userMessage || 'Error al crear caja');
+    },
   });
 
   const updateMut = useMutation({
-    mutationFn: ({ id, payload }) => updateCaja(id, payload),
-    onSuccess: () => {
+    mutationFn: ({ id, payload }) => {
+      console.log('[CashRegistersPage] UPDATE Mutation started - ID:', id, 'Payload:', payload);
+      return updateCaja(id, payload);
+    },
+    onSuccess: (data) => {
+      console.log('[CashRegistersPage] UPDATE Mutation SUCCESS! Response:', data);
       success('Caja registradora actualizada correctamente');
       setIsEditOpen(false);
       setSelectedItem(null);
       setErrors({});
       queryClient.invalidateQueries({ queryKey: ['cajas', selectedBranchId] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al actualizar caja'),
+    onError: (err) => {
+      console.error('[CashRegistersPage] UPDATE Mutation ERROR:', err);
+      console.error('[CashRegistersPage] Error details:', {
+        message: err?.message,
+        userMessage: err?.userMessage,
+        response: err?.response,
+        status: err?.response?.status,
+        data: err?.response?.data,
+      });
+      showError(err?.userMessage || 'Error al actualizar caja');
+    },
   });
 
   const deleteMut = useMutation({
@@ -105,16 +141,20 @@ const CashRegistersPage = () => {
   };
 
   const handleOpenEdit = (item) => {
+    console.log('[CashRegistersPage] Opening edit for item:', item);
     setSelectedItem(item);
-    setForm({
+    const formData = {
       idEmpresa: item.id_empresa,
       idSucursal: item.id_sucursal,
       codigo: item.codigo || '',
       nombre: item.nombre || '',
       descripcion: item.descripcion || '',
-      montoInicial: Number(item.monto_inicial) || 0,
-      print: item.print !== undefined ? item.print : true,
-    });
+      saldoInicial: Number(item.monto_inicial) || 0,
+      print: Boolean(item.print), // Convertir a booleano
+    };
+    console.log('[CashRegistersPage] Form data for edit:', formData);
+    console.log('[CashRegistersPage] print field - original:', item.print, 'type:', typeof item.print, 'converted:', formData.print);
+    setForm(formData);
     setErrors({});
     setIsEditOpen(true);
   };
@@ -125,26 +165,70 @@ const CashRegistersPage = () => {
   };
 
   const handleChange = (field, value) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
+    console.log(`[CashRegistersPage] Field changed: ${field} =`, value, `(type: ${typeof value})`);
+    
+    // Convertir a número si el campo es saldoInicial
+    let processedValue = value;
+    if (field === 'saldoInicial') {
+      processedValue = value === '' ? 0 : Number(value);
+      console.log(`[CashRegistersPage] Converted saldoInicial from "${value}" to`, processedValue, `(type: ${typeof processedValue})`);
+    }
+    
+    setForm((prev) => {
+      const newForm = { ...prev, [field]: processedValue };
+      console.log('[CashRegistersPage] New form state:', newForm);
+      return newForm;
+    });
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
   };
 
   const handleSubmitCreate = () => {
+    console.log('[CashRegistersPage] ========== SUBMIT CREATE STARTED ==========');
+    console.log('[CashRegistersPage] Form data being submitted:', form);
+    console.log('[CashRegistersPage] Form field types:', {
+      idEmpresa: typeof form.idEmpresa,
+      idSucursal: typeof form.idSucursal,
+      codigo: typeof form.codigo,
+      nombre: typeof form.nombre,
+      descripcion: typeof form.descripcion,
+      saldoInicial: typeof form.saldoInicial,
+      print: typeof form.print,
+    });
+    console.log('[CashRegistersPage] Starting validation...');
     const validation = validateCashRegister(form);
+    console.log('[CashRegistersPage] Validation result:', validation);
     if (!validation.success) {
+      console.error('[CashRegistersPage] Validation FAILED!');
+      console.error('[CashRegistersPage] Errors:', validation.errors);
       setErrors(validation.errors);
       showError('Por favor corrige los errores en el formulario');
       return;
     }
+    console.log('[CashRegistersPage] Validation SUCCESS! Sending to backend...');
     setErrors({});
     createMut.mutate(form);
   };
 
   const handleSubmitEdit = () => {
+    console.log('[CashRegistersPage] ========== SUBMIT EDIT STARTED ==========');
+    console.log('[CashRegistersPage] Form data being submitted:', form);
+    console.log('[CashRegistersPage] Form field types:', {
+      idEmpresa: typeof form.idEmpresa,
+      idSucursal: typeof form.idSucursal,
+      codigo: typeof form.codigo,
+      nombre: typeof form.nombre,
+      descripcion: typeof form.descripcion,
+      saldoInicial: typeof form.saldoInicial,
+      print: typeof form.print,
+    });
+    console.log('[CashRegistersPage] Starting validation...');
     const validation = validateCashRegister(form);
+    console.log('[CashRegistersPage] Validation result:', validation);
     if (!validation.success) {
+      console.error('[CashRegistersPage] Validation FAILED!');
+      console.error('[CashRegistersPage] Errors:', validation.errors);
       setErrors(validation.errors);
       showError('Por favor corrige los errores en el formulario');
       return;
@@ -152,6 +236,9 @@ const CashRegistersPage = () => {
     setErrors({});
     updateMut.mutate({ id: selectedItem?.id, payload: form });
   };
+
+  // Obtener símbolo de moneda de la empresa
+  const currencySymbol = empresa?.simbolo_moneda || 'S/';
 
   // Configuración de columnas
   const columns = [
@@ -161,7 +248,7 @@ const CashRegistersPage = () => {
     {
       key: 'monto_inicial',
       label: 'Monto Inicial',
-      render: (value) => `S/ ${Number(value || 0).toFixed(2)}`,
+      render: (value) => `${currencySymbol} ${Number(value || 0).toFixed(2)}`,
     },
     {
       key: 'print',
@@ -208,7 +295,7 @@ const CashRegistersPage = () => {
       rows: 2,
     },
     {
-      name: 'montoInicial',
+      name: 'saldoInicial',
       label: 'Monto Inicial',
       type: 'number',
       placeholder: '0.00',

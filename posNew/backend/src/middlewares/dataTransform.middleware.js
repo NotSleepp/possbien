@@ -7,6 +7,10 @@
  * Convierte strings que representan números a números
  */
 const convertirStringANumero = (valor) => {
+  // Si es null o undefined, mantenerlo como está
+  if (valor === null || valor === undefined) {
+    return valor;
+  }
   if (typeof valor === 'string' && !isNaN(valor) && !isNaN(parseFloat(valor))) {
     return parseFloat(valor);
   }
@@ -47,8 +51,12 @@ const transformarObjeto = (obj, camposBooleanos = [], camposNumericos = []) => {
     for (const [clave, valor] of Object.entries(obj)) {
       let valorTransformado = valor;
       
+      // Si el valor es null o undefined, mantenerlo como está
+      if (valor === null || valor === undefined) {
+        valorTransformado = valor;
+      }
       // Convertir campos booleanos
-      if (camposBooleanos.includes(clave)) {
+      else if (camposBooleanos.includes(clave)) {
         valorTransformado = convertirABooleano(valor);
       }
       // Convertir campos numéricos
@@ -87,13 +95,19 @@ export const transformarMetodosPago = (req, res, next) => {
  * Middleware específico para impresoras
  */
 export const transformarImpresoras = (req, res, next) => {
+  console.log('[dataTransform.middleware] ========== transformarImpresoras START ==========');
+  console.log('[dataTransform.middleware] Body BEFORE transformation:', JSON.stringify(req.body));
+  
   if (req.body) {
     const camposBooleanos = ['state'];
     const camposNumericos = ['id', 'idEmpresa', 'idSucursal', 'idCaja'];
     
     req.body = transformarObjeto(req.body, camposBooleanos, camposNumericos);
+    
+    console.log('[dataTransform.middleware] Body AFTER transformation:', JSON.stringify(req.body));
   }
   
+  console.log('[dataTransform.middleware] ========== transformarImpresoras END ==========');
   next();
 };
 

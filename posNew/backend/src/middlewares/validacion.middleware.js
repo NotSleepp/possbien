@@ -9,6 +9,9 @@ import { enviarError } from '../utils/manejadorRespuestas.js';
  */
 export function validarEsquema(esquema, fuente = 'body') {
   return (req, res, next) => {
+    console.log('[validacion.middleware] ========== validarEsquema START ==========');
+    console.log('[validacion.middleware] Validating source:', fuente);
+    
     try {
       let datos;
       
@@ -26,8 +29,12 @@ export function validarEsquema(esquema, fuente = 'body') {
           datos = req.body;
       }
       
+      console.log('[validacion.middleware] Data BEFORE validation:', JSON.stringify(datos));
+      
       // Validar los datos con el esquema
       const datosValidados = esquema.parse(datos);
+      
+      console.log('[validacion.middleware] Data AFTER validation:', JSON.stringify(datosValidados));
       
       // Reemplazar los datos originales con los validados
       if (fuente === 'body') {
@@ -38,14 +45,22 @@ export function validarEsquema(esquema, fuente = 'body') {
         req.query = datosValidados;
       }
       
+      console.log('[validacion.middleware] Validation SUCCESS');
+      console.log('[validacion.middleware] ========== validarEsquema END ==========');
       next();
     } catch (error) {
+      console.error('[validacion.middleware] Validation FAILED!');
+      console.error('[validacion.middleware] Error:', error);
+      
       if (error instanceof ZodError) {
+        console.error('[validacion.middleware] Zod errors:', error.errors);
         const erroresFormateados = error.errors.map(err => ({
           campo: err.path.join('.'),
           mensaje: err.message,
           valorRecibido: err.received
         }));
+        
+        console.error('[validacion.middleware] Formatted errors:', erroresFormateados);
         
         return enviarError(
           res,

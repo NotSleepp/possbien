@@ -6,7 +6,11 @@ const crearAlmacen = async (data) => {
 };
 
 const obtenerAlmacenesPorEmpresa = async (idEmpresa) => {
-  return clienteBaseDeDatos('almacen').where({ id_empresa: idEmpresa });
+  return clienteBaseDeDatos('almacen').where({ id_empresa: idEmpresa, eliminado: false });
+};
+
+const obtenerAlmacenesPorSucursal = async (idSucursal) => {
+  return clienteBaseDeDatos('almacen').where({ id_sucursal: idSucursal, eliminado: false });
 };
 
 const obtenerAlmacenPorId = async (id) => {
@@ -26,6 +30,7 @@ const eliminarAlmacen = async (id) => {
 export {
   crearAlmacen,
   obtenerAlmacenesPorEmpresa,
+  obtenerAlmacenesPorSucursal,
   obtenerAlmacenPorId,
   actualizarAlmacen,
   eliminarAlmacen,

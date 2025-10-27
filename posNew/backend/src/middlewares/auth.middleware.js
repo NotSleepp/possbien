@@ -127,6 +127,11 @@ export function autorizarRoles(rolesPermitidos) {
         })
         .filter((v) => v !== null);
 
+      // SUPERADMIN (rolId: 1) tiene acceso a todo
+      if (rolId === 1) {
+        return next();
+      }
+      
       // Verificar si el rol del usuario está en los roles permitidos
       if (!normalized.includes(rolId)) {
         return enviarError(res, 'No tienes permisos para realizar esta acción', 403, 'AUTHORIZATION_ERROR');
@@ -180,10 +185,30 @@ export function autorizarSucursal(req, res, next) {
  * @param {function} next - Función next de Express
  */
 export function seguridadMultiTenant(req, res, next) {
+  console.log('[auth.middleware] ========== seguridadMultiTenant START ==========');
+  console.log('[auth.middleware] Method:', req.method);
+  console.log('[auth.middleware] URL:', req.url);
+  console.log('[auth.middleware] Body BEFORE:', JSON.stringify(req.body));
+  
   autenticar(req, res, (err) => {
-    if (err) return next(err);
+    if (err) {
+      console.error('[auth.middleware] Authentication failed:', err);
+      return next(err);
+    }
     
-    autorizarEmpresa(req, res, next);
+    console.log('[auth.middleware] Authentication SUCCESS, user:', req.user);
+    
+    autorizarEmpresa(req, res, (err2) => {
+      if (err2) {
+        console.error('[auth.middleware] Authorization failed:', err2);
+        return next(err2);
+      }
+      
+      console.log('[auth.middleware] Authorization SUCCESS');
+      console.log('[auth.middleware] Body AFTER:', JSON.stringify(req.body));
+      console.log('[auth.middleware] ========== seguridadMultiTenant END ==========');
+      next();
+    });
   });
 }
 

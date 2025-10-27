@@ -18,6 +18,16 @@ async function obtenerTodos(req, res, next) {
   }
 }
 
+async function obtenerPorEmpresa(req, res, next) {
+  try {
+    const { idEmpresa } = req.params;
+    const lista = await servicio.obtenerTiposComprobantePorEmpresa(Number(idEmpresa));
+    res.json(lista);
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function obtenerPorId(req, res, next) {
   try {
     const { id } = req.params;
@@ -51,6 +61,7 @@ async function eliminarTipoComprobante(req, res, next) {
 export {
   crearTipoComprobante,
   obtenerTodos,
+  obtenerPorEmpresa,
   obtenerPorId,
   actualizarTipoComprobante,
   eliminarTipoComprobante,

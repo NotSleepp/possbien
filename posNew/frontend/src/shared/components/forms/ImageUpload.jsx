@@ -1,4 +1,4 @@
-import { useState, useRef } from 'prop-types';
+import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '../ui';
 

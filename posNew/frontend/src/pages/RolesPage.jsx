@@ -49,12 +49,24 @@ const RolesPage = () => {
     queryKey: ['roles', idEmpresa],
     queryFn: () => listRolesByEmpresa(idEmpresa),
     enabled: !!idEmpresa,
+    onSuccess: (data) => {
+      console.log('[RolesPage] useQuery roles - SUCCESS:', data);
+    },
+    onError: (error) => {
+      console.error('[RolesPage] useQuery roles - ERROR:', error);
+    },
   });
 
   // Query para listar módulos
   const { data: modules = [] } = useQuery({
     queryKey: ['modules'],
     queryFn: listModules,
+    onSuccess: (data) => {
+      console.log('[RolesPage] useQuery modules - SUCCESS:', data);
+    },
+    onError: (error) => {
+      console.error('[RolesPage] useQuery modules - ERROR:', error);
+    },
   });
 
   // Query para listar permisos del rol seleccionado
@@ -62,54 +74,88 @@ const RolesPage = () => {
     queryKey: ['permissions', selectedItem?.id],
     queryFn: () => listPermissionsByRole(selectedItem?.id),
     enabled: !!selectedItem?.id && isPermissionsOpen,
+    onSuccess: (data) => {
+      console.log('[RolesPage] useQuery rolePermissions - SUCCESS:', data);
+    },
+    onError: (error) => {
+      console.error('[RolesPage] useQuery rolePermissions - ERROR:', error);
+    },
   });
 
   // Mutaciones
   const createMut = useMutation({
     mutationFn: createRole,
-    onSuccess: () => {
+    onMutate: (variables) => {
+      console.log('[RolesPage] createMut - MUTATE with variables:', variables);
+    },
+    onSuccess: (data) => {
+      console.log('[RolesPage] createMut - SUCCESS response:', data);
       success('Rol creado correctamente');
       setIsCreateOpen(false);
       setForm(defaultForm(user));
       setErrors({});
       queryClient.invalidateQueries({ queryKey: ['roles', idEmpresa] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al crear rol'),
+    onError: (err) => {
+      console.error('[RolesPage] createMut - ERROR:', err);
+      showError(err?.userMessage || 'Error al crear rol');
+    },
   });
 
   const updateMut = useMutation({
     mutationFn: ({ id, payload }) => updateRole(id, payload),
-    onSuccess: () => {
+    onMutate: (variables) => {
+      console.log('[RolesPage] updateMut - MUTATE with variables:', variables);
+    },
+    onSuccess: (data) => {
+      console.log('[RolesPage] updateMut - SUCCESS response:', data);
       success('Rol actualizado correctamente');
       setIsEditOpen(false);
       setSelectedItem(null);
       setErrors({});
       queryClient.invalidateQueries({ queryKey: ['roles', idEmpresa] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al actualizar rol'),
+    onError: (err) => {
+      console.error('[RolesPage] updateMut - ERROR:', err);
+      showError(err?.userMessage || 'Error al actualizar rol');
+    },
   });
 
   const deleteMut = useMutation({
     mutationFn: deleteRole,
-    onSuccess: () => {
+    onMutate: (variables) => {
+      console.log('[RolesPage] deleteMut - MUTATE with variables (id):', variables);
+    },
+    onSuccess: (data) => {
+      console.log('[RolesPage] deleteMut - SUCCESS response:', data);
       success('Rol eliminado correctamente');
       setIsDeleteOpen(false);
       setSelectedItem(null);
       queryClient.invalidateQueries({ queryKey: ['roles', idEmpresa] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al eliminar rol'),
+    onError: (err) => {
+      console.error('[RolesPage] deleteMut - ERROR:', err);
+      showError(err?.userMessage || 'Error al eliminar rol');
+    },
   });
 
   const assignPermissionsMut = useMutation({
     mutationFn: assignPermissions,
-    onSuccess: () => {
+    onMutate: (variables) => {
+      console.log('[RolesPage] assignPermissionsMut - MUTATE with variables:', variables);
+    },
+    onSuccess: (data) => {
+      console.log('[RolesPage] assignPermissionsMut - SUCCESS response:', data);
       success('Permisos actualizados correctamente');
       setIsPermissionsOpen(false);
       setSelectedItem(null);
       setPermissions({});
       queryClient.invalidateQueries({ queryKey: ['permissions', selectedItem?.id] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al actualizar permisos'),
+    onError: (err) => {
+      console.error('[RolesPage] assignPermissionsMut - ERROR:', err);
+      showError(err?.userMessage || 'Error al actualizar permisos');
+    },
   });
 
   // Handlers
@@ -122,34 +168,39 @@ const RolesPage = () => {
   const handleOpenEdit = (item) => {
     setSelectedItem(item);
     setForm({
-      idEmpresa: item.id_empresa,
+      idEmpresa: item.idEmpresa ?? item.id_empresa, // soporta camelCase o snake_case
       nombre: item.nombre || '',
       descripcion: item.descripcion || '',
     });
     setErrors({});
     setIsEditOpen(true);
+    console.log('[RolesPage] handleOpenEdit - item:', item);
   };
 
   const handleOpenDelete = (item) => {
     setSelectedItem(item);
     setIsDeleteOpen(true);
+    console.log('[RolesPage] handleOpenDelete - item:', item);
   };
 
   const handleOpenPermissions = (item) => {
     setSelectedItem(item);
     setIsPermissionsOpen(true);
+    console.log('[RolesPage] handleOpenPermissions - item:', item);
   };
 
   // Cuando se cargan los permisos del rol, inicializar el estado
   useEffect(() => {
+    console.log('[RolesPage] rolePermissions useEffect - rolePermissions:', rolePermissions);
     if (rolePermissions.length > 0) {
       const permsMap = {};
       rolePermissions.forEach((perm) => {
-        permsMap[perm.id_modulo] = {
-          puedeVer: perm.puede_ver,
-          puedeCrear: perm.puede_crear,
-          puedeEditar: perm.puede_editar,
-          puedeEliminar: perm.puede_eliminar,
+        const moduleId = perm.idModulo ?? perm.id_modulo;
+        permsMap[moduleId] = {
+          puedeVer: perm.puedeVer ?? perm.puede_ver,
+          puedeCrear: perm.puedeCrear ?? perm.puede_crear,
+          puedeEditar: perm.puedeEditar ?? perm.puede_editar,
+          puedeEliminar: perm.puedeEliminar ?? perm.puede_eliminar,
         };
       });
       setPermissions(permsMap);
@@ -161,6 +212,7 @@ const RolesPage = () => {
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
+    console.log('[RolesPage] handleChange - field:', field, 'value:', value);
   };
 
   const handlePermissionChange = (moduleId, permission, value) => {
@@ -171,10 +223,12 @@ const RolesPage = () => {
         [permission]: value,
       },
     }));
+    console.log('[RolesPage] handlePermissionChange - moduleId:', moduleId, 'permission:', permission, 'value:', value);
   };
 
   const handleSubmitCreate = () => {
     const validation = validateRole(form);
+    console.log('[RolesPage] handleSubmitCreate - form:', form, 'validation:', validation);
     if (!validation.success) {
       setErrors(validation.errors);
       showError('Por favor corrige los errores en el formulario');
@@ -186,6 +240,7 @@ const RolesPage = () => {
 
   const handleSubmitEdit = () => {
     const validation = validateRole(form);
+    console.log('[RolesPage] handleSubmitEdit - form:', form, 'validation:', validation);
     if (!validation.success) {
       setErrors(validation.errors);
       showError('Por favor corrige los errores en el formulario');
@@ -206,10 +261,13 @@ const RolesPage = () => {
       puedeEliminar: perms.puedeEliminar || false,
     }));
 
-    assignPermissionsMut.mutate({
+    const payload = {
       idRol: selectedItem?.id,
       permisos: permissionsArray,
-    });
+      idEmpresa: idEmpresa,
+    };
+    console.log('[RolesPage] handleSubmitPermissions - payload:', payload);
+    assignPermissionsMut.mutate(payload);
   };
 
   // Configuración de columnas

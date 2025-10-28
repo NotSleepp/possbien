@@ -5,9 +5,18 @@ import { z } from 'zod';
  * Actualizado para coincidir con la estructura de la base de datos
  */
 const userBaseSchema = z.object({
-  idEmpresa: z.number().int().positive('ID de empresa requerido'),
+  // Coerción tolerante: los selects entregan strings, convertimos a number
+  idEmpresa: z.preprocess((v) => {
+    if (typeof v === 'string' && v.trim() !== '') return Number(v);
+    if (typeof v === 'number') return v;
+    return v;
+  }, z.number().int().positive('ID de empresa requerido')),
   
-  idRol: z.number().int().positive('Debe seleccionar un rol'),
+  idRol: z.preprocess((v) => {
+    if (typeof v === 'string' && v.trim() !== '') return Number(v);
+    if (typeof v === 'number') return v;
+    return v;
+  }, z.number().int().positive('Debe seleccionar un rol')),
   
   username: z.string()
     .min(3, 'El nombre de usuario debe tener al menos 3 caracteres')
@@ -32,11 +41,13 @@ const userBaseSchema = z.object({
     .optional()
     .or(z.literal('')),
   
-  idTipodocumento: z.number()
-    .int()
-    .positive()
-    .nullable()
-    .optional(),
+  idTipodocumento: z.preprocess((v) => {
+    if (v === '' || v === undefined) return undefined;
+    if (v === null) return null;
+    if (typeof v === 'string' && v.trim() !== '') return Number(v);
+    if (typeof v === 'number') return v;
+    return v;
+  }, z.number().int().positive().nullable().optional()),
   
   nroDoc: z.string()
     .max(20, 'El número de documento no puede superar 20 caracteres')
@@ -84,19 +95,40 @@ export const updateUserSchema = userBaseSchema.extend({
 export const userSchema = updateUserSchema;
 
 export const validateUser = (data, isCreate = false) => {
+  console.log('[user.schema] ================= validateUser START =================');
+  console.log('[user.schema] isCreate:', isCreate);
   try {
     const schema = isCreate ? createUserSchema : updateUserSchema;
-    schema.parse(data);
+    console.log('[user.schema] Input data:', data);
+    const validated = schema.parse(data);
+    console.log('[user.schema] Validation SUCCESS. Output:', validated);
+    console.log('[user.schema] ================= validateUser END (success) =================');
     return { success: true, errors: {} };
   } catch (error) {
+    console.error('[user.schema] Validation ERROR:', error);
     const errors = {};
-    if (error.errors && Array.isArray(error.errors)) {
-      error.errors.forEach((err) => {
-        if (err.path && err.path[0]) {
-          errors[err.path[0]] = err.message;
+    const issues = error?.issues || error?.errors || [];
+    if (Array.isArray(issues)) {
+      issues.forEach((issue) => {
+        const path = Array.isArray(issue.path) ? issue.path.join('.') : issue.path;
+        console.error('[user.schema] -> issue', {
+          code: issue.code,
+          path,
+          message: issue.message,
+          expected: issue.expected,
+          received: issue.received,
+        });
+        const field = Array.isArray(issue.path) ? issue.path[0] : issue.path;
+        if (field) {
+          // Acumular múltiples mensajes por campo si existen
+          errors[field] = errors[field]
+            ? `${errors[field]}; ${issue.message}`
+            : issue.message;
         }
       });
     }
+    console.log('[user.schema] Parsed errors map:', errors);
+    console.log('[user.schema] ================= validateUser END (error) =================');
     return { success: false, errors };
   }
 };

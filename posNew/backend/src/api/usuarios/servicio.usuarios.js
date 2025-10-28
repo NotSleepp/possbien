@@ -14,99 +14,14 @@ function mapRolCanonico(nombre) {
   return 5;
 }
 
-// Función para crear usuario con flujo atómico de registro inicial
+// Función para crear usuario (ajustada para creación dentro de empresa existente)
 async function crearUsuario(datos) {
+  // Validación de DTO con snake_case
   const datosValidados = esquemaCrearUsuario.parse(datos);
 
-  try {
-    const resultado = await clienteBaseDeDatos.transaction(async (trx) => {
-      // Crear usuario
-      const hashedPassword = await bcrypt.hash(datosValidados.contrasena, 10);
-      const usuarioId = await trx('usuarios').insert({
-        id_empresa: datosValidados.idEmpresa || null,
-        id_rol: datosValidados.idRol,
-        codigo: `USR-${Date.now()}`,
-        username: datosValidados.nombreUsuario,
-        nombre: `${datosValidados.nombres} ${datosValidados.apellidos}`,
-        email: datosValidados.correo,
-        password: hashedPassword,
-        telefono: datosValidados.telefono,
-        activo: true,
-      });
-      const usuario = await trx('usuarios').where('id', usuarioId).first();
-
-      // Crear empresa
-      const empresaId = await trx('empresa').insert({
-        codigo: `EMP-${Date.now()}`,
-        nombre: `Empresa de ${datosValidados.nombres} ${datosValidados.apellidos}`,
-        email: datosValidados.correo,
-        telefono: datosValidados.telefono,
-        simbolo_moneda: '$',
-      });
-      const empresa = await trx('empresa').where('id', empresaId).first();
-
-      // Actualizar usuario con id_empresa
-      await trx('usuarios').where('id', usuario.id).update({ id_empresa: empresa.id });
-
-      // Crear sucursal por defecto
-      const sucursalId = await trx('sucursales').insert({
-        id_empresa: empresa.id,
-        codigo: 'SUC-001',
-        nombre: 'Sucursal Principal',
-        activo: true,
-      });
-      const sucursal = await trx('sucursales').where('id', sucursalId).first();
-
-      // Crear almacén por defecto
-      await trx('almacen').insert({
-        id_empresa: empresa.id,
-        id_sucursal: sucursal.id,
-        codigo: 'ALM-001',
-        nombre: 'Almacén Principal',
-        default: true,
-        activo: true,
-      });
-
-      // Crear caja por defecto
-      await trx('caja').insert({
-        id_empresa: empresa.id,
-        id_sucursal: sucursal.id,
-        codigo: 'CAJ-001',
-        nombre: 'Caja 1',
-        monto_inicial: 0.00,
-        activo: true,
-      });
-
-      // Crear cliente genérico
-      await trx('clientes_proveedores').insert({
-        id_empresa: empresa.id,
-        codigo: 'CLI-000',
-        nombre: 'Cliente Genérico',
-        tipo: 'CLIENTE',
-        activo: true,
-      });
-
-      // Crear métodos de pago por defecto
-      await trx('metodos_pago').insert([
-        { id_empresa: empresa.id, codigo: 'EFEC', nombre: 'Efectivo', activo: true },
-        { id_empresa: empresa.id, codigo: 'TARJ', nombre: 'Tarjeta', activo: true },
-      ]);
-
-      // Crear categoría general
-      await trx('categorias').insert({
-        id_empresa: empresa.id,
-        codigo: 'CAT-000',
-        nombre: 'General',
-        activo: true,
-      });
-
-      return usuario;
-    });
-
-    return resultado;
-  } catch (error) {
-    throw new Error('Error en la transacción de creación de usuario: ' + error.message);
-  }
+  // Crear directamente el usuario en la empresa dada
+  // (sin flujo de registro inicial que crea empresa/sucursal/etc.)
+  return await repositorio.crearUsuario(datosValidados);
 }
 
 async function obtenerTodosUsuarios(idEmpresa) {

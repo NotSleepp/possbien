@@ -6,10 +6,14 @@ Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'fran
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
 Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+roles.api.js:26 [roles.api] listRolesByEmpresa - idEmpresa: 1
+permissions.api.js:92 [permissions.api] listModules - fetching
+RolesPage.jsx:194 [RolesPage] rolePermissions useEffect - rolePermissions: []
+RolesPage.jsx:194 [RolesPage] rolePermissions useEffect - rolePermissions: []
 api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
 api.js:16 [api.js] Method: GET
-api.js:17 [api.js] URL: /sucursales/por-empresa/1
-api.js:18 [api.js] Full URL: http://localhost:3000/api/sucursales/por-empresa/1
+api.js:17 [api.js] URL: /roles/por-empresa/1
+api.js:18 [api.js] Full URL: http://localhost:3000/api/roles/por-empresa/1
 api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
 api.js:20 [api.js] Data: undefined
 api.js:21 [api.js] Data type: undefined
@@ -17,8 +21,8 @@ api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
 api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
 api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
 api.js:16 [api.js] Method: GET
-api.js:17 [api.js] URL: /tipos-comprobante/por-empresa/1
-api.js:18 [api.js] Full URL: http://localhost:3000/api/tipos-comprobante/por-empresa/1
+api.js:17 [api.js] URL: /modulos
+api.js:18 [api.js] Full URL: http://localhost:3000/api/modulos
 api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
 api.js:20 [api.js] Data: undefined
 api.js:21 [api.js] Data type: undefined
@@ -30,32 +34,41 @@ Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'fran
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
 Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+RolesPage.jsx:194 [RolesPage] rolePermissions useEffect - rolePermissions: []
 ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: (2) [1, 2] currentRole: 1 user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …}
 ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: (2) [1, 2] currentRole: 1 user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …}
 Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
 Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+RolesPage.jsx:194 [RolesPage] rolePermissions useEffect - rolePermissions: []
 ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: (2) [1, 2] currentRole: 1 user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …}
 ProtectedRoute.jsx:49 [ProtectedRoute] allowedRoles: (2) [1, 2] currentRole: 1 user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …}
 Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
 Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
-api.js:47 [api.js] Status: 200
-api.js:48 [api.js] Data: [{…}]
-api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
+RolesPage.jsx:194 [RolesPage] rolePermissions useEffect - rolePermissions: []
 api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
 api.js:47 [api.js] Status: 200
 api.js:48 [api.js] Data: (2) [{…}, {…}]
 api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
-SerializationPage.jsx:114 [SerializationPage] handleBranchChange branchId: 1
-SerializationPage.jsx:118 [SerializationPage] defaultForm after branch change: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: null, serie: '', numeroInicial: 1, …}
+roles.api.js:29 [roles.api] listRolesByEmpresa - SUCCESS, raw data: (2) [{…}, {…}]
+roles.api.js:31 [roles.api] listRolesByEmpresa - Transformed (camelCase): (2) [{…}, {…}]
+api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
+api.js:47 [api.js] Status: 200
+api.js:48 [api.js] Data: (10) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
+permissions.api.js:95 [permissions.api] listModules - SUCCESS, raw data: (10) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+permissions.api.js:97 [permissions.api] listModules - Transformed (camelCase): (10) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+RolesPage.jsx:194 [RolesPage] rolePermissions useEffect - rolePermissions: []
+RolesPage.jsx:189 [RolesPage] handleOpenPermissions - item: {id: 1, idEmpresa: 1, nombre: 'Superadmin', descripcion: 'Rol con todos los permisos', activo: 1, …}
+permissions.api.js:28 [permissions.api] listPermissionsByRole - idRol: 1
+RolesPage.jsx:194 [RolesPage] rolePermissions useEffect - rolePermissions: []
 api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
 api.js:16 [api.js] Method: GET
-api.js:17 [api.js] URL: /serializacion-comprobantes/por-sucursal/1
-api.js:18 [api.js] Full URL: http://localhost:3000/api/serializacion-comprobantes/por-sucursal/1
+api.js:17 [api.js] URL: /permisos/por-rol/1
+api.js:18 [api.js] Full URL: http://localhost:3000/api/permisos/por-rol/1
 api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
 api.js:20 [api.js] Data: undefined
 api.js:21 [api.js] Data type: undefined
@@ -63,56 +76,777 @@ api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
 api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
 api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
 api.js:47 [api.js] Status: 200
-api.js:48 [api.js] Data: [{…}]
+api.js:48 [api.js] Data: []
 api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
-SerializationPage.jsx:122 [SerializationPage] handleOpenCreate selectedBranchId: 1
-SerializationPage.jsx:131 [SerializationPage] form initialized for create: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: null, serie: '', numeroInicial: 1, …}
-ConfigurationForm.jsx:71 [ConfigurationForm] select change idTipoComprobante 2
-SerializationPage.jsx:164 [SerializationPage] handleChange field: idTipoComprobante value: 2
-ConfigurationForm.jsx:125 [ConfigurationForm] input change serie 2
-SerializationPage.jsx:164 [SerializationPage] handleChange field: serie value: 2
-ConfigurationForm.jsx:125 [ConfigurationForm] input change serie 22
-SerializationPage.jsx:164 [SerializationPage] handleChange field: serie value: 22
-ConfigurationForm.jsx:125 [ConfigurationForm] input change serie 222
-SerializationPage.jsx:164 [SerializationPage] handleChange field: serie value: 222
-ConfigurationForm.jsx:125 [ConfigurationForm] input change numeroInicial 12
-SerializationPage.jsx:164 [SerializationPage] handleChange field: numeroInicial value: 12
-ConfigurationForm.jsx:125 [ConfigurationForm] input change numeroInicial 122
-SerializationPage.jsx:164 [SerializationPage] handleChange field: numeroInicial value: 122
-ConfigurationForm.jsx:125 [ConfigurationForm] input change numeroActual 12
-SerializationPage.jsx:164 [SerializationPage] handleChange field: numeroActual value: 12
-ConfigurationForm.jsx:125 [ConfigurationForm] input change numeroActual 122
-SerializationPage.jsx:164 [SerializationPage] handleChange field: numeroActual value: 122
-ConfigurationForm.jsx:103 [ConfigurationForm] checkbox change porDefault true
-SerializationPage.jsx:164 [SerializationPage] handleChange field: porDefault value: true
-ConfigurationForm.jsx:21 [ConfigurationForm] onSubmit values: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: '2', serie: '222', numeroInicial: '122', …}
-SerializationPage.jsx:172 [SerializationPage] handleSubmitCreate form before validate: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: '2', serie: '222', numeroInicial: '122', …}
-serialization.schema.js:86 [serialization.schema] validateSerialization input: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: '2', serie: '222', numeroInicial: '122', …}
-serialization.schema.js:89 [serialization.schema] validateSerialization success, output: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '222', numeroInicial: 122, …}
-SerializationPage.jsx:180 [SerializationPage] create payload (validated): {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '222', numeroInicial: 122, …}
+permissions.api.js:31 [permissions.api] listPermissionsByRole - SUCCESS, raw data: []
+permissions.api.js:33 [permissions.api] listPermissionsByRole - Transformed (camelCase): []
+RolesPage.jsx:194 [RolesPage] rolePermissions useEffect - rolePermissions: []
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 1 permission: puedeVer value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 1 permission: puedeCrear value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 1 permission: puedeEditar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 1 permission: puedeEliminar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 2 permission: puedeVer value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 2 permission: puedeCrear value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 2 permission: puedeEditar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 2 permission: puedeEliminar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 3 permission: puedeVer value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 3 permission: puedeCrear value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 3 permission: puedeEditar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 3 permission: puedeEliminar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 4 permission: puedeVer value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 4 permission: puedeCrear value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 4 permission: puedeEditar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 4 permission: puedeEliminar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 5 permission: puedeVer value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 5 permission: puedeCrear value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 5 permission: puedeEditar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 5 permission: puedeEliminar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 6 permission: puedeVer value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 6 permission: puedeCrear value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 6 permission: puedeEditar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 6 permission: puedeEliminar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 7 permission: puedeVer value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 7 permission: puedeCrear value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 7 permission: puedeEditar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 7 permission: puedeEliminar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 8 permission: puedeVer value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 8 permission: puedeCrear value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 8 permission: puedeEditar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 8 permission: puedeEliminar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 9 permission: puedeVer value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 9 permission: puedeCrear value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 9 permission: puedeEditar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 9 permission: puedeEliminar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 10 permission: puedeVer value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 10 permission: puedeCrear value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 10 permission: puedeEditar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 10 permission: puedeEliminar value: true
+RolesPage.jsx:269 [RolesPage] handleSubmitPermissions - payload: {idRol: 1, permisos: Array(10), idEmpresa: 1}
+RolesPage.jsx:145 [RolesPage] assignPermissionsMut - MUTATE with variables: {idRol: 1, permisos: Array(10), idEmpresa: 1}
+permissions.api.js:42 [permissions.api] assignPermissions
+permissions.api.js:43 [permissions.api] assignPermissions - payload (frontend camelCase): {idRol: 1, permisos: Array(10), idEmpresa: 1}
+permissions.api.js:45 [permissions.api] assignPermissions - payload (backend snake_case, masivo): {id_empresa: 1, id_rol: 1, permisos: Array(10)}
 api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
 api.js:16 [api.js] Method: POST
-api.js:17 [api.js] URL: /serializacion-comprobantes
-api.js:18 [api.js] Full URL: http://localhost:3000/api/serializacion-comprobantes
+api.js:17 [api.js] URL: /permisos/actualizar-masivo
+api.js:18 [api.js] Full URL: http://localhost:3000/api/permisos/actualizar-masivo
 api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
-api.js:20 [api.js] Data: {id_empresa: 1, id_sucursal: 1, id_tipo_comprobante: 2, serie: '222', numero_inicial: 122, …}
+api.js:20 [api.js] Data: {id_empresa: 1, id_rol: 1, permisos: Array(10)}
 api.js:21 [api.js] Data type: object
-api.js:23 [api.js] Data stringified: {"id_empresa":1,"id_sucursal":1,"id_tipo_comprobante":2,"serie":"222","numero_inicial":122,"numero_actual":122,"numero_final":null,"cantidad_numeros":1000,"por_default":true,"activo":true}
+api.js:23 [api.js] Data stringified: {"id_empresa":1,"id_rol":1,"permisos":[{"id_rol":1,"id_modulo":1,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":2,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":3,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":4,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":5,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":6,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":7,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":8,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":9,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":10,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true}]}
 api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
 api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
-api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
-api.js:47 [api.js] Status: 201
-api.js:48 [api.js] Data: {mensaje: 'Serialización creada', datos: {…}}
-api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
-SerializationPage.jsx:68 [SerializationPage] createMut onSuccess
+permissions.api.js:47  POST http://localhost:3000/api/permisos/actualizar-masivo 500 (Internal Server Error)
+dispatchXhrRequest @ axios.js?v=c7ad2ce8:1683
+xhr @ axios.js?v=c7ad2ce8:1560
+dispatchRequest @ axios.js?v=c7ad2ce8:2085
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<Modal>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+RolesPage @ RolesPage.jsx:379
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<RolesPage>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+(anonymous) @ index.jsx:109Understand this error
+api.js:53 [api.js] ========== RESPONSE INTERCEPTOR ERROR ==========
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:53
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:54 [api.js] Error: AxiosError {message: 'Request failed with status code 500', name: 'AxiosError', code: 'ERR_BAD_RESPONSE', config: {…}, request: XMLHttpRequest, …}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:54
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:55 [api.js] Error message: Request failed with status code 500
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:55
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:56 [api.js] Response status: 500
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:56
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:57 [api.js] Response data: {error: {…}}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:57
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:58 [api.js] Response headers: AxiosHeaders {content-length: '3779', content-type: 'application/json; charset=utf-8'}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:58
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:59 [api.js] Request config: {transitional: {…}, adapter: Array(3), transformRequest: Array(1), transformResponse: Array(1), timeout: 0, …}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:59
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:62 [api.js] Transformed error: {type: 'SERVER_ERROR', message: {…}, userMessage: 'Error del servidor. Por favor, intenta nuevamente más tarde.', status: 500, data: {…}, …}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:62
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:83 [api.js] ========== END RESPONSE INTERCEPTOR ERROR ==========
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:83
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+permissions.api.js:54 [permissions.api] assignPermissions - ERROR: {type: 'SERVER_ERROR', message: {…}, userMessage: 'Error del servidor. Por favor, intenta nuevamente más tarde.', status: 500, data: {…}, …}
+overrideMethod @ hook.js:608
+assignPermissions @ permissions.api.js:54
+await in assignPermissions
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+errorHandler.js:109 [Error - assignPermissions]: {type: 'SERVER_ERROR', message: {…}, status: 500, data: {…}, originalError: AxiosError}
+overrideMethod @ hook.js:608
+logError @ errorHandler.js:109
+handleApiError @ errorHandler.js:129
+assignPermissions @ permissions.api.js:56
+await in assignPermissions
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+RolesPage.jsx:156 [RolesPage] assignPermissionsMut - ERROR: {type: 'SERVER_ERROR', message: {…}, userMessage: 'Error del servidor. Por favor, intenta nuevamente más tarde.', status: 500, data: {…}, …}
+overrideMethod @ hook.js:608
+onError @ RolesPage.jsx:156
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1261
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
 Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
 Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+RolesPage.jsx:269 [RolesPage] handleSubmitPermissions - payload: {idRol: 1, permisos: Array(10), idEmpresa: 1}
+RolesPage.jsx:145 [RolesPage] assignPermissionsMut - MUTATE with variables: {idRol: 1, permisos: Array(10), idEmpresa: 1}
+permissions.api.js:42 [permissions.api] assignPermissions
+permissions.api.js:43 [permissions.api] assignPermissions - payload (frontend camelCase): {idRol: 1, permisos: Array(10), idEmpresa: 1}
+permissions.api.js:45 [permissions.api] assignPermissions - payload (backend snake_case, masivo): {id_empresa: 1, id_rol: 1, permisos: Array(10)}
+api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
+api.js:16 [api.js] Method: POST
+api.js:17 [api.js] URL: /permisos/actualizar-masivo
+api.js:18 [api.js] Full URL: http://localhost:3000/api/permisos/actualizar-masivo
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: {id_empresa: 1, id_rol: 1, permisos: Array(10)}
+api.js:21 [api.js] Data type: object
+api.js:23 [api.js] Data stringified: {"id_empresa":1,"id_rol":1,"permisos":[{"id_rol":1,"id_modulo":1,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":2,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":3,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":4,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":5,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":6,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":7,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":8,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":9,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":1,"id_modulo":10,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true}]}
+api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
+api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
+permissions.api.js:47  POST http://localhost:3000/api/permisos/actualizar-masivo 409 (Conflict)
+dispatchXhrRequest @ axios.js?v=c7ad2ce8:1683
+xhr @ axios.js?v=c7ad2ce8:1560
+dispatchRequest @ axios.js?v=c7ad2ce8:2085
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:53 [api.js] ========== RESPONSE INTERCEPTOR ERROR ==========
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:53
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:54 [api.js] Error: AxiosError {message: 'Request failed with status code 409', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:54
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:55 [api.js] Error message: Request failed with status code 409
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:55
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:56 [api.js] Response status: 409
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:56
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:57 [api.js] Response data: {error: {…}}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:57
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:58 [api.js] Response headers: AxiosHeaders {content-length: '2865', content-type: 'application/json; charset=utf-8'}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:58
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:59 [api.js] Request config: {transitional: {…}, adapter: Array(3), transformRequest: Array(1), transformResponse: Array(1), timeout: 0, …}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:59
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:62 [api.js] Transformed error: {type: 'VALIDATION_ERROR', message: {…}, userMessage: 'Ya existe un registro con estos datos.', status: 409, data: {…}, …}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:62
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+api.js:83 [api.js] ========== END RESPONSE INTERCEPTOR ERROR ==========
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:83
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+permissions.api.js:54 [permissions.api] assignPermissions - ERROR: {type: 'VALIDATION_ERROR', message: {…}, userMessage: 'Ya existe un registro con estos datos.', status: 409, data: {…}, …}
+overrideMethod @ hook.js:608
+assignPermissions @ permissions.api.js:54
+await in assignPermissions
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+errorHandler.js:109 [Error - assignPermissions]: {type: 'VALIDATION_ERROR', message: {…}, status: 409, data: {…}, originalError: AxiosError}
+overrideMethod @ hook.js:608
+logError @ errorHandler.js:109
+handleApiError @ errorHandler.js:129
+assignPermissions @ permissions.api.js:56
+await in assignPermissions
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+RolesPage.jsx:156 [RolesPage] assignPermissionsMut - ERROR: {type: 'VALIDATION_ERROR', message: {…}, userMessage: 'Ya existe un registro con estos datos.', status: 409, data: {…}, …}
+overrideMethod @ hook.js:608
+onError @ RolesPage.jsx:156
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1261
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773Understand this error
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+RolesPage.jsx:189 [RolesPage] handleOpenPermissions - item: {id: 1, idEmpresa: 1, nombre: 'Superadmin', descripcion: 'Rol con todos los permisos', activo: 1, …}
+RolesPage.jsx:189 [RolesPage] handleOpenPermissions - item: {id: 2, idEmpresa: 1, nombre: 'aaa', descripcion: 'dsadd', activo: 1, …}
+permissions.api.js:28 [permissions.api] listPermissionsByRole - idRol: 2
+RolesPage.jsx:194 [RolesPage] rolePermissions useEffect - rolePermissions: []
 api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
 api.js:16 [api.js] Method: GET
-api.js:17 [api.js] URL: /serializacion-comprobantes/por-sucursal/1
-api.js:18 [api.js] Full URL: http://localhost:3000/api/serializacion-comprobantes/por-sucursal/1
+api.js:17 [api.js] URL: /permisos/por-rol/2
+api.js:18 [api.js] Full URL: http://localhost:3000/api/permisos/por-rol/2
 api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
 api.js:20 [api.js] Data: undefined
 api.js:21 [api.js] Data type: undefined
@@ -120,37 +854,45 @@ api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
 api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
 api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
 api.js:47 [api.js] Status: 200
-api.js:48 [api.js] Data: (2) [{…}, {…}]
+api.js:48 [api.js] Data: (3) [{…}, {…}, {…}]
 api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
-SerializationPage.jsx:135 [SerializationPage] handleOpenEdit item: {id: 1, idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '33', …}
-SerializationPage.jsx:151 [SerializationPage] mappedForm for edit: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '33', numeroInicial: 13, …}
-ConfigurationForm.jsx:21 [ConfigurationForm] onSubmit values: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '33', numeroInicial: 13, …}
-SerializationPage.jsx:186 [SerializationPage] handleSubmitEdit form before validate: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '33', numeroInicial: 13, …}
-serialization.schema.js:171 [serialization.schema] validateSerializationUpdate input: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '33', numeroInicial: 13, …}
-serialization.schema.js:185 [serialization.schema] validateSerializationUpdate errors: {} raw error: ZodError: [
-  {
-    "expected": "boolean",
-    "code": "invalid_type",
-    "path": [
-      "porDefault"
-    ],
-    "message": "Invalid input: expected boolean, received number"
-  }
-]
-    at validateSerializationUpdate (serialization.schema.js:173:49)
-    at handleSubmitEdit (SerializationPage.jsx:188:18)
-    at handleSubmit (ConfigurationForm.jsx:22:5)
-    at executeDispatch (react-dom_client.js?v=c7ad2ce8:11736:11)
-    at runWithFiberInDEV (react-dom_client.js?v=c7ad2ce8:1485:72)
-    at processDispatchQueue (react-dom_client.js?v=c7ad2ce8:11772:37)
-    at react-dom_client.js?v=c7ad2ce8:12182:11
-    at batchedUpdates$1 (react-dom_client.js?v=c7ad2ce8:2628:42)
-    at dispatchEventForPluginEventSystem (react-dom_client.js?v=c7ad2ce8:11877:9)
-    at dispatchEvent (react-dom_client.js?v=c7ad2ce8:14792:13)
-overrideMethod @ hook.js:608
-validateSerializationUpdate @ serialization.schema.js:185
-handleSubmitEdit @ SerializationPage.jsx:188
-handleSubmit @ ConfigurationForm.jsx:22
+permissions.api.js:31 [permissions.api] listPermissionsByRole - SUCCESS, raw data: (3) [{…}, {…}, {…}]
+permissions.api.js:33 [permissions.api] listPermissionsByRole - Transformed (camelCase): (3) [{…}, {…}, {…}]
+RolesPage.jsx:194 [RolesPage] rolePermissions useEffect - rolePermissions: (3) [{…}, {…}, {…}]
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 3 permission: puedeEliminar value: true
+RolesPage.jsx:269 [RolesPage] handleSubmitPermissions - payload: {idRol: 2, permisos: Array(3), idEmpresa: 1}
+RolesPage.jsx:145 [RolesPage] assignPermissionsMut - MUTATE with variables: {idRol: 2, permisos: Array(3), idEmpresa: 1}
+permissions.api.js:42 [permissions.api] assignPermissions
+permissions.api.js:43 [permissions.api] assignPermissions - payload (frontend camelCase): {idRol: 2, permisos: Array(3), idEmpresa: 1}
+permissions.api.js:45 [permissions.api] assignPermissions - payload (backend snake_case, masivo): {id_empresa: 1, id_rol: 2, permisos: Array(3)}
+api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
+api.js:16 [api.js] Method: POST
+api.js:17 [api.js] URL: /permisos/actualizar-masivo
+api.js:18 [api.js] Full URL: http://localhost:3000/api/permisos/actualizar-masivo
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: {id_empresa: 1, id_rol: 2, permisos: Array(3)}
+api.js:21 [api.js] Data type: object
+api.js:23 [api.js] Data stringified: {"id_empresa":1,"id_rol":2,"permisos":[{"id_rol":2,"id_modulo":1,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":2,"id_modulo":2,"puede_ver":true,"puede_crear":false,"puede_editar":true,"puede_eliminar":false},{"id_rol":2,"id_modulo":3,"puede_ver":true,"puede_crear":true,"puede_editar":false,"puede_eliminar":true}]}
+api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
+api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
+permissions.api.js:47  POST http://localhost:3000/api/permisos/actualizar-masivo 409 (Conflict)
+dispatchXhrRequest @ axios.js?v=c7ad2ce8:1683
+xhr @ axios.js?v=c7ad2ce8:1560
+dispatchRequest @ axios.js?v=c7ad2ce8:2085
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
 executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
 runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
 processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
@@ -159,9 +901,26 @@ batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
 dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
 dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
 dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
-<form>
+<button>
 exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
-ConfigurationForm @ ConfigurationForm.jsx:140
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
 react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
 renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
 renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
@@ -175,31 +934,24 @@ performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
 performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
 flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
 processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
-(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
-<ConfigurationForm>
-exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
-SerializationPage @ SerializationPage.jsx:448
-react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
-renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
-renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
-updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
-beginWork @ react-dom_client.js?v=c7ad2ce8:7654
-runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
-performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
-workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
-renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
-performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
-performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
-flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
-processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
-(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
-<SerializationPage>
-exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
-(anonymous) @ index.jsx:125Understand this error
-SerializationPage.jsx:190 [SerializationPage] edit soft validation errors: {}
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:53 [api.js] ========== RESPONSE INTERCEPTOR ERROR ==========
 overrideMethod @ hook.js:608
-handleSubmitEdit @ SerializationPage.jsx:190
-handleSubmit @ ConfigurationForm.jsx:22
+(anonymous) @ api.js:53
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
 executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
 runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
 processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
@@ -208,9 +960,26 @@ batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
 dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
 dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
 dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
-<form>
+<button>
 exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
-ConfigurationForm @ ConfigurationForm.jsx:140
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
 react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
 renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
 renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
@@ -224,64 +993,24 @@ performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
 performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
 flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
 processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
-(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
-<ConfigurationForm>
-exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
-SerializationPage @ SerializationPage.jsx:448
-react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
-renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
-renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
-updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
-beginWork @ react-dom_client.js?v=c7ad2ce8:7654
-runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
-performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
-workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
-renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
-performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
-performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
-flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
-processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
-(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
-<SerializationPage>
-exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
-(anonymous) @ index.jsx:125Understand this warning
-Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
-Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
-Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
-Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
-Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-SerializationPage.jsx:135 [SerializationPage] handleOpenEdit item: {id: 2, idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '222', …}
-SerializationPage.jsx:151 [SerializationPage] mappedForm for edit: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '222', numeroInicial: 122, …}
-ConfigurationForm.jsx:21 [ConfigurationForm] onSubmit values: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '222', numeroInicial: 122, …}
-SerializationPage.jsx:186 [SerializationPage] handleSubmitEdit form before validate: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '222', numeroInicial: 122, …}
-serialization.schema.js:171 [serialization.schema] validateSerializationUpdate input: {idEmpresa: 1, idSucursal: 1, idTipoComprobante: 2, serie: '222', numeroInicial: 122, …}
-serialization.schema.js:185 [serialization.schema] validateSerializationUpdate errors: {} raw error: ZodError: [
-  {
-    "expected": "boolean",
-    "code": "invalid_type",
-    "path": [
-      "porDefault"
-    ],
-    "message": "Invalid input: expected boolean, received number"
-  }
-]
-    at validateSerializationUpdate (serialization.schema.js:173:49)
-    at handleSubmitEdit (SerializationPage.jsx:188:18)
-    at handleSubmit (ConfigurationForm.jsx:22:5)
-    at executeDispatch (react-dom_client.js?v=c7ad2ce8:11736:11)
-    at runWithFiberInDEV (react-dom_client.js?v=c7ad2ce8:1485:72)
-    at processDispatchQueue (react-dom_client.js?v=c7ad2ce8:11772:37)
-    at react-dom_client.js?v=c7ad2ce8:12182:11
-    at batchedUpdates$1 (react-dom_client.js?v=c7ad2ce8:2628:42)
-    at dispatchEventForPluginEventSystem (react-dom_client.js?v=c7ad2ce8:11877:9)
-    at dispatchEvent (react-dom_client.js?v=c7ad2ce8:14792:13)
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:54 [api.js] Error: AxiosError {message: 'Request failed with status code 409', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}
 overrideMethod @ hook.js:608
-validateSerializationUpdate @ serialization.schema.js:185
-handleSubmitEdit @ SerializationPage.jsx:188
-handleSubmit @ ConfigurationForm.jsx:22
+(anonymous) @ api.js:54
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
 executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
 runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
 processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
@@ -290,9 +1019,26 @@ batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
 dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
 dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
 dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
-<form>
+<button>
 exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
-ConfigurationForm @ ConfigurationForm.jsx:140
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
 react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
 renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
 renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
@@ -306,31 +1052,24 @@ performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
 performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
 flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
 processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
-(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
-<ConfigurationForm>
-exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
-SerializationPage @ SerializationPage.jsx:448
-react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
-renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
-renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
-updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
-beginWork @ react-dom_client.js?v=c7ad2ce8:7654
-runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
-performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
-workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
-renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
-performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
-performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
-flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
-processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
-(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
-<SerializationPage>
-exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
-(anonymous) @ index.jsx:125Understand this error
-SerializationPage.jsx:190 [SerializationPage] edit soft validation errors: {}
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:55 [api.js] Error message: Request failed with status code 409
 overrideMethod @ hook.js:608
-handleSubmitEdit @ SerializationPage.jsx:190
-handleSubmit @ ConfigurationForm.jsx:22
+(anonymous) @ api.js:55
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
 executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
 runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
 processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
@@ -339,9 +1078,26 @@ batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
 dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
 dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
 dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
-<form>
+<button>
 exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
-ConfigurationForm @ ConfigurationForm.jsx:140
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
 react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
 renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
 renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
@@ -355,10 +1111,52 @@ performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
 performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
 flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
 processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
-(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
-<ConfigurationForm>
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:56 [api.js] Response status: 409
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:56
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
 exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
-SerializationPage @ SerializationPage.jsx:448
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
 react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
 renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
 renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
@@ -372,14 +1170,2018 @@ performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
 performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
 flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
 processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
-(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
-<SerializationPage>
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:57 [api.js] Response data: {error: {…}}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:57
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
 exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
-(anonymous) @ index.jsx:125Understand this warning
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:58 [api.js] Response headers: AxiosHeaders {content-length: '2015', content-type: 'application/json; charset=utf-8'}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:58
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:59 [api.js] Request config: {transitional: {…}, adapter: Array(3), transformRequest: Array(1), transformResponse: Array(1), timeout: 0, …}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:59
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:62 [api.js] Transformed error: {type: 'VALIDATION_ERROR', message: {…}, userMessage: 'Ya existe un registro con estos datos.', status: 409, data: {…}, …}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:62
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:83 [api.js] ========== END RESPONSE INTERCEPTOR ERROR ==========
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:83
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+permissions.api.js:54 [permissions.api] assignPermissions - ERROR: {type: 'VALIDATION_ERROR', message: {…}, userMessage: 'Ya existe un registro con estos datos.', status: 409, data: {…}, …}
+overrideMethod @ hook.js:608
+assignPermissions @ permissions.api.js:54
+await in assignPermissions
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+errorHandler.js:109 [Error - assignPermissions]: {type: 'VALIDATION_ERROR', message: {…}, status: 409, data: {…}, originalError: AxiosError}
+overrideMethod @ hook.js:608
+logError @ errorHandler.js:109
+handleApiError @ errorHandler.js:129
+assignPermissions @ permissions.api.js:56
+await in assignPermissions
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+RolesPage.jsx:156 [RolesPage] assignPermissionsMut - ERROR: {type: 'VALIDATION_ERROR', message: {…}, userMessage: 'Ya existe un registro con estos datos.', status: 409, data: {…}, …}
+overrideMethod @ hook.js:608
+onError @ RolesPage.jsx:156
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1261
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
 Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
 Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+RolesPage.jsx:189 [RolesPage] handleOpenPermissions - item: {id: 2, idEmpresa: 1, nombre: 'aaa', descripcion: 'dsadd', activo: 1, …}
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 4 permission: puedeVer value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 4 permission: puedeCrear value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 4 permission: puedeEditar value: true
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 4 permission: puedeEliminar value: true
+RolesPage.jsx:269 [RolesPage] handleSubmitPermissions - payload: {idRol: 2, permisos: Array(4), idEmpresa: 1}
+RolesPage.jsx:145 [RolesPage] assignPermissionsMut - MUTATE with variables: {idRol: 2, permisos: Array(4), idEmpresa: 1}
+permissions.api.js:42 [permissions.api] assignPermissions
+permissions.api.js:43 [permissions.api] assignPermissions - payload (frontend camelCase): {idRol: 2, permisos: Array(4), idEmpresa: 1}
+permissions.api.js:45 [permissions.api] assignPermissions - payload (backend snake_case, masivo): {id_empresa: 1, id_rol: 2, permisos: Array(4)}
+api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
+api.js:16 [api.js] Method: POST
+api.js:17 [api.js] URL: /permisos/actualizar-masivo
+api.js:18 [api.js] Full URL: http://localhost:3000/api/permisos/actualizar-masivo
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: {id_empresa: 1, id_rol: 2, permisos: Array(4)}
+api.js:21 [api.js] Data type: object
+api.js:23 [api.js] Data stringified: {"id_empresa":1,"id_rol":2,"permisos":[{"id_rol":2,"id_modulo":1,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":2,"id_modulo":2,"puede_ver":true,"puede_crear":false,"puede_editar":true,"puede_eliminar":false},{"id_rol":2,"id_modulo":3,"puede_ver":true,"puede_crear":true,"puede_editar":false,"puede_eliminar":true},{"id_rol":2,"id_modulo":4,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true}]}
+api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
+api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
+permissions.api.js:47  POST http://localhost:3000/api/permisos/actualizar-masivo 409 (Conflict)
+dispatchXhrRequest @ axios.js?v=c7ad2ce8:1683
+xhr @ axios.js?v=c7ad2ce8:1560
+dispatchRequest @ axios.js?v=c7ad2ce8:2085
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:53 [api.js] ========== RESPONSE INTERCEPTOR ERROR ==========
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:53
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:54 [api.js] Error: AxiosError {message: 'Request failed with status code 409', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:54
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:55 [api.js] Error message: Request failed with status code 409
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:55
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:56 [api.js] Response status: 409
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:56
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:57 [api.js] Response data: {error: {…}}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:57
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:58 [api.js] Response headers: AxiosHeaders {content-length: '2137', content-type: 'application/json; charset=utf-8'}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:58
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:59 [api.js] Request config: {transitional: {…}, adapter: Array(3), transformRequest: Array(1), transformResponse: Array(1), timeout: 0, …}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:59
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:62 [api.js] Transformed error: {type: 'VALIDATION_ERROR', message: {…}, userMessage: 'Ya existe un registro con estos datos.', status: 409, data: {…}, …}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:62
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:83 [api.js] ========== END RESPONSE INTERCEPTOR ERROR ==========
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:83
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+permissions.api.js:54 [permissions.api] assignPermissions - ERROR: {type: 'VALIDATION_ERROR', message: {…}, userMessage: 'Ya existe un registro con estos datos.', status: 409, data: {…}, …}
+overrideMethod @ hook.js:608
+assignPermissions @ permissions.api.js:54
+await in assignPermissions
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+errorHandler.js:109 [Error - assignPermissions]: {type: 'VALIDATION_ERROR', message: {…}, status: 409, data: {…}, originalError: AxiosError}
+overrideMethod @ hook.js:608
+logError @ errorHandler.js:109
+handleApiError @ errorHandler.js:129
+assignPermissions @ permissions.api.js:56
+await in assignPermissions
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+RolesPage.jsx:156 [RolesPage] assignPermissionsMut - ERROR: {type: 'VALIDATION_ERROR', message: {…}, userMessage: 'Ya existe un registro con estos datos.', status: 409, data: {…}, …}
+overrideMethod @ hook.js:608
+onError @ RolesPage.jsx:156
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1261
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+RolesPage.jsx:177 [RolesPage] handleOpenEdit - item: {id: 2, idEmpresa: 1, nombre: 'aaa', descripcion: 'dsadd', activo: 1, …}
+RolesPage.jsx:189 [RolesPage] handleOpenPermissions - item: {id: 2, idEmpresa: 1, nombre: 'aaa', descripcion: 'dsadd', activo: 1, …}
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
+Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+RolesPage.jsx:226 [RolesPage] handlePermissionChange - moduleId: 6 permission: puedeEliminar value: true
+RolesPage.jsx:269 [RolesPage] handleSubmitPermissions - payload: {idRol: 2, permisos: Array(5), idEmpresa: 1}
+RolesPage.jsx:145 [RolesPage] assignPermissionsMut - MUTATE with variables: {idRol: 2, permisos: Array(5), idEmpresa: 1}
+permissions.api.js:42 [permissions.api] assignPermissions
+permissions.api.js:43 [permissions.api] assignPermissions - payload (frontend camelCase): {idRol: 2, permisos: Array(5), idEmpresa: 1}
+permissions.api.js:45 [permissions.api] assignPermissions - payload (backend snake_case, masivo): {id_empresa: 1, id_rol: 2, permisos: Array(5)}
+api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
+api.js:16 [api.js] Method: POST
+api.js:17 [api.js] URL: /permisos/actualizar-masivo
+api.js:18 [api.js] Full URL: http://localhost:3000/api/permisos/actualizar-masivo
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: {id_empresa: 1, id_rol: 2, permisos: Array(5)}
+api.js:21 [api.js] Data type: object
+api.js:23 [api.js] Data stringified: {"id_empresa":1,"id_rol":2,"permisos":[{"id_rol":2,"id_modulo":1,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":2,"id_modulo":2,"puede_ver":true,"puede_crear":false,"puede_editar":true,"puede_eliminar":false},{"id_rol":2,"id_modulo":3,"puede_ver":true,"puede_crear":true,"puede_editar":false,"puede_eliminar":true},{"id_rol":2,"id_modulo":4,"puede_ver":true,"puede_crear":true,"puede_editar":true,"puede_eliminar":true},{"id_rol":2,"id_modulo":6,"puede_ver":false,"puede_crear":false,"puede_editar":false,"puede_eliminar":true}]}
+api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
+api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
+permissions.api.js:47  POST http://localhost:3000/api/permisos/actualizar-masivo 409 (Conflict)
+dispatchXhrRequest @ axios.js?v=c7ad2ce8:1683
+xhr @ axios.js?v=c7ad2ce8:1560
+dispatchRequest @ axios.js?v=c7ad2ce8:2085
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:53 [api.js] ========== RESPONSE INTERCEPTOR ERROR ==========
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:53
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:54 [api.js] Error: AxiosError {message: 'Request failed with status code 409', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:54
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:55 [api.js] Error message: Request failed with status code 409
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:55
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:56 [api.js] Response status: 409
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:56
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:57 [api.js] Response data: {error: {…}}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:57
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:58 [api.js] Response headers: AxiosHeaders {content-length: '2265', content-type: 'application/json; charset=utf-8'}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:58
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:59 [api.js] Request config: {transitional: {…}, adapter: Array(3), transformRequest: Array(1), transformResponse: Array(1), timeout: 0, …}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:59
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:62 [api.js] Transformed error: {type: 'VALIDATION_ERROR', message: {…}, userMessage: 'Ya existe un registro con estos datos.', status: 409, data: {…}, …}
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:62
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+api.js:83 [api.js] ========== END RESPONSE INTERCEPTOR ERROR ==========
+overrideMethod @ hook.js:608
+(anonymous) @ api.js:83
+Promise.then
+_request @ axios.js?v=c7ad2ce8:2288
+request @ axios.js?v=c7ad2ce8:2197
+httpMethod @ axios.js?v=c7ad2ce8:2334
+wrap @ axios.js?v=c7ad2ce8:8
+assignPermissions @ permissions.api.js:47
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+permissions.api.js:54 [permissions.api] assignPermissions - ERROR: {type: 'VALIDATION_ERROR', message: {…}, userMessage: 'Ya existe un registro con estos datos.', status: 409, data: {…}, …}
+overrideMethod @ hook.js:608
+assignPermissions @ permissions.api.js:54
+await in assignPermissions
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+errorHandler.js:109 [Error - assignPermissions]: {type: 'VALIDATION_ERROR', message: {…}, status: 409, data: {…}, originalError: AxiosError}
+overrideMethod @ hook.js:608
+logError @ errorHandler.js:109
+handleApiError @ errorHandler.js:129
+assignPermissions @ permissions.api.js:56
+await in assignPermissions
+fn @ chunk-CI2HQK4E.js?v=c7ad2ce8:1200
+run @ chunk-CI2HQK4E.js?v=c7ad2ce8:491
+start @ chunk-CI2HQK4E.js?v=c7ad2ce8:533
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1235
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
+RolesPage.jsx:156 [RolesPage] assignPermissionsMut - ERROR: {type: 'VALIDATION_ERROR', message: {…}, userMessage: 'Ya existe un registro con estos datos.', status: 409, data: {…}, …}
+overrideMethod @ hook.js:608
+onError @ RolesPage.jsx:156
+execute @ chunk-CI2HQK4E.js?v=c7ad2ce8:1261
+await in execute
+mutate @ chunk-CI2HQK4E.js?v=c7ad2ce8:2642
+(anonymous) @ chunk-CI2HQK4E.js?v=c7ad2ce8:3356
+handleSubmitPermissions @ RolesPage.jsx:270
+executeDispatch @ react-dom_client.js?v=c7ad2ce8:11736
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+processDispatchQueue @ react-dom_client.js?v=c7ad2ce8:11772
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:12182
+batchedUpdates$1 @ react-dom_client.js?v=c7ad2ce8:2628
+dispatchEventForPluginEventSystem @ react-dom_client.js?v=c7ad2ce8:11877
+dispatchEvent @ react-dom_client.js?v=c7ad2ce8:14792
+dispatchDiscreteEvent @ react-dom_client.js?v=c7ad2ce8:14773
+<button>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+_c @ Button.jsx:50
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateForwardRef @ react-dom_client.js?v=c7ad2ce8:6461
+beginWork @ react-dom_client.js?v=c7ad2ce8:7864
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649
+<ForwardRef(_c)>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=c7ad2ce8:250
+Modal @ Modal.jsx:72
+react_stack_bottom_frame @ react-dom_client.js?v=c7ad2ce8:17424
+renderWithHooksAgain @ react-dom_client.js?v=c7ad2ce8:4281
+renderWithHooks @ react-dom_client.js?v=c7ad2ce8:4217
+updateFunctionComponent @ react-dom_client.js?v=c7ad2ce8:6619
+beginWork @ react-dom_client.js?v=c7ad2ce8:7654
+runWithFiberInDEV @ react-dom_client.js?v=c7ad2ce8:1485
+performUnitOfWork @ react-dom_client.js?v=c7ad2ce8:10868
+workLoopSync @ react-dom_client.js?v=c7ad2ce8:10728
+renderRootSync @ react-dom_client.js?v=c7ad2ce8:10711
+performWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=c7ad2ce8:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=c7ad2ce8:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=c7ad2ce8:11558
+(anonymous) @ react-dom_client.js?v=c7ad2ce8:11649Understand this error
 Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1
 Sidebar.jsx:97 [Sidebar] visibleMenuItems: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
 Sidebar.jsx:96 [Sidebar] user: {id: 1, id_empresa: 1, id_rol: 1, username: 'francoemogolico@gmail.com', password: '$2a$10$nnqgvXkDQxGVSK25iyjNuuQpJq5nd0APKv2HmHb1ojl7yInbZiYsK', …} id_rol= 1 rolId= 1

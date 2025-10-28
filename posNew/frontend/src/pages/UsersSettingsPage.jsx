@@ -48,14 +48,20 @@ const UsersSettingsPage = () => {
   // Query para listar roles
   const { data: roles = [] } = useQuery({
     queryKey: ['roles', idEmpresa],
-    queryFn: () => listRolesByEmpresa(idEmpresa),
+    queryFn: () => {
+      console.log('[UsersSettingsPage] Fetch roles for empresa:', idEmpresa);
+      return listRolesByEmpresa(idEmpresa);
+    },
     enabled: !!idEmpresa,
   });
 
   // Query para listar usuarios
   const { data: items = [], isLoading } = useQuery({
     queryKey: ['users', idEmpresa],
-    queryFn: () => listUsersByEmpresa(idEmpresa),
+    queryFn: () => {
+      console.log('[UsersSettingsPage] Fetch users for empresa:', idEmpresa);
+      return listUsersByEmpresa(idEmpresa);
+    },
     enabled: !!idEmpresa,
   });
 
@@ -63,57 +69,75 @@ const UsersSettingsPage = () => {
   const createMut = useMutation({
     mutationFn: createUser,
     onSuccess: () => {
+      console.log('[UsersSettingsPage] createUser SUCCESS');
       success('Usuario creado correctamente');
       setIsCreateOpen(false);
       setForm(defaultForm(user));
       setErrors({});
       queryClient.invalidateQueries({ queryKey: ['users', idEmpresa] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al crear usuario'),
+    onError: (err) => {
+      console.error('[UsersSettingsPage] createUser ERROR:', err);
+      showError(err?.userMessage || 'Error al crear usuario');
+    },
   });
 
   const updateMut = useMutation({
     mutationFn: ({ id, payload }) => updateUser(id, payload),
     onSuccess: () => {
+      console.log('[UsersSettingsPage] updateUser SUCCESS');
       success('Usuario actualizado correctamente');
       setIsEditOpen(false);
       setSelectedItem(null);
       setErrors({});
       queryClient.invalidateQueries({ queryKey: ['users', idEmpresa] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al actualizar usuario'),
+    onError: (err) => {
+      console.error('[UsersSettingsPage] updateUser ERROR:', err);
+      showError(err?.userMessage || 'Error al actualizar usuario');
+    },
   });
 
   const deleteMut = useMutation({
     mutationFn: deleteUser,
     onSuccess: () => {
+      console.log('[UsersSettingsPage] deleteUser SUCCESS');
       success('Usuario eliminado correctamente');
       setIsDeleteOpen(false);
       setSelectedItem(null);
       queryClient.invalidateQueries({ queryKey: ['users', idEmpresa] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al eliminar usuario'),
+    onError: (err) => {
+      console.error('[UsersSettingsPage] deleteUser ERROR:', err);
+      showError(err?.userMessage || 'Error al eliminar usuario');
+    },
   });
 
   const resetPasswordMut = useMutation({
     mutationFn: ({ id, password }) => resetPassword(id, { password }),
     onSuccess: () => {
+      console.log('[UsersSettingsPage] resetPassword SUCCESS');
       success('Contraseña restablecida correctamente');
       setIsResetPasswordOpen(false);
       setSelectedItem(null);
       setNewPassword('');
     },
-    onError: (err) => showError(err?.userMessage || 'Error al restablecer contraseña'),
+    onError: (err) => {
+      console.error('[UsersSettingsPage] resetPassword ERROR:', err);
+      showError(err?.userMessage || 'Error al restablecer contraseña');
+    },
   });
 
   // Handlers
   const handleOpenCreate = () => {
+    console.log('[UsersSettingsPage] handleOpenCreate. defaultForm:', defaultForm(user));
     setForm(defaultForm(user));
     setErrors({});
     setIsCreateOpen(true);
   };
 
   const handleOpenEdit = (item) => {
+    console.log('[UsersSettingsPage] handleOpenEdit. item:', item);
     setSelectedItem(item);
     setForm({
       idEmpresa: item.id_empresa,
@@ -129,22 +153,39 @@ const UsersSettingsPage = () => {
       tema: item.tema || 'light',
       estado: item.estado || 'ACTIVO',
     });
+    console.log('[UsersSettingsPage] handleOpenEdit. mapped form:', {
+      idEmpresa: item.id_empresa,
+      idRol: item.id_rol,
+      username: item.username || '',
+      password: '',
+      nombres: item.nombres || '',
+      apellidos: item.apellidos || '',
+      email: item.email || '',
+      telefono: item.telefono || '',
+      idTipodocumento: item.id_tipodocumento || null,
+      nroDoc: item.nro_doc || '',
+      tema: item.tema || 'light',
+      estado: item.estado || 'ACTIVO',
+    });
     setErrors({});
     setIsEditOpen(true);
   };
 
   const handleOpenDelete = (item) => {
+    console.log('[UsersSettingsPage] handleOpenDelete. item:', item);
     setSelectedItem(item);
     setIsDeleteOpen(true);
   };
 
   const handleOpenResetPassword = (item) => {
+    console.log('[UsersSettingsPage] handleOpenResetPassword. item:', item);
     setSelectedItem(item);
     setNewPassword('');
     setIsResetPasswordOpen(true);
   };
 
   const handleChange = (field, value) => {
+    console.log('[UsersSettingsPage] handleChange', { field, value, type: typeof value });
     setForm((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
@@ -152,32 +193,41 @@ const UsersSettingsPage = () => {
   };
 
   const handleSubmitCreate = () => {
+    console.log('[UsersSettingsPage] handleSubmitCreate START. form:', form);
     const validation = validateUser(form, true);
     if (!validation.success) {
+      console.warn('[UsersSettingsPage] handleSubmitCreate VALIDATION FAILED:', validation.errors);
       setErrors(validation.errors);
       showError('Por favor corrige los errores en el formulario');
       return;
     }
+    console.log('[UsersSettingsPage] handleSubmitCreate VALIDATION OK. Submitting payload:', form);
     setErrors({});
     createMut.mutate(form);
   };
 
   const handleSubmitEdit = () => {
+    console.log('[UsersSettingsPage] handleSubmitEdit START. form:', form);
     const validation = validateUser(form, false);
     if (!validation.success) {
+      console.warn('[UsersSettingsPage] handleSubmitEdit VALIDATION FAILED:', validation.errors);
       setErrors(validation.errors);
       showError('Por favor corrige los errores en el formulario');
       return;
     }
+    console.log('[UsersSettingsPage] handleSubmitEdit VALIDATION OK. Submitting payload:', form);
     setErrors({});
     updateMut.mutate({ id: selectedItem?.id, payload: form });
   };
 
   const handleSubmitResetPassword = () => {
-    if (!newPassword || newPassword.length < 6) {
-      showError('La contraseña debe tener al menos 6 caracteres');
+    console.log('[UsersSettingsPage] handleSubmitResetPassword START. newPassword length:', newPassword?.length);
+    // Alinear con DTO backend: mínimo 8 caracteres
+    if (!newPassword || newPassword.length < 8) {
+      showError('La contraseña debe tener al menos 8 caracteres');
       return;
     }
+    console.log('[UsersSettingsPage] handleSubmitResetPassword Submitting:', { id: selectedItem?.id, password: newPassword });
     resetPasswordMut.mutate({ id: selectedItem?.id, password: newPassword });
   };
 
@@ -236,7 +286,7 @@ const UsersSettingsPage = () => {
       type: 'password',
       placeholder: '••••••',
       required: true,
-      hint: 'Mínimo 6 caracteres',
+      hint: 'Mínimo 8 caracteres',
     },
     {
       name: 'nombres',
@@ -394,7 +444,7 @@ const UsersSettingsPage = () => {
               placeholder="••••••"
               className="w-full px-3 py-2 border border-base-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             />
-            <p className="text-xs text-base-content/60 mt-1">Mínimo 6 caracteres</p>
+            <p className="text-xs text-base-content/60 mt-1">Mínimo 8 caracteres</p>
           </div>
         </div>
       </Modal>

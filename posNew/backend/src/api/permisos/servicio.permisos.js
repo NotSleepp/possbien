@@ -28,47 +28,98 @@ async function actualizarPermisosMasivo(datos) {
   const { id_empresa, id_rol, permisos } = datos;
 
   return await knex.transaction(async (trx) => {
-    // Eliminar permisos existentes del rol (eliminación lógica)
-    await trx('permisos')
-      .where({ id_rol, id_empresa })
-      .update({ 
-        eliminado: true, 
-        fecha_eliminacion: trx.fn.now() 
-      });
-
-    // Insertar nuevos permisos
-    const permisosParaInsertar = permisos.map(permiso => ({
-      id_empresa: permiso.id_empresa,
-      id_rol: permiso.id_rol,
-      id_modulo: permiso.id_modulo,
-      puede_ver: permiso.puede_ver || false,
-      puede_crear: permiso.puede_crear || false,
-      puede_editar: permiso.puede_editar || false,
-      puede_eliminar: permiso.puede_eliminar || false,
-      eliminado: false,
-      fecha_creacion: trx.fn.now()
+    // Normalizar payload
+    const normalizados = (permisos || []).map((permiso) => ({
+      id_empresa,
+      id_rol,
+      id_modulo: Number(permiso.id_modulo),
+      puede_ver: !!permiso.puede_ver,
+      puede_crear: !!permiso.puede_crear,
+      puede_editar: !!permiso.puede_editar,
+      puede_eliminar: !!permiso.puede_eliminar,
     }));
 
-    // Filtrar solo los permisos que tienen al menos un permiso activo
-    const permisosActivos = permisosParaInsertar.filter(p => 
-      p.puede_ver || p.puede_crear || p.puede_editar || p.puede_eliminar
+    const activos = normalizados.filter(
+      (p) => p.puede_ver || p.puede_crear || p.puede_editar || p.puede_eliminar
     );
+    const idsActivos = activos.map((p) => p.id_modulo);
+    const idsTodos = normalizados.map((p) => p.id_modulo);
 
-    if (permisosActivos.length > 0) {
-      await trx('permisos').insert(permisosActivos);
+    // Caso: si no se envían permisos, desactivar todos los existentes del rol
+    if (normalizados.length === 0) {
+      await trx('permisos')
+        .where({ id_rol, id_empresa })
+        .update({
+          eliminado: true,
+          fecha_eliminacion: trx.fn.now(),
+          puede_ver: false,
+          puede_crear: false,
+          puede_editar: false,
+          puede_eliminar: false,
+        });
+    } else {
+      // Upsert de permisos activos (evita conflicto UNIQUE(id_rol, id_modulo))
+      if (activos.length > 0) {
+        await trx('permisos')
+          .insert(
+            activos.map((p) => ({
+              id_empresa: p.id_empresa,
+              id_rol: p.id_rol,
+              id_modulo: p.id_modulo,
+              puede_ver: p.puede_ver,
+              puede_crear: p.puede_crear,
+              puede_editar: p.puede_editar,
+              puede_eliminar: p.puede_eliminar,
+              eliminado: false,
+            }))
+          )
+          .onConflict(['id_rol', 'id_modulo'])
+          .merge(['puede_ver', 'puede_crear', 'puede_editar', 'puede_eliminar', 'eliminado']);
+      }
+
+      // Desactivar permisos no activos o no incluidos (soft delete sin crear duplicados)
+      await trx('permisos')
+        .where({ id_rol, id_empresa })
+        .andWhere((qb) => {
+          if (idsActivos.length > 0) {
+            qb.whereNotIn('id_modulo', idsActivos);
+          } else if (idsTodos.length > 0) {
+            qb.whereNotIn('id_modulo', idsTodos);
+          }
+        })
+        .update({
+          eliminado: true,
+          fecha_eliminacion: trx.fn.now(),
+          puede_ver: false,
+          puede_crear: false,
+          puede_editar: false,
+          puede_eliminar: false,
+        });
+
+      // Si se incluyeron módulos con todos los permisos en false explícitamente, marcarlos como eliminados
+      const idsInactivosExplícitos = normalizados
+        .filter((p) => !p.puede_ver && !p.puede_crear && !p.puede_editar && !p.puede_eliminar)
+        .map((p) => p.id_modulo);
+      if (idsInactivosExplícitos.length > 0) {
+        await trx('permisos')
+          .where({ id_rol, id_empresa })
+          .whereIn('id_modulo', idsInactivosExplícitos)
+          .update({
+            eliminado: true,
+            fecha_eliminacion: trx.fn.now(),
+            puede_ver: false,
+            puede_crear: false,
+            puede_editar: false,
+            puede_eliminar: false,
+          });
+      }
     }
 
-    // Retornar los permisos actualizados
+    // Retornar los permisos activos actualizados
     return await trx('permisos')
-      .select(
-        'permisos.*',
-        'modulos.nombre as nombre_modulo'
-      )
+      .select('permisos.*', 'modulos.nombre as nombre_modulo')
       .leftJoin('modulos', 'permisos.id_modulo', 'modulos.id')
-      .where({ 
-        'permisos.id_rol': id_rol, 
-        'permisos.eliminado': false 
-      });
+      .where({ 'permisos.id_rol': id_rol, 'permisos.id_empresa': id_empresa, 'permisos.eliminado': false });
   });
 }
 

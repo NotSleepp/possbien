@@ -90,6 +90,8 @@ import impresorasRouter from './api/impresoras/rutas.impresoras.js';
 import metodosPagoRouter from './api/metodos_pago/rutas.metodos_pago.js';
 import tiposComprobanteRouter from './api/tipos_comprobante/rutas.tipos_comprobante.js';
 import serializacionesComprobanteRouter from './api/serializaciones_comprobante/rutas.serializaciones_comprobante.js';
+import modulosRouter from './api/modulos/rutas.modulos.js';
+import permisosRouter from './api/permisos/rutas.permisos.js';
 
 app.use('/api/usuarios', usuariosRouter);
 app.use('/api/empresas', empresasRouter);
@@ -114,6 +116,8 @@ app.use('/api/impresoras', impresorasRouter);
 app.use('/api/metodos_pago', metodosPagoRouter);
 app.use('/api/tipos-comprobante', tiposComprobanteRouter);
 app.use('/api/serializacion-comprobantes', serializacionesComprobanteRouter);
+app.use('/api/modulos', modulosRouter);
+app.use('/api/permisos', permisosRouter);
 
 // Middleware de manejo de errores (DEBE ir al final)
 app.use(errorLogger);

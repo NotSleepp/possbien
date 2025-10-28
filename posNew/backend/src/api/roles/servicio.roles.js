@@ -6,16 +6,16 @@ async function crearRol(datos) {
   const datosValidados = esquemaCrearRol.parse(datos);
   
   // Validar unicidad de nombre por empresa
-  const existente = await repositorio.obtenerRolPorNombreYEmpresa(datosValidados.nombre, datosValidados.idEmpresa);
+  const existente = await repositorio.obtenerRolPorNombreYEmpresa(datosValidados.nombre, datosValidados.id_empresa);
   if (existente) {
     throw new UniqueConstraintError('nombre', datosValidados.nombre);
   }
   
   const mappedData = {
-    id_empresa: datosValidados.idEmpresa,
-    codigo: datosValidados.codigo,
+    id_empresa: datosValidados.id_empresa,
     nombre: datosValidados.nombre,
     descripcion: datosValidados.descripcion,
+    ...(datosValidados.activo !== undefined ? { activo: datosValidados.activo } : {}),
   };
   return await repositorio.crearRol(mappedData);
 }

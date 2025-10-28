@@ -6,12 +6,9 @@ import {
   FiPackage, 
   FiShoppingCart, 
   FiFileText, 
-  FiUsers, 
   FiSettings, 
   FiLogOut,
-  FiX,
-  FiPrinter,
-  FiCreditCard
+  FiX
 } from 'react-icons/fi';
 import { useAuthStore } from '../../../store/useAuthStore';
 import { useToastStore } from '../../../store/useToastStore';
@@ -64,28 +61,10 @@ const Sidebar = ({ onClose }) => {
       roles: [1, 2, 3], // Admin, Manager roles
     },
     {
-      path: '/users',
-      label: 'Usuarios',
-      icon: FiUsers,
-      roles: [1, 2], // Super Admin, Admin only
-    },
-    {
       path: '/settings',
       label: 'Configuración',
       icon: FiSettings,
       roles: [1, 2], // Super Admin, Admin only
-    },
-    {
-      path: '/settings/printers',
-      label: 'Impresoras',
-      icon: FiPrinter,
-      roles: [1, 2],
-    },
-    {
-      path: '/settings/payment-methods',
-      label: 'Métodos de Pago',
-      icon: FiCreditCard,
-      roles: [1, 2],
     },
   ];
 

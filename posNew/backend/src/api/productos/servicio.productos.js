@@ -25,7 +25,6 @@ import {
 async function crearProducto(datos, usuario = null) {
   const datosValidados = esquemaCrearProducto.parse(datos);
   
-  // Validaciones de negocio
   if (usuario) {
     const result = validarAccesoEmpresa(usuario, datosValidados.idEmpresa);
     if (!result.esValido) {
@@ -33,7 +32,6 @@ async function crearProducto(datos, usuario = null) {
     }
   }
   
-  // Crear función de verificación para validar código único
   const verificarCodigo = async (codigo, empresaId) => {
     return await repositorio.obtenerPorCodigo(codigo, empresaId);
   };
@@ -61,9 +59,9 @@ async function crearProducto(datos, usuario = null) {
     descripcion: datosValidados.descripcion,
     precio_compra: datosValidados.precioCompra,
     precio_venta: datosValidados.precioVenta,
+    stock_minimo: datosValidados.stockMinimo,
     unidad_medida: datosValidados.unidadMedida,
   };
-  // TODO: Create associated Stock entry with stockActual and stockMinimo
   return await repositorio.crearProducto(mappedData);
 }
 
@@ -130,10 +128,8 @@ async function obtenerProductoPorId(id) {
 async function actualizarProducto(id, datos, usuario = null) {
   const datosValidados = esquemaActualizarProducto.parse({ id, ...datos });
   
-  // Obtener producto actual para validaciones
   const productoActual = await obtenerProductoPorId(id);
   
-  // Validaciones de negocio
   if (usuario) {
     const result = validarAccesoEmpresa(usuario, productoActual.id_empresa);
     if (!result.esValido) {
@@ -141,9 +137,7 @@ async function actualizarProducto(id, datos, usuario = null) {
     }
   }
   
-  // Si se está cambiando el código, validar unicidad
   if (datosValidados.codigo && datosValidados.codigo !== productoActual.codigo) {
-    // Crear función de verificación para validar código único
     const verificarCodigo = async (codigo, empresaId) => {
       return await repositorio.obtenerPorCodigo(codigo, empresaId);
     };
@@ -160,7 +154,6 @@ async function actualizarProducto(id, datos, usuario = null) {
     }
   }
   
-  // Si se están actualizando precios, validarlos
   if (datosValidados.precioCompra || datosValidados.precioVenta) {
     const precioCompra = datosValidados.precioCompra || productoActual.precio_compra;
     const precioVenta = datosValidados.precioVenta || productoActual.precio_venta;
@@ -170,7 +163,17 @@ async function actualizarProducto(id, datos, usuario = null) {
     }
   }
   
-  return await repositorio.actualizarProducto(id, datosValidados);
+  const mappedUpdate = {};
+  if (datosValidados.idCategoria !== undefined) mappedUpdate.id_categoria = datosValidados.idCategoria;
+  if (datosValidados.codigo !== undefined) mappedUpdate.codigo = datosValidados.codigo;
+  if (datosValidados.nombre !== undefined) mappedUpdate.nombre = datosValidados.nombre;
+  if (datosValidados.descripcion !== undefined) mappedUpdate.descripcion = datosValidados.descripcion;
+  if (datosValidados.precioCompra !== undefined) mappedUpdate.precio_compra = datosValidados.precioCompra;
+  if (datosValidados.precioVenta !== undefined) mappedUpdate.precio_venta = datosValidados.precioVenta;
+  if (datosValidados.stockMinimo !== undefined) mappedUpdate.stock_minimo = datosValidados.stockMinimo;
+  if (datosValidados.unidadMedida !== undefined) mappedUpdate.unidad_medida = datosValidados.unidadMedida;
+  
+  return await repositorio.actualizarProducto(id, mappedUpdate);
 }
 
 /**

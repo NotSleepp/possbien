@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { FiPlus, FiAlertCircle } from 'react-icons/fi';
 import { useProducts } from '../features/products/hooks/useProducts';
 import { ProductTable, ProductCard, ProductFilters, Pagination, EmptyState } from '../features/products';
@@ -16,16 +16,13 @@ const ProductsPage = () => {
   const { success, error: showError } = useToastStore();
   const { categories = [] } = useCategories();
   
-  // State for filters and pagination
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   
-  // State for delete confirmation modal
   const [productToDelete, setProductToDelete] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  // State for create/edit modals and form
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -79,6 +76,7 @@ const ProductsPage = () => {
 
   const validateProduct = (values) => {
     const v = { ...values };
+    console.log('[ProductsPage] validateProduct INPUT', v);
     const errs = {};
     if (!v.idEmpresa) errs.idEmpresa = 'Empresa no definida';
     if (!v.idCategoria) errs.idCategoria = 'La categoría es obligatoria';
@@ -93,18 +91,18 @@ const ProductsPage = () => {
     const stockM = Number(v.stockMinimo);
     if (isNaN(stockA) || stockA < 0) errs.stockActual = 'Stock actual inválido';
     if (isNaN(stockM) || stockM < 0) errs.stockMinimo = 'Stock mínimo inválido';
+    console.log('[ProductsPage] validateProduct OUTPUT errors', errs);
     return errs;
   };
 
   const handleChange = (name, value) => {
+    console.log('[ProductsPage] handleChange', { name, value, type: typeof value });
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Filter and search products
   const filteredProducts = useMemo(() => {
     let filtered = [...products];
 
-    // Apply search filter
     if (searchTerm) {
       const searchLower = searchTerm.toLowerCase();
       filtered = filtered.filter(
@@ -115,7 +113,6 @@ const ProductsPage = () => {
       );
     }
 
-    // Apply status filter
     if (statusFilter === 'active') {
       filtered = filtered.filter((product) => product.activo);
     } else if (statusFilter === 'inactive') {
@@ -125,7 +122,6 @@ const ProductsPage = () => {
     return filtered;
   }, [products, searchTerm, statusFilter]);
 
-  // Pagination
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
   const paginatedProducts = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -133,27 +129,43 @@ const ProductsPage = () => {
     return filteredProducts.slice(startIndex, endIndex);
   }, [filteredProducts, currentPage]);
 
-  // Reset to page 1 when filters change
+  useEffect(() => {
+    const total = Array.isArray(products) ? products.length : 0;
+    const filtered = Array.isArray(filteredProducts) ? filteredProducts.length : 0;
+    const paginated = Array.isArray(paginatedProducts) ? paginatedProducts.length : 0;
+    console.log('[ProductsPage] METRICS', {
+      total,
+      filtered,
+      paginated,
+      currentPage,
+      perPage: ITEMS_PER_PAGE,
+      searchTerm,
+      statusFilter,
+    });
+  }, [products, filteredProducts, paginatedProducts, currentPage, searchTerm, statusFilter]);
+
   const handleSearchChange = (value) => {
+    console.log('[ProductsPage] handleSearchChange', { value });
     setSearchTerm(value);
     setCurrentPage(1);
   };
 
   const handleStatusFilterChange = (value) => {
+    console.log('[ProductsPage] handleStatusFilterChange', { value });
     setStatusFilter(value);
     setCurrentPage(1);
   };
 
   const handleClearFilters = () => {
+    console.log('[ProductsPage] handleClearFilters');
     setSearchTerm('');
     setStatusFilter('all');
     setCurrentPage(1);
   };
 
-  // Handle edit product
   const handleEdit = (product) => {
-    setSelectedProduct(product);
-    setForm({
+    console.log('[ProductsPage] handleEdit START', { product });
+    const nextForm = {
       idEmpresa: user?.id_empresa || product.id_empresa || null,
       idCategoria: product.id_categoria ?? product.idCategoria ?? null,
       codigo: product.codigo || '',
@@ -164,40 +176,50 @@ const ProductsPage = () => {
       stockActual: product.stock_actual ?? product.stockActual ?? 0,
       stockMinimo: product.stock_minimo ?? product.stockMinimo ?? 0,
       unidadMedida: product.unidad_medida ?? product.unidadMedida ?? '',
-    });
+    };
+    console.log('[ProductsPage] handleEdit nextForm', nextForm);
+    setSelectedProduct(product);
+    setForm(nextForm);
     setErrors({});
     setIsEditOpen(true);
   };
 
-  // Handle delete product
   const handleDeleteClick = (product) => {
+    console.log('[ProductsPage] handleDeleteClick', { product });
     setProductToDelete(product);
     setShowDeleteModal(true);
   };
 
   const handleConfirmDelete = () => {
+    console.log('[ProductsPage] handleConfirmDelete', { productToDelete });
     if (productToDelete) {
       deleteProduct(productToDelete.id, {
         onSuccess: () => {
+          console.log('[ProductsPage] deleteProduct onSuccess');
           setShowDeleteModal(false);
           setProductToDelete(null);
+        },
+        onError: (err) => {
+          console.error('[ProductsPage] deleteProduct onError', err);
         },
       });
     }
   };
 
   const handleCancelDelete = () => {
+    console.log('[ProductsPage] handleCancelDelete');
     setShowDeleteModal(false);
     setProductToDelete(null);
   };
 
-  // Handle add product
   const handleAddProduct = () => {
+    console.log('[ProductsPage] handleAddProduct');
     resetForm();
     setIsCreateOpen(true);
   };
 
   const handleSubmitCreate = () => {
+    console.log('[ProductsPage] handleSubmitCreate START', { form });
     const numericForm = {
       ...form,
       idEmpresa: user?.id_empresa || form.idEmpresa,
@@ -207,7 +229,9 @@ const ProductsPage = () => {
       stockActual: Number(form.stockActual),
       stockMinimo: Number(form.stockMinimo),
     };
+    console.log('[ProductsPage] handleSubmitCreate numericForm', numericForm);
     const validationErrors = validateProduct(numericForm);
+    console.log('[ProductsPage] handleSubmitCreate validationErrors', validationErrors);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       showError('Por favor corrige los campos marcados.');
@@ -216,11 +240,13 @@ const ProductsPage = () => {
 
     createProduct(numericForm, {
       onSuccess: () => {
+        console.log('[ProductsPage] createProduct onSuccess');
         success('Producto creado exitosamente.');
         setIsCreateOpen(false);
         resetForm();
       },
       onError: (err) => {
+        console.error('[ProductsPage] createProduct onError', err);
         showError(err?.userMessage || 'Error al crear el producto.');
       },
     });
@@ -228,6 +254,7 @@ const ProductsPage = () => {
 
   const handleSubmitEdit = () => {
     if (!selectedProduct?.id) return;
+    console.log('[ProductsPage] handleSubmitEdit START', { form, selectedProduct });
     const numericForm = {
       ...form,
       idEmpresa: user?.id_empresa || form.idEmpresa,
@@ -237,7 +264,9 @@ const ProductsPage = () => {
       stockActual: Number(form.stockActual),
       stockMinimo: Number(form.stockMinimo),
     };
+    console.log('[ProductsPage] handleSubmitEdit numericForm', numericForm);
     const validationErrors = validateProduct(numericForm);
+    console.log('[ProductsPage] handleSubmitEdit validationErrors', validationErrors);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       showError('Por favor corrige los campos marcados.');
@@ -246,17 +275,18 @@ const ProductsPage = () => {
 
     updateProduct({ id: selectedProduct.id, payload: numericForm }, {
       onSuccess: () => {
+        console.log('[ProductsPage] updateProduct onSuccess');
         success('Producto actualizado exitosamente.');
         setIsEditOpen(false);
         resetForm();
       },
       onError: (err) => {
+        console.error('[ProductsPage] updateProduct onError', err);
         showError(err?.userMessage || 'Error al actualizar el producto.');
       },
     });
   };
 
-  // Loading state
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
@@ -265,7 +295,6 @@ const ProductsPage = () => {
     );
   }
 
-  // Error state
   if (isError) {
     return (
       <div className="bg-error/10 border border-error/20 rounded-lg p-6">
@@ -289,7 +318,6 @@ const ProductsPage = () => {
 
   return (
     <div>
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-base-content mb-1">Productos</h1>
@@ -297,14 +325,11 @@ const ProductsPage = () => {
             Gestiona el inventario de productos del sistema
           </p>
         </div>
-        {hasProducts && (
-          <Button variant="primary" icon={<FiPlus />} onClick={handleAddProduct}>
-            Agregar Producto
-          </Button>
-        )}
+        <Button variant="primary" icon={<FiPlus />} onClick={handleAddProduct}>
+          Agregar Producto
+        </Button>
       </div>
 
-      {/* Filters */}
       {hasProducts && (
         <ProductFilters
           searchTerm={searchTerm}
@@ -314,18 +339,15 @@ const ProductsPage = () => {
         />
       )}
 
-      {/* Content */}
       <div className="bg-base-100 rounded-lg shadow-sm border border-base-300">
         {!hasProducts ? (
-          // Empty state - no products at all
           <div className="p-6">
             <EmptyState
-              hasFilters={false}
-              onAddProduct={handleAddProduct}
+              showAddButton={true}
+              onAddClick={handleAddProduct}
             />
           </div>
         ) : !hasFilteredProducts ? (
-          // Empty state - no products match filters
           <div className="p-6">
             <EmptyState
               hasFilters={hasFilters}
@@ -334,7 +356,6 @@ const ProductsPage = () => {
           </div>
         ) : (
           <>
-            {/* Desktop view - Table */}
             <div className="hidden md:block">
               <ProductTable
                 products={paginatedProducts}
@@ -344,7 +365,6 @@ const ProductsPage = () => {
               />
             </div>
 
-            {/* Mobile view - Cards */}
             <div className="md:hidden p-4 space-y-4">
               {paginatedProducts.map((product) => (
                 <ProductCard
@@ -357,7 +377,6 @@ const ProductsPage = () => {
               ))}
             </div>
 
-            {/* Pagination */}
             <div className="px-6 pb-4">
               <Pagination
                 currentPage={currentPage}
@@ -371,7 +390,6 @@ const ProductsPage = () => {
         )}
       </div>
 
-      {/* Delete Confirmation Modal */}
       <Modal
         isOpen={showDeleteModal}
         onClose={handleCancelDelete}
@@ -405,7 +423,6 @@ const ProductsPage = () => {
         </div>
       </Modal>
 
-      {/* Create Product Modal */}
       <Modal
         isOpen={isCreateOpen}
         onClose={() => setIsCreateOpen(false)}
@@ -424,7 +441,6 @@ const ProductsPage = () => {
         />
       </Modal>
 
-      {/* Edit Product Modal */}
       <Modal
         isOpen={isEditOpen}
         onClose={() => setIsEditOpen(false)}

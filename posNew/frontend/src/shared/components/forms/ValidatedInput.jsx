@@ -71,11 +71,16 @@ export const ValidatedInput = ({
     if (!schema) return;
     
     try {
-      // Validar solo este campo
+      console.log('[ValidatedInput] validateField START', { name, value, type: typeof value });
       schema.parse({ [name]: value });
+      console.log('[ValidatedInput] validateField SUCCESS', { name });
       setInternalError('');
     } catch (err) {
-      // Extraer el primer error para este campo
+      if (err && typeof err === 'object') {
+        console.error('[ValidatedInput] validateField ERROR', { name, value, issues: err.errors, error: err });
+      } else {
+        console.error('[ValidatedInput] validateField ERROR (non-object)', err);
+      }
       if (err.errors && err.errors[0]) {
         setInternalError(err.errors[0].message);
       }
@@ -86,6 +91,7 @@ export const ValidatedInput = ({
    * Maneja la pérdida de foco del input
    */
   const handleBlur = (e) => {
+    console.log('[ValidatedInput] BLUR', { name, value });
     setTouched(true);
     validateField();
     if (onBlur) onBlur(e);
@@ -95,7 +101,8 @@ export const ValidatedInput = ({
    * Maneja el cambio de valor del input
    */
   const handleChange = (e) => {
-    // Si había un error y el usuario está corrigiendo, limpiar el error
+    const nextValue = e && e.target ? e.target.value : e;
+    console.log('[ValidatedInput] CHANGE', { name, prev: value, next: nextValue, type: typeof nextValue });
     if (displayError && touched) {
       setInternalError('');
     }

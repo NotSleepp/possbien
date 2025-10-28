@@ -1,14 +1,18 @@
 import { api } from '../../../shared/api/api';
-import { toSnakeCase, toCamelCase } from '../../../shared/utils/fieldTransform';
+import { toCamelCase } from '../../../shared/utils/fieldTransform';
 import { handleApiError } from '../../../utils/errorHandler';
 
 // Create product
 export const createProduct = async (payload) => {
   try {
-    const backendPayload = toSnakeCase(payload);
-    const { data } = await api.post('/productos', backendPayload);
-    return toCamelCase(data);
+    console.log('[products.api] CREATE start - payload:', payload);
+    const { data, status } = await api.post('/productos', payload);
+    console.log('[products.api] CREATE response status:', status);
+    const result = toCamelCase(data?.datos ?? data);
+    console.log('[products.api] CREATE result (camelCase):', result);
+    return result;
   } catch (error) {
+    console.error('[products.api] CREATE error:', error);
     throw handleApiError(error, 'createProduct');
   }
 };
@@ -16,10 +20,14 @@ export const createProduct = async (payload) => {
 // Update product
 export const updateProduct = async (id, payload) => {
   try {
-    const backendPayload = toSnakeCase(payload);
-    const { data } = await api.put(`/productos/${id}`, backendPayload);
-    return toCamelCase(data);
+    console.log('[products.api] UPDATE start - id:', id, 'payload:', payload);
+    const { data, status } = await api.put(`/productos/${id}`, payload);
+    console.log('[products.api] UPDATE response status:', status);
+    const result = toCamelCase(data?.datos ?? data);
+    console.log('[products.api] UPDATE result (camelCase):', result);
+    return result;
   } catch (error) {
+    console.error('[products.api] UPDATE error:', error);
     throw handleApiError(error, 'updateProduct');
   }
 };

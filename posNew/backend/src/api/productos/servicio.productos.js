@@ -84,6 +84,28 @@ async function obtenerTodosProductos(idEmpresa, usuario = null) {
   return await repositorio.obtenerTodosProductos(idEmpresa);
 }
 
+// Obtiene productos por empresa con stock agregado (stock_actual)
+async function obtenerProductosConStockPorEmpresa(idEmpresa, usuario = null) {
+  if (usuario) {
+    const result = validarAccesoEmpresa(usuario, idEmpresa);
+    if (!result.esValido) {
+      throw new Error(result.mensaje || 'Acceso no autorizado');
+    }
+  }
+  return await repositorio.obtenerProductosConStockPorEmpresa(idEmpresa);
+}
+
+// Busca productos por empresa con texto libre en nombre o códigos
+async function buscarProductosPorEmpresa(idEmpresa, q, usuario = null) {
+  if (usuario) {
+    const result = validarAccesoEmpresa(usuario, idEmpresa);
+    if (!result.esValido) {
+      throw new Error(result.mensaje || 'Acceso no autorizado');
+    }
+  }
+  return await repositorio.buscarProductosPorEmpresa(idEmpresa, q);
+}
+
 /**
  * Obtiene un producto específico por su ID.
  * @param {number} id - ID del producto a buscar.
@@ -179,6 +201,8 @@ export const eliminarProducto = async (id, usuario = null) => {
 export {
   crearProducto,
   obtenerTodosProductos,
+  obtenerProductosConStockPorEmpresa,
+  buscarProductosPorEmpresa,
   obtenerProductoPorId,
   actualizarProducto,
 };

@@ -97,7 +97,7 @@ const CashRegister = () => {
   );
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-screen max-h-screen overflow-hidden">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full overflow-hidden">
       {/* Products Section */}
       <div className="lg:col-span-2 flex flex-col">
         <Card className="mb-4 p-4">
@@ -105,7 +105,7 @@ const CashRegister = () => {
             type="text"
             placeholder="Buscar productos por nombre o SKU..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(value) => setSearchTerm(value)}
             className="w-full"
           />
         </Card>
@@ -126,26 +126,32 @@ const CashRegister = () => {
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {filteredProducts.map((product) => (
-                  <div
-                    key={product.id}
-                    className="border rounded-lg p-3 hover:shadow-md cursor-pointer transition-shadow"
-                    onClick={() => addToCart(product)}
-                  >
-                    <div className="bg-base-200 h-24 rounded-lg mb-2 flex items-center justify-center">
-                      <svg className="h-8 w-8 text-base-content/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                      </svg>
+              filteredProducts.length === 0 ? (
+                <div className="text-center text-base-content/50">
+                  <p>No hay productos para mostrar. Ajusta la búsqueda o verifica el stock.</p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {filteredProducts.map((product) => (
+                    <div
+                      key={product.id}
+                      className="border rounded-lg p-3 hover:shadow-md cursor-pointer transition-shadow"
+                      onClick={() => addToCart(product)}
+                    >
+                      <div className="bg-base-200 h-24 rounded-lg mb-2 flex items-center justify-center">
+                        <svg className="h-8 w-8 text-base-content/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                      </div>
+                      <h3 className="font-medium text-sm mb-1 truncate">{product.nombre}</h3>
+                      <p className="text-success font-semibold text-sm">
+                        {formatCurrency(product.precio_venta)}
+                      </p>
+                      <p className="text-base-content/50 text-xs">Stock: {product.stock_actual}</p>
                     </div>
-                    <h3 className="font-medium text-sm mb-1 truncate">{product.nombre}</h3>
-                    <p className="text-success font-semibold text-sm">
-                      {formatCurrency(product.precio_venta)}
-                    </p>
-                    <p className="text-base-content/50 text-xs">Stock: {product.stock_actual}</p>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )
             )}
           </div>
         </Card>
@@ -215,14 +221,14 @@ const CashRegister = () => {
                   type="text"
                   placeholder="Nombre"
                   value={customerInfo.name}
-                  onChange={(e) => setCustomerInfo({...customerInfo, name: e.target.value})}
+                  onChange={(value) => setCustomerInfo({ ...customerInfo, name: value })}
                   size="sm"
                 />
                 <Input
                   type="tel"
                   placeholder="Teléfono"
                   value={customerInfo.phone}
-                  onChange={(e) => setCustomerInfo({...customerInfo, phone: e.target.value})}
+                  onChange={(value) => setCustomerInfo({ ...customerInfo, phone: value })}
                   size="sm"
                 />
               </div>

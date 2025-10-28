@@ -113,35 +113,35 @@ const DashboardPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <MetricCard
           title="Ventas Totales"
-          value={`$${metrics.totalSales.toLocaleString()}`}
+          value={metricsData?.totalSales?.value ?? '-'}
           icon={FiDollarSign}
-          trend={{ value: 12.5, isUp: true }}
+          trend={metricsData?.totalSales?.trend}
           color="blue"
-          isLoading={loading}
+          isLoading={isLoading}
         />
         <MetricCard
           title="Productos"
-          value={metrics.totalProducts.toString()}
+          value={metricsData?.totalProducts?.value ?? '-'}
           icon={FiPackage}
-          trend={{ value: 8.2, isUp: true }}
+          trend={metricsData?.totalProducts?.trend}
           color="green"
-          isLoading={loading}
+          isLoading={isLoading}
         />
         <MetricCard
           title="Usuarios Activos"
-          value={metrics.activeUsers.toString()}
+          value={metricsData?.activeUsers?.value ?? '-'}
           icon={FiUsers}
-          trend={{ value: 3.1, isUp: false }}
+          trend={metricsData?.activeUsers?.trend}
           color="purple"
-          isLoading={loading}
+          isLoading={isLoading}
         />
         <MetricCard
           title="Pedidos"
-          value={metrics.totalOrders.toString()}
+          value={metricsData?.totalOrders?.value ?? '-'}
           icon={FiShoppingCart}
-          trend={{ value: 15.3, isUp: true }}
+          trend={metricsData?.totalOrders?.trend}
           color="orange"
-          isLoading={loading}
+          isLoading={isLoading}
         />
       </div>
 
@@ -171,7 +171,7 @@ const DashboardPage = () => {
             <h3 className="text-lg font-semibold text-base-content">Estadísticas Rápidas</h3>
           </div>
           
-          {loading ? (
+          {isLoading ? (
             <div className="space-y-4">
               {[...Array(4)].map((_, i) => (
                 <div key={i} className="animate-pulse">
@@ -184,19 +184,19 @@ const DashboardPage = () => {
             <div className="space-y-4">
               <div>
                 <p className="text-sm text-base-content/60">Venta Promedio</p>
-                <p className="text-2xl font-bold text-base-content">${quickStats.averageSale}</p>
+                <p className="text-2xl font-bold text-base-content">${5400}</p>
               </div>
               <div>
                 <p className="text-sm text-base-content/60">Tasa de Conversión</p>
-                <p className="text-2xl font-bold text-base-content">{quickStats.conversionRate}%</p>
+                <p className="text-2xl font-bold text-base-content">{3.2}%</p>
               </div>
               <div>
                 <p className="text-sm text-base-content/60">Productos Más Vendidos</p>
-                <p className="text-2xl font-bold text-base-content">{quickStats.topProducts}</p>
+                <p className="text-2xl font-bold text-base-content">{"Laptop, Mouse, Teclado"}</p>
               </div>
               <div>
                 <p className="text-sm text-base-content/60">Nuevos Clientes</p>
-                <p className="text-2xl font-bold text-base-content">{quickStats.newCustomers}</p>
+                <p className="text-2xl font-bold text-base-content">{12}</p>
               </div>
             </div>
           )}
@@ -206,7 +206,7 @@ const DashboardPage = () => {
       {/* Recent Activity */}
       <div className="dashboard-card">
         <h3 className="text-lg font-semibold text-base-content mb-6">Actividad Reciente</h3>
-        <RecentActivity data={recentActivities} isLoading={isLoading} />
+        <RecentActivity activities={recentActivities} isLoading={isLoading} />
       </div>
     </div>
   );

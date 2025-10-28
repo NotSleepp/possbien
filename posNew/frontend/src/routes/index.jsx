@@ -2,6 +2,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import ProductsPage from '../pages/ProductsPage';
 import DashboardPage from '../pages/DashboardPage';
+import SalesPage from '../pages/SalesPage';
+import ReportsPage from '../pages/ReportsPage';
 import LoginPage from '../pages/LoginPage';
 import OAuthCallback from '../pages/OAuthCallback';
 import SettingsPage from '../pages/SettingsPage';
@@ -47,6 +49,14 @@ export const router = createBrowserRouter([
           {
             path: '/products',
             element: <ProductsPage />,
+          },
+          {
+            path: '/sales',
+            element: <SalesPage />,
+          },
+          {
+            path: '/reports',
+            element: <ReportsPage />,
           },
         ],
       },

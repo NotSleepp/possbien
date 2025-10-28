@@ -30,9 +30,14 @@ const SalesTable = ({ sales = [], onViewDetails, onDeleteSale, isLoading }) => {
 
   const getStatusBadge = (status) => {
     const statusConfig = {
+      // EN: internal values
       completed: { variant: 'success', text: 'Completada' },
       pending: { variant: 'warning', text: 'Pendiente' },
       cancelled: { variant: 'error', text: 'Cancelada' },
+      // ES: backend enum values
+      COMPLETADA: { variant: 'success', text: 'Completada' },
+      PENDIENTE: { variant: 'warning', text: 'Pendiente' },
+      ANULADA: { variant: 'error', text: 'Anulada' },
     };
 
     const config = statusConfig[status] || { variant: 'neutral', text: status };
@@ -108,7 +113,12 @@ const SalesTable = ({ sales = [], onViewDetails, onDeleteSale, isLoading }) => {
                   >
                     Ver Detalles
                   </Button>
-                  {sale.estado !== 'completed' && (
+                  {![
+                    'completed',
+                    'COMPLETADA',
+                    'cancelled',
+                    'ANULADA',
+                  ].includes(sale.estado) && (
                     <Button
                       variant="danger"
                       size="sm"

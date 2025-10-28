@@ -8,9 +8,9 @@ import { useAuthStore } from '../../../store/useAuthStore';
 export const useSales = () => {
   const queryClient = useQueryClient();
   const user = useAuthStore((state) => state.user);
-  const idEmpresa = user?.id_empresa;
+  const idSucursal = user?.id_sucursal;
 
-  // Fetch all sales for the user's company
+  // Fetch all sales for the user's branch (sucursal)
   const {
     data: sales = [],
     isLoading,
@@ -18,40 +18,62 @@ export const useSales = () => {
     error,
     refetch,
   } = useQuery({
-    queryKey: ['sales', idEmpresa],
+    queryKey: ['sales', idSucursal],
     queryFn: async () => {
-      if (!idEmpresa) {
-        throw new Error('No se encontró la empresa del usuario');
+      if (!idSucursal) {
+        throw new Error('No se encontró la sucursal del usuario');
       }
-      const response = await api.get(`/ventas/por-empresa/${idEmpresa}`);
-      return response.data;
+      const response = await api.get(`/ventas/por-sucursal/${idSucursal}`);
+      return (response.data || []).map((venta) => ({
+        ...venta,
+        total: venta?.monto_total ?? venta?.total,
+      }));
     },
-    enabled: !!idEmpresa,
+    enabled: !!idSucursal,
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
   // Create sale mutation
   const createSaleMutation = useMutation({
     mutationFn: async (saleData) => {
-      const response = await api.post('/ventas', {
-        ...saleData,
-        id_empresa: idEmpresa,
-      });
+      const payload = {
+        idSucursal: Number(idSucursal),
+        idCliente:
+          saleData?.idCliente ?? saleData?.id_cliente ?? saleData?.clienteId,
+        fechaVenta:
+          saleData?.fechaVenta ?? saleData?.fecha_venta ?? saleData?.fecha,
+        montoTotal:
+          saleData?.montoTotal ?? saleData?.total ?? saleData?.monto_total,
+        estado: saleData?.estado,
+        ...(saleData?.productos ? { productos: saleData.productos } : {}),
+      };
+      const response = await api.post('/ventas', payload);
       return response.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['sales', idEmpresa]);
+      queryClient.invalidateQueries(['sales', idSucursal]);
     },
   });
 
   // Update sale mutation
   const updateSaleMutation = useMutation({
     mutationFn: async ({ id, ...saleData }) => {
-      const response = await api.put(`/ventas/${id}`, saleData);
+      const payload = {
+        idSucursal:
+          saleData?.idSucursal ?? saleData?.id_sucursal ?? Number(idSucursal),
+        idCliente:
+          saleData?.idCliente ?? saleData?.id_cliente ?? saleData?.clienteId,
+        fechaVenta:
+          saleData?.fechaVenta ?? saleData?.fecha_venta ?? saleData?.fecha,
+        montoTotal:
+          saleData?.montoTotal ?? saleData?.total ?? saleData?.monto_total,
+        estado: saleData?.estado,
+      };
+      const response = await api.put(`/ventas/${id}`, payload);
       return response.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['sales', idEmpresa]);
+      queryClient.invalidateQueries(['sales', idSucursal]);
     },
   });
 
@@ -61,7 +83,7 @@ export const useSales = () => {
       await api.delete(`/ventas/${saleId}`);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['sales', idEmpresa]);
+      queryClient.invalidateQueries(['sales', idSucursal]);
     },
   });
 

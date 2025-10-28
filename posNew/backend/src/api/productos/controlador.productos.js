@@ -19,6 +19,28 @@ async function obtenerTodosProductos(req, res, next) {
   }
 }
 
+// Nuevas acciones para POS
+async function obtenerProductosConStockPorEmpresa(req, res, next) {
+  try {
+    const { idEmpresa } = req.params;
+    const productos = await servicio.obtenerProductosConStockPorEmpresa(Number(idEmpresa), req.user);
+    res.json(productos);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function buscarProductosPorEmpresa(req, res, next) {
+  try {
+    const { idEmpresa } = req.params;
+    const { q } = req.query;
+    const productos = await servicio.buscarProductosPorEmpresa(Number(idEmpresa), String(q || ''), req.user);
+    res.json(productos);
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function obtenerProductoPorId(req, res, next) {
   try {
     const { id } = req.params;
@@ -52,6 +74,8 @@ async function eliminarProducto(req, res, next) {
 export {
   crearProducto,
   obtenerTodosProductos,
+  obtenerProductosConStockPorEmpresa,
+  buscarProductosPorEmpresa,
   obtenerProductoPorId,
   actualizarProducto,
   eliminarProducto,

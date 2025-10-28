@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '../../../shared/api/api';
 import { useAuthStore } from '../../../store/useAuthStore';
+import { createProduct as createProductApi, updateProduct as updateProductApi } from '../api/products.api';
 
 /**
  * Custom hook for managing products data
@@ -40,6 +41,26 @@ export const useProducts = () => {
     },
   });
 
+  // Create product mutation
+  const createProductMutation = useMutation({
+    mutationFn: async (payload) => {
+      return await createProductApi(payload);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(['products', idEmpresa]);
+    },
+  });
+
+  // Update product mutation
+  const updateProductMutation = useMutation({
+    mutationFn: async ({ id, payload }) => {
+      return await updateProductApi(id, payload);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(['products', idEmpresa]);
+    },
+  });
+
   return {
     products,
     isLoading,
@@ -48,5 +69,9 @@ export const useProducts = () => {
     refetch,
     deleteProduct: deleteProductMutation.mutate,
     isDeleting: deleteProductMutation.isPending,
+    createProduct: createProductMutation.mutate,
+    isCreating: createProductMutation.isPending,
+    updateProduct: updateProductMutation.mutate,
+    isUpdating: updateProductMutation.isPending,
   };
 };

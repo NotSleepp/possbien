@@ -3,11 +3,18 @@ import { FiPlus, FiAlertCircle } from 'react-icons/fi';
 import { useProducts } from '../features/products/hooks/useProducts';
 import { ProductTable, ProductCard, ProductFilters, Pagination, EmptyState } from '../features/products';
 import { Button, LoadingSpinner, Modal } from '../shared/components/ui';
+import { ConfigurationForm } from '../features/settings/components';
+import { useAuthStore } from '../store/useAuthStore';
+import { useToastStore } from '../store/useToastStore';
+import { useCategories } from '../features/settings/hooks/useCategories';
 
 const ITEMS_PER_PAGE = 10;
 
 const ProductsPage = () => {
-  const { products, isLoading, isError, error, deleteProduct, isDeleting } = useProducts();
+  const { products, isLoading, isError, error, deleteProduct, isDeleting, createProduct, isCreating, updateProduct, isUpdating } = useProducts();
+  const user = useAuthStore((state) => state.user);
+  const { success, error: showError } = useToastStore();
+  const { categories = [] } = useCategories();
   
   // State for filters and pagination
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,6 +24,81 @@ const ProductsPage = () => {
   // State for delete confirmation modal
   const [productToDelete, setProductToDelete] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  // State for create/edit modals and form
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [form, setForm] = useState({
+    idEmpresa: user?.id_empresa || null,
+    idCategoria: null,
+    codigo: '',
+    nombre: '',
+    descripcion: '',
+    precioCompra: 0,
+    precioVenta: 0,
+    stockActual: 0,
+    stockMinimo: 0,
+    unidadMedida: '',
+  });
+  const [errors, setErrors] = useState({});
+
+  const categoryOptions = (categories || []).map((cat) => ({
+    value: cat.id,
+    label: `${cat.nombre} (${cat.codigo})`,
+  }));
+
+  const formFields = [
+    { name: 'codigo', label: 'Código', type: 'text', placeholder: 'SKU-001', required: true },
+    { name: 'nombre', label: 'Nombre', type: 'text', placeholder: 'Nombre del producto', required: true },
+    { name: 'descripcion', label: 'Descripción', type: 'textarea', placeholder: 'Descripción del producto (opcional)', rows: 3 },
+    { name: 'idCategoria', label: 'Categoría', type: 'select', required: true, options: categoryOptions, hint: 'Selecciona la categoría a la que pertenece' },
+    { name: 'precioCompra', label: 'Precio de compra', type: 'number', placeholder: '0.00', required: true },
+    { name: 'precioVenta', label: 'Precio de venta', type: 'number', placeholder: '0.00', required: true, hint: 'Debe ser mayor o igual al precio de compra' },
+    { name: 'unidadMedida', label: 'Unidad de medida', type: 'text', placeholder: 'unidad, kg, lt, pack', hint: 'Define la unidad de medida (opcional)' },
+    { name: 'stockActual', label: 'Stock actual', type: 'number', placeholder: '0', required: true },
+    { name: 'stockMinimo', label: 'Stock mínimo', type: 'number', placeholder: '0', required: true },
+  ];
+
+  const resetForm = () => {
+    setForm({
+      idEmpresa: user?.id_empresa || null,
+      idCategoria: null,
+      codigo: '',
+      nombre: '',
+      descripcion: '',
+      precioCompra: 0,
+      precioVenta: 0,
+      stockActual: 0,
+      stockMinimo: 0,
+      unidadMedida: '',
+    });
+    setErrors({});
+    setSelectedProduct(null);
+  };
+
+  const validateProduct = (values) => {
+    const v = { ...values };
+    const errs = {};
+    if (!v.idEmpresa) errs.idEmpresa = 'Empresa no definida';
+    if (!v.idCategoria) errs.idCategoria = 'La categoría es obligatoria';
+    if (!v.codigo?.trim()) errs.codigo = 'El código es obligatorio';
+    if (!v.nombre?.trim()) errs.nombre = 'El nombre es obligatorio';
+    const compra = Number(v.precioCompra);
+    const venta = Number(v.precioVenta);
+    if (isNaN(compra) || compra < 0) errs.precioCompra = 'Precio de compra inválido';
+    if (isNaN(venta) || venta < 0) errs.precioVenta = 'Precio de venta inválido';
+    if (!errs.precioCompra && !errs.precioVenta && venta < compra) errs.precioVenta = 'El precio de venta debe ser ≥ compra';
+    const stockA = Number(v.stockActual);
+    const stockM = Number(v.stockMinimo);
+    if (isNaN(stockA) || stockA < 0) errs.stockActual = 'Stock actual inválido';
+    if (isNaN(stockM) || stockM < 0) errs.stockMinimo = 'Stock mínimo inválido';
+    return errs;
+  };
+
+  const handleChange = (name, value) => {
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
 
   // Filter and search products
   const filteredProducts = useMemo(() => {
@@ -70,9 +152,21 @@ const ProductsPage = () => {
 
   // Handle edit product
   const handleEdit = (product) => {
-    // TODO: Navigate to edit page or open edit modal
-    console.log('Edit product:', product);
-    alert('Funcionalidad de edición pendiente de implementación');
+    setSelectedProduct(product);
+    setForm({
+      idEmpresa: user?.id_empresa || product.id_empresa || null,
+      idCategoria: product.id_categoria ?? product.idCategoria ?? null,
+      codigo: product.codigo || '',
+      nombre: product.nombre || '',
+      descripcion: product.descripcion || '',
+      precioCompra: product.precio_compra ?? product.precioCompra ?? 0,
+      precioVenta: product.precio_venta ?? product.precioVenta ?? 0,
+      stockActual: product.stock_actual ?? product.stockActual ?? 0,
+      stockMinimo: product.stock_minimo ?? product.stockMinimo ?? 0,
+      unidadMedida: product.unidad_medida ?? product.unidadMedida ?? '',
+    });
+    setErrors({});
+    setIsEditOpen(true);
   };
 
   // Handle delete product
@@ -99,9 +193,67 @@ const ProductsPage = () => {
 
   // Handle add product
   const handleAddProduct = () => {
-    // TODO: Navigate to add product page or open add modal
-    console.log('Add product');
-    alert('Funcionalidad de agregar producto pendiente de implementación');
+    resetForm();
+    setIsCreateOpen(true);
+  };
+
+  const handleSubmitCreate = () => {
+    const numericForm = {
+      ...form,
+      idEmpresa: user?.id_empresa || form.idEmpresa,
+      idCategoria: form.idCategoria ? Number(form.idCategoria) : null,
+      precioCompra: Number(form.precioCompra),
+      precioVenta: Number(form.precioVenta),
+      stockActual: Number(form.stockActual),
+      stockMinimo: Number(form.stockMinimo),
+    };
+    const validationErrors = validateProduct(numericForm);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      showError('Por favor corrige los campos marcados.');
+      return;
+    }
+
+    createProduct(numericForm, {
+      onSuccess: () => {
+        success('Producto creado exitosamente.');
+        setIsCreateOpen(false);
+        resetForm();
+      },
+      onError: (err) => {
+        showError(err?.userMessage || 'Error al crear el producto.');
+      },
+    });
+  };
+
+  const handleSubmitEdit = () => {
+    if (!selectedProduct?.id) return;
+    const numericForm = {
+      ...form,
+      idEmpresa: user?.id_empresa || form.idEmpresa,
+      idCategoria: form.idCategoria ? Number(form.idCategoria) : null,
+      precioCompra: Number(form.precioCompra),
+      precioVenta: Number(form.precioVenta),
+      stockActual: Number(form.stockActual),
+      stockMinimo: Number(form.stockMinimo),
+    };
+    const validationErrors = validateProduct(numericForm);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      showError('Por favor corrige los campos marcados.');
+      return;
+    }
+
+    updateProduct({ id: selectedProduct.id, payload: numericForm }, {
+      onSuccess: () => {
+        success('Producto actualizado exitosamente.');
+        setIsEditOpen(false);
+        resetForm();
+      },
+      onError: (err) => {
+        showError(err?.userMessage || 'Error al actualizar el producto.');
+      },
+    });
   };
 
   // Loading state
@@ -251,6 +403,44 @@ const ProductsPage = () => {
             Eliminar
           </Button>
         </div>
+      </Modal>
+
+      {/* Create Product Modal */}
+      <Modal
+        isOpen={isCreateOpen}
+        onClose={() => setIsCreateOpen(false)}
+        title="Nuevo Producto"
+        onConfirm={handleSubmitCreate}
+        confirmText={isCreating ? 'Creando...' : 'Crear'}
+      >
+        <ConfigurationForm
+          fields={formFields}
+          values={form}
+          onChange={handleChange}
+          onSubmit={handleSubmitCreate}
+          isSubmitting={isCreating}
+          errors={errors}
+          onCancel={() => setIsCreateOpen(false)}
+        />
+      </Modal>
+
+      {/* Edit Product Modal */}
+      <Modal
+        isOpen={isEditOpen}
+        onClose={() => setIsEditOpen(false)}
+        title="Editar Producto"
+        onConfirm={handleSubmitEdit}
+        confirmText={isUpdating ? 'Guardando...' : 'Guardar cambios'}
+      >
+        <ConfigurationForm
+          fields={formFields}
+          values={form}
+          onChange={handleChange}
+          onSubmit={handleSubmitEdit}
+          isSubmitting={isUpdating}
+          errors={errors}
+          onCancel={() => setIsEditOpen(false)}
+        />
       </Modal>
     </div>
   );

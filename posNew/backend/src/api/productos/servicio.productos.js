@@ -61,6 +61,12 @@ async function crearProducto(datos, usuario = null) {
     precio_venta: datosValidados.precioVenta,
     stock_minimo: datosValidados.stockMinimo,
     unidad_medida: datosValidados.unidadMedida,
+    codigo_barras: datosValidados.codigoBarras,
+    codigo_interno: datosValidados.codigoInterno,
+    sevende_por: datosValidados.sevendePor,
+    maneja_inventarios: datosValidados.manejaInventarios,
+    maneja_multiprecios: datosValidados.manejaMultiprecios,
+    imagen_url: datosValidados.imagenUrl,
   };
   return await repositorio.crearProducto(mappedData);
 }
@@ -172,6 +178,12 @@ async function actualizarProducto(id, datos, usuario = null) {
   if (datosValidados.precioVenta !== undefined) mappedUpdate.precio_venta = datosValidados.precioVenta;
   if (datosValidados.stockMinimo !== undefined) mappedUpdate.stock_minimo = datosValidados.stockMinimo;
   if (datosValidados.unidadMedida !== undefined) mappedUpdate.unidad_medida = datosValidados.unidadMedida;
+  if (datosValidados.codigoBarras !== undefined) mappedUpdate.codigo_barras = datosValidados.codigoBarras;
+  if (datosValidados.codigoInterno !== undefined) mappedUpdate.codigo_interno = datosValidados.codigoInterno;
+  if (datosValidados.sevendePor !== undefined) mappedUpdate.sevende_por = datosValidados.sevendePor;
+  if (datosValidados.manejaInventarios !== undefined) mappedUpdate.maneja_inventarios = datosValidados.manejaInventarios;
+  if (datosValidados.manejaMultiprecios !== undefined) mappedUpdate.maneja_multiprecios = datosValidados.manejaMultiprecios;
+  if (datosValidados.imagenUrl !== undefined) mappedUpdate.imagen_url = datosValidados.imagenUrl;
   
   return await repositorio.actualizarProducto(id, mappedUpdate);
 }

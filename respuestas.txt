@@ -1,231 +1,190 @@
-[auth/api.js] ========== REQUEST INTERCEPTOR ========== Object
+[vite] connecting...
+client:827 [vite] connected.
+api.js:15 [auth/api.js] ========== REQUEST INTERCEPTOR ========== {method: 'GET', url: '/auth/me', fullUrl: 'http://localhost:3000/api/auth/me', headers: AxiosHeaders, hasData: false}
 api.js:30 [auth/api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
 api.js:34 [auth/api.js] ========== END REQUEST INTERCEPTOR ==========
-api.js:15 [auth/api.js] ========== REQUEST INTERCEPTOR ========== Object
+api.js:15 [auth/api.js] ========== REQUEST INTERCEPTOR ========== {method: 'GET', url: '/auth/me', fullUrl: 'http://localhost:3000/api/auth/me', headers: AxiosHeaders, hasData: false}
 api.js:30 [auth/api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
 api.js:34 [auth/api.js] ========== END REQUEST INTERCEPTOR ==========
-api.js:46 [auth/api.js] ========== RESPONSE INTERCEPTOR SUCCESS ========== Object
-api.js:51 [auth/api.js] Response data: {"id":4,"id_empresa":2,"id_rol":5,"username":"danivercel3@gmail.com","password":"$2a$10$nr9HYOC.kctNLcJZ1XtWPex9RZpSsjhECLXA3WyO6d1F91kA/xzDi","nombres":"dani","apellidos":"vercel","email":"danivercel3@gmail.com","telefono":null,"activo":1,"ultimo_acceso":null,"id_tipodocumento":null,"nro_doc":null,"correo":null,"id_auth":"113397698062369303562","tema":"light","fecharegistro":"2025-10-28T17:51:21.000Z","estado":"ACTIVO","fecha_creacion":"2025-10-28T17:51:21.000Z","fecha_actualizacion":"2025-10-28T17:51:21.000Z","eliminado":0,"fecha_eliminacion":null}
+api.js:46 [auth/api.js] ========== RESPONSE INTERCEPTOR SUCCESS ========== {status: 200, url: '/auth/me'}
+api.js:51 [auth/api.js] Response data: {"id":6,"id_empresa":3,"id_rol":7,"username":"danivercel1@gmail.com","password":"$2a$10$v0cjbo5CF.3PtQO/83N6f.zFt9UZ6uH1J/UwyVJKI8.H/YyV6qiSK","nombres":"cuenta","apellidos":"v0 1","email":"danivercel1@gmail.com","telefono":null,"activo":1,"ultimo_acceso":null,"id_tipodocumento":null,"nro_doc":null,"correo":null,"id_auth":"117597373637581799796","tema":"light","fecharegistro":"2025-10-28T22:00:45.000Z","estado":"ACTIVO","fecha_creacion":"2025-10-28T22:00:45.000Z","fecha_actualizacion":"2025-10-28T22:00:45.000Z","eliminado":0,"fecha_eliminacion":null}
 api.js:53 [auth/api.js] ========== END RESPONSE INTERCEPTOR ==========
-Sidebar.jsx:75 [Sidebar] user: Object id_rol= 5 rolId= 1
-Sidebar.jsx:76 [Sidebar] visibleMenuItems: Array(6)
-Sidebar.jsx:75 [Sidebar] user: Object id_rol= 5 rolId= 1
-Sidebar.jsx:76 [Sidebar] visibleMenuItems: Array(6)
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:26 [useProducts] queryFn START Object
-useProducts.js:32 [useProducts] GET /productos/por-empresa/2
-ProductsPage.jsx:136 [ProductsPage] METRICS Object
-ProductsPage.jsx:136 [ProductsPage] METRICS Object
+Sidebar.jsx:75 [Sidebar] user: {id: 6, id_empresa: 3, id_rol: 7, username: 'danivercel1@gmail.com', password: '$2a$10$v0cjbo5CF.3PtQO/83N6f.zFt9UZ6uH1J/UwyVJKI8.H/YyV6qiSK', …} id_rol= 7 rolId= 1
+Sidebar.jsx:76 [Sidebar] visibleMenuItems: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:75 [Sidebar] user: {id: 6, id_empresa: 3, id_rol: 7, username: 'danivercel1@gmail.com', password: '$2a$10$v0cjbo5CF.3PtQO/83N6f.zFt9UZ6uH1J/UwyVJKI8.H/YyV6qiSK', …} id_rol= 7 rolId= 1
+Sidebar.jsx:76 [Sidebar] visibleMenuItems: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+useProducts.js:26 [useProducts] queryFn START {idEmpresa: 3}
+useProducts.js:33 [useProducts] GET /productos/empresa/3
+ProductsPage.jsx:179 [ProductsPage] METRICS {total: 0, filtered: 0, paginated: 0, currentPage: 1, perPage: 10, …}
+ProductsPage.jsx:334 [ProductsPage] buildSummary - product ids: []
+ProductsPage.jsx:179 [ProductsPage] METRICS {total: 0, filtered: 0, paginated: 0, currentPage: 1, perPage: 10, …}
+ProductsPage.jsx:334 [ProductsPage] buildSummary - product ids: []
 api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
 api.js:16 [api.js] Method: GET
-api.js:17 [api.js] URL: /productos/por-empresa/2
-api.js:18 [api.js] Full URL: http://localhost:3000/api/productos/por-empresa/2
-api.js:19 [api.js] Headers: AxiosHeaders
+api.js:17 [api.js] URL: /productos/empresa/3
+api.js:18 [api.js] Full URL: http://localhost:3000/api/productos/empresa/3
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
 api.js:20 [api.js] Data: undefined
 api.js:21 [api.js] Data type: undefined
 api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
 api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
 api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
 api.js:16 [api.js] Method: GET
-api.js:17 [api.js] URL: /categorias/por-empresa/2
-api.js:18 [api.js] Full URL: http://localhost:3000/api/categorias/por-empresa/2
-api.js:19 [api.js] Headers: AxiosHeaders
+api.js:17 [api.js] URL: /categorias/por-empresa/3
+api.js:18 [api.js] Full URL: http://localhost:3000/api/categorias/por-empresa/3
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
 api.js:20 [api.js] Data: undefined
 api.js:21 [api.js] Data type: undefined
 api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
 api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
-Sidebar.jsx:75 [Sidebar] user: Object id_rol= 5 rolId= 1
-Sidebar.jsx:76 [Sidebar] visibleMenuItems: Array(6)
-Sidebar.jsx:75 [Sidebar] user: Object id_rol= 5 rolId= 1
-Sidebar.jsx:76 [Sidebar] visibleMenuItems: Array(6)
-api.js:46 [auth/api.js] ========== RESPONSE INTERCEPTOR SUCCESS ========== Object
-api.js:51 [auth/api.js] Response data: {"id":4,"id_empresa":2,"id_rol":5,"username":"danivercel3@gmail.com","password":"$2a$10$nr9HYOC.kctNLcJZ1XtWPex9RZpSsjhECLXA3WyO6d1F91kA/xzDi","nombres":"dani","apellidos":"vercel","email":"danivercel3@gmail.com","telefono":null,"activo":1,"ultimo_acceso":null,"id_tipodocumento":null,"nro_doc":null,"correo":null,"id_auth":"113397698062369303562","tema":"light","fecharegistro":"2025-10-28T17:51:21.000Z","estado":"ACTIVO","fecha_creacion":"2025-10-28T17:51:21.000Z","fecha_actualizacion":"2025-10-28T17:51:21.000Z","eliminado":0,"fecha_eliminacion":null}
+Sidebar.jsx:75 [Sidebar] user: {id: 6, id_empresa: 3, id_rol: 7, username: 'danivercel1@gmail.com', password: '$2a$10$v0cjbo5CF.3PtQO/83N6f.zFt9UZ6uH1J/UwyVJKI8.H/YyV6qiSK', …} id_rol= 7 rolId= 1
+Sidebar.jsx:76 [Sidebar] visibleMenuItems: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:75 [Sidebar] user: {id: 6, id_empresa: 3, id_rol: 7, username: 'danivercel1@gmail.com', password: '$2a$10$v0cjbo5CF.3PtQO/83N6f.zFt9UZ6uH1J/UwyVJKI8.H/YyV6qiSK', …} id_rol= 7 rolId= 1
+Sidebar.jsx:76 [Sidebar] visibleMenuItems: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+ProductsPage.jsx:179 [ProductsPage] METRICS {total: 0, filtered: 0, paginated: 0, currentPage: 1, perPage: 10, …}
+ProductsPage.jsx:334 [ProductsPage] buildSummary - product ids: []
+api.js:46 [auth/api.js] ========== RESPONSE INTERCEPTOR SUCCESS ========== {status: 200, url: '/auth/me'}
+api.js:51 [auth/api.js] Response data: {"id":6,"id_empresa":3,"id_rol":7,"username":"danivercel1@gmail.com","password":"$2a$10$v0cjbo5CF.3PtQO/83N6f.zFt9UZ6uH1J/UwyVJKI8.H/YyV6qiSK","nombres":"cuenta","apellidos":"v0 1","email":"danivercel1@gmail.com","telefono":null,"activo":1,"ultimo_acceso":null,"id_tipodocumento":null,"nro_doc":null,"correo":null,"id_auth":"117597373637581799796","tema":"light","fecharegistro":"2025-10-28T22:00:45.000Z","estado":"ACTIVO","fecha_creacion":"2025-10-28T22:00:45.000Z","fecha_actualizacion":"2025-10-28T22:00:45.000Z","eliminado":0,"fecha_eliminacion":null}
 api.js:53 [auth/api.js] ========== END RESPONSE INTERCEPTOR ==========
-Sidebar.jsx:75 [Sidebar] user: Object id_rol= 5 rolId= 1
-Sidebar.jsx:76 [Sidebar] visibleMenuItems: Array(6)
-Sidebar.jsx:75 [Sidebar] user: Object id_rol= 5 rolId= 1
-Sidebar.jsx:76 [Sidebar] visibleMenuItems: Array(6)
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ProductsPage.jsx:136 [ProductsPage] METRICS Object
-Sidebar.jsx:75 [Sidebar] user: Object id_rol= 5 rolId= 1
-Sidebar.jsx:76 [Sidebar] visibleMenuItems: Array(6)
-Sidebar.jsx:75 [Sidebar] user: Object id_rol= 5 rolId= 1
-Sidebar.jsx:76 [Sidebar] visibleMenuItems: Array(6)
+Sidebar.jsx:75 [Sidebar] user: {id: 6, id_empresa: 3, id_rol: 7, username: 'danivercel1@gmail.com', password: '$2a$10$v0cjbo5CF.3PtQO/83N6f.zFt9UZ6uH1J/UwyVJKI8.H/YyV6qiSK', …} id_rol= 7 rolId= 1
+Sidebar.jsx:76 [Sidebar] visibleMenuItems: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:75 [Sidebar] user: {id: 6, id_empresa: 3, id_rol: 7, username: 'danivercel1@gmail.com', password: '$2a$10$v0cjbo5CF.3PtQO/83N6f.zFt9UZ6uH1J/UwyVJKI8.H/YyV6qiSK', …} id_rol= 7 rolId= 1
+Sidebar.jsx:76 [Sidebar] visibleMenuItems: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+ProductsPage.jsx:179 [ProductsPage] METRICS {total: 0, filtered: 0, paginated: 0, currentPage: 1, perPage: 10, …}
+ProductsPage.jsx:334 [ProductsPage] buildSummary - product ids: []
+Sidebar.jsx:75 [Sidebar] user: {id: 6, id_empresa: 3, id_rol: 7, username: 'danivercel1@gmail.com', password: '$2a$10$v0cjbo5CF.3PtQO/83N6f.zFt9UZ6uH1J/UwyVJKI8.H/YyV6qiSK', …} id_rol= 7 rolId= 1
+Sidebar.jsx:76 [Sidebar] visibleMenuItems: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+Sidebar.jsx:75 [Sidebar] user: {id: 6, id_empresa: 3, id_rol: 7, username: 'danivercel1@gmail.com', password: '$2a$10$v0cjbo5CF.3PtQO/83N6f.zFt9UZ6uH1J/UwyVJKI8.H/YyV6qiSK', …} id_rol= 7 rolId= 1
+Sidebar.jsx:76 [Sidebar] visibleMenuItems: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+ProductsPage.jsx:179 [ProductsPage] METRICS {total: 0, filtered: 0, paginated: 0, currentPage: 1, perPage: 10, …}
+ProductsPage.jsx:334 [ProductsPage] buildSummary - product ids: []
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
 api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
 api.js:47 [api.js] Status: 200
-api.js:48 [api.js] Data: Array(0)
+api.js:48 [api.js] Data: (2) [{…}, {…}]
 api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
-useProducts.js:35 [useProducts] queryFn SUCCESS Object
+useProducts.js:36 [useProducts] queryFn SUCCESS {count: 2}
+useProducts.js:38 [useProducts] First item keys: (22) ['id', 'id_empresa', 'id_categoria', 'codigo', 'codigo_interno', 'codigo_barras', 'nombre', 'descripcion', 'precio_compra', 'precio_venta', 'stock_minimo', 'unidad_medida', 'sevende_por', 'maneja_inventarios', 'maneja_multiprecios', 'imagen_url', 'activo', 'fecha_creacion', 'fecha_actualizacion', 'eliminado', 'fecha_eliminacion', 'stock_actual']
 api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
 api.js:47 [api.js] Status: 200
-api.js:48 [api.js] Data: Array(1)
+api.js:48 [api.js] Data: [{…}]
 api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ProductsPage.jsx:136 [ProductsPage] METRICS Object
-ProductsPage.jsx:216 [ProductsPage] handleAddProduct
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ProductsPage.jsx:216 [ProductsPage] handleAddProduct
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change codigo 0000
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change nombre Producto de prueba
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:41 [ConfigurationForm] textarea change descripcion a
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:41 [ConfigurationForm] textarea change descripcion as
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:41 [ConfigurationForm] textarea change descripcion asd
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:41 [ConfigurationForm] textarea change descripcion asda
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:41 [ConfigurationForm] textarea change descripcion asdas
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:41 [ConfigurationForm] textarea change descripcion asdasd
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:71 [ConfigurationForm] select change idCategoria 7
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change precioCompra 1
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change precioCompra 10
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change precioCompra 100
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change precioCompra 1000
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change precioVenta 1
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change precioVenta 10
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change precioVenta 100
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change precioVenta 1000
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change precioVenta 10000
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change unidadMedida unidad
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change stockActual 1
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change stockActual 10
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change stockActual 100
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change stockMinimo 5
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:125 [ConfigurationForm] input change stockMinimo 50
-ProductsPage.jsx:99 [ProductsPage] handleChange Object
-useProducts.js:14 [useProducts] INIT Object
-useProducts.js:14 [useProducts] INIT Object
-ConfigurationForm.jsx:21 [ConfigurationForm] onSubmit values: Object
-ProductsPage.jsx:222 [ProductsPage] handleSubmitCreate START Object
-ProductsPage.jsx:232 [ProductsPage] handleSubmitCreate numericForm Object
-ProductsPage.jsx:79 [ProductsPage] validateProduct INPUT Object
-ProductsPage.jsx:94 [ProductsPage] validateProduct OUTPUT errors Object
-ProductsPage.jsx:234 [ProductsPage] handleSubmitCreate validationErrors Object
-useProducts.js:65 [useProducts] CREATE mutation START Object
-products.api.js:8 [products.api] CREATE start - payload: Object
-products.api.js:10 [products.api] CREATE backendPayload (snake_case): Object
+ProductsPage.jsx:179 [ProductsPage] METRICS {total: 0, filtered: 0, paginated: 0, currentPage: 1, perPage: 10, …}
+ProductsPage.jsx:334 [ProductsPage] buildSummary - product ids: []
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+ProductsPage.jsx:179 [ProductsPage] METRICS {total: 2, filtered: 2, paginated: 2, currentPage: 1, perPage: 10, …}
+ProductsPage.jsx:334 [ProductsPage] buildSummary - product ids: (2) [13, 12]
+stocks.api.js:62 [stocks.api] GET by product
+stocks.api.js:63 [stocks.api] idProducto: 13
+stocks.api.js:62 [stocks.api] GET by product
+stocks.api.js:63 [stocks.api] idProducto: 12
 api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
-api.js:16 [api.js] Method: POST
-api.js:17 [api.js] URL: /productos
-api.js:18 [api.js] Full URL: http://localhost:3000/api/productos
-api.js:19 [api.js] Headers: AxiosHeaders
-api.js:20 [api.js] Data: Object
-api.js:21 [api.js] Data type: object
-api.js:23 [api.js] Data stringified: {"id_empresa":2,"id_categoria":7,"codigo":"0000","nombre":"Producto de prueba","descripcion":"asdasd","precio_compra":1000,"precio_venta":10000,"stock_actual":100,"stock_minimo":50,"unidad_medida":"unidad"}
+api.js:16 [api.js] Method: GET
+api.js:17 [api.js] URL: /stocks/por-producto/13
+api.js:18 [api.js] Full URL: http://localhost:3000/api/stocks/por-producto/13
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: undefined
+api.js:21 [api.js] Data type: undefined
 api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
 api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
-useProducts.js:14 [useProducts] INIT ObjectidEmpresa: 2userExists: true[[Prototype]]: Object
-useProducts.js:14 [useProducts] INIT ObjectidEmpresa: 2userExists: true[[Prototype]]: Object
-:3000/api/productos:1  Failed to load resource: the server responded with a status of 400 (Bad Request)Understand this error
-api.js:53 [api.js] ========== RESPONSE INTERCEPTOR ERROR ==========
-(anonymous) @ api.js:53Understand this error
-api.js:54 [api.js] Error: AxiosErrorcode: "ERR_BAD_REQUEST"config: {transitional: {…}, adapter: Array(3), transformRequest: Array(1), transformResponse: Array(1), timeout: 0, …}message: "Request failed with status code 400"name: "AxiosError"request: XMLHttpRequest {onreadystatechange: null, readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, …}response: {data: {…}, status: 400, statusText: 'Bad Request', headers: AxiosHeaders, config: {…}, …}status: 400stack: "AxiosError: Request failed with status code 400\n    at settle (http://localhost:5173/node_modules/.vite/deps/axios.js?v=bb54a3bc:1257:12)\n    at XMLHttpRequest.onloadend (http://localhost:5173/node_modules/.vite/deps/axios.js?v=bb54a3bc:1593:7)"[[Prototype]]: Error
-(anonymous) @ api.js:54Understand this error
-api.js:55 [api.js] Error message: Request failed with status code 400
-(anonymous) @ api.js:55Understand this error
-api.js:56 [api.js] Response status: 400
-(anonymous) @ api.js:56Understand this error
-api.js:57 [api.js] Response data: Objecterror: {message: 'Required', code: 'VALIDATION_ERROR', field: 'idCategoria', stack: 'ZodError: [\n  {\n    "code": "invalid_type",\n    "e…/backend/src/middlewares/auth.middleware.js:44:5)', originalError: {…}}[[Prototype]]: Object
-(anonymous) @ api.js:57Understand this error
-api.js:58 [api.js] Response headers: AxiosHeaderscontent-length: "3473"content-type: "application/json; charset=utf-8"clear: (...)concat: (...)constructor: (...)delete: (...)get: (...)getAccept: (...)getAcceptEncoding: (...)getAuthorization: (...)getContentLength: (...)getContentType: (...)getSetCookie: (...)getUserAgent: (...)has: (...)hasAccept: (...)hasAcceptEncoding: (...)hasAuthorization: (...)hasContentLength: (...)hasContentType: (...)hasUserAgent: (...)normalize: (...)set: (...)setAccept: (...)setAcceptEncoding: (...)setAuthorization: (...)setContentLength: (...)setContentType: (...)setUserAgent: (...)toJSON: (...)toString: (...)Symbol(Symbol.toStringTag): (...)[[Prototype]]: Object
-(anonymous) @ api.js:58Understand this error
-api.js:59 [api.js] Request config: Objectadapter: (3) ['xhr', 'http', 'fetch']allowAbsoluteUrls: truebaseURL: "http://localhost:3000/api"data: "{\"id_empresa\":2,\"id_categoria\":7,\"codigo\":\"0000\",\"nombre\":\"Producto de prueba\",\"descripcion\":\"asdasd\",\"precio_compra\":1000,\"precio_venta\":10000,\"stock_actual\":100,\"stock_minimo\":50,\"unidad_medida\":\"unidad\"}"env: {FormData: ƒ, Blob: ƒ}headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json', Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZC…yODF9.J6BbOBEAiLmSCIvxAM3kn8uGaMqotrq3iX5Gqtw0Ecs'}maxBodyLength: -1maxContentLength: -1method: "post"timeout: 0transformRequest: [ƒ]transformResponse: [ƒ]transitional: {silentJSONParsing: true, forcedJSONParsing: true, clarifyTimeoutError: false}url: "/productos"validateStatus: ƒ validateStatus(status)xsrfCookieName: "XSRF-TOKEN"xsrfHeaderName: "X-XSRF-TOKEN"[[Prototype]]: Object
-(anonymous) @ api.js:59Understand this error
-api.js:62 [api.js] Transformed error: Objectdata: {error: {…}}message: {message: 'Required', code: 'VALIDATION_ERROR', field: 'idCategoria', stack: 'ZodError: [\n  {\n    "code": "invalid_type",\n    "e…/backend/src/middlewares/auth.middleware.js:44:5)', originalError: {…}}originalError: AxiosError {message: 'Request failed with status code 400', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}status: 400type: "VALIDATION_ERROR"userMessage: "Los datos enviados no son válidos. Por favor, verifica la información."[[Prototype]]: Object
-(anonymous) @ api.js:62Understand this error
-api.js:83 [api.js] ========== END RESPONSE INTERCEPTOR ERROR ==========
-(anonymous) @ api.js:83Understand this error
-products.api.js:17 [products.api] CREATE error: Objectdata: {error: {…}}message: {message: 'Required', code: 'VALIDATION_ERROR', field: 'idCategoria', stack: 'ZodError: [\n  {\n    "code": "invalid_type",\n    "e…/backend/src/middlewares/auth.middleware.js:44:5)', originalError: {…}}originalError: AxiosError {message: 'Request failed with status code 400', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}status: 400type: "VALIDATION_ERROR"userMessage: "Los datos enviados no son válidos. Por favor, verifica la información."[[Prototype]]: Object
-createProduct @ products.api.js:17Understand this error
-errorHandler.js:109 [Error - createProduct]: Objectdata: {error: {…}}message: {message: 'Required', code: 'VALIDATION_ERROR', field: 'idCategoria', stack: 'ZodError: [\n  {\n    "code": "invalid_type",\n    "e…/backend/src/middlewares/auth.middleware.js:44:5)', originalError: {…}}originalError: AxiosError {message: 'Request failed with status code 400', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}status: 400type: "VALIDATION_ERROR"[[Prototype]]: Object
-logError @ errorHandler.js:109Understand this error
-useProducts.js:75 [useProducts] CREATE onError Objectdata: {error: {…}}message: {message: 'Required', code: 'VALIDATION_ERROR', field: 'idCategoria', stack: 'ZodError: [\n  {\n    "code": "invalid_type",\n    "e…/backend/src/middlewares/auth.middleware.js:44:5)', originalError: {…}}originalError: AxiosError {message: 'Request failed with status code 400', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}status: 400type: "VALIDATION_ERROR"userMessage: "Los datos enviados no son válidos. Por favor, verifica la información."[[Prototype]]: Object
-onError @ useProducts.js:75Understand this error
-ProductsPage.jsx:249 [ProductsPage] createProduct onError Objectdata: {error: {…}}message: {message: 'Required', code: 'VALIDATION_ERROR', field: 'idCategoria', stack: 'ZodError: [\n  {\n    "code": "invalid_type",\n    "e…/backend/src/middlewares/auth.middleware.js:44:5)', originalError: {…}}originalError: AxiosError {message: 'Request failed with status code 400', name: 'AxiosError', code: 'ERR_BAD_REQUEST', config: {…}, request: XMLHttpRequest, …}status: 400type: "VALIDATION_ERROR"userMessage: "Los datos enviados no son válidos. Por favor, verifica la información."[[Prototype]]: Object
-onError @ ProductsPage.jsx:249Understand this error
-Sidebar.jsx:75 [Sidebar] user: Object id_rol= 5 rolId= 1
-Sidebar.jsx:76 [Sidebar] visibleMenuItems: Array(6)
-Sidebar.jsx:75 [Sidebar] user: Object id_rol= 5 rolId= 1
-Sidebar.jsx:76 [Sidebar] visibleMenuItems: Array(6)
-useProducts.js:14 [useProducts] INIT ObjectidEmpresa: 2userExists: true[[Prototype]]: Object
-useProducts.js:14 [useProducts] INIT ObjectidEmpresa: 2userExists: true[[Prototype]]: Object
-Sidebar.jsx:75 [Sidebar] user: Object id_rol= 5 rolId= 1
-Sidebar.jsx:76 [Sidebar] visibleMenuItems: Array(6)0: {path: '/', roles: Array(5)}1: {path: '/dashboard', roles: Array(5)}2: {path: '/products', roles: Array(5)}3: {path: '/sales', roles: Array(5)}4: {path: '/reports', roles: Array(3)}5: {path: '/settings', roles: Array(2)}length: 6[[Prototype]]: Array(0)
-Sidebar.jsx:75 [Sidebar] user: Object id_rol= 5 rolId= 1
-Sidebar.jsx:76 [Sidebar] visibleMenuItems: Array(6)0: {path: '/', roles: Array(5)}1: {path: '/dashboard', roles: Array(5)}2: {path: '/products', roles: Array(5)}3: {path: '/sales', roles: Array(5)}4: {path: '/reports', roles: Array(3)}5: {path: '/settings', roles: Array(2)}length: 6[[Prototype]]: Array(0)
-useProducts.js:14 [useProducts] INIT ObjectidEmpresa: 2userExists: true[[Prototype]]: Object
-useProducts.js:14 [useProducts] INIT ObjectidEmpresa: 2userExists: true[[Prototype]]: Object
+api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
+api.js:16 [api.js] Method: GET
+api.js:17 [api.js] URL: /stocks/por-producto/12
+api.js:18 [api.js] Full URL: http://localhost:3000/api/stocks/por-producto/12
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: undefined
+api.js:21 [api.js] Data type: undefined
+api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
+api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
+api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
+api.js:47 [api.js] Status: 200
+api.js:48 [api.js] Data: (2) [{…}, {…}]
+api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
+stocks.api.js:65 [stocks.api] response status: 200
+stocks.api.js:67 [stocks.api] result length: 2
+stocks.api.js:69 [stocks.api] first item keys: (12) ['id', 'idEmpresa', 'idProducto', 'idAlmacen', 'stock', 'cantidadActual', 'cantidadReservada', 'cantidadDisponible', 'stockMinimo', 'stockMaximo', 'ubicacion', 'fechaActualizacion']
+api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
+api.js:47 [api.js] Status: 200
+api.js:48 [api.js] Data: [{…}]
+api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
+stocks.api.js:65 [stocks.api] response status: 200
+stocks.api.js:67 [stocks.api] result length: 1
+stocks.api.js:69 [stocks.api] first item keys: (12) ['id', 'idEmpresa', 'idProducto', 'idAlmacen', 'stock', 'cantidadActual', 'cantidadReservada', 'cantidadDisponible', 'stockMinimo', 'stockMaximo', 'ubicacion', 'fechaActualizacion']
+api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
+api.js:16 [api.js] Method: GET
+api.js:17 [api.js] URL: /almacenes/5
+api.js:18 [api.js] Full URL: http://localhost:3000/api/almacenes/5
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: undefined
+api.js:21 [api.js] Data type: undefined
+api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
+api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
+api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
+api.js:16 [api.js] Method: GET
+api.js:17 [api.js] URL: /almacenes/6
+api.js:18 [api.js] Full URL: http://localhost:3000/api/almacenes/6
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: undefined
+api.js:21 [api.js] Data type: undefined
+api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
+api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
+api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
+api.js:47 [api.js] Status: 200
+api.js:48 [api.js] Data: {id: 5, id_empresa: 3, id_sucursal: 3, codigo: '001', nombre: 'Almacén Principal', …}
+api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
+api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
+api.js:47 [api.js] Status: 200
+api.js:48 [api.js] Data: {id: 6, id_empresa: 3, id_sucursal: 4, codigo: 'SDFS', nombre: 'asd', …}
+api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+ProductsPage.jsx:210 [ProductsPage] handleEdit START {product: {…}}
+ProductsPage.jsx:231 [ProductsPage] handleEdit nextForm {idEmpresa: 3, idCategoria: 10, idSucursal: '', idAlmacen: '', codigo: '1111', …}
+stocks.api.js:62 [stocks.api] GET by product
+stocks.api.js:63 [stocks.api] idProducto: 13
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
+api.js:16 [api.js] Method: GET
+api.js:17 [api.js] URL: /stocks/por-producto/13
+api.js:18 [api.js] Full URL: http://localhost:3000/api/stocks/por-producto/13
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: undefined
+api.js:21 [api.js] Data type: undefined
+api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
+api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
+api.js:15 [api.js] ========== REQUEST INTERCEPTOR ==========
+api.js:16 [api.js] Method: GET
+api.js:17 [api.js] URL: /sucursales/por-empresa/3
+api.js:18 [api.js] Full URL: http://localhost:3000/api/sucursales/por-empresa/3
+api.js:19 [api.js] Headers: AxiosHeaders {Accept: 'application/json, text/plain, */*', Content-Type: 'application/json'}
+api.js:20 [api.js] Data: undefined
+api.js:21 [api.js] Data type: undefined
+api.js:29 [api.js] Token attached: eyJhbGciOiJIUzI1NiIs...
+api.js:34 [api.js] ========== END REQUEST INTERCEPTOR ==========
+api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
+api.js:47 [api.js] Status: 200
+api.js:48 [api.js] Data: (2) [{…}, {…}]
+api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
+stocks.api.js:65 [stocks.api] response status: 200
+stocks.api.js:67 [stocks.api] result length: 2
+stocks.api.js:69 [stocks.api] first item keys: (12) ['id', 'idEmpresa', 'idProducto', 'idAlmacen', 'stock', 'cantidadActual', 'cantidadReservada', 'cantidadDisponible', 'stockMinimo', 'stockMaximo', 'ubicacion', 'fechaActualizacion']
+ProductsPage.jsx:242 [ProductsPage] handleEdit stocks list: (2) [{…}, {…}]
+api.js:46 [api.js] ========== RESPONSE INTERCEPTOR SUCCESS ==========
+api.js:47 [api.js] Status: 200
+api.js:48 [api.js] Data: (2) [{…}, {…}]
+api.js:49 [api.js] ========== END RESPONSE INTERCEPTOR ==========
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}
+useProducts.js:14 [useProducts] INIT {idEmpresa: 3, userExists: true}

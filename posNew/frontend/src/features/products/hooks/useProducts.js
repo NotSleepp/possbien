@@ -28,7 +28,8 @@ export const useProducts = () => {
         console.error('[useProducts] queryFn ERROR: idEmpresa missing');
         throw new Error('No se encontró la empresa del usuario');
       }
-      const url = `/productos/por-empresa/${idEmpresa}`;
+      // Use endpoint that returns products with aggregated stock from stock table
+      const url = `/productos/empresa/${idEmpresa}`;
       console.log('[useProducts] GET', url);
       const response = await api.get(url);
       const items = response.data || [];

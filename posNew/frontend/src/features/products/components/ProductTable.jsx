@@ -6,7 +6,7 @@ import { Button, Badge } from '../../../shared/components/ui';
  * ProductTable Component
  * Displays products in a sortable table format (desktop view)
  */
-const ProductTable = ({ products, onEdit, onDelete, isDeleting }) => {
+const ProductTable = ({ products, onEdit, onDelete, isDeleting, stockSummary }) => {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
 
   // Handle column sorting
@@ -93,6 +93,9 @@ const ProductTable = ({ products, onEdit, onDelete, isDeleting }) => {
             <th className="px-6 py-3 text-left text-xs font-medium text-base-content/70 uppercase tracking-wider">
               Estado
             </th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-base-content/70 uppercase tracking-wider">
+              Inventario por almacén
+            </th>
             <th className="px-6 py-3 text-right text-xs font-medium text-base-content/70 uppercase tracking-wider">
               Acciones
             </th>
@@ -130,6 +133,19 @@ const ProductTable = ({ products, onEdit, onDelete, isDeleting }) => {
                 <Badge variant={product.activo ? 'success' : 'danger'}>
                   {product.activo ? 'Activo' : 'Inactivo'}
                 </Badge>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-base-content">
+                <div className="flex flex-wrap gap-2 max-w-[420px]">
+                  {(stockSummary?.[product.id] || []).length > 0 ? (
+                    stockSummary[product.id].map((item, idx) => (
+                      <Badge key={idx} variant="secondary">
+                        {item.label}: {item.cantidad}
+                      </Badge>
+                    ))
+                  ) : (
+                    <span className="text-base-content/60">—</span>
+                  )}
+                </div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <div className="flex items-center justify-end gap-2">

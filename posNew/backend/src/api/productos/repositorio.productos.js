@@ -11,7 +11,7 @@ async function obtenerProductosConStockPorEmpresa(idEmpresa) {
       'p.*',
       clienteBaseDeDatos.raw(
         `(
-          SELECT COALESCE(SUM(COALESCE(st.stock, st.cantidad_actual, 0)), 0)
+          SELECT COALESCE(SUM(COALESCE(st.cantidad_actual, 0)), 0)
           FROM stock st
           WHERE st.id_producto = p.id AND st.id_empresa = p.id_empresa
         ) AS stock_actual`
@@ -28,7 +28,7 @@ async function buscarProductosPorEmpresa(idEmpresa, q) {
       'p.*',
       clienteBaseDeDatos.raw(
         `(
-          SELECT COALESCE(SUM(COALESCE(st.stock, st.cantidad_actual, 0)), 0)
+          SELECT COALESCE(SUM(COALESCE(st.cantidad_actual, 0)), 0)
           FROM stock st
           WHERE st.id_producto = p.id AND st.id_empresa = p.id_empresa
         ) AS stock_actual`

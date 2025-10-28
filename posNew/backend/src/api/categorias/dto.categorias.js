@@ -2,10 +2,10 @@ import { z } from 'zod';
 
 /**
  * Esquema para crear categoría
- * Usa nombres snake_case para coincidir con la base de datos
+ * Alineado a camelCase (coincide con frontend)
  */
 const esquemaCrearCategoria = z.object({
-  id_empresa: z.number().int().positive(),
+  idEmpresa: z.number().int().positive('ID de empresa requerido'),
   codigo: z.string().min(1, 'El código es requerido').max(20),
   nombre: z.string().min(1, 'El nombre es requerido').max(100),
   descripcion: z.string().max(1000).optional(),

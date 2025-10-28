@@ -13,7 +13,14 @@ import { UniqueConstraintError, DependencyError } from '../../shared/utils/error
  * @throws {Error} Si los datos no pasan la validación de Zod.
  */
 async function crearCategoria(datos, usuario = null) {
-  const datosValidados = esquemaCrearCategoria.parse(datos);
+  console.log('[Categorias][Service] crearCategoria - datos recibidos:', datos);
+  const parsed = esquemaCrearCategoria.safeParse(datos);
+  if (!parsed.success) {
+    console.error('[Categorias][Service] ZodError crearCategoria - errores:', parsed.error?.errors);
+    throw parsed.error;
+  }
+  const datosValidados = parsed.data;
+  console.log('[Categorias][Service] crearCategoria - datos validados:', datosValidados);
 
   if (usuario) {
     const result = validarAccesoEmpresa(usuario, datosValidados.idEmpresa);
@@ -33,7 +40,11 @@ async function crearCategoria(datos, usuario = null) {
     codigo: datosValidados.codigo,
     nombre: datosValidados.nombre,
     descripcion: datosValidados.descripcion,
+    color: datosValidados.color,
+    icono: datosValidados.icono,
+    activo: datosValidados.activo ?? true,
   };
+  console.log('[Categorias][Service] crearCategoria - datos mapeados para DB:', mappedData);
   return await repositorio.crearCategoria(mappedData);
 }
 
@@ -74,7 +85,14 @@ async function obtenerCategoriaPorId(id) {
  * @throws {Error} Si los datos no pasan la validación de Zod.
  */
 async function actualizarCategoria(id, datos, usuario = null) {
-  const datosValidados = esquemaActualizarCategoria.parse({ id, ...datos });
+  console.log('[Categorias][Service] actualizarCategoria - id y datos recibidos:', { id, datos });
+  const parsed = esquemaActualizarCategoria.safeParse({ id, ...datos });
+  if (!parsed.success) {
+    console.error('[Categorias][Service] ZodError actualizarCategoria - errores:', parsed.error?.errors);
+    throw parsed.error;
+  }
+  const datosValidados = parsed.data;
+  console.log('[Categorias][Service] actualizarCategoria - datos validados:', datosValidados);
 
   // Obtener categoría actual para validaciones
   const categoriaActual = await obtenerCategoriaPorId(id);
@@ -93,8 +111,17 @@ async function actualizarCategoria(id, datos, usuario = null) {
       throw new UniqueConstraintError('código', datosValidados.codigo);
     }
   }
-
-  return await repositorio.actualizarCategoria(id, datosValidados);
+  const datosUpdate = {
+    // Solo pasamos campos presentes que mapean 1:1 con columnas
+    ...(datosValidados.codigo ? { codigo: datosValidados.codigo } : {}),
+    ...(datosValidados.nombre ? { nombre: datosValidados.nombre } : {}),
+    ...(datosValidados.descripcion !== undefined ? { descripcion: datosValidados.descripcion } : {}),
+    ...(datosValidados.color ? { color: datosValidados.color } : {}),
+    ...(datosValidados.icono ? { icono: datosValidados.icono } : {}),
+    ...(datosValidados.activo !== undefined ? { activo: datosValidados.activo } : {}),
+  };
+  console.log('[Categorias][Service] actualizarCategoria - datos para actualizar en DB:', datosUpdate);
+  return await repositorio.actualizarCategoria(id, datosUpdate);
 }
 
 /**

@@ -59,13 +59,13 @@ class ErrorBoundary extends Component {
 
       // Default fallback UI
       return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+        <div className="min-h-screen flex items-center justify-center bg-base-100 px-4">
           <div className="max-w-2xl w-full">
             {/* Icon */}
             <div className="mb-6 text-center">
-              <div className="mx-auto h-24 w-24 rounded-full bg-red-100 flex items-center justify-center">
+              <div className="mx-auto h-24 w-24 rounded-full bg-error/20 flex items-center justify-center">
                 <svg
-                  className="h-12 w-12 text-red-600"
+                  className="h-12 w-12 text-error"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -83,21 +83,21 @@ class ErrorBoundary extends Component {
 
             {/* Content */}
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-gray-900 mb-3">
+              <h1 className="text-3xl font-bold text-base-content mb-3">
                 ¡Algo salió mal!
               </h1>
-              <p className="text-lg text-gray-600 mb-4">
+              <p className="text-lg text-base-content/70 mb-4">
                 Lo sentimos, ha ocurrido un error inesperado. Por favor, intenta recargar la página.
               </p>
             </div>
 
             {/* Error details (only in development) */}
             {import.meta.env.DEV && this.state.error && (
-              <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
-                <h2 className="text-sm font-semibold text-red-800 mb-2">
+              <div className="mb-6 bg-error/10 border border-error rounded-lg p-4">
+                <h2 className="text-sm font-semibold text-error mb-2">
                   Detalles del Error (solo en desarrollo):
                 </h2>
-                <pre className="text-xs text-red-700 overflow-auto max-h-40 whitespace-pre-wrap">
+                <pre className="text-xs text-error overflow-auto max-h-40 whitespace-pre-wrap">
                   {this.state.error.toString()}
                   {this.state.errorInfo && this.state.errorInfo.componentStack}
                 </pre>

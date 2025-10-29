@@ -57,7 +57,7 @@ const MainLayout = () => {
       {/* Backdrop for mobile sidebar */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden"
+          className="fixed inset-0 bg-base-content/50 z-20 md:hidden"
           onClick={toggleSidebar}
           aria-hidden="true"
         />

@@ -114,7 +114,7 @@ export const ValidatedInput = ({
       {label && (
         <label htmlFor={name} className="form-label">
           {label}
-          {required && <span className="text-red-500 ml-1">*</span>}
+          {required && <span className="text-error ml-1">*</span>}
         </label>
       )}
       <Input
@@ -126,7 +126,7 @@ export const ValidatedInput = ({
         onBlur={handleBlur}
         placeholder={placeholder}
         disabled={disabled}
-        className={displayError ? 'border-red-500' : ''}
+        className={displayError ? 'border-error' : ''}
         aria-invalid={!!displayError}
         aria-describedby={displayError ? `${name}-error` : undefined}
         {...props}
@@ -134,7 +134,7 @@ export const ValidatedInput = ({
       {displayError && (
         <span 
           id={`${name}-error`}
-          className="error-message text-red-500 text-sm mt-1 block"
+          className="error-message text-error text-sm mt-1 block"
           role="alert"
         >
           {displayError}

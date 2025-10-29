@@ -249,7 +249,7 @@ const BranchesCajasPage = () => {
         {isBranchesLoading ? (
           <div className="py-8 flex justify-center"><LoadingSpinner /></div>
         ) : isBranchesError ? (
-          <div className="text-red-600">{branchesError?.message || 'Error al cargar sucursales'}</div>
+          <div className="text-error">{branchesError?.message || 'Error al cargar sucursales'}</div>
         ) : (
           <div className="overflow-x-auto">
             <table className="min-w-full bg-base-100">
@@ -320,7 +320,7 @@ const BranchesCajasPage = () => {
         ) : isCajasLoading ? (
           <div className="py-8 flex justify-center"><LoadingSpinner /></div>
         ) : isCajasError ? (
-          <div className="text-red-600">{cajasError?.message || 'Error al cargar cajas'}</div>
+          <div className="text-error">{cajasError?.message || 'Error al cargar cajas'}</div>
         ) : (
           <div className="overflow-x-auto">
             <table className="min-w-full bg-base-100">

@@ -1,5 +1,6 @@
 import { esquemaCrearUsuario, esquemaActualizarUsuario } from './dto.usuarios.js';
 import * as repositorio from './repositorio.usuarios.js';
+import { UniqueConstraintError } from '../../shared/utils/errorHandler.js';
 import clienteBaseDeDatos from '../../config/baseDeDatos.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
@@ -18,6 +19,16 @@ function mapRolCanonico(nombre) {
 async function crearUsuario(datos) {
   // Validación de DTO con snake_case
   const datosValidados = esquemaCrearUsuario.parse(datos);
+
+  // Validación de duplicados por empresa+username
+  const existente = await repositorio.obtenerUsuarioPorEmpresaYUsername(
+    datosValidados.id_empresa,
+    datosValidados.username
+  );
+  if (existente) {
+    // Usar nombre de campo amigable para UI
+    throw new UniqueConstraintError('nombre de usuario', datosValidados.username);
+  }
 
   // Crear directamente el usuario en la empresa dada
   // (sin flujo de registro inicial que crea empresa/sucursal/etc.)
@@ -39,6 +50,22 @@ async function obtenerUsuarioPorId(id) {
 
 async function actualizarUsuario(id, datos) {
   const datosValidados = esquemaActualizarUsuario.parse({ id, ...datos });
+
+  // Si se intenta actualizar username, validar duplicados por empresa
+  if (datosValidados.username) {
+    const actual = await repositorio.obtenerUsuarioPorId(id);
+    if (!actual) {
+      throw new Error('Usuario no encontrado');
+    }
+    const duplicado = await repositorio.obtenerUsuarioPorEmpresaYUsername(
+      actual.id_empresa,
+      datosValidados.username
+    );
+    if (duplicado && duplicado.id !== id) {
+      throw new UniqueConstraintError('nombre de usuario', datosValidados.username);
+    }
+  }
+
   return await repositorio.actualizarUsuario(id, datosValidados);
 }
 

@@ -219,6 +219,21 @@ CREATE TABLE IF NOT EXISTS uso_cupones (
     INDEX idx_cliente_cupon (id_cliente)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- =====================================================
+-- AJUSTE DE UNICIDAD EN USUARIOS POR EMPRESA
+-- Antes: username único global
+-- Ahora: unicidad compuesta por (id_empresa, username)
+-- =====================================================
+
+-- Intentar eliminar índice único existente sobre username (nombre típico: 'username')
+ALTER TABLE usuarios DROP INDEX username;
+
+-- En caso de que el nombre del índice difiera (p.ej., 'usuarios_username_unique'), intentar también
+ALTER TABLE usuarios DROP INDEX usuarios_username_unique;
+
+-- Crear índice único compuesto por empresa y username
+ALTER TABLE usuarios ADD UNIQUE KEY unique_empresa_username (id_empresa, username);
+
 -- TABLA DE COMPRAS A PROVEEDORES
 CREATE TABLE IF NOT EXISTS compras (
     id INT AUTO_INCREMENT PRIMARY KEY,

@@ -105,6 +105,7 @@ function transformError(error) {
   const { status, data } = error.response;
 
   const serverMessage = (
+    data?.error?.message ||
     data?.error?.mensaje ||
     data?.mensaje ||
     data?.message ||
@@ -150,7 +151,7 @@ function getErrorType(status, data) {
  */
 function getUserFriendlyMessage(status, data) {
   // Prefer backend error message if provided
-  const backendMessage = data?.error?.mensaje || data?.mensaje;
+  const backendMessage = data?.error?.message || data?.error?.mensaje || data?.mensaje;
   if (backendMessage && typeof backendMessage === 'string') {
     return backendMessage;
   }

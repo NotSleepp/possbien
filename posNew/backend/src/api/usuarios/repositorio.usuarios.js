@@ -39,6 +39,12 @@ async function obtenerUsuarioPorUsername(username) {
     .first();
 }
 
+async function obtenerUsuarioPorEmpresaYUsername(idEmpresa, username) {
+  return await clienteBaseDeDatos('usuarios')
+    .where({ id_empresa: idEmpresa, username, eliminado: false })
+    .first();
+}
+
 async function contarSesionesActivasPorUsuario(idUsuario) {
   const result = await clienteBaseDeDatos('sesiones')
     .where({ id_usuario: idUsuario, activo: true })
@@ -62,6 +68,7 @@ export {
   actualizarUsuario, 
   eliminarUsuario, 
   obtenerUsuarioPorUsername,
+  obtenerUsuarioPorEmpresaYUsername,
   contarSesionesActivasPorUsuario,
   contarVentasPorUsuario
 };

@@ -43,7 +43,7 @@ const Header = ({ title }) => {
           <div className="flex items-center gap-4">
             <button
               onClick={toggleSidebar}
-              className="p-2 rounded-lg text-neutral-content hover:bg-base-200 transition-colors md:hidden"
+              className="p-2 rounded-lg text-base-content hover:bg-base-200 transition-colors md:hidden"
               aria-label="Toggle menu"
             >
               <FiMenu size={24} />
@@ -72,7 +72,7 @@ const Header = ({ title }) => {
                       ? `${user.nombre} ${user.apellido}` 
                       : user?.username}
                   </p>
-                  <p className="text-xs text-neutral-content">
+                  <p className="text-xs text-base-content/70">
                     {getRoleName(user?.rolId ?? user?.id_rol)}
                   </p>
                 </div>
@@ -96,10 +96,10 @@ const Header = ({ title }) => {
                           ? `${user.nombre} ${user.apellido}` 
                           : user?.username}
                       </p>
-                      <p className="text-xs text-neutral-content mt-1">
+                      <p className="text-xs text-base-content/60 mt-1">
                         {user?.email || user?.username}
                       </p>
-                      <p className="text-xs text-neutral-content/70 mt-1">
+                      <p className="text-xs text-base-content/60 mt-1">
                         {getRoleName(user?.rolId ?? user?.id_rol)}
                       </p>
                     </div>
@@ -135,7 +135,7 @@ const Header = ({ title }) => {
                           setShowUserMenu(false);
                           setShowLogoutModal(true);
                         }}
-                        className="flex items-center gap-3 w-full px-4 py-2 text-sm text-error hover:bg-error/10 transition-colors"
+                        className="flex items-center gap-3 w-full px-4 py-2 text-sm text-error hover:bg-error hover:text-error-content transition-colors"
                       >
                         <FiLogOut size={16} />
                         <span>Cerrar Sesión</span>

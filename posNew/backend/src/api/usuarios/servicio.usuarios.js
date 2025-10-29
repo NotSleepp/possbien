@@ -171,7 +171,13 @@ async function createSuperAdminUser(profile, trx) {
         nombre: `Empresa de ${profile.name.givenName} ${profile.name.familyName}`,
         id_fiscal: `ruc_${profile.id.substring(0,16)}`,
         id_auth: profile.id,
-        id_usuario: null
+        id_usuario: null,
+        // Defaults de moneda e impuestos orientados a Argentina
+        currency: 'ARS',
+        nombre_moneda: 'Pesos',
+        simbolo_moneda: '$',
+        impuesto: 'IVA',
+        valor_impuesto: 21.00
       };
       const empresaId = (await trx('empresa').insert(empresaInsert))[0];
       empresa = await trx('empresa').where('id', empresaId).first();

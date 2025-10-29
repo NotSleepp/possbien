@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Button from './Button';
+import Portal from './Portal';
 
 const Modal = ({
     isOpen,
@@ -39,46 +40,48 @@ const Modal = ({
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
-            {/* Backdrop */}
-            <div
-                className="modal-backdrop fixed inset-0 transition-opacity"
-                onClick={onClose}
-            />
+        <Portal>
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+                {/* Backdrop */}
+                <div
+                    className="modal-backdrop fixed inset-0 bg-black/50 transition-opacity"
+                    onClick={onClose}
+                />
 
-            {/* Modal */}
-            <div className="modal-box relative z-10 w-full max-w-2xl my-8 shadow-xl max-h-[90vh] flex flex-col">
-                {/* Header */}
-                {title && (
-                    <div className="px-6 py-4 border-b border-base-300 flex-shrink-0">
-                        <h3 className="text-lg font-semibold text-base-content">{title}</h3>
+                {/* Modal */}
+                <div className="modal-box relative z-10 w-full max-w-2xl my-8 shadow-xl max-h-[90vh] flex flex-col bg-base-100 rounded-lg">
+                    {/* Header */}
+                    {title && (
+                        <div className="px-6 py-4 border-b border-base-300 flex-shrink-0">
+                            <h3 className="text-lg font-semibold text-base-content">{title}</h3>
+                        </div>
+                    )}
+
+                    {/* Content - Scrollable */}
+                    <div className="px-6 py-4 overflow-y-auto flex-1">
+                        {children}
                     </div>
-                )}
 
-                {/* Content - Scrollable */}
-                <div className="px-6 py-4 overflow-y-auto flex-1">
-                    {children}
+                    {/* Footer */}
+                    {onConfirm && (
+                        <div className="px-6 py-4 border-t border-base-300 flex justify-end gap-3 flex-shrink-0">
+                            <Button
+                                variant="ghost"
+                                onClick={onClose}
+                            >
+                                {cancelText}
+                            </Button>
+                            <Button
+                                variant={variant}
+                                onClick={onConfirm}
+                            >
+                                {confirmText}
+                            </Button>
+                        </div>
+                    )}
                 </div>
-
-                {/* Footer */}
-                {onConfirm && (
-                    <div className="px-6 py-4 border-t border-base-300 flex justify-end gap-3 flex-shrink-0">
-                        <Button
-                            variant="ghost"
-                            onClick={onClose}
-                        >
-                            {cancelText}
-                        </Button>
-                        <Button
-                            variant={variant}
-                            onClick={onConfirm}
-                        >
-                            {confirmText}
-                        </Button>
-                    </div>
-                )}
             </div>
-        </div>
+        </Portal>
     );
 };
 

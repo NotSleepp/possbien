@@ -8,6 +8,7 @@ const CashRegister = () => {
   const [paymentMethod, setPaymentMethod] = useState('cash');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   const {
     products,
@@ -91,10 +92,35 @@ const CashRegister = () => {
     }).format(amount);
   };
 
-  const filteredProducts = products.filter(product =>
-    product.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    product.sku?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Sincroniza productos iniciales y aplica búsqueda por backend cuando cambia searchTerm (con debounce)
+  useEffect(() => {
+    let cancelled = false;
+    const handler = setTimeout(async () => {
+      // Cuando no hay término, mostrar productos cargados (ya filtrados por stock)
+      const term = searchTerm.trim();
+      if (!term) {
+        setFilteredProducts(products);
+        return;
+      }
+
+      try {
+        const resultados = await searchProducts(term);
+        if (!cancelled) setFilteredProducts(resultados);
+      } catch (e) {
+        // Fallback local si ocurre un error
+        const locales = products.filter(product =>
+          product.nombre?.toLowerCase().includes(term.toLowerCase()) ||
+          product.codigo?.toLowerCase().includes(term.toLowerCase()) ||
+          product.codigo_barras?.toLowerCase().includes(term.toLowerCase()) ||
+          product.codigo_interno?.toLowerCase().includes(term.toLowerCase()) ||
+          product.sku?.toLowerCase().includes(term.toLowerCase())
+        );
+        if (!cancelled) setFilteredProducts(locales);
+      }
+    }, 300);
+
+    return () => { cancelled = true; clearTimeout(handler); };
+  }, [searchTerm, products, searchProducts]);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full overflow-hidden">
@@ -103,7 +129,7 @@ const CashRegister = () => {
         <Card className="mb-4 p-4">
           <Input
             type="text"
-            placeholder="Buscar productos por nombre o SKU..."
+            placeholder="Buscar por nombre, código interno o código de barras..."
             value={searchTerm}
             onChange={(value) => setSearchTerm(value)}
             className="w-full"

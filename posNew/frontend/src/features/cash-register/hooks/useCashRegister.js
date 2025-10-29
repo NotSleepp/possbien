@@ -1,4 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useCallback } from 'react';
 import { api } from '../../../shared/api/api';
 import { useAuthStore } from '../../../store/useAuthStore';
 
@@ -22,23 +23,39 @@ export const useCashRegister = () => {
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
-  // Search products
-  const searchProducts = async (searchTerm) => {
-    if (!searchTerm.trim()) return products;
-    
-    try {
-      const response = await api.get(`/productos/empresa/${user.id_empresa}/search`, {
-        params: { q: searchTerm }
-      });
-      return response.data.filter(product => product.stock_actual > 0);
-    } catch (error) {
-      console.error('Error searching products:', error);
+  // Search products (memoized)
+  const searchProducts = useCallback(async (searchTerm) => {
+    const term = searchTerm.trim();
+    if (!term) return products;
+
+    // Umbral mínimo: evitar llamadas al backend con 1 carácter
+    if (term.length < 2) {
       return products.filter(product =>
-        product.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.sku?.toLowerCase().includes(searchTerm.toLowerCase())
+        product.nombre?.toLowerCase().includes(term.toLowerCase()) ||
+        product.codigo?.toLowerCase().includes(term.toLowerCase()) ||
+        product.codigo_barras?.toLowerCase().includes(term.toLowerCase()) ||
+        product.codigo_interno?.toLowerCase().includes(term.toLowerCase()) ||
+        product.sku?.toLowerCase().includes(term.toLowerCase())
       );
     }
-  };
+
+    try {
+      const response = await api.get(`/productos/empresa/${user.id_empresa}/search`, {
+        params: { q: term }
+      });
+      return (response.data || []).filter(product => product.stock_actual > 0);
+    } catch (error) {
+      console.error('Error searching products:', error);
+      // Fallback local
+      return products.filter(product =>
+        product.nombre?.toLowerCase().includes(term.toLowerCase()) ||
+        product.codigo?.toLowerCase().includes(term.toLowerCase()) ||
+        product.codigo_barras?.toLowerCase().includes(term.toLowerCase()) ||
+        product.codigo_interno?.toLowerCase().includes(term.toLowerCase()) ||
+        product.sku?.toLowerCase().includes(term.toLowerCase())
+      );
+    }
+  }, [user?.id_empresa, products]);
 
   // Process sale mutation
   const processSaleMutation = useMutation({

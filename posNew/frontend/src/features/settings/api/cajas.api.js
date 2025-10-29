@@ -1,5 +1,5 @@
 import { api } from '../../../shared/api/api';
-import { toSnakeCase, toCamelCase } from '../../../shared/utils/fieldTransform';
+import { toCamelCase } from '../../../shared/utils/fieldTransform';
 import { handleApiError } from '../../../utils/errorHandler';
 
 export const listCajasBySucursal = async (idSucursal) => {
@@ -23,8 +23,8 @@ export const getCaja = async (id) => {
 
 export const createCaja = async (payload) => {
   try {
-    const transformedPayload = toSnakeCase(payload);
-    const { data } = await api.post('/cajas', transformedPayload);
+    // Backend espera camelCase según DTO (esquemaCrearCaja)
+    const { data } = await api.post('/cajas', payload);
     return toCamelCase(data?.datos ?? data);
   } catch (error) {
     throw handleApiError(error, 'createCaja');
@@ -33,8 +33,8 @@ export const createCaja = async (payload) => {
 
 export const updateCaja = async (id, payload) => {
   try {
-    const transformedPayload = toSnakeCase(payload);
-    const { data } = await api.put(`/cajas/${id}`, transformedPayload);
+    // Backend espera camelCase según DTO (esquemaActualizarCaja)
+    const { data } = await api.put(`/cajas/${id}`, payload);
     return toCamelCase(data?.datos ?? data);
   } catch (error) {
     throw handleApiError(error, 'updateCaja');

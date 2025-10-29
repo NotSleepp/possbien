@@ -4,6 +4,7 @@ import { Button, Modal } from '../shared/components/ui';
 import { ConfigurationLayout, ConfigurationTable, ConfigurationForm } from '../features/settings/components';
 import { useAuthStore } from '../store/useAuthStore';
 import { useToastStore } from '../store/useToastStore';
+import { getValidationErrors, getErrorMessage } from '../utils/errorHandler';
 import { listBranchesByEmpresa } from '../features/settings/api/branches.api';
 import {
   listWarehousesByBranch,
@@ -61,7 +62,15 @@ const WarehousesPage = () => {
       setErrors({});
       queryClient.invalidateQueries({ queryKey: ['warehouses', selectedBranchId] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al crear almacén'),
+    onError: (err) => {
+      const fieldErrors = getValidationErrors(err);
+      if (Object.keys(fieldErrors).length > 0) {
+        setErrors(fieldErrors);
+        showError(getErrorMessage(err));
+        return;
+      }
+      showError(getErrorMessage(err) || 'Error al crear almacén');
+    },
   });
 
   const updateMut = useMutation({
@@ -73,7 +82,15 @@ const WarehousesPage = () => {
       setErrors({});
       queryClient.invalidateQueries({ queryKey: ['warehouses', selectedBranchId] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al actualizar almacén'),
+    onError: (err) => {
+      const fieldErrors = getValidationErrors(err);
+      if (Object.keys(fieldErrors).length > 0) {
+        setErrors(fieldErrors);
+        showError(getErrorMessage(err));
+        return;
+      }
+      showError(getErrorMessage(err) || 'Error al actualizar almacén');
+    },
   });
 
   const deleteMut = useMutation({
@@ -84,7 +101,7 @@ const WarehousesPage = () => {
       setSelectedItem(null);
       queryClient.invalidateQueries({ queryKey: ['warehouses', selectedBranchId] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al eliminar almacén'),
+    onError: (err) => showError(getErrorMessage(err) || 'Error al eliminar almacén'),
   });
 
   // Handlers

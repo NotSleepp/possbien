@@ -9,6 +9,7 @@ import {
 } from '../features/settings/components';
 import { useAuthStore } from '../store/useAuthStore';
 import { useToastStore } from '../store/useToastStore';
+import { getValidationErrors, getErrorMessage } from '../utils/errorHandler';
 import {
   listRolesByEmpresa,
   createRole,
@@ -98,7 +99,13 @@ const RolesPage = () => {
     },
     onError: (err) => {
       console.error('[RolesPage] createMut - ERROR:', err);
-      showError(err?.userMessage || 'Error al crear rol');
+      const fieldErrors = getValidationErrors(err);
+      if (Object.keys(fieldErrors).length > 0) {
+        setErrors(fieldErrors);
+        showError(getErrorMessage(err));
+        return;
+      }
+      showError(getErrorMessage(err) || 'Error al crear rol');
     },
   });
 
@@ -117,7 +124,13 @@ const RolesPage = () => {
     },
     onError: (err) => {
       console.error('[RolesPage] updateMut - ERROR:', err);
-      showError(err?.userMessage || 'Error al actualizar rol');
+      const fieldErrors = getValidationErrors(err);
+      if (Object.keys(fieldErrors).length > 0) {
+        setErrors(fieldErrors);
+        showError(getErrorMessage(err));
+        return;
+      }
+      showError(getErrorMessage(err) || 'Error al actualizar rol');
     },
   });
 
@@ -135,7 +148,7 @@ const RolesPage = () => {
     },
     onError: (err) => {
       console.error('[RolesPage] deleteMut - ERROR:', err);
-      showError(err?.userMessage || 'Error al eliminar rol');
+      showError(getErrorMessage(err) || 'Error al eliminar rol');
     },
   });
 
@@ -154,7 +167,7 @@ const RolesPage = () => {
     },
     onError: (err) => {
       console.error('[RolesPage] assignPermissionsMut - ERROR:', err);
-      showError(err?.userMessage || 'Error al actualizar permisos');
+      showError(getErrorMessage(err) || 'Error al actualizar permisos');
     },
   });
 

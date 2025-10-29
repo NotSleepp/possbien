@@ -4,6 +4,7 @@ import { Button, Modal } from '../shared/components/ui';
 import { ConfigurationLayout, ConfigurationTable, ConfigurationForm } from '../features/settings/components';
 import { useAuthStore } from '../store/useAuthStore';
 import { useToastStore } from '../store/useToastStore';
+import { getValidationErrors, getErrorMessage } from '../utils/errorHandler';
 import { listBranchesByEmpresa } from '../features/settings/api/branches.api';
 import {
   listCajasBySucursal,
@@ -76,14 +77,13 @@ const CashRegistersPage = () => {
     },
     onError: (err) => {
       console.error('[CashRegistersPage] CREATE Mutation ERROR:', err);
-      console.error('[CashRegistersPage] Error details:', {
-        message: err?.message,
-        userMessage: err?.userMessage,
-        response: err?.response,
-        status: err?.response?.status,
-        data: err?.response?.data,
-      });
-      showError(err?.userMessage || 'Error al crear caja');
+      const fieldErrors = getValidationErrors(err);
+      if (Object.keys(fieldErrors).length > 0) {
+        setErrors(fieldErrors);
+        showError(getErrorMessage(err));
+        return;
+      }
+      showError(getErrorMessage(err) || 'Error al crear caja');
     },
   });
 
@@ -102,14 +102,13 @@ const CashRegistersPage = () => {
     },
     onError: (err) => {
       console.error('[CashRegistersPage] UPDATE Mutation ERROR:', err);
-      console.error('[CashRegistersPage] Error details:', {
-        message: err?.message,
-        userMessage: err?.userMessage,
-        response: err?.response,
-        status: err?.response?.status,
-        data: err?.response?.data,
-      });
-      showError(err?.userMessage || 'Error al actualizar caja');
+      const fieldErrors = getValidationErrors(err);
+      if (Object.keys(fieldErrors).length > 0) {
+        setErrors(fieldErrors);
+        showError(getErrorMessage(err));
+        return;
+      }
+      showError(getErrorMessage(err) || 'Error al actualizar caja');
     },
   });
 
@@ -121,7 +120,7 @@ const CashRegistersPage = () => {
       setSelectedItem(null);
       queryClient.invalidateQueries({ queryKey: ['cajas', selectedBranchId] });
     },
-    onError: (err) => showError(err?.userMessage || 'Error al eliminar caja'),
+    onError: (err) => showError(getErrorMessage(err) || 'Error al eliminar caja'),
   });
 
   // Handlers
@@ -144,12 +143,13 @@ const CashRegistersPage = () => {
     console.log('[CashRegistersPage] Opening edit for item:', item);
     setSelectedItem(item);
     const formData = {
-      idEmpresa: item.id_empresa,
-      idSucursal: item.id_sucursal,
+      // Los items vienen en camelCase desde la API (toCamelCase)
+      idEmpresa: item.idEmpresa ?? item.id_empresa,
+      idSucursal: item.idSucursal ?? item.id_sucursal,
       codigo: item.codigo || '',
       nombre: item.nombre || '',
       descripcion: item.descripcion || '',
-      saldoInicial: Number(item.monto_inicial) || 0,
+      saldoInicial: Number(item.montoInicial ?? item.monto_inicial ?? 0),
       print: Boolean(item.print), // Convertir a booleano
     };
     console.log('[CashRegistersPage] Form data for edit:', formData);
@@ -246,7 +246,7 @@ const CashRegistersPage = () => {
     { key: 'nombre', label: 'Nombre' },
     { key: 'descripcion', label: 'Descripción' },
     {
-      key: 'monto_inicial',
+      key: 'montoInicial',
       label: 'Monto Inicial',
       render: (value) => `${currencySymbol} ${Number(value || 0).toFixed(2)}`,
     },
